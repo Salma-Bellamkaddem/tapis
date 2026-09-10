@@ -1,27 +1,25 @@
 "use client";
 
 import Link from "next/link";
+import { Suspense } from "react";
 import { useSearchParams, useRouter } from "next/navigation";
 import { rugsData } from "@/data/products";
 
-export default function AllRugsPage() {
+function AllRugsContent() {
   const searchParams = useSearchParams();
   const router = useRouter();
   const categoryParam = searchParams.get("category");
 
-  // 1. Dérivation directe de la catégorie depuis l'URL (fini le useEffect et le setState bloquant)
   const selectedCategory = categoryParam 
     ? categoryParam.charAt(0).toUpperCase() + categoryParam.slice(1) 
     : "All";
 
-  // 2. Filtrer les tapis selon la catégorie active dans l'URL
   const filteredRugs = selectedCategory === "All" 
     ? rugsData 
     : rugsData.filter(rug => rug.category.toLowerCase() === selectedCategory.toLowerCase());
 
   const categoriesList = ['All', 'Ouaouzguite', 'Glaoui', 'Mouzaïk', 'Akhenif', 'Tapis Tableau', 'Zanifi', 'Beni Ourain', 'Azilal'];
 
-  // 3. Gérer le changement de catégorie en modifiant l'URL proprement
   const handleCategoryChange = (cat: string) => {
     if (cat === "All") {
       router.push("/rugs");
@@ -124,5 +122,13 @@ export default function AllRugsPage() {
       </div>
 
     </div>
+  );
+}
+
+export default function AllRugsPage() {
+  return (
+    <Suspense fallback={<div className="min-h-screen bg-[#FAF9F6] flex items-center justify-center text-xs font-bold tracking-widest text-[#A44E36] uppercase">Loading...</div>}>
+      <AllRugsContent />
+    </Suspense>
   );
 }
