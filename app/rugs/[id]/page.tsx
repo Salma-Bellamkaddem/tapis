@@ -5,15 +5,6 @@ import { rugsData } from "@/data/products";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 
-type CartItem = {
-  name: string;
-  category: string;
-  sku: string;
-  size: string;
-  price: string;
-  image: string;
-};
-
 export default function ProductDetailPage({
   params,
 }: {
@@ -37,54 +28,15 @@ function ProductDetail({ rug }: { rug: (typeof rugsData)[number] }) {
 
   const [mainImage, setMainImage] = useState(rug.images[0]);
   const [selectedSizeObj, setSelectedSizeObj] = useState(availableSizes[0]);
-  const [cart, setCart] = useState<CartItem[]>([]);
-  const [addedMessage, setAddedMessage] = useState(false);
 
-  const handleAddToCart = () => {
-    const newItem: CartItem = {
-      name: rug.name,
-      category: rug.category,
-      sku: rug.sku,
-      size: selectedSizeObj.size,
-      price: selectedSizeObj.price,
-      image: mainImage,
-    };
-
-    setCart((prev) => [...prev, newItem]);
-    setAddedMessage(true);
-
-    setTimeout(() => {
-      setAddedMessage(false);
-    }, 3000);
-  };
-
+  // Générer le lien WhatsApp direct épuré
   const generateWhatsAppUrl = () => {
-    const itemsToCheckout =
-      cart.length > 0
-        ? cart
-        : [
-            {
-              name: rug.name,
-              category: rug.category,
-              sku: rug.sku,
-              size: selectedSizeObj.size,
-              price: selectedSizeObj.price,
-              image: mainImage,
-            },
-          ];
-
-    let message = "Bonjour, je souhaite commander les tapis suivants :\n\n";
-
-    itemsToCheckout.forEach((item, index) => {
-      message += `*${index + 1}. ${item.name}*\n`;
-      message += `- Catégorie : ${item.category}\n`;
-      message += `- SKU : ${item.sku}\n`;
-      message += `- Taille : ${item.size}\n`;
-      message += `- Prix : ${item.price}\n\n`;
-    });
-
-    message +=
-      "*Remarque : Je souhaite également envoyer un design personnalisé ou commander sur mesure.*";
+    let message = "Bonjour, je souhaite commander ce tapis :\n\n";
+    message += `• Tapis : ${rug.name}\n`;
+    message += `• Catégorie : ${rug.category}\n`;
+    message += `• SKU : ${rug.sku}\n`;
+    message += `• Taille : ${selectedSizeObj.size}\n`;
+    message += `• Prix : ${selectedSizeObj.price}`;
 
     return `https://wa.me/212767149114?text=${encodeURIComponent(message)}`;
   };
@@ -197,23 +149,12 @@ function ProductDetail({ rug }: { rug: (typeof rugsData)[number] }) {
             </div>
           </div>
 
-          <p className="text-gray-500 text-xs md:text-sm leading-relaxed mb-6">
-            Handwoven by women artisans in the Atlas mountains using pure living
-            sheep's wool and natural dyes. Select your dimensions above or send
-            us your custom design.
+          {/* Description spécifique */}
+          <p className="text-gray-500 text-xs md:text-sm leading-relaxed mb-8">
+            {rug.description || "Handwoven by women artisans in the Atlas mountains using pure living sheep's wool and natural dyes."}
           </p>
 
-          {/* MESSAGE AJOUT PANIER */}
-          {addedMessage && (
-            <div className="mb-4 p-3 bg-green-50 border border-green-200 text-green-800 text-xs font-bold rounded-lg text-center animate-pulse">
-              ✓ Tapis ajouté à votre panier avec succès !
-            </div>
-          )}
-
-          {/* AJOUT PANIER */}
-        
-
-          {/* WHATSAPP */}
+          {/* WHATSAPP DIRECT */}
           <a
             href={generateWhatsAppUrl()}
             target="_blank"
@@ -221,14 +162,12 @@ function ProductDetail({ rug }: { rug: (typeof rugsData)[number] }) {
             className="w-full bg-[#A44E36] text-white py-4 text-xs font-bold tracking-widest uppercase hover:bg-[#8a3f2b] transition-colors flex items-center justify-center gap-3 shadow-lg rounded-full"
           >
             <svg
-              className="w-5 h-5"
-              fill="currentColor"
+              className="w-5 h-5 fill-current"
               viewBox="0 0 24 24"
             >
-              <path d="M12.031 21c-1.618 0-3.197-.417-4.588-1.209l-.328-.186-3.411.894.912-3.326-.205-.325A8.922 8.922 0 013.119 12c0-4.963 4.044-9 9.031-9 4.981 0 9.032 4.037 9.032 9s-4.051 9-9.151 9zM12.031 4.717a7.288 7.288 0 00-7.29 7.283c0 1.458.379 2.879 1.1 4.135l.138.238-.54 1.97 2.015-.528.23.136a7.258 7.258 0 003.957 1.156c4.015 0 7.284-3.264 7.284-7.28 0-4.017-3.27-7.283-7.284-7.283zm3.998 9.948c-.219-.11-1.296-.64-1.498-.713-.201-.074-.349-.11-.497.111-.148.22-.567.712-.695.859-.128.147-.256.165-.475.055-.219-.11-.925-.342-1.761-1.091-.65-.583-1.089-1.303-1.218-1.523-.128-.22-.014-.339.095-.448.1-.1.219-.256.328-.384.11-.128.146-.22.219-.366.074-.146.037-.274-.018-.384-.055-.11-.497-1.199-.681-1.642-.18-.43-.362-.372-.497-.378-.128-.007-.274-.007-.421-.007z" />
+              <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-1.98-1.29-2.073-.018-.009-.039-.013-.06-.013-.391 0-.756.224-.925.592-.375.836-1.003 2.05-1.229 2.196-.226.147-.451.164-.841-.027-.39-.192-1.649-.607-3.146-1.942-1.16-1.034-1.943-2.311-2.171-2.702-.228-.391-.024-.603.171-.798.176-.175.391-.454.585-.681.194-.227.259-.39.389-.65.13-.26.065-.487-.033-.682-.098-.195-.921-2.222-1.263-3.041-.334-.803-.675-.694-.928-.707-.238-.012-.511-.012-.784-.012s-.716.102-1.091.511c-.375.409-1.436 1.403-1.436 3.421 0 2.018 1.472 3.966 1.677 4.242.205.275 2.894 4.418 7.005 6.192 3.978 1.716 4.793 1.373 5.655 1.284.862-.089 2.784-1.139 3.174-2.24 0.39-1.101.39-2.046.273-2.241z"/>
             </svg>
-            Checkout via WhatsApp{" "}
-            {cart.length > 0 ? `(${cart.length} items)` : ""}
+            Order via WhatsApp
           </a>
         </div>
       </div>
