@@ -366,7 +366,7 @@ export const rugsData: Rug[] = [
     id: "ouaouzguite-atlas-006",
     name: "Ouaouzguite Atlas Motif",
     sku: "OUA-002",
-    price: "$340",
+    price: "$383",
     isAvailable: true,
     images: [
       "/placeholders/produit2-4.png",
@@ -375,21 +375,16 @@ export const rugsData: Rug[] = [
     ],
     category: "Ouaouzguite",
     sizes: [
-      { size: "100 × 150 cm", price: "$170" },
-      { size: "150 × 200 cm", price: "$250" },
-      { size: "160 × 230 cm", price: "$340" },
-      { size: "200 × 300 cm", price: "$460" },
-      { size: "250 × 350 cm", price: "$600" },
-      { size: "300 × 400 cm", price: "$780" },
+      { size: "246 × 152 cm", price: "$383" },
     ],
-    description: "An intricate geometric design woven by rural women cooperative members, combining deep charcoal wool with earthy tribal highlights. HAND MADE BY MOROCCAN RURAL WOMEN."
+    description: "This Ouaouzguite Berber carpet is a beautiful example of traditional Moroccan craftsmanship, inspired by the colorful weaving traditions of the Atlas regions. This vibrant red wool carpet features intricate and colorful geometric patterns, including central diamond motifs and detailed borders. It incorporates traditional Berber symbols and vibrant colors such as blue, yellow and white, creating an authentic and graphic contrast against the red background. Its hand-knotted texture and carefully crafted finishes make it a distinctive piece, perfect for creating a warm and authentic interior. Ouaouzguite Berber carpet, hand-woven using traditional Berber techniques. Made with thousands of small hand-woven knots using wool from living sheep and natural colors such as saffron, henna, almond skins and pomegranate skins. Easy to wash, comfortable and highly durable, it can last for many years and becomes more beautiful with time. The traditional Berber symbols and geometric motifs woven into the carpet carry cultural meanings passed down through generations, representing protection, femininity, fertility, nature, family and the heritage of Moroccan rural women artisans. HAND MADE BY MOROCCAN RURAL WOMEN"
   },
 
   {
     id: "ouaouzguite-custom-009",
-    name: "Tapis sur commande",
+    name: "Ouaouzguite Berber Carpet",
     sku: "OUA-004",
-    price: "$340",
+    price: "$82",
     isAvailable: true,
     images: [
       "/placeholders/produit4.png",
@@ -398,20 +393,15 @@ export const rugsData: Rug[] = [
     ],
     category: "Ouaouzguite",
     sizes: [
-      { size: "100 × 150 cm", price: "$170" },
-      { size: "150 × 200 cm", price: "$250" },
-      { size: "160 × 230 cm", price: "$340" },
-      { size: "200 × 300 cm", price: "$460" },
-      { size: "250 × 350 cm", price: "$600" },
-      { size: "300 × 400 cm", price: "$780" },
+      { size: "104 × 66 cm", price: "$82" },
     ],
-    description: "Bespoke made-to-order Berber carpet. Send us your preferred dimensions, colors, or custom design and our women artisans will weave it specially for you. HAND MADE BY MOROCCAN RURAL WOMEN."
+    description: "This Ouaouzguite Berber carpet is a beautiful example of traditional Moroccan craftsmanship, inspired by the colorful weaving traditions of the Atlas regions. Its patchwork-style composition combines different geometric motifs, including zigzags, diamonds, diagonal lines and checkerboard patterns. The traditional Berber symbols and geometric motifs carry cultural meanings passed down through generations, representing protection, femininity, fertility, nature, family and the heritage of Moroccan rural women artisans. Its vibrant combination of mustard yellow, red, deep blue, black and white gives the carpet a unique and joyful character, while its carefully crafted borders and hand-finished fringes add to its traditional charm. Ouaouzguite Berber carpet, hand-woven using traditional Berber techniques. Made with thousands of small hand-woven knots using wool from living sheep and natural colors such as saffron, henna, almond skins and pomegranate skins. Easy to wash, comfortable and highly durable, it can last for many years and becomes more beautiful with time. HAND MADE BY MOROCCAN RURAL WOMEN"
   },
   {
     id: "ouaouzguite-custom-0033",
-    name: "Tapis sur commande",
+    name: "Ouaouzguite Berber Carpet",
     sku: "OUA-004",
-    price: "$340",
+    price: "$82",
     isAvailable: true,
     images: [
       "/placeholders/5-1.png",
@@ -420,36 +410,26 @@ export const rugsData: Rug[] = [
     ],
     category: "Ouaouzguite",
     sizes: [
-      { size: "100 × 150 cm", price: "$170" },
-      { size: "150 × 200 cm", price: "$250" },
-      { size: "160 × 230 cm", price: "$340" },
-      { size: "200 × 300 cm", price: "$460" },
-      { size: "250 × 350 cm", price: "$600" },
-      { size: "300 × 400 cm", price: "$780" },
+      { size: "104 × 66 cm", price: "$82" },
     ],
-    description: "Bespoke made-to-order Berber carpet. Send us your preferred dimensions, colors, or custom design and our women artisans will weave it specially for you. HAND MADE BY MOROCCAN RURAL WOMEN."
+    description: "Ouaouzguite Berber carpet, hand-woven using traditional Berber techniques. Made with thousands of small hand-woven knots using wool from living sheep and natural colors such as saffron, henna, almond skins and pomegranate skins. Easy to wash, comfortable and highly durable, it can last for many years and becomes more beautiful with time. The traditional Berber symbols and geometric motifs woven into the carpet carry cultural meanings passed down through generations, representing protection, femininity, fertility, nature, family and the heritage of Moroccan rural women artisans. HAND MADE BY MOROCCAN RURAL WOMEN"
   },
   {
     id: "ouaouzguite-berber-007",
     name: "Ouaouzguite Royal Berber",
     sku: "OUA-003",
-    price: "$450",
+    price: "$295",
     isAvailable: true,
     images: [
       "/placeholders/ouaouzguite-3.webp",
       "/placeholders/ouaouzguite-1.webp",
-      "/placeholders/ouaouzguite-2.webp"
+      "/placeholders/ouaouzguite-2.png"
     ],
     category: "Ouaouzguite",
     sizes: [
-      { size: "100 × 150 cm", price: "$220" },
-      { size: "150 × 200 cm", price: "$330" },
-      { size: "160 × 230 cm", price: "$450" },
-      { size: "200 × 300 cm", price: "$600" },
-      { size: "250 × 350 cm", price: "$790" },
-      { size: "300 × 400 cm", price: "$1 000" },
+      { size: "238 × 138 cm", price: "$295" },
     ],
-    description: "A breathtaking statement piece featuring symmetrical royal motifs, hand-knotted using premium living sheep wool and organic mountain dyes. HAND MADE BY MOROCCAN RURAL WOMEN."
+    description: "This Moroccan wool carpet features a deep red background with a large central eight-pointed star in blue and cream tones. Its geometric patterns and traditional Berber symbols, framed by an intricate border, make it an authentic and highly graphic piece of Moroccan craftsmanship. Ouaouzguite Berber carpet, hand-woven using traditional Berber techniques. Made with thousands of small hand-woven knots using wool from living sheep and natural colors such as saffron, henna, almond skins and pomegranate skins. Easy to wash, comfortable and highly durable, it can last for many years and becomes more beautiful with time. The traditional Berber symbols and geometric motifs woven into the carpet carry cultural meanings passed down through generations, representing protection, femininity, fertility, nature, family and the heritage of Moroccan rural women artisans. HAND MADE BY MOROCCAN RURAL WOMEN"
   }
 ];
 
