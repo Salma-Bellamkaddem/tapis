@@ -109,7 +109,7 @@ export default function Features() {
             Contact us directly on WhatsApp, we are here to advise you.
           </p>
           <a 
-            href="https://wa.me/212600000000" 
+            href="https://wa.me/212767149114" 
             target="_blank"
             rel="noreferrer"
             className="bg-[#A44E36] text-white px-6 py-3.5 text-xs font-bold tracking-widest hover:bg-[#8a3f2b] transition-colors flex items-center justify-center gap-2 rounded-sm w-full max-w-[280px]"

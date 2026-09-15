@@ -13,7 +13,24 @@ import CustomerReviews from "@/components/CustomerReviews";
 
 import { collectionsData, rugsData } from "@/data/products";
 
-const availableSizes = ["100 × 150 cm", "150 × 200 cm", "160 × 230 cm", "200 × 300 cm", "250 × 350 cm", "300 × 400 cm"];
+// Petite icône règle/mesure en SVG (plus propre qu'un emoji, cohérent sur tous les OS)
+function RulerIcon({ className = "w-4 h-4" }: { className?: string }) {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.8"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      className={className}
+      aria-hidden="true"
+    >
+      <path d="M3 7h18v10H3z" />
+      <path d="M7 7v3M11 7v3M15 7v3M19 7v3" />
+    </svg>
+  );
+}
 
 function CollectionCard({
   collection,
@@ -119,7 +136,11 @@ function CollectionCard({
 }
 
 function ProductCard({ rug }: { rug: any }) {
-  const [selectedSize, setSelectedSize] = useState(availableSizes[0]);
+  // Utilise les vraies tailles/prix du produit (plus de tableau global incorrect)
+  const [selectedSizeIndex, setSelectedSizeIndex] = useState(0);
+  const selectedSize = rug.sizes?.[selectedSizeIndex];
+  const displayPrice = selectedSize?.price || rug.price;
+  const hasMultipleSizes = rug.sizes && rug.sizes.length > 1;
 
   return (
     <div className="bg-[#FAF0E4] border border-[#A44E36]/20 rounded-lg flex flex-col h-full shadow-sm hover:shadow-md transition-all duration-300 overflow-hidden group">
@@ -129,33 +150,52 @@ function ProductCard({ rug }: { rug: any }) {
       <div className="p-5 flex flex-col flex-grow">
         <div className="flex justify-between items-start mb-2">
           <h3 className="text-md font-bold tracking-wider font-serif text-gray-900">{rug.name}</h3>
-          <span className="font-bold text-[#A44E36]">{rug.price}</span>
+          {/* Prix dynamique : change selon la taille sélectionnée */}
+          <span className="font-bold text-[#A44E36]">{displayPrice}</span>
         </div>
-        
+
         <div className="flex justify-between items-center text-xs text-gray-600 mb-4">
           <div className="flex flex-col gap-2 w-full">
             <div className="flex justify-between items-center">
               <span className="font-semibold">{rug.sku}</span>
               {rug.isAvailable && <span className="text-green-700 font-bold tracking-wider uppercase text-[10px]">Available</span>}
             </div>
-            <select 
-              value={selectedSize}
-              onChange={(e) => setSelectedSize(e.target.value)}
-              className="mt-1 block w-full text-xs border border-[#A44E36]/30 py-1.5 px-2 rounded bg-white text-gray-800 focus:outline-none focus:border-[#A44E36]"
-            >
-              {availableSizes.map((size: string, index: number) => (
-                <option key={index} value={size}>{size}</option>
-              ))}
-            </select>
+
+            {/* Sélecteur de taille avec icône règle */}
+            <div className="relative mt-1">
+              <RulerIcon className="w-4 h-4 absolute left-2.5 top-1/2 -translate-y-1/2 text-[#A44E36] pointer-events-none" />
+              <select
+                value={selectedSizeIndex}
+                onChange={(e) => setSelectedSizeIndex(Number(e.target.value))}
+                disabled={!hasMultipleSizes}
+                className="block w-full text-xs border border-[#A44E36]/30 py-1.5 pl-8 pr-2 rounded bg-white text-gray-800 focus:outline-none focus:border-[#A44E36] disabled:opacity-70 disabled:cursor-default"
+              >
+                {(rug.sizes || []).map((s: { size: string; price: string }, idx: number) => (
+                  <option key={idx} value={idx}>
+                    {s.size} — {s.price}
+                  </option>
+                ))}
+              </select>
+            </div>
           </div>
         </div>
-        
+
+        {/* Mention tapis sur mesure / design personnalisé */}
+        <p className="text-[10px] text-gray-500 italic mb-4 leading-snug">
+          Besoin d'une autre taille ou d'un design personnalisé ? Nous réalisons aussi des{" "}
+          <Link href="/custom-order" className="text-[#A44E36] font-semibold not-italic hover:underline">
+            tapis sur commande
+          </Link>
+          , selon le design de votre choix.
+        </p>
+
         <div className="mt-auto pt-4 border-t border-[#A44E36]/10 flex justify-between items-center">
           <Link href={`/rugs/${rug.id}`} className="text-gray-500 font-semibold text-xs tracking-widest uppercase hover:text-gray-900 transition-colors">
             Details
           </Link>
-          <a 
-            href={`https://wa.me/212600000000?text=Bonjour,%20je%20suis%20int%C3%A9ress%C3%A9(e)%20par%20le%20tapis%20${rug.name}%20(${rug.sku})`}
+          
+          <a
+            href={`https://wa.me/+212767149114?text=Bonjour,%20je%20suis%20int%C3%A9ress%C3%A9(e)%20par%20le%20tapis%20${rug.name}%20(${rug.sku})%20-%20Taille:%20${selectedSize?.size || ""}`}
             target="_blank"
             rel="noreferrer"
             className="bg-[#A44E36] text-white px-3 py-1.5 rounded font-semibold text-xs tracking-widest uppercase hover:bg-[#8a3f2b] transition-colors flex items-center gap-1.5 shadow-sm"
@@ -171,19 +211,24 @@ function ProductCard({ rug }: { rug: any }) {
 export default function Home() {
   return (
     <div className="w-full flex flex-col bg-[#FAF0E4]">
-      
+
       {/* 1. HERO */}
       <section className="relative w-full h-[80vh] min-h-[600px] flex items-center">
         <div className="absolute inset-0 z-0 bg-gray-900">
           <img src="/placeholders/hero-bg.webp" alt="Handcrafted Moroccan Rugs" className="w-full h-full object-cover opacity-60" />
         </div>
         <div className="relative z-10 w-full max-w-7xl mx-auto px-4 md:px-8 text-white">
-          <span className="block text-sm md:text-base tracking-[0.2em] uppercase mb-4 text-[#FAF0E4]">Handcrafted Moroccan Rugs</span>
+          <span className="block text-sm md:text-base tracking-[0.2em] uppercase mb-4 text-[#FAF0E4]">HAND MADE BY MOROCCAN RURAL WOMEN</span>
           <h1 className="font-serif text-5xl md:text-7xl mb-6 leading-tight">WOVEN BY HAND. <br />ROOTED IN HERITAGE.</h1>
-          <p className="text-lg md:text-xl max-w-md mb-10 text-gray-100">Authentic Berber rugs handmade by Moroccan women artisans.</p>
+          <p className="text-lg md:text-xl max-w-lg mb-6 text-gray-100">
+            Berber women read symbols in nature — mountains, trees, plants, animals, insects — then weave them into carpets, guided only by imagination.
+          </p>
           <div className="flex flex-col sm:flex-row gap-4">
             <Link href="/rugs" className="bg-[#A44E36] text-white px-8 py-4 text-sm font-bold tracking-widest uppercase hover:bg-[#8a3f2b] transition-colors text-center rounded shadow">
               Explore Our Rugs
+            </Link>
+            <Link href="/custom-order" className="border border-white text-white px-8 py-4 text-sm font-bold tracking-widest uppercase hover:bg-white hover:text-[#A44E36] transition-colors text-center rounded">
+              Custom Order
             </Link>
           </div>
         </div>
@@ -192,7 +237,7 @@ export default function Home() {
       {/* 2. ABOUT COOPERATIVE */}
       <AboutCooperative />
 
-      {/* 3. OUR TOP RUGS (Best-sellers mis en avant rapidement) */}
+      {/* 3. OUR TOP RUGS */}
       <section className="bg-[#FAF0E4] py-20 px-4 md:px-8 border-b border-[#A44E36]/10">
         <div className="max-w-7xl mx-auto">
           <div className="flex flex-col md:flex-row justify-between items-center mb-12 gap-6">
@@ -206,6 +251,28 @@ export default function Home() {
             {rugsData.slice(0, 8).map((rug) => (
               <ProductCard key={rug.id} rug={rug} />
             ))}
+          </div>
+
+          {/* Bannière tapis sur commande */}
+          <div className="mt-14 bg-[#FFF8EF] border border-[#A44E36]/25 rounded-2xl p-8 md:p-10 flex flex-col md:flex-row items-center justify-between gap-6 text-center md:text-left">
+            <div>
+              <span className="text-[10px] font-bold tracking-[0.3em] text-[#A44E36] uppercase mb-2 block">
+                MADE TO ORDER
+              </span>
+              <h3 className="font-serif text-2xl md:text-3xl text-gray-900 mb-2">
+                Don't see the size or design you want?
+              </h3>
+              <p className="text-gray-600 text-sm max-w-xl">
+                We also weave custom Berber rugs — any size, any color palette, any symbol —
+                designed exactly the way you imagine it, and hand-crafted by our women artisans.
+              </p>
+            </div>
+            <Link
+              href="/custom-order"
+              className="whitespace-nowrap bg-[#A44E36] text-white px-8 py-4 text-xs font-bold tracking-widest uppercase hover:bg-[#8a3f2b] transition-colors rounded shadow-md"
+            >
+              Request Custom Rug
+            </Link>
           </div>
         </div>
       </section>
@@ -253,7 +320,7 @@ export default function Home() {
       {/* 9. CUSTOMER REVIEWS */}
       <CustomerReviews />
 
-      {/* 10. EXPERIENCE SECTION (Statistiques) & FEATURES */}
+      {/* 10. EXPERIENCE SECTION & FEATURES */}
       <ExperienceSection />
       <Features />
 

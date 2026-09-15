@@ -1,3 +1,5 @@
+"use client";
+
 import Link from "next/link";
 
 export default function MeetArtisans() {
@@ -8,15 +10,18 @@ export default function MeetArtisans() {
           <img src="/placeholders/artisans.jpg" alt="Moroccan women artisans weaving" className="w-full h-full object-cover" />
         </div>
         <div className="w-full lg:w-1/2 flex flex-col justify-center">
-          <span className="text-[10px] font-bold tracking-[0.28em] text-[#A44E36] uppercase mb-3">Human Heritage</span>
+          <span className="text-[10px] font-bold tracking-[0.28em] text-[#A44E36] uppercase mb-3">Human Heritage — Est. 2003</span>
           <h2 className="font-serif text-3xl md:text-4xl text-gray-900 uppercase mb-6 leading-tight">The Hands Behind Every Rug</h2>
-          <p className="text-gray-700 text-base leading-relaxed mb-6">
-            Every rug begins with a pair of hands, a traditional wooden loom, and a story passed down through generations. Our cooperative empowers rural women by providing sustainable livelihoods while keeping ancestral Moroccan weaving alive.
+          <p className="text-gray-700 text-base leading-relaxed mb-4">
+            Established in 2003, our cooperative brings together 13 dedicated families (3 in Taznakhte and 10 living in villages near Taznakhte) keeping ancestral Moroccan weaving alive.
+          </p>
+          <p className="text-gray-600 text-sm leading-relaxed mb-6 italic">
+            Berber women obtain symbols in nature (mountains, trees, plants, animals, insects...) then they put them into carpets with their imaginations like drawing. HAND MADE BY MOROCCAN RURAL WOMEN.
           </p>
           <div className="grid grid-cols-2 gap-6 mb-8">
             <div>
-              <span className="block font-serif text-3xl text-[#A44E36] mb-1">200+</span>
-              <span className="text-xs tracking-wider uppercase text-gray-600 font-semibold">Skilled Artisans</span>
+              <span className="block font-serif text-3xl text-[#A44E36] mb-1">13</span>
+              <span className="text-xs tracking-wider uppercase text-gray-600 font-semibold">Families & Artisans</span>
             </div>
             <div>
               <span className="block font-serif text-3xl text-[#A44E36] mb-1">100%</span>

@@ -17,33 +17,29 @@ export interface Rug {
 }
 
 export const rugsData: Rug[] = [
+  
   {
-    id: "atlas-001",
-    name: "Atlas",
-    sku: "BR-001",
-    price: "1 500 DH",
+    id: "akhenif-001",
+    name: "Akhenif Berber Carpet",
+    sku: "AKH-001",
+    price: "$350",
     isAvailable: true,
     images: [
-      "/placeholders/atlas-1.jpg", 
-      "/placeholders/atlas-2.jpg", 
-      "/placeholders/atlas-3.jpg"
+      "/placeholders/akhenif-p1.png",
+      "/placeholders/akhenif-p2.png",
+      "/placeholders/akhenif-p3.jpg"
     ],
-    category: "Beni Ourain",
+    category: "Akhenif",
     sizes: [
-      { size: "100 × 150 cm", price: "900 DH" },
-      { size: "150 × 200 cm", price: "1 500 DH" },
-      { size: "160 × 230 cm", price: "1 900 DH" },
-      { size: "200 × 300 cm", price: "2 600 DH" },
-      { size: "250 × 350 cm", price: "3 500 DH" },
-      { size: "300 × 400 cm", price: "4 600 DH" },
+      { size: "264 × 139 cm", price: "$350" },
     ],
-    description: "A minimalist masterpiece handwoven by Beni Ourain artisans, featuring iconic dark geometric lines on thick, plush natural white wool from the Atlas mountains."
+    description: "Hand-woven technique with living sheep's wool, natural colors, and traditional Berber symbols. HAND MADE BY MOROCCAN RURAL WOMEN."
   },
   {
     id: "glaoui-001",
     name: "Glaoui Berber Carpet",
     sku: "GLA-001",
-    price: "3 000 DH",
+    price: "$300",
     isAvailable: true,
     images: [
       "/placeholders/7.png",
@@ -52,15 +48,32 @@ export const rugsData: Rug[] = [
     ],
     category: "Glaoui",
     sizes: [
-      { size: "227 × 132 cm", price: "3 000 DH" }
+      { size: "227 × 132 cm", price: "$300" }
     ],
-    description: "Hand-made masterpiece combining three traditional techniques (woolen, woven, and embroidered) using pure living sheep's wool from the Atlas mountains."
+    description: "Hand-made masterpiece combining three traditional techniques (woolen, woven, and embroidered) using pure living sheep's wool from the Atlas mountains. HAND MADE BY MOROCCAN RURAL WOMEN."
+  },
+  {
+    id: "akhenif-002",
+    name: "Akhenif Berber Carpet",
+    sku: "AKH-002",
+    price: "$450",
+    isAvailable: true,
+    images: [
+      "/placeholders/akhenif-p2-1.png",
+      "/placeholders/akhenif-p2-2.jpg",
+      "/placeholders/akhenif-p2-3.jpg"
+    ],
+    category: "Akhenif",
+    sizes: [
+      { size: "255 × 140 cm", price: "$450" },
+    ],
+    description: "Hand-woven technique with living sheep's wool, natural colors, and traditional Berber symbols. HAND MADE BY MOROCCAN RURAL WOMEN."
   },
   {
     id: "glaoui-002",
     name: "Glaoui Berber Carpet",
     sku: "GLA-002",
-    price: "2 000 DH",
+    price: "$200",
     isAvailable: true,
     images: [
       "/placeholders/9-1.png",
@@ -69,15 +82,15 @@ export const rugsData: Rug[] = [
     ],
     category: "Glaoui",
     sizes: [
-      { size: "150 × 106 cm", price: "2 000 DH" }
+      { size: "150 × 106 cm", price: "$200" }
     ],
-    description: "An authentic Glaoui creation crafted with wool, flatweave, and intricate embroidery, featuring rich natural colors and traditional Berber motifs."
+    description: "An authentic Glaoui creation crafted with wool, flatweave, and intricate embroidery, featuring rich natural colors and traditional Berber motifs. HAND MADE BY MOROCCAN RURAL WOMEN."
   },
   {
     id: "glaoui-003",
     name: "Glaoui Berber Carpet 3",
     sku: "GLA-003",
-    price: "2 700 DH",
+    price: "$270",
     isAvailable: true,
     images: [
       "/placeholders/8-1.png",
@@ -86,15 +99,203 @@ export const rugsData: Rug[] = [
     ],
     category: "Glaoui",
     sizes: [
-      { size: "207 × 120 cm", price: "2 700 DH" }
+      { size: "207 × 120 cm", price: "$270" }
     ],
-    description: "Unique Glaoui style carpet showcasing the exceptional triple-technique craftsmanship of rural women artisans, woven with living wool."
+    description: "Unique Glaoui style carpet showcasing the exceptional triple-technique craftsmanship of rural women artisans, woven with living wool. HAND MADE BY MOROCCAN RURAL WOMEN."
+  },
+  {
+    id: "akhenif-003",
+    name: "Akhenif Berber Carpet",
+    sku: "AKH-003",
+    price: "$60",
+    isAvailable: true,
+    images: [
+      "/placeholders/akhenif-p3-1.png",
+      "/placeholders/akhenif-p3-2.jpg",
+      "/placeholders/akhenif-p3-3.jpg"
+    ],
+    category: "Akhenif",
+    sizes: [
+      { size: "100 × 67 cm", price: "$60" },
+    ],
+    description: "Hand-woven technique with living sheep's wool, natural colors, and traditional Berber symbols. HAND MADE BY MOROCCAN RURAL WOMEN."
+  },
+  {
+    id: "picasso-berber-001",
+    name: "Picasso Berber",
+    sku: "PIC-001",
+    price: "$280",
+    isAvailable: true,
+    images: [
+      "/placeholders/picasso-p1.png",
+      "/placeholders/picasso-p1-2.jpg",
+      "/placeholders/picasso-p1-3.jpg"
+    ],
+    category: "picasso-berber",
+    sizes: [
+      { size: "200 × 107 cm", price: "$280" },
+    ],
+    description: "Artistic Picasso-inspired Berber creation crafted with living sheep's wool and traditional patterns. HAND MADE BY MOROCCAN RURAL WOMEN."
+  },
+
+  {
+    id: "picasso-berber-002",
+    name: "Picasso Berber",
+    sku: "PIC-002",
+    price: "$290",
+    isAvailable: true,
+    images: [
+      "/placeholders/picasso-p2-1.png",
+      "/placeholders/picasso-p2-2.jpeg",
+      "/placeholders/picasso-p2-3.jpeg"
+    ],
+    category: "picasso-berber",
+    sizes: [
+      { size: "215 × 103 cm", price: "$290" },
+    ],
+    description: "Artistic Picasso-inspired Berber creation crafted with living sheep's wool and traditional patterns. HAND MADE BY MOROCCAN RURAL WOMEN."
+  },
+  {
+    id: "picasso-berber-004",
+    name: "Picasso Berber",
+    sku: "PIC-004",
+    price: "$210",
+    isAvailable: true,
+    images: [
+      "/placeholders/picasso-p4-1.png",
+      "/placeholders/picasso-p4-2.jpg",
+      "/placeholders/picasso-p4-3.jpg"
+    ],
+    category: "picasso-berber",
+    sizes: [
+      { size: "150 × 114 cm", price: "$210" },
+    ],
+    description: "Artistic Picasso-inspired Berber creation crafted with living sheep's wool and traditional patterns. HAND MADE BY MOROCCAN RURAL WOMEN."
+  },
+  {
+    id: "zanifi-berber-003",
+    name: "Zanifi Berber",
+    sku: "ZAN-003",
+    price: "$550",
+    isAvailable: true,
+    images: [
+      "/placeholders/zanafi-p3-1.png",
+      "/placeholders/zanafi-p3-2.jpg",
+      "/placeholders/zanafi-p3-3.jpg"
+    ],
+    category: "Zanifi",
+    sizes: [
+      { size: "315 × 220 cm", price: "$550" },
+    ],
+    description: "Hand-embroidered technique crafted with living sheep's wool and traditional Berber symbols. HAND MADE BY MOROCCAN RURAL WOMEN."
+  },
+  {
+    id: "zanifi-berber-002",
+    name: "Zanifi Berber",
+    sku: "ZAN-002",
+    price: "$310",
+    isAvailable: true,
+    images: [
+      "/placeholders/zanafi-p2-1.png",
+      "/placeholders/zanafi-p2-2.jpg",
+      "/placeholders/zanafi-p2-3.jpg"
+    ],
+    category: "Zanifi",
+    sizes: [
+      { size: "212 × 128 cm", price: "$310" },
+    ],
+    description: "Hand-embroidered technique crafted with living sheep's wool and traditional Berber symbols. HAND MADE BY MOROCCAN RURAL WOMEN."
+  },
+  {
+    id: "zanifi-berber-001",
+    name: "Zanifi Berber",
+    sku: "ZAN-001",
+    price: "$420",
+    isAvailable: true,
+    images: [
+      "/placeholders/zanifi-p1-1.jpg",
+      "/placeholders/zanifi-p1-2.jpg",
+      "/placeholders/zanifi-p1-3.jpg"
+    ],
+    category: "Zanifi",
+    sizes: [
+      { size: "256 × 166 cm", price: "$420" },
+    ],
+    description: "Hand-embroidered technique crafted with living sheep's wool and traditional Berber symbols. HAND MADE BY MOROCCAN RURAL WOMEN."
+  },
+  {
+    id: "picasso-berber-003",
+    name: "Picasso Berber",
+    sku: "PIC-003",
+    price: "$380",
+    isAvailable: true,
+    images: [
+      "/placeholders/picasso-p3-1.png",
+      "/placeholders/picasso-p3-2.jpg",
+      "/placeholders/picasso-p3-3.jpg"
+    ],
+    category: "picasso-berber",
+    sizes: [
+      { size: "250 × 155 cm", price: "$380" },
+    ],
+    description: "Artistic Picasso-inspired Berber creation crafted with living sheep's wool and traditional patterns. HAND MADE BY MOROCCAN RURAL WOMEN."
+  },
+  {
+    id: "akhenif-tableau-003",
+    name: "Akhenif Berber",
+    sku: "TAB-003",
+    price: "$60",
+    isAvailable: true,
+    images: [
+      "/placeholders/tableau4-p1.png",
+      "/placeholders/tableau4-p2.jpg",
+      "/placeholders/tableau4-p3.jpg"
+    ],
+    category: "Tapis Tableau",
+    sizes: [
+      { size: "110 × 73 cm", price: "$60" },
+    ],
+    description: "Hand-woven art technique containing living sheep's wool and natural colors. HAND MADE BY MOROCCAN RURAL WOMEN."
+  },
+  {
+    id: "akhenif-tableau-002",
+    name: "Akhenif Berber",
+    sku: "TAB-002",
+    price: "$200",
+    isAvailable: true,
+    images: [
+      "/placeholders/tableau2-p.png",
+      "/placeholders/tableau2-p1.jpg",
+      "/placeholders/tableau2-p2.jpg"
+    ],
+    category: "Tapis Tableau",
+    sizes: [
+      { size: "160 × 103 cm", price: "$200" },
+    ],
+    description: "Hand-woven art technique containing living sheep's wool and natural colors. HAND MADE BY MOROCCAN RURAL WOMEN."
+  },
+  {
+    id: "akhenif-tableau-001",
+    name: "Akhenif Berber",
+    sku: "TAB-001",
+    price: "$400",
+    isAvailable: true,
+    images: [
+      "/placeholders/tableau-p1-1.jpeg",
+      "/placeholders/tableau-p1-2.jpg",
+      "/placeholders/tableau-p1-3.jpg"
+    ],
+    category: "Tapis Tableau",
+    sizes: [
+      { size: "264 × 134 cm", price: "$350" },
+    ],
+    description: "Hand-woven art technique containing living sheep's wool and natural colors. HAND MADE BY MOROCCAN RURAL WOMEN."
   },
   {
     id: "mouzaik-001",
     name: "Mouzaïk Berber",
     sku: "MOU-001",
-    price: "3 500 DH",
+    price: "$350",
     isAvailable: true,
     images: [
       "/placeholders/10.png",
@@ -103,15 +304,15 @@ export const rugsData: Rug[] = [
     ],
     category: "Mouzaïk",
     sizes: [
-      { size: "250 × 146 cm", price: "3 200 DH" },
+      { size: "250 × 146 cm", price: "$320" },
     ],
-    description: "Features woolen and woven squares with traditional Berber symbols and natural colors, hand-crafted by women artisans in the Atlas mountains."
+    description: "Features woolen and woven squares with traditional Berber symbols and natural colors, hand-crafted by women artisans in the Atlas mountains. HAND MADE BY MOROCCAN RURAL WOMEN."
   },
   {
     id: "mouzaik-003",
     name: "Mouzaïk Classic",
     sku: "MOU-003",
-    price: "5000 DH",
+    price: "$310",
     isAvailable: true,
     images: [
       "/placeholders/12.png",
@@ -120,15 +321,15 @@ export const rugsData: Rug[] = [
     ],
     category: "Mouzaïk",
     sizes: [
-      { size: "250 × 145 cm", price: "3 100 DH" },
+      { size: "250 × 145 cm", price: "$310" },
     ],
-    description: "Handcrafted Mouzaïk carpet showcasing traditional woolen squares and authentic symbols of the High Atlas, woven by women artisans."
+    description: "Handcrafted Mouzaïk carpet showcasing traditional woolen squares and authentic symbols of the High Atlas, woven by women artisans. HAND MADE BY MOROCCAN RURAL WOMEN."
   },
   {
     id: "mouzaik-002",
     name: "Mouzaïk Heritage",
     sku: "MOU-002",
-    price: "2500 DH",
+    price: "$260",
     isAvailable: true,
     images: [
       "/placeholders/11-1.png",
@@ -137,53 +338,35 @@ export const rugsData: Rug[] = [
     ],
     category: "Mouzaïk",
     sizes: [
-      { size: "167 × 128 cm", price: "2 600 DH" },
+      { size: "167 × 128 cm", price: "$260" },
     ],
-    description: "An exquisite Mouzaïk carpet featuring intricate geometric square patterns and traditional Berber weaving techniques passed down through generations."
-  },
-  {
-    id: "taznakht-002",
-    name: "Taznakht",
-    sku: "BR-002",
-    price: "2 800 DH",
-    isAvailable: true,
-    images: ["/placeholders/taznakht-1.jpg", "/placeholders/taznakht-2.jpg"],
-    category: "Azilal",
-    sizes: [
-      { size: "100 × 150 cm", price: "1 400 DH" },
-      { size: "150 × 200 cm", price: "2 100 DH" },
-      { size: "160 × 230 cm", price: "2 800 DH" },
-      { size: "200 × 300 cm", price: "3 900 DH" },
-      { size: "250 × 350 cm", price: "5 200 DH" },
-      { size: "300 × 400 cm", price: "6 800 DH" },
-    ],
-    description: "Vibrant and full of history, this Taznakht creation showcases expressive Berber symbols dyed with natural saffron and henna extracts."
+    description: "An exquisite Mouzaïk carpet featuring intricate geometric square patterns and traditional Berber weaving techniques passed down through generations. HAND MADE BY MOROCCAN RURAL WOMEN."
   },
   {
     id: "ouaouzguite-saffron-005",
     name: "Ouaouzguite Saffron Heritage",
     sku: "OUA-001",
-    price: "2 500 DH",
+    price: "$250",
     isAvailable: true,
     images: [
       "/placeholders/produit1.png",
       "/placeholders/produit1-1.jpg",
       "/placeholders/produit1-2.jpg"
     ],
-    category: "Ouaouzguite",
+    category: "zanifi",
     sizes: [
-      { size: "98 × 66 cm", price: "950 DH" },
-      { size: "104 × 66 cm", price: "1 100 DH" },
-      { size: "207 × 162 cm", price: "2 500 DH" },
-      { size: "246 × 152 cm", price: "3 200 DH" },
+      { size: "98 × 66 cm", price: "$95" },
+      { size: "104 × 66 cm", price: "$110" },
+      { size: "207 × 162 cm", price: "$250" },
+      { size: "246 × 152 cm", price: "$320" },
     ],
-    description: "Crafted with thousands of tight knots, this Ouaouzguite rug radiates warm saffron and ruby tones, representing traditional High Atlas craftsmanship."
+    description: "Crafted with thousands of tight knots, this Ouaouzguite rug radiates warm saffron and ruby tones, representing traditional High Atlas craftsmanship. HAND MADE BY MOROCCAN RURAL WOMEN."
   },
   {
     id: "ouaouzguite-atlas-006",
     name: "Ouaouzguite Atlas Motif",
     sku: "OUA-002",
-    price: "3 400 DH",
+    price: "$340",
     isAvailable: true,
     images: [
       "/placeholders/produit2-4.png",
@@ -192,42 +375,21 @@ export const rugsData: Rug[] = [
     ],
     category: "Ouaouzguite",
     sizes: [
-      { size: "100 × 150 cm", price: "1 700 DH" },
-      { size: "150 × 200 cm", price: "2 500 DH" },
-      { size: "160 × 230 cm", price: "3 400 DH" },
-      { size: "200 × 300 cm", price: "4 600 DH" },
-      { size: "250 × 350 cm", price: "6 000 DH" },
-      { size: "300 × 400 cm", price: "7 800 DH" },
+      { size: "100 × 150 cm", price: "$170" },
+      { size: "150 × 200 cm", price: "$250" },
+      { size: "160 × 230 cm", price: "$340" },
+      { size: "200 × 300 cm", price: "$460" },
+      { size: "250 × 350 cm", price: "$600" },
+      { size: "300 × 400 cm", price: "$780" },
     ],
-    description: "An intricate geometric design woven by rural women cooperative members, combining deep charcoal wool with earthy tribal highlights."
+    description: "An intricate geometric design woven by rural women cooperative members, combining deep charcoal wool with earthy tribal highlights. HAND MADE BY MOROCCAN RURAL WOMEN."
   },
-  {
-    id: "ouaouzguite-custom-008",
-    name: "Mix Zanifi et Picasso",
-    sku: "OUA-004",
-    price: "Sur commande",
-    isAvailable: true,
-    images: [
-      "/placeholders/produit3-2.png",
-      "/placeholders/produit3-3.jpg",
-      "/placeholders/produit3-33.jpg"
-    ],
-    category: "Ouaouzguite",
-    sizes: [
-      { size: "100 × 150 cm", price: "0 DH" },
-      { size: "150 × 200 cm", price: "0 DH" },
-      { size: "160 × 230 cm", price: "0 DH" },
-      { size: "200 × 300 cm", price: "0 DH" },
-      { size: "250 × 350 cm", price: "0 DH" },
-      { size: "300 × 400 cm", price: "0 DH" },
-    ],
-    description: "Pre-order piece blending the geometric heritage of Zanifi with Picasso-inspired abstract artistry. Hand-woven on demand by our women artisans in the Atlas mountains. Contact us via WhatsApp for custom pricing."
-  },
+
   {
     id: "ouaouzguite-custom-009",
     name: "Tapis sur commande",
     sku: "OUA-004",
-    price: "3 400 DH",
+    price: "$340",
     isAvailable: true,
     images: [
       "/placeholders/produit4.png",
@@ -236,20 +398,20 @@ export const rugsData: Rug[] = [
     ],
     category: "Ouaouzguite",
     sizes: [
-      { size: "100 × 150 cm", price: "1 700 DH" },
-      { size: "150 × 200 cm", price: "2 500 DH" },
-      { size: "160 × 230 cm", price: "3 400 DH" },
-      { size: "200 × 300 cm", price: "4 600 DH" },
-      { size: "250 × 350 cm", price: "6 000 DH" },
-      { size: "300 × 400 cm", price: "7 800 DH" },
+      { size: "100 × 150 cm", price: "$170" },
+      { size: "150 × 200 cm", price: "$250" },
+      { size: "160 × 230 cm", price: "$340" },
+      { size: "200 × 300 cm", price: "$460" },
+      { size: "250 × 350 cm", price: "$600" },
+      { size: "300 × 400 cm", price: "$780" },
     ],
-    description: "Bespoke made-to-order Berber carpet. Send us your preferred dimensions, colors, or custom design and our women artisans will weave it specially for you."
+    description: "Bespoke made-to-order Berber carpet. Send us your preferred dimensions, colors, or custom design and our women artisans will weave it specially for you. HAND MADE BY MOROCCAN RURAL WOMEN."
   },
   {
     id: "ouaouzguite-custom-0033",
     name: "Tapis sur commande",
     sku: "OUA-004",
-    price: "3 400 DH",
+    price: "$340",
     isAvailable: true,
     images: [
       "/placeholders/5-1.png",
@@ -258,20 +420,20 @@ export const rugsData: Rug[] = [
     ],
     category: "Ouaouzguite",
     sizes: [
-      { size: "100 × 150 cm", price: "1 700 DH" },
-      { size: "150 × 200 cm", price: "2 500 DH" },
-      { size: "160 × 230 cm", price: "3 400 DH" },
-      { size: "200 × 300 cm", price: "4 600 DH" },
-      { size: "250 × 350 cm", price: "6 000 DH" },
-      { size: "300 × 400 cm", price: "7 800 DH" },
+      { size: "100 × 150 cm", price: "$170" },
+      { size: "150 × 200 cm", price: "$250" },
+      { size: "160 × 230 cm", price: "$340" },
+      { size: "200 × 300 cm", price: "$460" },
+      { size: "250 × 350 cm", price: "$600" },
+      { size: "300 × 400 cm", price: "$780" },
     ],
-    description: "Bespoke made-to-order Berber carpet. Send us your preferred dimensions, colors, or custom design and our women artisans will weave it specially for you."
+    description: "Bespoke made-to-order Berber carpet. Send us your preferred dimensions, colors, or custom design and our women artisans will weave it specially for you. HAND MADE BY MOROCCAN RURAL WOMEN."
   },
   {
     id: "ouaouzguite-berber-007",
     name: "Ouaouzguite Royal Berber",
     sku: "OUA-003",
-    price: "4 500 DH",
+    price: "$450",
     isAvailable: true,
     images: [
       "/placeholders/ouaouzguite-3.webp",
@@ -280,14 +442,14 @@ export const rugsData: Rug[] = [
     ],
     category: "Ouaouzguite",
     sizes: [
-      { size: "100 × 150 cm", price: "2 200 DH" },
-      { size: "150 × 200 cm", price: "3 300 DH" },
-      { size: "160 × 230 cm", price: "4 500 DH" },
-      { size: "200 × 300 cm", price: "6 000 DH" },
-      { size: "250 × 350 cm", price: "7 900 DH" },
-      { size: "300 × 400 cm", price: "10 000 DH" },
+      { size: "100 × 150 cm", price: "$220" },
+      { size: "150 × 200 cm", price: "$330" },
+      { size: "160 × 230 cm", price: "$450" },
+      { size: "200 × 300 cm", price: "$600" },
+      { size: "250 × 350 cm", price: "$790" },
+      { size: "300 × 400 cm", price: "$1 000" },
     ],
-    description: "A breathtaking statement piece featuring symmetrical royal motifs, hand-knotted using premium living sheep wool and organic mountain dyes."
+    description: "A breathtaking statement piece featuring symmetrical royal motifs, hand-knotted using premium living sheep wool and organic mountain dyes. HAND MADE BY MOROCCAN RURAL WOMEN."
   }
 ];
 
@@ -317,7 +479,7 @@ export const collectionsData = [
     href: "/rugs?category=glaoui"
   },
   {
-    id: "mouzaik",
+    id: "mouzaïk",
     name: "Mouzaïk",
     subtitle: "BERBER CARPET",
     description: "Features woolen and woven squares with traditional Berber symbols and natural colors.",
@@ -326,7 +488,7 @@ export const collectionsData = [
       "/placeholders/mouzaik-1.jpeg",
       "/placeholders/mouzaik-3.jpeg"
     ],
-    href: "/rugs?category=mouzaik"
+    href: "/rugs?category=mouzaïk"
   },
   {
     id: "akhenif",
@@ -341,7 +503,7 @@ export const collectionsData = [
     href: "/rugs?category=akhenif"
   },
   {
-    id: "tapis-tableau",
+    id: "Tapis Tableau",
     name: "Akhenif Berber",
     subtitle: "TAPIS TABLEAU",
     description: "Hand-woven art technique containing living sheep's wool and natural colors.",
@@ -350,18 +512,18 @@ export const collectionsData = [
       "/placeholders/tableau-2.png",
       "/placeholders/tableau-3.jpeg"
     ],
-    href: "/rugs?category=tapis-tableau"
+    href: "/rugs?category=Tapis Tableau"
   },
   {
-    id: "zanifi",
-    name: "Zanifi",
+    id: "picasso-berber",
+    name: "Picasso Berber",
     subtitle: "BERBER CARPET",
-    description: "Hand-embroidered technique crafted with living sheep's wool and traditional Berber symbols.",
+    description: "Artistic Picasso-inspired Berber creation crafted with living sheep's wool and traditional patterns.",
     images: [
       "/placeholders/zanifi-1.jpeg",
       "/placeholders/zanifi-2.jpeg",
       "/placeholders/zanifi-3.jpg"
     ],
-    href: "/rugs?category=zanifi"
+    href: "/rugs?category=picasso-berber"
   }
 ];

@@ -2,19 +2,19 @@ export default function EthicalImpact() {
   const impacts = [
     { 
       title: "Fairer Income", 
-      desc: "Direct support ensuring sustainable livelihoods for artisan families.",
+      desc: "Direct support ensuring sustainable livelihoods and fair wages for our artisan families.",
       image: "/placeholders/fair-income.jpeg",
       icon: "🤲"
     },
     { 
       title: "Preserving Heritage", 
-      desc: "Keeping ancient Moroccan weaving techniques alive for future generations.",
+      desc: "Keeping ancient Moroccan weaving techniques alive, using living sheep's wool sourced directly from the Siroua Mountains.",
       image: "/placeholders/heritage.jpeg",
       icon: "❖"
     },
     { 
       title: "Empowering Women", 
-      desc: "Creating autonomous and secure economic opportunities in rural areas.",
+      desc: "Creating autonomous and secure economic opportunities in rural communities. HAND MADE BY MOROCCAN RURAL WOMEN.",
       image: "/placeholders/empowerment.jpeg",
       icon: "👩"
     }
@@ -27,7 +27,7 @@ export default function EthicalImpact() {
         {/* En-tête de la section avec transition d'apparition */}
         <div className="text-center mb-16 transition-all duration-700">
           <span className="text-[10px] font-bold tracking-[0.3em] text-[#A44E36] uppercase mb-3 block animate-pulse">
-            ETHICAL COMMITMENT
+            ETHICAL COMMITMENT — EST. 2003
           </span>
           <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl text-[#101827] uppercase tracking-wide mb-4 leading-tight">
             YOUR PURCHASE <br />MAKES A DIFFERENCE
@@ -39,8 +39,11 @@ export default function EthicalImpact() {
             <span className="w-16 h-px bg-[#A44E36]/30 transition-all duration-500 hover:w-24"></span>
           </div>
 
-          <p className="text-gray-700 text-sm md:text-base font-serif max-w-2xl mx-auto leading-relaxed">
+          <p className="text-gray-700 text-sm md:text-base font-serif max-w-2xl mx-auto leading-relaxed mb-3">
             When you purchase one of our rugs, you are not just acquiring a piece of decor; you are directly supporting the women artisans who preserve Morocco’s rich cultural legacy.
+          </p>
+          <p className="text-xs text-gray-600 uppercase tracking-widest font-semibold">
+            Working with living sheep&apos;s wool from the Siroua Mountains. HAND MADE BY MOROCCAN RURAL WOMEN.
           </p>
         </div>
 
@@ -86,7 +89,7 @@ export default function EthicalImpact() {
               ♥
             </div>
             <p className="text-xs sm:text-sm text-gray-700 font-serif italic text-center sm:text-left">
-              Every rug carries a story of passion, tradition, and empowerment.
+              Every rug carries a story of passion, tradition, and empowerment. HAND MADE BY MOROCCAN RURAL WOMEN.
             </p>
           </div>
           <div className="text-center sm:text-right">

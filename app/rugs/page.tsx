@@ -18,7 +18,7 @@ function AllRugsContent() {
     ? rugsData 
     : rugsData.filter(rug => rug.category.toLowerCase() === selectedCategory.toLowerCase());
 
-  const categoriesList = ['All', 'Ouaouzguite', 'Glaoui', 'Mouzaïk', 'Akhenif', 'Tapis Tableau', 'Zanifi', 'Beni Ourain', 'Azilal'];
+  const categoriesList = ['All', 'Ouaouzguite', 'Glaoui', 'Mouzaïk', 'Akhenif','picasso-berber', 'Tapis Tableau', 'Zanifi'];
 
   const handleCategoryChange = (cat: string) => {
     if (cat === "All") {

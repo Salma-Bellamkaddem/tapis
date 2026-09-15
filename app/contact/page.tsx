@@ -16,7 +16,7 @@ export default function ContactPage() {
         
         <div className="flex justify-center">
           <a 
-            href="https://wa.me/212600000000" // Remplace par ton numéro
+            href="https://wa.me/212767149114" // Remplace par ton numéro
             target="_blank"
             rel="noreferrer"
             className="bg-[#A44E36] text-white px-8 py-4 text-sm font-bold tracking-widest uppercase hover:bg-[#8a3f2b] transition-colors flex items-center gap-3"
