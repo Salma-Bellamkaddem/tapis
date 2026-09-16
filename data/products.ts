@@ -421,9 +421,9 @@ export const rugsData: Rug[] = [
     price: "$295",
     isAvailable: true,
     images: [
-      "/placeholders/ouaouzguite-3.webp",
-      "/placeholders/ouaouzguite-1.webp",
-      "/placeholders/ouaouzguite-2.png"
+      "/placeholders/ouaouzguite-3-6.png",
+      "/placeholders/ouaouzguite-3-2.jpg",
+      "/placeholders/ouaouzguite-3-3.jpg"
     ],
     category: "Ouaouzguite",
     sizes: [
