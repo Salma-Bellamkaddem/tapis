@@ -4,6 +4,56 @@ import { use, useState } from "react";
 import { rugsData } from "@/data/products";
 import { notFound } from "next/navigation";
 import Link from "next/link";
+import Image from "next/image";
+import { Metadata } from "next";
+
+// Génération dynamique des métadonnées SEO pour chaque tapis
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ id: string }>;
+}): Promise<Metadata> {
+  const resolvedParams = await params;
+  const rug = rugsData.find((r) => r.id === resolvedParams.id);
+
+  if (!rug) {
+    return {
+      title: "Rug Not Found | Berber Rugs Cooperative",
+    };
+  }
+
+  const siteUrl = "https://www.rugsberber.com";
+
+  return {
+    title: `${rug.name} (${rug.sku}) | Authentic ${rug.category} Berber Rug`,
+    description: rug.description || `Buy authentic ${rug.name} online. Hand-woven by rural Moroccan women artisans in the Atlas mountains. Worldwide shipping.`,
+    keywords: [
+      rug.name,
+      `${rug.category} rug`,
+      `Moroccan ${rug.category} carpet`,
+      `SKU ${rug.sku}`,
+      "handmade Moroccan rug",
+      "authentic Berber carpet",
+      "buy Berber rug online",
+    ],
+    openGraph: {
+      title: `${rug.name} - Authentic ${rug.category} Berber Rug`,
+      description: rug.description || "Handmade Moroccan Berber carpet crafted with pure living wool.",
+      url: `${siteUrl}/rugs/${rug.id}`,
+      images: [
+        {
+          url: rug.images[0],
+          width: 800,
+          height: 1000,
+          alt: `${rug.name} - Berber Carpet`,
+        },
+      ],
+    },
+    alternates: {
+      canonical: `${siteUrl}/rugs/${rug.id}`,
+    },
+  };
+}
 
 export default function ProductDetailPage({
   params,
@@ -21,7 +71,6 @@ export default function ProductDetailPage({
 }
 
 function ProductDetail({ rug }: { rug: (typeof rugsData)[number] }) {
-  // Récupération des 6 tailles spécifiques du tapis (avec fallback de sécurité)
   const availableSizes = rug.sizes && rug.sizes.length > 0 ? rug.sizes : [
     { size: "150 × 200 cm", price: rug.price },
   ];
@@ -29,17 +78,28 @@ function ProductDetail({ rug }: { rug: (typeof rugsData)[number] }) {
   const [mainImage, setMainImage] = useState(rug.images[0]);
   const [selectedSizeObj, setSelectedSizeObj] = useState(availableSizes[0]);
 
-  // Générer le lien WhatsApp direct épuré
+  // Génération du lien WhatsApp pro, structuré et en anglais
   const generateWhatsAppUrl = () => {
-    let message = "Bonjour, je souhaite commander ce tapis :\n\n";
-    message += `• Tapis : ${rug.name}\n`;
-    message += `• Catégorie : ${rug.category}\n`;
-    message += `• SKU : ${rug.sku}\n`;
-    message += `• Taille : ${selectedSizeObj.size}\n`;
-    message += `• Prix : ${selectedSizeObj.price}`;
+    let message = "🏛️ *NEW ORDER - BERBER RUG*\n";
+    message += "━━━━━━━━━━━━━━━━━━━━━━\n\n";
+    message += `✨ *Rug :* ${rug.name}\n`;
+    message += `📂 *Category :* ${rug.category}\n`;
+    message += `🔖 *SKU :* ${rug.sku}\n`;
+    message += `📏 *Selected Size :* ${selectedSizeObj.size}\n`;
+    message += `💰 *Price :* ${selectedSizeObj.price}\n\n`;
+    message += "━━━━━━━━━━━━━━━━━━━━━━\n";
+    message += `📸 *Model Photo :*\n${mainImage}`;
 
     return `https://wa.me/212767149114?text=${encodeURIComponent(message)}`;
   };
+
+  // Fonction pour formater proprement la description
+  const formatDescription = (text: string) => {
+    if (!text) return [];
+    return text.split(/(?=[A-Z][a-zà-ÿ\s]+ :)/g).filter(Boolean);
+  };
+
+  const descriptionParts = formatDescription(rug.description || "");
 
   return (
     <div className="bg-[#FAF9F6] min-h-screen py-12 px-4 md:px-8">
@@ -57,13 +117,16 @@ function ProductDetail({ rug }: { rug: (typeof rugsData)[number] }) {
       </div>
 
       <div className="max-w-6xl mx-auto flex flex-col md:flex-row gap-12">
-        {/* GALERIE */}
+        {/* GALERIE AVEC NEXT/IMAGE */}
         <div className="w-full md:w-3/5 flex flex-col gap-4">
-          <div className="w-full aspect-[4/5] bg-gray-200 rounded-2xl overflow-hidden shadow-sm">
-            <img
+          <div className="w-full aspect-[4/5] bg-gray-200 rounded-2xl overflow-hidden shadow-sm relative">
+            <Image
               src={mainImage}
               alt={rug.name}
-              className="w-full h-full object-cover"
+              fill
+              priority
+              sizes="(max-width: 768px) 100vw, 60vw"
+              className="object-cover"
             />
           </div>
 
@@ -72,16 +135,18 @@ function ProductDetail({ rug }: { rug: (typeof rugsData)[number] }) {
               <button
                 key={index}
                 onClick={() => setMainImage(img)}
-                className={`w-24 h-32 flex-shrink-0 bg-gray-200 rounded-lg overflow-hidden border-2 transition-all ${
+                className={`w-24 h-32 flex-shrink-0 bg-gray-200 rounded-lg overflow-hidden border-2 transition-all relative ${
                   mainImage === img
                     ? "border-[#A44E36] scale-105"
                     : "border-transparent opacity-70 hover:opacity-100"
                 }`}
               >
-                <img
+                <Image
                   src={img}
                   alt={`${rug.name} view ${index + 1}`}
-                  className="w-full h-full object-cover"
+                  fill
+                  sizes="96px"
+                  className="object-cover"
                 />
               </button>
             ))}
@@ -102,7 +167,7 @@ function ProductDetail({ rug }: { rug: (typeof rugsData)[number] }) {
             {selectedSizeObj.price}
           </p>
 
-          {/* DIMENSIONS (6 tailles dynamiques avec leurs prix) */}
+          {/* DIMENSIONS */}
           <div className="mb-6">
             <label className="block text-xs font-bold tracking-widest uppercase text-gray-700 mb-2">
               Select Size & Price:
@@ -149,10 +214,35 @@ function ProductDetail({ rug }: { rug: (typeof rugsData)[number] }) {
             </div>
           </div>
 
-          {/* Description spécifique */}
-          <p className="text-gray-500 text-xs md:text-sm leading-relaxed mb-8">
-            {rug.description || "Handwoven by women artisans in the Atlas mountains using pure living sheep's wool and natural dyes."}
-          </p>
+          {/* DESCRIPTION CLAIRE ET STRUCTURÉE */}
+          <div className="mb-8 bg-[#FAF0E4]/60 border border-[#A44E36]/20 p-5 rounded-xl">
+            <h3 className="text-xs font-bold tracking-widest uppercase text-[#A44E36] mb-3">
+              About this masterpiece
+            </h3>
+            
+            {descriptionParts.length > 1 ? (
+              <div className="space-y-2.5 text-xs md:text-sm text-gray-700 leading-relaxed">
+                {descriptionParts.map((part, idx) => {
+                  const [title, ...content] = part.split(":");
+                  if (content.length > 0) {
+                    return (
+                      <div key={idx} className="flex items-start gap-2">
+                        <span className="text-[#A44E36] mt-0.5">▪</span>
+                        <p>
+                          <strong className="text-gray-900 font-semibold">{title} :</strong> {content.join(":")}
+                        </p>
+                      </div>
+                    );
+                  }
+                  return <p key={idx}>{part}</p>;
+                })}
+              </div>
+            ) : (
+              <p className="text-gray-700 text-xs md:text-sm leading-relaxed">
+                {rug.description || "Handwoven by women artisans in the Atlas mountains using pure living sheep's wool and natural dyes."}
+              </p>
+            )}
+          </div>
 
           {/* WHATSAPP DIRECT */}
           <a

@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { useState } from "react";
 import ExperienceSection from "../components/ExperienceSection";
 import Features from "../components/Features";
@@ -13,7 +14,7 @@ import CustomerReviews from "@/components/CustomerReviews";
 
 import { collectionsData, rugsData } from "@/data/products";
 
-// Petite icône règle/mesure en SVG (plus propre qu'un emoji, cohérent sur tous les OS)
+// Ruler icon in SVG
 function RulerIcon({ className = "w-4 h-4" }: { className?: string }) {
   return (
     <svg
@@ -71,18 +72,20 @@ function CollectionCard({
       </div>
 
       <div className="relative pt-9 px-7">
-        <div className="relative mx-auto w-[205px] h-[270px] sm:w-[215px] sm:h-[285px] rounded-[50%] overflow-hidden border-[5px] border-[#FFF8EF] shadow-[0_12px_35px_rgba(70,40,20,0.16)] bg-[#E8DED2] transition-all duration-700 group-hover:scale-[1.025]">
-          <img
+        <div className="relative mx-auto w-[205px] h-[270px] sm:w-[215px] sm:h-[285px] rounded-[50%] overflow-hidden border-[5px] border-[#FFF8EF] shadow-[0_12px_35px_rgba(70,40,20,0.16)] bg-[#E8DED2]">
+          <Image
             src={collection.images[currentImageIndex]}
             alt={`${collection.name} Berber Carpet`}
+            fill
+            sizes="215px"
             className="absolute inset-0 w-full h-full object-cover transition-all duration-700 ease-out group-hover:scale-110"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/15 via-transparent to-white/10 pointer-events-none" />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/15 via-transparent to-white/10 pointer-events-none z-10" />
 
           <button
             onClick={prevImage}
             aria-label="Previous image"
-            className="absolute left-2 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-[#A44E36]/90 text-white flex items-center justify-center opacity-0 scale-75 group-hover:opacity-100 group-hover:scale-100 transition-all duration-300 shadow-lg z-10"
+            className="absolute left-2 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-[#A44E36]/90 text-white flex items-center justify-center opacity-0 scale-75 group-hover:opacity-100 group-hover:scale-100 transition-all duration-300 shadow-lg z-20"
           >
             ‹
           </button>
@@ -90,12 +93,12 @@ function CollectionCard({
           <button
             onClick={nextImage}
             aria-label="Next image"
-            className="absolute right-2 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-[#A44E36]/90 text-white flex items-center justify-center opacity-0 scale-75 group-hover:opacity-100 group-hover:scale-100 transition-all duration-300 shadow-lg z-10"
+            className="absolute right-2 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-[#A44E36]/90 text-white flex items-center justify-center opacity-0 scale-75 group-hover:opacity-100 group-hover:scale-100 transition-all duration-300 shadow-lg z-20"
           >
             ›
           </button>
 
-          <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-black/25 backdrop-blur-sm">
+          <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-black/25 backdrop-blur-sm z-20">
             {collection.images.map((_: any, idx: number) => (
               <button
                 key={idx}
@@ -136,69 +139,120 @@ function CollectionCard({
 }
 
 function ProductCard({ rug }: { rug: any }) {
-  // Utilise les vraies tailles/prix du produit (plus de tableau global incorrect)
   const [selectedSizeIndex, setSelectedSizeIndex] = useState(0);
+  const [activeImgIndex, setActiveImgIndex] = useState(0);
+
   const selectedSize = rug.sizes?.[selectedSizeIndex];
   const displayPrice = selectedSize?.price || rug.price;
   const hasMultipleSizes = rug.sizes && rug.sizes.length > 1;
 
+  const images: string[] = rug.images && rug.images.length > 0 
+    ? rug.images.slice(0, 5) 
+    : [rug.image || "/placeholders/ouaouzguite-1.jpg"];
+
+  const currentImage = images[activeImgIndex] || images[0];
+
+  const whatsappUrl = `https://wa.me/212767149114?text=${encodeURIComponent(
+    `🏛️ *NEW ORDER - BERBER RUG*\n` +
+    `━━━━━━━━━━━━━━━━━━━━━━\n\n` +
+    `✨ *Rug :* ${rug.name}\n` +
+    `📂 *Category :* ${rug.category}\n` +
+    `🔖 *SKU :* ${rug.sku}\n` +
+    `📏 *Size :* ${selectedSize?.size || "Standard"}\n` +
+    `💰 *Price :* ${displayPrice}\n\n` +
+    `━━━━━━━━━━━━━━━━━━━━━━\n` +
+    `📸 *Model Photo :*\n${currentImage}`
+  )}`;
+
   return (
-    <div className="bg-[#FAF0E4] border border-[#A44E36]/20 rounded-lg flex flex-col h-full shadow-sm hover:shadow-md transition-all duration-300 overflow-hidden group">
-      <div className="relative aspect-[4/3] w-full bg-gray-200 overflow-hidden">
-        <img src={rug.images?.[0] || rug.image} alt={rug.name} className="object-cover w-full h-full group-hover:scale-105 transition-transform duration-500" />
+    <div className="bg-white border border-[#A44E36]/15 rounded-2xl flex flex-col h-full shadow-[0_10px_30px_rgba(70,40,20,0.06)] hover:shadow-xl transition-all duration-300 overflow-hidden group">
+      {/* Container image avec dimensions fixes pour affichage instantané */}
+      <div className="relative w-full h-[280px] bg-[#F5EFE6] overflow-hidden">
+        <Link href={`/rugs/${rug.id}`}>
+          <Image 
+            src={currentImage} 
+            alt={rug.name} 
+            fill
+            sizes="(max-width: 768px) 100vw, 33vw"
+            priority
+            className="object-cover w-full h-full group-hover:scale-105 transition-transform duration-500" 
+          />
+        </Link>
+        <div className="absolute top-3 left-3 bg-[#FFF8EF]/90 backdrop-blur-sm border border-[#A44E36]/20 px-2.5 py-1 rounded-full text-[10px] font-bold tracking-widest text-[#A44E36] uppercase shadow-sm z-10">
+          {rug.sku.startsWith("AKH") ? "New" : rug.sku.startsWith("GLA") ? "Best-seller" : "Authentic"}
+        </div>
       </div>
-      <div className="p-5 flex flex-col flex-grow">
-        <div className="flex justify-between items-start mb-2">
-          <h3 className="text-md font-bold tracking-wider font-serif text-gray-900">{rug.name}</h3>
-          {/* Prix dynamique : change selon la taille sélectionnée */}
-          <span className="font-bold text-[#A44E36]">{displayPrice}</span>
-        </div>
 
-        <div className="flex justify-between items-center text-xs text-gray-600 mb-4">
-          <div className="flex flex-col gap-2 w-full">
-            <div className="flex justify-between items-center">
-              <span className="font-semibold">{rug.sku}</span>
-              {rug.isAvailable && <span className="text-green-700 font-bold tracking-wider uppercase text-[10px]">Available</span>}
-            </div>
-
-            {/* Sélecteur de taille avec icône règle */}
-            <div className="relative mt-1">
-              <RulerIcon className="w-4 h-4 absolute left-2.5 top-1/2 -translate-y-1/2 text-[#A44E36] pointer-events-none" />
-              <select
-                value={selectedSizeIndex}
-                onChange={(e) => setSelectedSizeIndex(Number(e.target.value))}
-                disabled={!hasMultipleSizes}
-                className="block w-full text-xs border border-[#A44E36]/30 py-1.5 pl-8 pr-2 rounded bg-white text-gray-800 focus:outline-none focus:border-[#A44E36] disabled:opacity-70 disabled:cursor-default"
-              >
-                {(rug.sizes || []).map((s: { size: string; price: string }, idx: number) => (
-                  <option key={idx} value={idx}>
-                    {s.size} — {s.price}
-                  </option>
-                ))}
-              </select>
-            </div>
+      <div className="p-5 flex flex-col flex-grow justify-between">
+        <div>
+          <div className="flex justify-between items-start mb-1">
+            <h3 className="text-base font-serif font-bold tracking-wide text-gray-900">{rug.name}</h3>
+            <span className="font-bold text-[#A44E36] text-base">{displayPrice}</span>
           </div>
+
+          <div className="flex justify-between items-center text-xs text-gray-500 mb-3">
+            <span className="font-semibold">{rug.sku}</span>
+            {rug.isAvailable && (
+              <span className="text-green-700 font-bold tracking-wider uppercase text-[10px] flex items-center gap-1">
+                <span className="w-1.5 h-1.5 rounded-full bg-green-600"></span>
+                Available
+              </span>
+            )}
+          </div>
+
+          <div className="relative mb-3">
+            <RulerIcon className="w-4 h-4 absolute left-3 top-1/2 -translate-y-1/2 text-[#A44E36] pointer-events-none z-10" />
+            <select
+              value={selectedSizeIndex}
+              onChange={(e) => setSelectedSizeIndex(Number(e.target.value))}
+              disabled={!hasMultipleSizes}
+              className="block w-full text-xs border border-[#A44E36]/30 py-2 pl-9 pr-3 rounded-lg bg-[#FAF0E4]/40 text-gray-800 focus:outline-none focus:border-[#A44E36] disabled:opacity-75 disabled:cursor-default font-medium"
+            >
+              {(rug.sizes || []).map((s: { size: string; price: string }, idx: number) => (
+                <option key={idx} value={idx}>
+                  {s.size} — {s.price}
+                </option>
+              ))}
+            </select>
+          </div>
+
+          {images.length > 1 && (
+            <div className="flex items-center gap-2 mb-4 py-1">
+              <div className="flex gap-2 overflow-x-auto">
+                {images.map((imgUrl, idx) => (
+                  <button
+                    key={idx}
+                    type="button"
+                    onClick={() => setActiveImgIndex(idx)}
+                    className={`w-8 h-8 rounded-lg overflow-hidden flex-shrink-0 border-2 transition-all relative bg-[#F5EFE6] ${
+                      activeImgIndex === idx ? "border-[#A44E36] scale-105 shadow-sm" : "border-gray-200 opacity-60 hover:opacity-100"
+                    }`}
+                  >
+                    <Image src={imgUrl} alt="thumbnail" fill sizes="32px" className="object-cover" />
+                  </button>
+                ))}
+              </div>
+              <span className="text-[10px] text-gray-400 italic">5 views</span>
+            </div>
+          )}
+
+          <p className="text-xs text-gray-600 line-clamp-2 leading-relaxed mb-4">
+            {rug.description || "An authentic Berber carpet rich in history, featuring vibrant colors that bring warmth and character to your space."}
+          </p>
         </div>
 
-        {/* Mention tapis sur mesure / design personnalisé */}
-        <p className="text-[10px] text-gray-500 italic mb-4 leading-snug">
-          Besoin d'une autre taille ou d'un design personnalisé ? Nous réalisons aussi des{" "}
-          <Link href="/custom-order" className="text-[#A44E36] font-semibold not-italic hover:underline">
-            tapis sur commande
-          </Link>
-          , selon le design de votre choix.
-        </p>
-
-        <div className="mt-auto pt-4 border-t border-[#A44E36]/10 flex justify-between items-center">
-          <Link href={`/rugs/${rug.id}`} className="text-gray-500 font-semibold text-xs tracking-widest uppercase hover:text-gray-900 transition-colors">
+        <div className="pt-3 border-t border-gray-100 flex gap-2">
+          <Link 
+            href={`/rugs/${rug.id}`} 
+            className="flex-1 text-center py-2.5 px-3 border border-[#A44E36]/30 text-[#A44E36] font-bold text-xs tracking-wider uppercase rounded-xl hover:bg-[#FAF0E4]/50 transition-colors"
+          >
             Details
           </Link>
-          
           <a
-            href={`https://wa.me/+212767149114?text=Bonjour,%20je%20suis%20int%C3%A9ress%C3%A9(e)%20par%20le%20tapis%20${rug.name}%20(${rug.sku})%20-%20Taille:%20${selectedSize?.size || ""}`}
+            href={whatsappUrl}
             target="_blank"
             rel="noreferrer"
-            className="bg-[#A44E36] text-white px-3 py-1.5 rounded font-semibold text-xs tracking-widest uppercase hover:bg-[#8a3f2b] transition-colors flex items-center gap-1.5 shadow-sm"
+            className="flex-1 text-center bg-[#A44E36] text-white py-2.5 px-3 font-bold text-xs tracking-wider uppercase rounded-xl hover:bg-[#8a3f2b] transition-colors shadow-sm flex items-center justify-center gap-1.5"
           >
             Order
           </a>
@@ -215,7 +269,14 @@ export default function Home() {
       {/* 1. HERO */}
       <section className="relative w-full h-[80vh] min-h-[600px] flex items-center">
         <div className="absolute inset-0 z-0 bg-gray-900">
-          <img src="/placeholders/hero-bg.webp" alt="Handcrafted Moroccan Rugs" className="w-full h-full object-cover opacity-60" />
+          <Image 
+            src="/placeholders/hero-bg.webp" 
+            alt="Handcrafted Moroccan Rugs" 
+            fill 
+            priority
+            sizes="100vw"
+            className="w-full h-full object-cover opacity-60" 
+          />
         </div>
         <div className="relative z-10 w-full max-w-7xl mx-auto px-4 md:px-8 text-white">
           <span className="block text-sm md:text-base tracking-[0.2em] uppercase mb-4 text-[#FAF0E4]">HAND MADE BY MOROCCAN RURAL WOMEN</span>
@@ -240,36 +301,48 @@ export default function Home() {
       {/* 3. OUR TOP RUGS */}
       <section className="bg-[#FAF0E4] py-20 px-4 md:px-8 border-b border-[#A44E36]/10">
         <div className="max-w-7xl mx-auto">
-          <div className="flex flex-col md:flex-row justify-between items-center mb-12 gap-6">
-            <h2 className="text-3xl font-serif tracking-widest text-gray-900 uppercase">Our Top Rugs</h2>
-            <Link href="/rugs" className="bg-[#A44E36] text-white px-6 py-3 text-xs font-bold tracking-widest uppercase hover:bg-[#8a3f2b] transition-colors text-center rounded shadow-sm">
-              View All Products &rarr;
+          {/* En-tête parfaitement centré */}
+          <div className="flex flex-col items-center text-center mb-12">
+            <span className="text-[10px] font-bold tracking-[0.3em] text-[#A44E36] uppercase mb-2 block">
+              EXCEPTIONAL PIECES
+            </span>
+            <h2 className="text-3xl md:text-4xl font-serif tracking-widest text-gray-900 uppercase mb-3">
+              Our Berber Rugs
+            </h2>
+            <p className="text-xs md:text-sm text-gray-600 max-w-xl mb-6 leading-relaxed">
+              Each rug is a unique work of art, hand-woven by women artisans in Morocco. Authentic motifs, natural colors, and a story in every thread.
+            </p>
+            <Link 
+              href="/rugs" 
+              className="bg-[#A44E36] text-white px-6 py-3 text-xs font-bold tracking-widest uppercase hover:bg-[#8a3f2b] transition-colors text-center rounded-xl shadow-sm"
+            >
+              View All Rugs &rarr;
             </Link>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {rugsData.slice(0, 8).map((rug) => (
+          {/* Grille limitée à exactement 3 produits centrés */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+            {rugsData.slice(0, 3).map((rug) => (
               <ProductCard key={rug.id} rug={rug} />
             ))}
           </div>
 
           {/* Bannière tapis sur commande */}
-          <div className="mt-14 bg-[#FFF8EF] border border-[#A44E36]/25 rounded-2xl p-8 md:p-10 flex flex-col md:flex-row items-center justify-between gap-6 text-center md:text-left">
+          <div className="mt-14 bg-[#FFF8EF] border border-[#A44E36]/25 rounded-2xl p-8 md:p-10 flex flex-col md:flex-row items-center justify-between gap-6 text-center md:text-left shadow-sm">
             <div>
               <span className="text-[10px] font-bold tracking-[0.3em] text-[#A44E36] uppercase mb-2 block">
                 MADE TO ORDER
               </span>
               <h3 className="font-serif text-2xl md:text-3xl text-gray-900 mb-2">
-                Don't see the size or design you want?
+                Can't find the right size or design?
               </h3>
               <p className="text-gray-600 text-sm max-w-xl">
-                We also weave custom Berber rugs — any size, any color palette, any symbol —
-                designed exactly the way you imagine it, and hand-crafted by our women artisans.
+                We also weave custom Berber rugs — dimensions, color palettes, and symbols of your choice, crafted by hand by our women artisans.
               </p>
             </div>
             <Link
               href="/custom-order"
-              className="whitespace-nowrap bg-[#A44E36] text-white px-8 py-4 text-xs font-bold tracking-widest uppercase hover:bg-[#8a3f2b] transition-colors rounded shadow-md"
+              className="whitespace-nowrap bg-[#A44E36] text-white px-8 py-4 text-xs font-bold tracking-widest uppercase hover:bg-[#8a3f2b] transition-colors rounded-xl shadow-md"
             >
               Request Custom Rug
             </Link>
