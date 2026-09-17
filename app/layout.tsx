@@ -77,7 +77,6 @@ export const metadata: Metadata = {
     icon: "/favicon.jpg",
   },
 };
-
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -85,6 +84,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" data-scroll-behavior="smooth">
+      <head>
+        {/* Connexion anticipée au serveur Cloudinary pour accélérer l'affichage des images */}
+        <link rel="preconnect" href="https://res.cloudinary.com" />
+        <link rel="dns-prefetch" href="https://res.cloudinary.com" />
+      </head>
       <body
         className="antialiased bg-[#FAF9F6] text-gray-900"
         suppressHydrationWarning

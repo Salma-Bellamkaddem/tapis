@@ -508,8 +508,10 @@ export const collectionsData = [
     subtitle: "BERBER CARPET",
     description: "Hand-made with three techniques (woolen, woven, embroidered) containing living sheep's wool.",
     images: [
-      "/placeholders/glaoui-1.jpeg",
-      "/placeholders/glaoui-2.jpeg",
+      "https://res.cloudinary.com/ln4u8wnx/image/upload/f_auto,q_auto/v1789596807/akhenif-p2-1.png",
+      ,
+      "https://res.cloudinary.com/ln4u8wnx/image/upload/f_auto,q_auto/v1789596807/akhenif-p2-1.png",
+      ,
       "/placeholders/glaoui-3.jpeg"
     ],
     href: "/rugs?category=glaoui"

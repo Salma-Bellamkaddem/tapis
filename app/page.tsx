@@ -124,6 +124,7 @@ function CollectionCard({
 
         <Link
           href={collection.href}
+          prefetch={true}
           className="relative overflow-hidden bg-[#A44E36] hover:bg-[#8F3E29] text-white py-3.5 px-6 rounded-full font-bold text-[10px] tracking-[0.18em] uppercase transition-all duration-300 flex items-center justify-center gap-3 shadow-md hover:shadow-xl hover:scale-[1.02]"
         >
           <span className="relative z-10">Explore Collection</span>
@@ -166,15 +167,14 @@ function ProductCard({ rug }: { rug: any }) {
 
   return (
     <div className="bg-white border border-[#A44E36]/15 rounded-2xl flex flex-col h-full shadow-[0_10px_30px_rgba(70,40,20,0.06)] hover:shadow-xl transition-all duration-300 overflow-hidden group">
-      {/* Container image avec dimensions fixes pour affichage instantané */}
       <div className="relative w-full h-[280px] bg-[#F5EFE6] overflow-hidden">
-        <Link href={`/rugs/${rug.id}`}>
+        <Link href={`/rugs/${rug.id}`} prefetch={true}>
           <Image 
             src={currentImage} 
             alt={rug.name} 
             fill
             sizes="(max-width: 768px) 100vw, 33vw"
-            priority
+            priority={true}
             className="object-cover w-full h-full group-hover:scale-105 transition-transform duration-500" 
           />
         </Link>
@@ -244,6 +244,7 @@ function ProductCard({ rug }: { rug: any }) {
         <div className="pt-3 border-t border-gray-100 flex gap-2">
           <Link 
             href={`/rugs/${rug.id}`} 
+            prefetch={true}
             className="flex-1 text-center py-2.5 px-3 border border-[#A44E36]/30 text-[#A44E36] font-bold text-xs tracking-wider uppercase rounded-xl hover:bg-[#FAF0E4]/50 transition-colors"
           >
             Details
@@ -285,10 +286,10 @@ export default function Home() {
             Berber women read symbols in nature — mountains, trees, plants, animals, insects — then weave them into carpets, guided only by imagination.
           </p>
           <div className="flex flex-col sm:flex-row gap-4">
-            <Link href="/rugs" className="bg-[#A44E36] text-white px-8 py-4 text-sm font-bold tracking-widest uppercase hover:bg-[#8a3f2b] transition-colors text-center rounded shadow">
+            <Link href="/rugs" prefetch={true} className="bg-[#A44E36] text-white px-8 py-4 text-sm font-bold tracking-widest uppercase hover:bg-[#8a3f2b] transition-colors text-center rounded shadow">
               Explore Our Rugs
             </Link>
-            <Link href="/custom-order" className="border border-white text-white px-8 py-4 text-sm font-bold tracking-widest uppercase hover:bg-white hover:text-[#A44E36] transition-colors text-center rounded">
+            <Link href="/custom-order" prefetch={true} className="border border-white text-white px-8 py-4 text-sm font-bold tracking-widest uppercase hover:bg-white hover:text-[#A44E36] transition-colors text-center rounded">
               Custom Order
             </Link>
           </div>
@@ -301,7 +302,6 @@ export default function Home() {
       {/* 3. OUR TOP RUGS */}
       <section className="bg-[#FAF0E4] py-20 px-4 md:px-8 border-b border-[#A44E36]/10">
         <div className="max-w-7xl mx-auto">
-          {/* En-tête parfaitement centré */}
           <div className="flex flex-col items-center text-center mb-12">
             <span className="text-[10px] font-bold tracking-[0.3em] text-[#A44E36] uppercase mb-2 block">
               EXCEPTIONAL PIECES
@@ -314,20 +314,19 @@ export default function Home() {
             </p>
             <Link 
               href="/rugs" 
+              prefetch={true}
               className="bg-[#A44E36] text-white px-6 py-3 text-xs font-bold tracking-widest uppercase hover:bg-[#8a3f2b] transition-colors text-center rounded-xl shadow-sm"
             >
               View All Rugs &rarr;
             </Link>
           </div>
 
-          {/* Grille limitée à exactement 3 produits centrés */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
             {rugsData.slice(0, 3).map((rug) => (
               <ProductCard key={rug.id} rug={rug} />
             ))}
           </div>
 
-          {/* Bannière tapis sur commande */}
           <div className="mt-14 bg-[#FFF8EF] border border-[#A44E36]/25 rounded-2xl p-8 md:p-10 flex flex-col md:flex-row items-center justify-between gap-6 text-center md:text-left shadow-sm">
             <div>
               <span className="text-[10px] font-bold tracking-[0.3em] text-[#A44E36] uppercase mb-2 block">
@@ -342,6 +341,7 @@ export default function Home() {
             </div>
             <Link
               href="/custom-order"
+              prefetch={true}
               className="whitespace-nowrap bg-[#A44E36] text-white px-8 py-4 text-xs font-bold tracking-widest uppercase hover:bg-[#8a3f2b] transition-colors rounded-xl shadow-md"
             >
               Request Custom Rug
