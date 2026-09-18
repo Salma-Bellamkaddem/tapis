@@ -4,6 +4,8 @@ import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { rugsData } from "@/data/products";
+import { useCurrency } from "./CurrencyContext";
+
 
 // Ruler icon in SVG
 function RulerIcon({ className = "w-4 h-4" }: { className?: string }) {
@@ -25,6 +27,8 @@ function RulerIcon({ className = "w-4 h-4" }: { className?: string }) {
 }
 
 export default function ProductDetailClient({ rug }: { rug: (typeof rugsData)[number] }) {
+  const { formatPrice } = useCurrency();
+
   const availableSizes = rug.sizes && rug.sizes.length > 0 ? rug.sizes : [
     { size: "150 × 200 cm", price: rug.price },
   ];
@@ -32,7 +36,9 @@ export default function ProductDetailClient({ rug }: { rug: (typeof rugsData)[nu
   const [mainImage, setMainImage] = useState(rug.images[0]);
   const [selectedSizeObj, setSelectedSizeObj] = useState(availableSizes[0]);
 
-  // Generate structured English WhatsApp order URL
+  const displayPrice = selectedSizeObj?.price || rug.price;
+
+  // Generate structured English WhatsApp order URL with formatted price
   const generateWhatsAppUrl = () => {
     let message = "🏛️ *NEW ORDER - BERBER RUG*\n";
     message += "━━━━━━━━━━━━━━━━━━━━━━\n\n";
@@ -40,7 +46,7 @@ export default function ProductDetailClient({ rug }: { rug: (typeof rugsData)[nu
     message += `📂 *Category :* ${rug.category}\n`;
     message += `🔖 *SKU :* ${rug.sku}\n`;
     message += `📏 *Selected Size :* ${selectedSizeObj.size}\n`;
-    message += `💰 *Price :* ${selectedSizeObj.price}\n\n`;
+    message += `💰 *Price :* ${formatPrice(displayPrice)}\n\n`;
     message += "━━━━━━━━━━━━━━━━━━━━━━\n";
     message += `📸 *Model Photo :*\n${mainImage}`;
 
@@ -116,8 +122,9 @@ export default function ProductDetailClient({ rug }: { rug: (typeof rugsData)[nu
             {rug.name}
           </h1>
 
+          {/* Dynamic Converted Price */}
           <p className="text-2xl font-bold text-[#A44E36] mb-6">
-            {selectedSizeObj.price}
+            {formatPrice(displayPrice)}
           </p>
 
           {/* SIZES */}
@@ -146,7 +153,7 @@ export default function ProductDetailClient({ rug }: { rug: (typeof rugsData)[nu
                         isSelected ? "text-white/90" : "text-[#A44E36]"
                       }`}
                     >
-                      {item.price}
+                      {formatPrice(item.price)}
                     </span>
                   </button>
                 );

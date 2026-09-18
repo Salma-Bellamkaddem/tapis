@@ -11,8 +11,10 @@ import WoolToRug from "../components/WoolToRug";
 import EthicalImpact from "../components/EthicalImpact";
 import AboutCooperative from "../components/AboutCooperative";
 import CustomerReviews from "@/components/CustomerReviews";
+// 👈 1. Import du hook de devise
 
 import { collectionsData, rugsData } from "@/data/products";
+import { useCurrency } from "@/components/CurrencyContext";
 
 // Ruler icon in SVG
 function RulerIcon({ className = "w-4 h-4" }: { className?: string }) {
@@ -140,6 +142,8 @@ function CollectionCard({
 }
 
 function ProductCard({ rug }: { rug: any }) {
+  const { formatPrice } = useCurrency(); // 👈 2. Utilisation du hook de devise
+
   const [selectedSizeIndex, setSelectedSizeIndex] = useState(0);
   const [activeImgIndex, setActiveImgIndex] = useState(0);
 
@@ -160,7 +164,7 @@ function ProductCard({ rug }: { rug: any }) {
     `📂 *Category :* ${rug.category}\n` +
     `🔖 *SKU :* ${rug.sku}\n` +
     `📏 *Size :* ${selectedSize?.size || "Standard"}\n` +
-    `💰 *Price :* ${displayPrice}\n\n` +
+    `💰 *Price :* ${formatPrice(displayPrice)}\n\n` +
     `━━━━━━━━━━━━━━━━━━━━━━\n` +
     `📸 *Model Photo :*\n${currentImage}`
   )}`;
@@ -187,7 +191,8 @@ function ProductCard({ rug }: { rug: any }) {
         <div>
           <div className="flex justify-between items-start mb-1">
             <h3 className="text-base font-serif font-bold tracking-wide text-gray-900">{rug.name}</h3>
-            <span className="font-bold text-[#A44E36] text-base">{displayPrice}</span>
+            {/* 3. Application du formatPrice pour convertir le prix */}
+            <span className="font-bold text-[#A44E36] text-base">{formatPrice(displayPrice)}</span>
           </div>
 
           <div className="flex justify-between items-center text-xs text-gray-500 mb-3">
@@ -210,7 +215,8 @@ function ProductCard({ rug }: { rug: any }) {
             >
               {(rug.sizes || []).map((s: { size: string; price: string }, idx: number) => (
                 <option key={idx} value={idx}>
-                  {s.size} — {s.price}
+                  {/* 4. Conversion automatique également dans le select */}
+                  {s.size} — {formatPrice(s.price)}
                 </option>
               ))}
             </select>

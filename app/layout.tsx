@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
+import { CurrencyProvider } from "../components/CurrencyContext";
 
 const siteUrl = "https://www.rugsberber.com";
 
@@ -46,7 +47,7 @@ export const metadata: Metadata = {
       "Handmade Moroccan Berber carpets crafted by rural women artisans using pure living sheep's wool and natural dyes. Worldwide shipping to Europe, USA, and Africa.",
     images: [
       {
-        url: "/favicon.jpg", // Assurez-vous d'avoir cette image (recommandé 1200x630 pour les partages réseaux sociaux)
+        url: "/favicon.jpg",
         width: 1200,
         height: 630,
         alt: "Handmade Berber carpets collection",
@@ -74,9 +75,14 @@ export const metadata: Metadata = {
     canonical: siteUrl,
   },
   icons: {
-    icon: "/favicon.jpg",
+    icon: [
+      { url: "/favicon.jpg", type: "image/jpeg" },
+    ],
+    shortcut: "/favicon.jpg",
+    apple: "/favicon.jpg",
   },
 };
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -85,17 +91,15 @@ export default function RootLayout({
   return (
     <html lang="en" data-scroll-behavior="smooth">
       <head>
-        {/* Connexion anticipée au serveur Cloudinary pour accélérer l'affichage des images */}
         <link rel="preconnect" href="https://res.cloudinary.com" />
         <link rel="dns-prefetch" href="https://res.cloudinary.com" />
       </head>
-      <body
-        className="antialiased bg-[#FAF9F6] text-gray-900"
-        suppressHydrationWarning
-      >
-        <Header />
-        <main className="min-h-screen">{children}</main>
-        <Footer />
+      <body className="antialiased bg-[#FAF9F6] text-gray-900" suppressHydrationWarning>
+        <CurrencyProvider>
+          <Header />
+          <main className="min-h-screen">{children}</main>
+          <Footer />
+        </CurrencyProvider>
       </body>
     </html>
   );

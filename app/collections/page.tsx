@@ -43,6 +43,7 @@ function CollectionCard({ collection }: { collection: (typeof collectionsData)[n
       {/* Zone image avec fondu enchaîné entre les visuels */}
       <div className="relative aspect-[4/5] sm:aspect-[4/4] w-full rounded-2xl overflow-hidden bg-[#E8DED2] mb-6">
         {collection.images.map((img, idx) => (
+          // eslint-disable-next-line @next/next/no-img-element
           <img
             key={img}
             src={img}

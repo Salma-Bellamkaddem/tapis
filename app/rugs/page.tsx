@@ -2,9 +2,11 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { Suspense, useState, useEffect } from "react";
+import { Suspense, useState } from "react";
 import { useSearchParams, useRouter } from "next/navigation";
 import { rugsData } from "@/data/products";
+import { useCurrency } from "@/components/CurrencyContext";
+
 
 // Ruler icon in SVG
 function RulerIcon({ className = "w-4 h-4" }: { className?: string }) {
@@ -28,6 +30,7 @@ function RulerIcon({ className = "w-4 h-4" }: { className?: string }) {
 function AllRugsContent() {
   const searchParams = useSearchParams();
   const router = useRouter();
+  const { formatPrice } = useCurrency(); // 👈 Hook de conversion de devises
   const categoryParam = searchParams.get("category");
   const pageParam = searchParams.get("page");
 
@@ -157,7 +160,7 @@ function AllRugsContent() {
                     `📂 *Category :* ${rug.category}\n` +
                     `🔖 *SKU :* ${rug.sku}\n` +
                     `📏 *Size :* ${currentSizeObj.size}\n` +
-                    `💰 *Price :* ${currentSizeObj.price}\n\n` +
+                    `💰 *Price :* ${formatPrice(currentSizeObj.price)}\n\n` +
                     `━━━━━━━━━━━━━━━━━━━━━━\n` +
                     `📸 *Model Photo :*\n${currentImage}`
                   )}`;
@@ -196,7 +199,8 @@ function AllRugsContent() {
                       <div className="flex flex-col flex-grow">
                         <div className="flex justify-between items-start mb-1">
                           <span className="text-[10px] tracking-widest text-[#A44E36] uppercase font-bold">{rug.category}</span>
-                          <span className="text-sm font-bold text-[#A44E36]">{currentSizeObj.price}</span>
+                          {/* Prix converti dynamiquement */}
+                          <span className="text-sm font-bold text-[#A44E36]">{formatPrice(currentSizeObj.price)}</span>
                         </div>
                         
                         <Link href={`/rugs/${rug.id}`}>
@@ -223,7 +227,7 @@ function AllRugsContent() {
                           >
                             {sizes.map((s, idx) => (
                               <option key={idx} value={idx}>
-                                {s.size} — {s.price}
+                                {s.size} — {formatPrice(s.price)}
                               </option>
                             ))}
                           </select>
