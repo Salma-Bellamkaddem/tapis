@@ -41,26 +41,36 @@ export default function WoolToRug() {
       <div className="max-w-7xl mx-auto">
         
         {/* En-tête avec Storytelling */}
-        <div className="text-center mb-20">
-          <span className="text-[10px] font-bold tracking-[0.3em] text-[#A44E36] uppercase mb-3 block">
-            HERITAGE & CRAFTSMANSHIP — EST. 2003
-          </span>
-          <h2 className="font-serif text-4xl md:text-6xl text-[#101827] uppercase tracking-wide mb-4">
-            FROM WOOL TO RUG
-          </h2>
-          
-          <div className="flex items-center justify-center gap-4 mb-6">
-            <span className="w-12 h-px bg-[#A44E36]/30"></span>
-            <span className="text-[#A44E36] text-lg">❖</span>
-            <span className="w-12 h-px bg-[#A44E36]/30"></span>
-          </div>
+        <div className="text-center mb-16">
+  <span className="text-[10px] font-bold tracking-[0.3em] text-[#A44E36] uppercase mb-3 block">
+    HERITAGE & CRAFTSMANSHIP · EST. 2003
+  </span>
 
-          <p className="text-gray-700 text-sm md:text-base font-serif italic max-w-2xl mx-auto mb-4">
-            Each rug tells a profound story of tradition, patience, and passion. Carried out by 13 families (3 in Taznakhte and 10 living in surrounding villages), every creation reflects a unique heritage.
-          </p>
-          <p className="text-xs text-gray-600 max-w-xl mx-auto uppercase tracking-wider font-semibold">
-            Berber women obtain symbols in nature (mountains, trees, plants, animals, insects...) then they put them into carpets with their imaginations like drawing.
-          </p>
+  <h2 className="font-serif text-3xl md:text-4xl tracking-widest text-gray-950 uppercase font-normal mb-3">
+    FROM WOOL TO RUG
+  </h2>
+
+  <div className="flex items-center justify-center gap-4 mb-7">
+    <span className="w-12 h-px bg-[#A44E36]/30"></span>
+    <span className="text-[#A44E36] text-base">❖</span>
+    <span className="w-12 h-px bg-[#A44E36]/30"></span>
+  </div>
+
+  <p className="text-gray-700 text-sm md:text-base font-serif italic leading-relaxed max-w-2xl mx-auto mb-5">
+    From the wool to the final knot, every rug carries the patience,
+    imagination and ancestral knowledge of the women who weave it.
+    Across 13 families in Taznakht and the surrounding villages, this
+    living tradition transforms natural materials into unique pieces of
+    Moroccan heritage.
+  </p>
+
+  <p className="text-xs md:text-sm text-gray-600 max-w-2xl mx-auto leading-relaxed">
+    Inspired by the landscapes of the Siroua Mountains, Amazigh women
+    translate mountains, plants, animals, insects and ancestral symbols
+    into distinctive woven motifs — creating each rug as naturally as an
+    artist draws on a blank canvas.
+  </p>
+
         </div>
 
         {/* Étapes (Grille avec style Arches) */}

@@ -14,8 +14,19 @@ export default function AboutCooperative() {
             Rooted in tradition, empowered by women.
           </h2>
           <p className="text-gray-700 text-sm md:text-base leading-relaxed mb-8">
-            Based in the heart of Morocco, our cooperative is a sanctuary of ancestral craftsmanship. We bring together passionate women artisans who hand-weave each Berber carpet using pure living sheep's wool and natural dyes. Every thread tells a story of heritage, autonomy, and cultural preservation.
-          </p>
+  Based in Taznakht, in the heart of Morocco’s Siroua Mountains, our
+  cooperative brings together rural Amazigh women who preserve a
+  centuries-old tradition of carpet weaving. Inspired by the mountains,
+  nature and the stories of their land, each artisan transforms her
+  imagination into unique patterns, carefully hand-woven with wool and
+  traditional techniques.
+  <br /><br />
+  Taznakht is renowned as one of Morocco’s historic centers of carpet
+  craftsmanship, known for its rich weaving heritage and distinctive
+  regional styles. Every rug is more than a decorative piece — it is a
+  fragment of Moroccan heritage, carrying the knowledge, creativity and
+  identity of the women who created it.
+</p>
           <div>
             <Link 
               href="/story" 

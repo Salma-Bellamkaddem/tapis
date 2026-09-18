@@ -238,7 +238,7 @@ function ProductCard({ rug }: { rug: any }) {
                   </button>
                 ))}
               </div>
-              <span className="text-[10px] text-gray-400 italic">5 views</span>
+            
             </div>
           )}
 
@@ -306,18 +306,28 @@ export default function Home() {
       <AboutCooperative />
 
       {/* 3. OUR TOP RUGS */}
-      <section className="bg-[#FAF0E4] py-20 px-4 md:px-8 border-b border-[#A44E36]/10">
+    {/* 3. OUR TOP RUGS */}
+    <section className="bg-[#FAF0E4] py-20 px-4 md:px-8 border-b border-[#A44E36]/10">
         <div className="max-w-7xl mx-auto">
           <div className="flex flex-col items-center text-center mb-12">
             <span className="text-[10px] font-bold tracking-[0.3em] text-[#A44E36] uppercase mb-2 block">
               EXCEPTIONAL PIECES
             </span>
-            <h2 className="text-3xl md:text-4xl font-serif tracking-widest text-gray-900 uppercase mb-3">
+            
+            {/* Titre principal unifié (H2) */}
+            <h2 className="font-serif text-3xl md:text-4xl tracking-widest text-gray-950 uppercase font-normal mb-3">
               Our Berber Rugs
             </h2>
-            <p className="text-xs md:text-sm text-gray-600 max-w-xl mb-6 leading-relaxed">
-              Each rug is a unique work of art, hand-woven by women artisans in Morocco. Authentic motifs, natural colors, and a story in every thread.
-            </p>
+
+            <p className="text-xs md:text-sm text-gray-600 max-w-2xl mb-6 leading-relaxed">
+  Woven by rural Amazigh women in the Siroua Mountains near Taznakht,
+  Morocco, each rug carries generations of ancestral craftsmanship.
+  Taznakht, a historic center of Moroccan carpet weaving, is celebrated
+  for its five distinctive rug traditions, each shaped by the landscapes,
+  symbols and stories of the region. Long appreciated for their artistry
+  and cultural value, these exceptional rugs have found their place in
+  refined interiors and distinguished private collections.
+</p>
             <Link 
               href="/rugs" 
               prefetch={true}
@@ -338,10 +348,13 @@ export default function Home() {
               <span className="text-[10px] font-bold tracking-[0.3em] text-[#A44E36] uppercase mb-2 block">
                 MADE TO ORDER
               </span>
-              <h3 className="font-serif text-2xl md:text-3xl text-gray-900 mb-2">
+              
+              {/* Titre encadré (H3) unifié avec la même police serif et responsive fluide */}
+              <h3 className="font-serif text-2xl md:text-3xl tracking-wide text-gray-950 font-normal mb-2">
                 Can't find the right size or design?
               </h3>
-              <p className="text-gray-600 text-sm max-w-xl">
+
+              <p className="text-gray-600 text-xs md:text-sm max-w-xl">
                 We also weave custom Berber rugs — dimensions, color palettes, and symbols of your choice, crafted by hand by our women artisans.
               </p>
             </div>
@@ -355,7 +368,6 @@ export default function Home() {
           </div>
         </div>
       </section>
-
       {/* 4. COLLECTIONS */}
       <section className="relative bg-[#F8EFE3] py-24 md:py-28 overflow-hidden border-b border-[#A44E36]/10">
         <div className="relative max-w-[1500px] mx-auto">
@@ -365,9 +377,12 @@ export default function Home() {
               <span className="text-[#A44E36] text-2xl">◈</span>
               <span className="w-16 h-px bg-[#A44E36]/30" />
             </div>
-            <h2 className="font-serif text-4xl sm:text-5xl md:text-6xl tracking-[0.08em] text-[#101827] uppercase leading-tight">
+
+            {/* Titre unifié et optimisé pour le mobile (taille fluide + retour à la ligne propre) */}
+            <h2 className="font-serif text-3xl md:text-4xl tracking-widest text-gray-950 uppercase font-normal mb-3">
               Explore Our Collections
             </h2>
+
             <p className="mt-5 text-[10px] md:text-xs text-[#A44E36] font-bold tracking-[0.24em] uppercase">
               HAND MADE BY RURAL WOMEN — SWIPE TO DISCOVER ALL CATEGORIES
             </p>

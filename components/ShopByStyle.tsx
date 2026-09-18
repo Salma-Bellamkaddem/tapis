@@ -33,15 +33,23 @@ export default function ShopByStyle() {
   return (
     <section className="bg-[#FAF0E4] py-24 px-4 md:px-8 border-b border-[#A44E36]/10">
       <div className="max-w-7xl mx-auto">
-        <div className="text-center mb-16">
-          <span className="text-[10px] font-bold tracking-[0.28em] text-[#A44E36] uppercase mb-3 block">
-            Curated Interiors — Est. 2003 (13 Families across Taznakhte & Villages)
-          </span>
-          <h2 className="font-serif text-3xl md:text-5xl text-gray-900 uppercase tracking-wide mb-4">Shop by Style</h2>
-          <p className="max-w-2xl mx-auto text-xs md:text-sm text-gray-600 italic">
-            Berber women obtain symbols in nature (mountains, trees, plants, animals, insects...) then they put them into carpets with their imaginations like drawing. HAND MADE BY MOROCCAN RURAL WOMEN.
-          </p>
-        </div>
+      <div className="text-center mb-16">
+  <span className="text-[10px] font-bold tracking-[0.28em] text-[#A44E36] uppercase mb-3 block">
+    Curated Interiors — Est. 2003 · 13 Families across Taznakht & Surrounding Villages
+  </span>
+
+  <h2 className="font-serif text-3xl md:text-4xl tracking-widest text-gray-950 uppercase font-normal mb-3">
+    Shop by Style
+  </h2>
+
+  <p className="max-w-2xl mx-auto text-xs md:text-sm text-gray-600 italic leading-relaxed">
+    In the Siroua Mountains of Morocco, rural Amazigh women draw inspiration
+    from nature — mountains, trees, plants, animals and insects — transforming
+    these symbols into unique designs through their imagination and ancestral
+    weaving traditions. Each piece is handmade in Taznakht, Morocco, a renowned
+    center of Moroccan carpet craftsmanship.
+  </p>
+</div>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {stylesData.map((style, idx) => (
             <Link key={idx} href={style.href} className="group relative h-[380px] rounded-2xl overflow-hidden shadow-md block">

@@ -29,8 +29,8 @@ export default function EthicalImpact() {
           <span className="text-[10px] font-bold tracking-[0.3em] text-[#A44E36] uppercase mb-3 block animate-pulse">
             ETHICAL COMMITMENT — EST. 2003
           </span>
-          <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl text-[#101827] uppercase tracking-wide mb-4 leading-tight">
-            YOUR PURCHASE <br />MAKES A DIFFERENCE
+          <h2 className="font-serif text-3xl md:text-4xl tracking-widest text-gray-950 uppercase font-normal mb-3">
+          YOUR PURCHASE <br />MAKES A DIFFERENCE
           </h2>
           
           <div className="flex items-center justify-center gap-4 mb-6">

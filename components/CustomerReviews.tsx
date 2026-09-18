@@ -54,8 +54,8 @@ export default function CustomerReviews() {
           <span className="text-[9px] md:text-[10px] font-bold tracking-[0.3em] text-[#A44E36] uppercase mb-2 md:mb-3 block">
             TESTIMONIALS
           </span>
-          <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-[#101827] uppercase tracking-wide mb-3 md:mb-4">
-            What Our Customers Say
+          <h2 className="font-serif text-3xl md:text-4xl tracking-widest text-gray-950 uppercase font-normal mb-3">
+          What Our Customers Say
           </h2>
           
           {/* Golden Stars */}

@@ -8,75 +8,80 @@ const siteUrl = "https://www.rugsberber.com";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
+
   title: {
-    default: "Authentic Handmade Moroccan Berber Rugs | Direct from Cooperative",
+    default: "Handmade Moroccan Berber Rugs | Ouaouzguite, Glaoui & More",
     template: "%s | Berber Rugs Cooperative",
   },
+
   description:
-    "Discover authentic handmade Moroccan Berber rugs — Ouaouzguite, Glaoui, Akhenif, Zanifi, and Picasso Berber masterpieces. Each carpet is hand-woven, hand-knotted or hand-embroidered by rural women artisans in the Atlas mountains, shipped worldwide to Europe, USA, and Africa.",
-  keywords: [
-    "Berber rug",
-    "Moroccan carpet",
-    "Ouaouzguite carpet",
-    "Akhenif carpet",
-    "Glaoui carpet",
-    "Zanifi embroidered rug",
-    "Picasso Berber rug",
-    "handmade Moroccan rug",
-    "authentic Berber carpet",
-    "Atlas mountains rug",
-    "Amazigh symbols carpet",
-    "wool rug Morocco",
-    "buy Berber rug online",
-  ],
+    "Handmade Moroccan Berber rugs from Taznakht: Ouaouzguite, Glaoui, Akhenif, Zanifi and Picasso. Woven by rural Amazigh women in the Siroua Mountains.",
+
   authors: [{ name: "Cooperative Berber Rugs" }],
   creator: "Cooperative Berber Rugs",
   publisher: "Cooperative Berber Rugs",
+
   formatDetection: {
     email: false,
     address: false,
     telephone: false,
   },
+
   openGraph: {
     type: "website",
     locale: "en_US",
     url: siteUrl,
     siteName: "Cooperative Berber Rugs",
-    title: "Authentic Handmade Moroccan Berber Rugs | Direct from Cooperative",
+
+    title: "Handmade Moroccan Berber Rugs | Taznakht, Morocco",
+
     description:
-      "Handmade Moroccan Berber carpets crafted by rural women artisans using pure living sheep's wool and natural dyes. Worldwide shipping to Europe, USA, and Africa.",
+      "Explore Ouaouzguite, Glaoui, Akhenif, Zanifi and Picasso rugs, handwoven by rural Amazigh women in the Siroua Mountains of Morocco.",
+
     images: [
       {
         url: "/favicon.jpg",
         width: 1200,
         height: 630,
-        alt: "Handmade Berber carpets collection",
+        alt: "Handmade Moroccan Berber rugs from Taznakht",
       },
     ],
   },
+
   twitter: {
     card: "summary_large_image",
-    title: "Authentic Handmade Moroccan Berber Rugs",
+
+    title: "Handmade Moroccan Berber Rugs | Taznakht",
+
     description:
-      "Authentic Berber carpets hand-woven by rural Moroccan women — inspired by mountains, nature and Amazigh heritage. Worldwide delivery.",
+      "Ouaouzguite, Glaoui, Akhenif, Zanifi and Picasso rugs, handwoven by rural Amazigh women in Morocco.",
+
     images: ["/favicon.jpg"],
   },
+
   robots: {
     index: true,
     follow: true,
+
     googleBot: {
       index: true,
       follow: true,
       "max-image-preview": "large",
       "max-snippet": -1,
+      "max-video-preview": -1,
     },
   },
+
   alternates: {
     canonical: siteUrl,
   },
+
   icons: {
     icon: [
-      { url: "/favicon.jpg", type: "image/jpeg" },
+      {
+        url: "/favicon.jpg",
+        type: "image/jpeg",
+      },
     ],
     shortcut: "/favicon.jpg",
     apple: "/favicon.jpg",
@@ -91,10 +96,20 @@ export default function RootLayout({
   return (
     <html lang="en" data-scroll-behavior="smooth">
       <head>
-        <link rel="preconnect" href="https://res.cloudinary.com" />
-        <link rel="dns-prefetch" href="https://res.cloudinary.com" />
+        <link
+          rel="preconnect"
+          href="https://res.cloudinary.com"
+        />
+        <link
+          rel="dns-prefetch"
+          href="https://res.cloudinary.com"
+        />
       </head>
-      <body className="antialiased bg-[#FAF9F6] text-gray-900" suppressHydrationWarning>
+
+      <body
+        className="antialiased bg-[#FAF9F6] text-gray-900"
+        suppressHydrationWarning
+      >
         <CurrencyProvider>
           <Header />
           <main className="min-h-screen">{children}</main>
