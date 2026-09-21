@@ -114,17 +114,43 @@ export default function Features() {
           <a 
             href="https://wa.me/212767149114?text=Hello,%20I%20am%20interested%20in%20a%20custom%20berber%20rug." 
             target="_blank"
-            rel="noreferrer"
-            aria-label="Order on WhatsApp"
-            className="bg-[#A44E36] text-white px-6 py-3.5 text-xs font-bold tracking-widest hover:bg-[#8a3f2b] transition-colors flex items-center justify-center gap-2 rounded-sm w-full max-w-[280px] shadow-sm"
+
+            rel="noopener noreferrer"
+          
+            aria-label="Chat with Cooperative Berber Rugs on WhatsApp"
+          
+            className="inline-flex items-center justify-center gap-2 border border-[#A44E36] text-[#A44E36] px-4 py-2.5 text-xs font-bold hover:bg-[#A44E36] hover:text-white transition-all duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-[#A44E36]"
+          
           >
-            <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-              <path d="M12.031 21c-1.618 0-3.197-.417-4.588-1.209l-.328-.186-3.411.894.912-3.326-.205-.325A8.922 8.922 0 013.119 12c0-4.963 4.044-9 9.031-9 4.981 0 9.032 4.037 9.032 9s-4.051 9-9.151 9zM12.031 4.717a7.288 7.288 0 00-7.29 7.283c0 1.458.379 2.879 1.1 4.135l.138.238-.54 1.97 2.015-.528.23.136a7.258 7.258 0 003.957 1.156c4.015 0 7.284-3.264 7.284-7.28-0-4.017-3.27-7.283-7.284-7.283zm3.998 9.948c-.219-.11-1.296-.64-1.498-.713-.201-.074-.349-.11-.497.111-.148.22-.567.712-.695.859-.128.147-.256.165-.475.055-.219-.11-.925-.342-1.761-1.091-.65-.583-1.089-1.303-1.218-1.523-.128-.22-.014-.339.095-.448.1-.1.219-.256.328-.384.11-.128.146-.22.219-.366.074-.146.037-.274-.018-.384-.055-.11-.497-1.199-.681-1.642-.18-.43-.362-.372-.497-.378-.128-.007-.274-.007-.421-.007z"/>
+          
+            <svg
+          
+              className="w-[17px] h-[17px] shrink-0"
+          
+              viewBox="0 0 24 24"
+          
+              fill="currentColor"
+          
+              aria-hidden="true"
+          
+              focusable="false"
+          
+            >
+          
+              <path
+          
+                d="M12.04 2C6.52 2 2.03 6.49 2.03 12c0 1.76.46 3.48 1.33 5.01L2 22l5.14-1.35A9.96 9.96 0 0 0 12.04 22C17.55 22 22 17.51 22 12S17.55 2 12.04 2Zm0 18.2c-1.57 0-3.1-.42-4.44-1.22l-.32-.19-3.05.8.82-2.97-.21-.32A8.2 8.2 0 0 1 3.82 12c0-4.54 3.69-8.23 8.22-8.23 4.54 0 8.22 3.69 8.22 8.23 0 4.53-3.69 8.2-8.22 8.2Zm4.51-6.15c-.25-.13-1.47-.73-1.7-.81-.23-.08-.39-.13-.56.13-.16.25-.64.81-.78.97-.14.17-.29.19-.54.06-.25-.13-1.05-.39-2-1.24-.74-.66-1.24-1.47-1.39-1.72-.14-.25-.02-.38.11-.51.12-.12.25-.29.38-.43.13-.15.17-.25.25-.42.08-.17.04-.31-.02-.44-.06-.13-.56-1.35-.77-1.85-.2-.48-.4-.42-.55-.43h-.47c-.17 0-.44.06-.67.31-.23.25-.88.86-.88 2.1 0 1.24.9 2.43 1.03 2.6.13.17 1.77 2.7 4.29 3.79.6.26 1.07.42 1.43.54.6.19 1.15.16 1.58.1.48-.07 1.47-.6 1.68-1.18.21-.58.21-1.08.15-1.18-.06-.1-.23-.16-.48-.29Z"
+          
+              />
+          
             </svg>
             Order on WhatsApp
           </a>
         </div>
         
+
+
+
         {/* Image Droite (Vase) */}
         <div className="relative w-full md:w-1/3 h-[300px] md:h-full bg-[#FAF9F6]">
           <Image 
