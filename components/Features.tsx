@@ -128,8 +128,8 @@ export default function Features() {
         {/* Image Droite (Vase) */}
         <div className="relative w-full md:w-1/3 h-[300px] md:h-full bg-[#FAF9F6]">
           <Image 
-            src="/placeholders/vase.webp" 
-            alt="Decorative vase" 
+            src="/placeholders/img76.jpeg" 
+            alt="Moroccan tapis " 
             fill
             sizes="(max-width: 768px) 100vw, 33vw"
             className="object-cover" 

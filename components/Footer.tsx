@@ -19,6 +19,7 @@ const COLLECTIONS = [
   { label: "Akhenif", category: "akhenif" },
   { label: "Picasso Berber", category: "picasso-berber" },
   { label: "Zanifi", category: "zanifi" },
+  { label: "tableau", category: "Tapis Tableau" },
 ];
 
 const NAV_LINKS = [

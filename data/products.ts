@@ -365,7 +365,7 @@ export const rugsData: Rug[] = [
     price: "$250",
     isAvailable: true,
     images: [
-      "https://res.cloudinary.com/ln4u8wnx/image/upload/f_auto,q_auto/v1789605254/11-1.png",
+      "https://res.cloudinary.com/ln4u8wnx/image/upload/v1789953397/Photo_Background_Removal_4.png",
       "https://res.cloudinary.com/ln4u8wnx/image/upload/f_auto,q_auto/v1789605309/11-2.jpg",
       "https://res.cloudinary.com/ln4u8wnx/image/upload/f_auto,q_auto/v1789605289/11-3.jpg",
       "https://res.cloudinary.com/ln4u8wnx/image/upload/f_auto,q_auto/v1789605396/11-4.jpg",
@@ -384,7 +384,7 @@ export const rugsData: Rug[] = [
     price: "$300",
     isAvailable: true,
     images: [
-      "https://res.cloudinary.com/ln4u8wnx/image/upload/v1789652043/Photo_Background_Removal_1.png",
+      "https://res.cloudinary.com/ln4u8wnx/image/upload/f_auto,q_auto/v1789952560/Photo_Background_Removal_3.png",
       "https://res.cloudinary.com/ln4u8wnx/image/upload/f_auto,q_auto/v1789652059/photo_2026-09-17_14-14-37.jpg",
       "https://res.cloudinary.com/ln4u8wnx/image/upload/f_auto,q_auto/v1789652062/photo_2026-09-17_14-14-40.jpg",
       "https://res.cloudinary.com/ln4u8wnx/image/upload/f_auto,q_auto/v1789652064/photo_2026-09-17_14-14-42.jpg",
@@ -407,7 +407,7 @@ export const rugsData: Rug[] = [
       "https://res.cloudinary.com/ln4u8wnx/image/upload/f_auto,q_auto/v1789598460/produit2-2.jpg",
       "https://res.cloudinary.com/ln4u8wnx/image/upload/f_auto,q_auto/v1789598444/produit2-3.jpg",
       "https://res.cloudinary.com/ln4u8wnx/image/upload/f_auto,q_auto/v1789599002/produit2-8.jpg",
-      "https://res.cloudinary.com/ln4u8wnx/image/upload/f_auto,q_auto/v1789598953/produit2-5.jpg"
+      "https://res.cloudinary.com/ln4u8wnx/image/upload/f_auto,q_auto/v1789951896/photo_2026-09-21_00-52-06.jpg"
     ],
     category: "Ouaouzguite",
     sizes: [
@@ -422,7 +422,7 @@ export const rugsData: Rug[] = [
     price: "$270",
     isAvailable: true,
     images: [
-      "https://res.cloudinary.com/ln4u8wnx/image/upload/f_auto,q_auto/v1789654800/Photo_Background_Removal_2.png",
+      "https://res.cloudinary.com/ln4u8wnx/image/upload/v1789954311/Photo_Background_Removal_5.png",
       "https://res.cloudinary.com/ln4u8wnx/image/upload/f_auto,q_auto/v1789654838/photo_2026-09-17_14-41-34.jpg",
       "https://res.cloudinary.com/ln4u8wnx/image/upload/f_auto,q_auto/v1789654841/photo_2026-09-17_14-41-37.jpg",
       "https://res.cloudinary.com/ln4u8wnx/image/upload/f_auto,q_auto/v1789654845/photo_2026-09-17_14-42-04.jpg",
