@@ -49,7 +49,7 @@ export const metadata: Metadata = {
       "Discover handmade Moroccan Berber rugs woven by rural Amazigh women in Taznakht, Morocco.",
     images: [
       {
-        url: "/og-image.jpg",
+        url: `${siteUrl}/favicon.jpg`,
         width: 1200,
         height: 630,
         alt: "Handmade Moroccan Berber Rugs from Taznakht",
@@ -62,7 +62,7 @@ export const metadata: Metadata = {
     title: "Handmade Moroccan Berber Rugs | Taznakht, Morocco",
     description:
       "Handmade Moroccan Berber rugs woven by rural Amazigh women in Taznakht, Morocco.",
-    images: ["/og-image.jpg"],
+    images: [`${siteUrl}/favicon.jpg`],
   },
 
   formatDetection: {
