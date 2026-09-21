@@ -28,6 +28,7 @@ const NAV_LINKS = [
   { href: "/rugs", label: "Our Rugs" },
   { href: "/collections", label: "Collections" },
   { href: "/story", label: "Our Story" },
+
   { href: "/contact", label: "Contact" },
 ];
 
@@ -221,25 +222,7 @@ export default function Footer() {
           </nav>
 
           {/* Help */}
-          <nav
-            aria-label="Help"
-            className="flex flex-col"
-          >
-            <h3 className={headingClass}>
-              Help
-            </h3>
-
-            <ul className="space-y-3 text-gray-600">
-              {HELP_LINKS.map(({ href, label }) => (
-                <li key={href}>
-                  <Link href={href} className={linkClass}>
-                    {label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </nav>
-
+          
           {/* Contact */}
           <div className="lg:col-span-1 flex flex-col">
 
