@@ -6,7 +6,6 @@ import Image from "next/image";
 import { rugsData } from "@/data/products";
 import { useCurrency } from "./CurrencyContext";
 
-
 // Ruler icon in SVG
 function RulerIcon({ className = "w-4 h-4" }: { className?: string }) {
   return (
@@ -37,8 +36,9 @@ export default function ProductDetailClient({ rug }: { rug: (typeof rugsData)[nu
   const [selectedSizeObj, setSelectedSizeObj] = useState(availableSizes[0]);
 
   const displayPrice = selectedSizeObj?.price || rug.price;
+  const isAvailable = rug.isAvailable !== false; // Par défaut disponible si non spécifié
 
-  // Generate structured English WhatsApp order URL with formatted price
+  // URL WhatsApp pour l'achat direct (si disponible)
   const generateWhatsAppUrl = () => {
     let message = "🏛️ *NEW ORDER - BERBER RUG*\n";
     message += "━━━━━━━━━━━━━━━━━━━━━━\n\n";
@@ -47,6 +47,21 @@ export default function ProductDetailClient({ rug }: { rug: (typeof rugsData)[nu
     message += `🔖 *SKU :* ${rug.sku}\n`;
     message += `📏 *Selected Size :* ${selectedSizeObj.size}\n`;
     message += `💰 *Price :* ${formatPrice(displayPrice)}\n\n`;
+    message += "━━━━━━━━━━━━━━━━━━━━━━\n";
+    message += `📸 *Model Photo :*\n${mainImage}`;
+
+    return `https://wa.me/212767149114?text=${encodeURIComponent(message)}`;
+  };
+
+  // URL WhatsApp pour demander un modèle similaire (si vendu)
+  const generateCustomWhatsAppUrl = () => {
+    let message = "🏛️ *CUSTOM ORDER REQUEST (SIMILAR TO SOLD RUG)*\n";
+    message += "━━━━━━━━━━━━━━━━━━━━━━\n\n";
+    message += `✨ *Reference Rug :* ${rug.name} (${rug.sku})\n`;
+    message += `📂 *Category :* ${rug.category}\n`;
+    message += `📏 *Desired Size :* ${selectedSizeObj.size}\n`;
+    message += `💰 *Indicative Price :* ${formatPrice(displayPrice)}\n\n`;
+    message += "Hello, this unique piece is sold out. Can your artisans weave a similar custom piece for me?\n\n";
     message += "━━━━━━━━━━━━━━━━━━━━━━\n";
     message += `📸 *Model Photo :*\n${mainImage}`;
 
@@ -85,8 +100,15 @@ export default function ProductDetailClient({ rug }: { rug: (typeof rugsData)[nu
               fill
               priority
               sizes="(max-width: 768px) 100vw, 60vw"
-              className="object-cover"
+              className={`object-cover transition-opacity duration-300 ${!isAvailable ? 'opacity-85' : ''}`}
             />
+            {/* 🔴 Badge Sold Out rouge vif et attirant */}
+            {!isAvailable && (
+              <div className="absolute top-4 left-4 bg-red-600 text-white text-xs font-bold tracking-[0.2em] px-4 py-2 uppercase rounded shadow-lg flex items-center gap-2 animate-pulse">
+                <span className="w-2 h-2 rounded-full bg-white"></span>
+                Sold Out (Archived Piece)
+              </div>
+            )}
           </div>
 
           <div className="flex gap-4 overflow-x-auto pb-2">
@@ -172,6 +194,13 @@ export default function ProductDetailClient({ rug }: { rug: (typeof rugsData)[nu
               <span className="font-bold tracking-widest uppercase">Category</span>
               <span>{rug.category}</span>
             </div>
+
+            <div className="flex justify-between">
+              <span className="font-bold tracking-widest uppercase">Status</span>
+              <span className={isAvailable ? "text-green-600 font-bold" : "text-red-600 font-bold"}>
+                {isAvailable ? "Available" : "Sold Out (Similar on Request)"}
+              </span>
+            </div>
           </div>
 
           {/* DESCRIPTION */}
@@ -204,21 +233,37 @@ export default function ProductDetailClient({ rug }: { rug: (typeof rugsData)[nu
             )}
           </div>
 
-          {/* WHATSAPP CTA */}
-          <a
-            href={generateWhatsAppUrl()}
-            target="_blank"
-            rel="noreferrer"
-            className="w-full bg-[#A44E36] text-white py-4 text-xs font-bold tracking-widest uppercase hover:bg-[#8a3f2b] transition-colors flex items-center justify-center gap-3 shadow-lg rounded-full"
-          >
-            <svg
-              className="w-5 h-5 fill-current"
-              viewBox="0 0 24 24"
+          {/* WHATSAPP CTA - DYNAMIQUE SELON LA DISPONIBILITÉ */}
+          {isAvailable ? (
+            <a
+              href={generateWhatsAppUrl()}
+              target="_blank"
+              rel="noreferrer"
+              className="w-full bg-[#A44E36] text-white py-4 text-xs font-bold tracking-widest uppercase hover:bg-[#8a3f2b] transition-colors flex items-center justify-center gap-3 shadow-lg rounded-full"
             >
-              <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-1.98-1.29-2.073-.018-.009-.039-.013-.06-.013-.391 0-.756.224-.925.592-.375.836-1.003 2.05-1.229 2.196-.226.147-.451.164-.841-.027-.39-.192-1.649-.607-3.146-1.942-1.16-1.034-1.943-2.311-2.171-2.702-.228-.391-.024-.603.171-.798.176-.175.391-.454.585-.681.194-.227.259-.39.389-.65.13-.26.065-.487-.033-.682-.098-.195-.921-2.222-1.263-3.041-.334-.803-.675-.694-.928-.707-.238-.012-.511-.012-.784-.012s-.716.102-1.091.511c-.375.409-1.436 1.403-1.436 3.421 0 2.018 1.472 3.966 1.677 4.242.205.275 2.894 4.418 7.005 6.192 3.978 1.716 4.793 1.373 5.655 1.284.862-.089 2.784-1.139 3.174-2.24 0.39-1.101.39-2.046.273-2.241z"/>
-            </svg>
-            Order via WhatsApp
-          </a>
+              <svg className="w-5 h-5 fill-current" viewBox="0 0 24 24">
+                <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-1.98-1.29-2.073-.018-.009-.039-.013-.06-.013-.391 0-.756.224-.925.592-.375.836-1.003 2.05-1.229 2.196-.226.147-.451.164-.841-.027-.39-.192-1.649-.607-3.146-1.942-1.16-1.034-1.943-2.311-2.171-2.702-.228-.391-.024-.603.171-.798.176-.175.391-.454.585-.681.194-.227.259-.39.389-.65.13-.26.065-.487-.033-.682-.098-.195-.921-2.222-1.263-3.041-.334-.803-.675-.694-.928-.707-.238-.012-.511-.012-.784-.012s-.716.102-1.091.511c-.375.409-1.436 1.403-1.436 3.421 0 2.018 1.472 3.966 1.677 4.242.205.275 2.894 4.418 7.005 6.192 3.978 1.716 4.793 1.373 5.655 1.284.862-.089 2.784-1.139 3.174-2.24 0.39-1.101.39-2.046.273-2.241z"/>
+              </svg>
+              Order via WhatsApp
+            </a>
+          ) : (
+            <div className="flex flex-col gap-3">
+              <div className="bg-red-50 border border-red-200 text-red-900 p-3 rounded-lg text-xs leading-relaxed">
+                <strong>Unique Masterpiece Sold:</strong> This rug has found a home, but our women artisans can weave a custom piece inspired by this design for you.
+              </div>
+              <a
+                href={generateCustomWhatsAppUrl()}
+                target="_blank"
+                rel="noreferrer"
+                className="w-full bg-red-600 text-white py-4 text-xs font-bold tracking-widest uppercase hover:bg-red-700 transition-colors flex items-center justify-center gap-3 shadow-lg rounded-full"
+              >
+                <svg className="w-5 h-5 fill-current" viewBox="0 0 24 24">
+                  <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-1.98-1.29-2.073-.018-.009-.039-.013-.06-.013-.391 0-.756.224-.925.592-.375.836-1.003 2.05-1.229 2.196-.226.147-.451.164-.841-.027-.39-.192-1.649-.607-3.146-1.942-1.16-1.034-1.943-2.311-2.171-2.702-.228-.391-.024-.603.171-.798.176-.175.391-.454.585-.681.194-.227.259-.39.389-.65.13-.26.065-.487-.033-.682-.098-.195-.921-2.222-1.263-3.041-.334-.803-.675-.694-.928-.707-.238-.012-.511-.012-.784-.012s-.716.102-1.091.511c-.375.409-1.436 1.403-1.436 3.421 0 2.018 1.472 3.966 1.677 4.242.205.275 2.894 4.418 7.005 6.192 3.978 1.716 4.793 1.373 5.655 1.284.862-.089 2.784-1.139 3.174-2.24 0.39-1.101.39-2.046.273-2.241z"/>
+                </svg>
+                Request Similar Custom Rug via WhatsApp
+              </a>
+            </div>
+          )}
         </div>
       </div>
     </div>

@@ -7,7 +7,6 @@ import { useSearchParams, useRouter } from "next/navigation";
 import { rugsData } from "@/data/products";
 import { useCurrency } from "@/components/CurrencyContext";
 
-
 // Ruler icon in SVG
 function RulerIcon({ className = "w-4 h-4" }: { className?: string }) {
   return (
@@ -152,18 +151,28 @@ function AllRugsContent() {
                   const selectedSizeIndex = selectedSizeIndices[rug.id] || 0;
                   const currentSizeObj = sizes[selectedSizeIndex] || sizes[0];
                   const hasMultipleSizes = sizes.length > 1;
+                  const isAvailable = rug.isAvailable !== false;
 
-                  const whatsappUrl = `https://wa.me/212767149114?text=${encodeURIComponent(
-                    `🏛️ *NEW ORDER - BERBER RUG*\n` +
-                    `━━━━━━━━━━━━━━━━━━━━━━\n\n` +
-                    `✨ *Rug :* ${rug.name}\n` +
-                    `📂 *Category :* ${rug.category}\n` +
-                    `🔖 *SKU :* ${rug.sku}\n` +
-                    `📏 *Size :* ${currentSizeObj.size}\n` +
-                    `💰 *Price :* ${formatPrice(currentSizeObj.price)}\n\n` +
-                    `━━━━━━━━━━━━━━━━━━━━━━\n` +
-                    `📸 *Model Photo :*\n${currentImage}`
-                  )}`;
+                  const whatsappUrl = isAvailable 
+                    ? `https://wa.me/212767149114?text=${encodeURIComponent(
+                        `🏛️ *NEW ORDER - BERBER RUG*\n` +
+                        `━━━━━━━━━━━━━━━━━━━━━━\n\n` +
+                        `✨ *Rug :* ${rug.name}\n` +
+                        `📂 *Category :* ${rug.category}\n` +
+                        `🔖 *SKU :* ${rug.sku}\n` +
+                        `📏 *Size :* ${currentSizeObj.size}\n` +
+                        `💰 *Price :* ${formatPrice(currentSizeObj.price)}\n\n` +
+                        `━━━━━━━━━━━━━━━━━━━━━━\n` +
+                        `📸 *Model Photo :*\n${currentImage}`
+                      )}`
+                    : `https://wa.me/212767149114?text=${encodeURIComponent(
+                        `🏛️ *CUSTOM ORDER REQUEST (SIMILAR TO SOLD RUG)*\n` +
+                        `━━━━━━━━━━━━━━━━━━━━━━\n\n` +
+                        `✨ *Reference Rug :* ${rug.name} (${rug.sku})\n` +
+                        `📏 *Size :* ${currentSizeObj.size}\n` +
+                        `Hello, this unique piece is sold out. Can your artisans weave a similar custom piece for me?\n\n` +
+                        `📸 *Model Photo :*\n${currentImage}`
+                      )}`;
 
                   return (
                     <div key={rug.id} className="bg-[#FAF0E4]/40 border border-[#A44E36]/15 rounded-xl p-4 group block hover:shadow-lg transition-all flex flex-col justify-between">
@@ -174,8 +183,13 @@ function AllRugsContent() {
                             alt={rug.name} 
                             fill
                             sizes="(max-width: 768px) 100vw, 33vw"
-                            className="object-cover group-hover:scale-105 transition-transform duration-500" 
+                            className={`object-cover group-hover:scale-105 transition-transform duration-500 ${!isAvailable ? 'opacity-80' : ''}`} 
                           />
+                          {!isAvailable && (
+                            <span className="absolute top-3 left-3 bg-red-600 text-white text-[10px] font-bold tracking-widest px-2.5 py-1 uppercase rounded shadow-md">
+                              Sold Out
+                            </span>
+                          )}
                         </div>
                       </Link>
 
@@ -209,10 +223,15 @@ function AllRugsContent() {
 
                         <div className="flex justify-between items-center text-xs text-gray-500 mb-3">
                           <span>SKU: {rug.sku}</span>
-                          {rug.isAvailable && (
+                          {isAvailable ? (
                             <span className="text-[10px] text-green-700 font-bold tracking-wider uppercase flex items-center gap-1">
                               <span className="w-1.5 h-1.5 rounded-full bg-green-600"></span>
                               Available
+                            </span>
+                          ) : (
+                            <span className="text-[10px] text-red-600 font-bold tracking-wider uppercase flex items-center gap-1">
+                              <span className="w-1.5 h-1.5 rounded-full bg-red-600"></span>
+                              Sold Out
                             </span>
                           )}
                         </div>
@@ -241,9 +260,13 @@ function AllRugsContent() {
                             href={whatsappUrl}
                             target="_blank"
                             rel="noreferrer"
-                            className="bg-[#A44E36] text-white px-3.5 py-1.5 rounded font-semibold text-xs tracking-widest uppercase hover:bg-[#8a3f2b] transition-colors shadow-sm"
+                            className={`px-3.5 py-1.5 rounded font-semibold text-xs tracking-widest uppercase transition-colors shadow-sm ${
+                              isAvailable 
+                                ? "bg-[#A44E36] text-white hover:bg-[#8a3f2b]" 
+                                : "bg-gray-900 text-white hover:bg-gray-800"
+                            }`}
                           >
-                            Order
+                            {isAvailable ? "Order" : "Similar"}
                           </a>
                         </div>
                       </div>

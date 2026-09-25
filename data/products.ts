@@ -60,7 +60,7 @@ export const rugsData: Rug[] = [
     name: "Akhenif Berber Carpet",
     sku: "AKH-002",
     price: "$450",
-    isAvailable: true,
+    isAvailable: false,
     images: [
       "https://res.cloudinary.com/ln4u8wnx/image/upload/f_auto,q_auto/v1789596807/akhenif-p2-1.png",
       "https://res.cloudinary.com/ln4u8wnx/image/upload/f_auto,q_auto/v1789596842/akhenif-p2-2.jpg",
@@ -363,7 +363,7 @@ export const rugsData: Rug[] = [
     name: "Mouzaïk Heritage",
     sku: "MOU-002",
     price: "$250",
-    isAvailable: true,
+    isAvailable: false,
     images: [
       "https://res.cloudinary.com/ln4u8wnx/image/upload/v1789953397/Photo_Background_Removal_4.png",
       "https://res.cloudinary.com/ln4u8wnx/image/upload/f_auto,q_auto/v1789605309/11-2.jpg",
