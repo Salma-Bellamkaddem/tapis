@@ -451,6 +451,27 @@ export const rugsData: Rug[] = [
     ],
     description: "This Ouaouzguite Berber carpet is a beautiful example of traditional Moroccan craftsmanship, inspired by the colorful weaving traditions of the Atlas regions. Its patchwork-style composition combines different geometric motifs, including zigzags, diamonds, diagonal lines and checkerboard patterns. The traditional Berber symbols and geometric motifs carry cultural meanings passed down through generations, representing protection, femininity, fertility, nature, family and the heritage of Moroccan rural women artisans. Its vibrant combination of mustard yellow, red, deep blue, black and white gives the carpet a unique and joyful character, while its carefully crafted borders and hand-finished fringes add to its traditional charm. Ouaouzguite Berber carpet, hand-woven using traditional Berber techniques. Made with thousands of small hand-woven knots using wool from living sheep and natural colors such as saffron, henna, almond skins and pomegranate skins. Easy to wash, comfortable and highly durable, it can last for many years and becomes more beautiful with time. HAND MADE BY MOROCCAN RURAL WOMEN"
   },
+
+
+
+  {
+    id: "glaoui-royal-masterpiece-615",
+    name: "Royal Glaoui Masterpiece Carpet",
+    sku: "GLA-ROYAL-615",
+    price: "45000 MAD",
+    isAvailable: true,
+    images: [
+      "https://res.cloudinary.com/ln4u8wnx/image/upload/v1790470338/Photo_Background_Removal_6.png",
+      "https://res.cloudinary.com/ln4u8wnx/image/upload/v1790469850/WhatsApp_Image_2026-09-25_at_18.52.41_1.jpg",
+      "https://res.cloudinary.com/ln4u8wnx/image/upload/v1790469849/WhatsApp_Image_2026-09-25_at_18.52.34.jpg"
+        ],
+    category: "Glaoui",
+    sizes: [
+      { size: "615 × 340 cm", price: "45000 MAD" }
+    ],
+    description: "An exceptional, museum-grade royal Glaoui masterpiece rug measuring 6.15m × 3.40m. Hand-crafted combining three traditional techniques (woolen, flatweave, and intricate embroidery) using pure living sheep's wool and rich natural dyes by master women artisans in the High Atlas mountains. A breathtaking statement piece designed for grand architectural interiors and luxury residences. HAND MADE BY MOROCCAN RURAL WOMEN."
+  },
+
   {
     id: "ouaouzguite-custom-0033",
     name: "Ouaouzguite Berber Carpet",

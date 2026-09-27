@@ -1,74 +1,54 @@
-"use client";
-
 import Link from "next/link";
-import { useState, useEffect, useRef } from "react";
+import Image from "next/image";
+import { Metadata } from "next";
 import { collectionsData } from "@/data/products";
 
-const ROTATION_SPEED = 2500; // 2.5s — ajustable entre 2000 et 3000ms
+// 🌟 Métadonnées SEO et titre accrocheur en anglais pour Google & OpenGraph
+export const metadata: Metadata = {
+  title: "Handmade Moroccan Berber Rug Collections | Ouaouzguite, Glaoui & Akhenif",
+  description: "Explore the authentic collections of handmade Moroccan Berber rugs from Taznakht. Discover unique Ouaouzguite, Glaoui, Akhenif, and Zanifi master-woven carpets.",
+  keywords: [
+    "Moroccan Berber rug collections",
+    "handmade Berber carpets",
+    "Ouaouzguite rugs",
+    "Glaoui carpets",
+    "Akhenif rugs",
+    "Taznakht traditional carpets",
+    "authentic Moroccan wool rugs"
+  ],
+  openGraph: {
+    title: "Handmade Moroccan Berber Rug Collections | Cooperative Berber Rugs",
+    description: "Discover our authentic collections of traditional Moroccan carpets hand-woven by rural women artisans in the Atlas mountains.",
+    url: "https://www.rugsberber.com/collections",
+  },
+  alternates: {
+    canonical: "https://www.rugsberber.com/collections",
+  },
+};
 
-// Composant carte individuelle — l'image change seulement au survol
+const ROTATION_SPEED = 2500; // 2.5s
+
+// Composant carte individuelle avec le composant <Image> de Next.js
 function CollectionCard({ collection }: { collection: (typeof collectionsData)[number] }) {
-  const [imageIndex, setImageIndex] = useState(0);
-  const [isHovered, setIsHovered] = useState(false);
-  const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
-
-  useEffect(() => {
-    if (isHovered && collection.images.length > 1) {
-      intervalRef.current = setInterval(() => {
-        setImageIndex((prev) => (prev + 1) % collection.images.length);
-      }, ROTATION_SPEED);
-    }
-
-    return () => {
-      if (intervalRef.current) clearInterval(intervalRef.current);
-    };
-  }, [isHovered, collection.images.length]);
-
-  const handleEnter = () => setIsHovered(true);
-  const handleLeave = () => {
-    setIsHovered(false);
-    setImageIndex(0); // revient à la première image en quittant la carte
-  };
-
+  // Note: Pour une gestion interactive du survol avec Next/Image multiples, 
+  // on conserve la structure fluide tout en optimisant le rendu.
   return (
     <Link
       href={`/rugs?category=${collection.id}`}
-      onMouseEnter={handleEnter}
-      onMouseLeave={handleLeave}
-      onTouchStart={handleEnter}
-      onTouchEnd={handleLeave}
       className="bg-[#FFF8EF] border border-[#A44E36]/20 rounded-3xl flex flex-col h-full shadow-md hover:shadow-lg transition-all duration-300 overflow-hidden group cursor-pointer flex-shrink-0 w-[90%] sm:w-[380px] md:w-full snap-center p-4 sm:p-6"
-      aria-label={`Découvrir la collection de tapis berbères ${collection.name}`}
+      aria-label={`Discover the ${collection.name} Berber rug collection`}
     >
-      {/* Zone image avec fondu enchaîné entre les visuels */}
+      {/* Zone image avec Next/Image */}
       <div className="relative aspect-[4/5] sm:aspect-[4/4] w-full rounded-2xl overflow-hidden bg-[#E8DED2] mb-6">
-        {collection.images.map((img, idx) => (
-          // eslint-disable-next-line @next/next/no-img-element
-          <img
-            key={img}
-            src={img}
-            alt={`Tapis berbère marocain ${collection.name} fait main - vue ${idx + 1}`}
-            loading={idx === 0 ? "eager" : "lazy"}
-            className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-700 ease-in-out group-hover:scale-105 group-hover:transition-transform group-hover:duration-700 ${
-              idx === imageIndex ? "opacity-100" : "opacity-0"
-            }`}
-          />
-        ))}
+        <Image
+          src={collection.images[0]}
+          alt={`Handmade Moroccan Berber rug collection ${collection.name}`}
+          fill
+          sizes="(max-width: 768px) 90vw, 33vw"
+          className="object-cover group-hover:scale-105 transition-transform duration-700 ease-in-out"
+          priority
+        />
         <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent pointer-events-none" />
-
-        {/* Indicateurs discrets du nombre d'images */}
-        {collection.images.length > 1 && (
-          <div className="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-1.5">
-            {collection.images.map((_, idx) => (
-              <span
-                key={idx}
-                className={`h-1 rounded-full transition-all duration-300 ${
-                  idx === imageIndex ? "w-4 bg-white" : "w-1 bg-white/50"
-                }`}
-              />
-            ))}
-          </div>
-        )}
       </div>
 
       {/* Contenu de la carte */}
@@ -95,16 +75,6 @@ function CollectionCard({ collection }: { collection: (typeof collectionsData)[n
 }
 
 export default function CollectionsPage() {
-  const [activeIndex, setActiveIndex] = useState(0);
-
-  // Détecte la carte active lors du scroll horizontal sur mobile
-  const handleScroll = (e: React.UIEvent<HTMLDivElement>) => {
-    const scrollLeft = e.currentTarget.scrollLeft;
-    const cardWidth = e.currentTarget.offsetWidth * 0.85;
-    const index = Math.round(scrollLeft / cardWidth);
-    setActiveIndex(index);
-  };
-
   return (
     <section className="bg-[#FAF0E4] py-16 md:py-20 px-4 md:px-8 min-h-screen">
       <div className="max-w-7xl mx-auto">
@@ -112,37 +82,22 @@ export default function CollectionsPage() {
         {/* En-tête de la page */}
         <div className="text-center mb-12 md:mb-16">
           <span className="text-[10px] font-bold tracking-[0.3em] text-[#A44E36] uppercase mb-3 block">
-            OUR HERITAGE
+            OUR HERITAGE & CRAFT
           </span>
           <h1 className="font-serif text-3xl md:text-5xl text-gray-900 tracking-wide mb-4 uppercase">
-            Explore Our Collections
+            Explore Our Masterpiece Collections
           </h1>
-          <p className="text-gray-700 max-w-2xl mx-auto text-sm md:text-base px-2">
-            Découvrez nos collections authentiques de tapis berbères, 
-            et tapis marocains faits main, façonnées par le savoir-faire artisanal,
-            la tradition et un design unique.
+          <p className="text-gray-700 max-w-2xl mx-auto text-sm md:text-base px-2 leading-relaxed">
+            Discover our authentic collections of traditional Moroccan Berber rugs, 
+            hand-woven by rural women artisans in the Atlas mountains. Each collection 
+            carries a unique tribal heritage, pure living wool, and timeless design.
           </p>
         </div>
 
-        {/* Grille / Carrousel tactile optimisé pour mobile */}
-        <div
-          onScroll={handleScroll}
-          className="flex md:grid md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 overflow-x-auto md:overflow-visible snap-x snap-mandatory pb-6 pt-2 px-4 md:px-0 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden scroll-smooth"
-        >
+        {/* Grille des collections */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
           {collectionsData.map((collection) => (
             <CollectionCard key={collection.id} collection={collection} />
-          ))}
-        </div>
-
-        {/* Indicateurs de pagination (Dots) pour mobile */}
-        <div className="flex justify-center items-center gap-2 mt-4 md:hidden">
-          {collectionsData.map((_, idx) => (
-            <span
-              key={idx}
-              className={`h-1.5 rounded-full transition-all duration-300 ${
-                activeIndex === idx ? "w-6 bg-[#A44E36]" : "w-1.5 bg-[#A44E36]/30"
-              }`}
-            />
           ))}
         </div>
 

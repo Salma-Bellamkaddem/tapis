@@ -72,14 +72,16 @@ export const metadata: Metadata = {
   },
 };
 
+// 🏛️ Données structurées enrichies (Organization Schema)
 const structuredData = {
   "@context": "https://schema.org",
   "@type": "Organization",
   name: "Cooperative Berber Rugs",
   url: siteUrl,
   logo: `${siteUrl}/placeholders/logo3.webp`,
+  image: `${siteUrl}/placeholders/logo3.webp`,
   description:
-    "Cooperative creating handmade Moroccan Berber rugs woven by rural Amazigh women in Taznakht, Morocco.",
+    "Authentic cooperative creating handmade Moroccan Berber rugs woven by rural Amazigh women in Taznakht, Morocco.",
   email: contact.email,
   telephone: contact.phone,
   address: {
@@ -107,6 +109,7 @@ export default function RootLayout({
           href="https://res.cloudinary.com"
         />
 
+        {/* 🔍 Schema.org Organization injecté pour Google Search */}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{

@@ -1,5 +1,5 @@
 import { MetadataRoute } from 'next';
-import { rugsData } from '@/data/products';
+import { collectionsData } from '@/data/products';
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const siteUrl = 'https://www.rugsberber.com';
@@ -19,6 +19,12 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       priority: 0.9,
     },
     {
+      url: `${siteUrl}/collections`,
+      lastModified: new Date(),
+      changeFrequency: 'weekly' as const,
+      priority: 0.85,
+    },
+    {
       url: `${siteUrl}/custom-order`,
       lastModified: new Date(),
       changeFrequency: 'monthly' as const,
@@ -26,13 +32,13 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     },
   ];
 
-  // 2. Pages dynamiques pour chaque tapis (générées automatiquement)
-  const rugPages = rugsData.map((rug) => ({
-    url: `${siteUrl}/rugs/${rug.id}`,
+  // 2. Pages dynamiques pour chaque CATÉGORIE / COLLECTION (ex: /rugs?category=ouaouzguite)
+  const categoryPages = collectionsData.map((collection) => ({
+    url: `${siteUrl}/rugs?category=${collection.id}`,
     lastModified: new Date(),
     changeFrequency: 'weekly' as const,
     priority: 0.8,
   }));
 
-  return [...staticPages, ...rugPages];
+  return [...staticPages, ...categoryPages];
 }
