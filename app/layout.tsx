@@ -17,7 +17,11 @@ const contact = {
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
+  other: {
 
+    "p:domain_verify": "054750321a00bae938623a786cfe079c",
+
+  },
   title: {
     default: "Handmade Moroccan Berber Rugs | Taznakht, Morocco",
     template: "%s | Berber Rugs Cooperative",

@@ -1,3 +1,21 @@
+export interface PuffCushionSize {
+  size: string;
+  price: string;
+}
+
+export interface PuffCushion {
+  id: string;
+  name: string;
+  sku: string;
+  price: string;
+  isAvailable: boolean;
+  images: string[];
+  category: string;
+  sizes: PuffCushionSize[];
+  description?: string;
+}
+
+
 export interface RugSize {
   size: string;
   price: string;
