@@ -1,5 +1,13 @@
+import { Metadata } from "next";
+
 // src/components/StoryAndCraft.tsx
+export const metadata: Metadata = {
+  title: "Our Cooperative and Weavers, Taznakht",
+  description: "Meet the Amazigh women weaving our rugs in Taznakht: how we work, where the wool comes from and how a rug is made.",
+  alternates: { canonical: "/story" },
+};
 export default function StoryAndCraft() {
+  
   return (
     <div className="bg-[#FAF9F6] flex flex-col gap-0 w-full">
       

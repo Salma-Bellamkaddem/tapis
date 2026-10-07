@@ -3,6 +3,8 @@ import "./globals.css";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import { CurrencyProvider } from "../components/CurrencyContext";
+import { CartProvider } from "../components/CartContext"; // 🛒 Import du CartProvider
+import MetaPixel from "@/components/MetaPixel";
 
 const siteUrl = "https://www.rugsberber.com";
 
@@ -18,31 +20,24 @@ const contact = {
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   other: {
-
     "p:domain_verify": "054750321a00bae938623a786cfe079c",
-
   },
   title: {
     default: "Handmade Moroccan Berber Rugs | Taznakht, Morocco",
     template: "%s | Berber Rugs Cooperative",
   },
-
   description:
     "Handmade Moroccan Berber rugs from Taznakht, woven by rural Amazigh women in the Siroua Mountains. Discover Ouaouzguite, Glaoui, Akhenif, Zanifi and Picasso rugs.",
-
   authors: [{ name: "Cooperative Berber Rugs" }],
   creator: "Cooperative Berber Rugs",
   publisher: "Cooperative Berber Rugs",
-
   alternates: {
     canonical: siteUrl,
   },
-
   robots: {
     index: true,
     follow: true,
   },
-
   openGraph: {
     type: "website",
     locale: "en_US",
@@ -60,7 +55,6 @@ export const metadata: Metadata = {
       },
     ],
   },
-
   twitter: {
     card: "summary_large_image",
     title: "Handmade Moroccan Berber Rugs | Taznakht, Morocco",
@@ -68,7 +62,6 @@ export const metadata: Metadata = {
       "Handmade Moroccan Berber rugs woven by rural Amazigh women in Taznakht, Morocco.",
     images: [`${siteUrl}/favicon.jpg`],
   },
-
   formatDetection: {
     email: true,
     address: true,
@@ -126,10 +119,13 @@ export default function RootLayout({
         className="antialiased bg-[#FAF9F6] text-gray-900"
         suppressHydrationWarning
       >
+          <MetaPixel />
         <CurrencyProvider>
-          <Header />
-          <main className="min-h-screen">{children}</main>
-          <Footer />
+          <CartProvider> {/* 👈 Ajouté ici pour envelopper Header, children et Footer */}
+            <Header />
+            <main className="min-h-screen">{children}</main>
+            <Footer />
+          </CartProvider>
         </CurrencyProvider>
       </body>
     </html>

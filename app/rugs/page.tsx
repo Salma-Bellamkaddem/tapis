@@ -153,26 +153,14 @@ function AllRugsContent() {
                   const hasMultipleSizes = sizes.length > 1;
                   const isAvailable = rug.isAvailable !== false;
 
-                  const whatsappUrl = isAvailable 
-                    ? `https://wa.me/212767149114?text=${encodeURIComponent(
-                        `🏛️ *NEW ORDER - BERBER RUG*\n` +
-                        `━━━━━━━━━━━━━━━━━━━━━━\n\n` +
-                        `✨ *Rug :* ${rug.name}\n` +
-                        `📂 *Category :* ${rug.category}\n` +
-                        `🔖 *SKU :* ${rug.sku}\n` +
-                        `📏 *Size :* ${currentSizeObj.size}\n` +
-                        `💰 *Price :* ${formatPrice(currentSizeObj.price)}\n\n` +
-                        `━━━━━━━━━━━━━━━━━━━━━━\n` +
-                        `📸 *Model Photo :*\n${currentImage}`
-                      )}`
-                    : `https://wa.me/212767149114?text=${encodeURIComponent(
-                        `🏛️ *CUSTOM ORDER REQUEST (SIMILAR TO SOLD RUG)*\n` +
-                        `━━━━━━━━━━━━━━━━━━━━━━\n\n` +
-                        `✨ *Reference Rug :* ${rug.name} (${rug.sku})\n` +
-                        `📏 *Size :* ${currentSizeObj.size}\n` +
-                        `Hello, this unique piece is sold out. Can your artisans weave a similar custom piece for me?\n\n` +
-                        `📸 *Model Photo :*\n${currentImage}`
-                      )}`;
+                  const whatsappUrl = `https://wa.me/212767149114?text=${encodeURIComponent(
+                    `🏛️ *CUSTOM ORDER REQUEST (SIMILAR TO SOLD RUG)*\n` +
+                    `━━━━━━━━━━━━━━━━━━━━━━\n\n` +
+                    `✨ *Reference Rug :* ${rug.name} (${rug.sku})\n` +
+                    `📏 *Size :* ${currentSizeObj.size}\n` +
+                    `Hello, this unique piece is sold out. Can your artisans weave a similar custom piece for me?\n\n` +
+                    `📸 *Model Photo :*\n${currentImage}`
+                  )}`;
 
                   return (
                     <div key={rug.id} className="bg-[#FAF0E4]/40 border border-[#A44E36]/15 rounded-xl p-4 group block hover:shadow-lg transition-all flex flex-col justify-between">
@@ -256,18 +244,24 @@ function AllRugsContent() {
                           <Link href={`/rugs/${rug.id}`} className="text-gray-500 font-semibold text-xs tracking-widest uppercase hover:text-gray-900 transition-colors">
                             Details
                           </Link>
-                          <a 
-                            href={whatsappUrl}
-                            target="_blank"
-                            rel="noreferrer"
-                            className={`px-3.5 py-1.5 rounded font-semibold text-xs tracking-widest uppercase transition-colors shadow-sm ${
-                              isAvailable 
-                                ? "bg-[#A44E36] text-white hover:bg-[#8a3f2b]" 
-                                : "bg-gray-900 text-white hover:bg-gray-800"
-                            }`}
-                          >
-                            {isAvailable ? "Order" : "Similar"}
-                          </a>
+                          
+                          {isAvailable ? (
+                            <Link 
+                              href={`/checkout?rug=${rug.id}&size=${encodeURIComponent(currentSizeObj.size)}`}
+                              className="px-3.5 py-1.5 rounded font-semibold text-xs tracking-widest uppercase transition-colors shadow-sm bg-[#A44E36] text-white hover:bg-[#8a3f2b]"
+                            >
+                              Order
+                            </Link>
+                          ) : (
+                            <a 
+                              href={whatsappUrl}
+                              target="_blank"
+                              rel="noreferrer"
+                              className="px-3.5 py-1.5 rounded font-semibold text-xs tracking-widest uppercase transition-colors shadow-sm bg-gray-900 text-white hover:bg-gray-800"
+                            >
+                              Similar
+                            </a>
+                          )}
                         </div>
                       </div>
                     </div>

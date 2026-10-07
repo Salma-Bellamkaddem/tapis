@@ -3,21 +3,21 @@
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useSyncExternalStore } from "react";
 import { useCurrency } from "./CurrencyContext";
+import { useCart } from "@/components/CartContext";
 
 const WHATSAPP_URL = `https://wa.me/212767149114?text=${encodeURIComponent(
   "Hello, I would like to know more about your Berber rugs."
 )}`;
 
-// Une seule liste pour le menu desktop ET mobile (plus de doublon de code)
 const NAV_LINKS = [
   { href: "/", label: "Home" },
   { href: "/rugs", label: "Our Rugs" },
   { href: "/collections", label: "Collections" },
-
   { href: "/story", label: "Our Story" },
   { href: "/contact", label: "Contact" },
+  { href: "/checkout", label: "Cart" },
 ];
 
 const CURRENCIES = [
@@ -60,14 +60,18 @@ function CurrencySelector({ className = "" }: { className?: string }) {
 export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const pathname = usePathname();
+  const { totalItems } = useCart();
+
+  // false sur le serveur et pendant l'hydratation, true ensuite : évite le mismatch du badge
+  const mounted = useSyncExternalStore(
+    () => () => {},
+    () => true,
+    () => false
+  );
+  const cartCount = mounted ? totalItems : 0;
 
   const isActive = (href: string) =>
     href === "/" ? pathname === "/" : pathname.startsWith(href);
-
-  // Ferme le menu mobile quand on change de page
-  useEffect(() => {
-    setMobileMenuOpen(false);
-  }, [pathname]);
 
   // Ferme le menu mobile avec la touche Échap
   useEffect(() => {
@@ -83,7 +87,7 @@ export default function Header() {
     <header className="w-full sticky top-0 z-50 shadow-sm">
       {/* Top banner */}
       <div className="bg-[#A44E36] text-white text-center py-2 text-[10px] sm:text-xs font-semibold tracking-[0.15em] sm:tracking-[0.2em] uppercase px-2">
-        Handmade in Morocco · Order directly via WhatsApp
+        Handmade in Morocco · Secure checkout by bank transfer
       </div>
 
       {/* Main navigation */}
@@ -117,15 +121,20 @@ export default function Header() {
         {/* Links (desktop) */}
         <ul className="hidden lg:flex items-center gap-8 text-sm font-semibold tracking-wider text-gray-800">
           {NAV_LINKS.map(({ href, label }) => (
-            <li key={href}>
+            <li key={href} className="relative">
               <Link
                 href={href}
                 aria-current={isActive(href) ? "page" : undefined}
-                className={`transition-colors hover:text-[#A44E36] ${
+                className={`transition-colors hover:text-[#A44E36] flex items-center gap-1.5 ${
                   isActive(href) ? "text-[#A44E36]" : ""
                 }`}
               >
                 {label}
+                {href === "/checkout" && cartCount > 0 && (
+                  <span className="bg-[#A44E36] text-white text-[10px] font-bold px-1.5 py-0.5 rounded-full shadow-sm">
+                    {cartCount}
+                  </span>
+                )}
               </Link>
             </li>
           ))}
@@ -133,7 +142,7 @@ export default function Header() {
 
         {/* Actions */}
         <div className="flex items-center gap-3">
-          {/* Devises : visibles dès md, sinon dans le menu mobile (évite le débordement sur petit écran) */}
+          {/* Devises : visibles dès md, sinon dans le menu mobile */}
           <CurrencySelector className="hidden md:flex" />
 
           <a
@@ -192,12 +201,18 @@ export default function Header() {
               <li key={href}>
                 <Link
                   href={href}
+                  onClick={() => setMobileMenuOpen(false)}
                   aria-current={isActive(href) ? "page" : undefined}
-                  className={`block py-3 transition-colors hover:text-[#A44E36] ${
+                  className={`py-3 transition-colors hover:text-[#A44E36] flex justify-between items-center ${
                     isActive(href) ? "text-[#A44E36]" : ""
                   }`}
                 >
-                  {label}
+                  <span>{label}</span>
+                  {href === "/checkout" && cartCount > 0 && (
+                    <span className="bg-[#A44E36] text-white text-xs font-bold px-2 py-0.5 rounded-full">
+                      {cartCount}
+                    </span>
+                  )}
                 </Link>
               </li>
             ))}
