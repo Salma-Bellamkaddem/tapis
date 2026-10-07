@@ -9,7 +9,7 @@ import MetaPixel from "@/components/MetaPixel";
 const siteUrl = "https://www.rugsberber.com";
 
 const contact = {
-  email: "youness.ait.uness@gmail.com",
+  email: "contact@rugsberber.com",
   phone: "+212767149114",
   phoneDisplay: "+212 767149114",
   address: "Taznakht, Morocco",
@@ -89,6 +89,29 @@ const structuredData = {
   sameAs: [contact.instagram],
 };
 
+// 🟢 NOUVEAU COMPOSANT : Bouton WhatsApp Flottant Global
+function FloatingWhatsAppButton() {
+  return (
+    <a
+      href={`https://wa.me/${contact.phone.replace('+', '')}`}
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label="Chat with us on WhatsApp"
+      className="fixed bottom-6 right-6 z-50 flex items-center justify-center w-14 h-14 bg-[#25D366] text-white rounded-full shadow-[0_4px_14px_rgba(37,211,102,0.4)] hover:scale-110 hover:shadow-[0_6px_20px_rgba(37,211,102,0.6)] transition-all duration-300 group"
+    >
+      <span className="absolute inset-0 rounded-full bg-[#25D366] animate-ping opacity-20"></span>
+      <svg
+        className="w-8 h-8 relative z-10"
+        viewBox="0 0 24 24"
+        fill="currentColor"
+        aria-hidden="true"
+      >
+        <path d="M12.04 2C6.52 2 2.03 6.49 2.03 12c0 1.76.46 3.48 1.33 5.01L2 22l5.14-1.35A9.96 9.96 0 0 0 12.04 22C17.55 22 22 17.51 22 12S17.55 2 12.04 2Zm0 18.2c-1.57 0-3.1-.42-4.44-1.22l-.32-.19-3.05.8.82-2.97-.21-.32A8.2 8.2 0 0 1 3.82 12c0-4.54 3.69-8.23 8.22-8.23 4.54 0 8.22 3.69 8.22 8.23 0 4.53-3.69 8.2-8.22 8.2Zm4.51-6.15c-.25-.13-1.47-.73-1.7-.81-.23-.08-.39-.13-.56.13-.16.25-.64.81-.78.97-.14.17-.29.19-.54.06-.25-.13-1.05-.39-2-1.24-.74-.66-1.24-1.47-1.39-1.72-.14-.25-.02-.38.11-.51.12-.12.25-.29.38-.43.13-.15.17-.25.25-.42.08-.17.04-.31-.02-.44-.06-.13-.56-1.35-.77-1.85-.2-.48-.4-.42-.55-.43h-.47c-.17 0-.44.06-.67.31-.23.25-.88.86-.88 2.1 0 1.24.9 2.43 1.03 2.6.13.17 1.77 2.7 4.29 3.79.6.26 1.07.42 1.43.54.6.19 1.15.16 1.58.1.48-.07 1.47-.6 1.68-1.18.21-.58.21-1.08.15-1.18-.06-.1-.23-.16-.48-.29Z" />
+      </svg>
+    </a>
+  );
+}
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -125,6 +148,8 @@ export default function RootLayout({
             <Header />
             <main className="min-h-screen">{children}</main>
             <Footer />
+            {/* 🟢 Le bouton WhatsApp est appelé ici pour être visible partout */}
+            <FloatingWhatsAppButton />
           </CartProvider>
         </CurrencyProvider>
       </body>
