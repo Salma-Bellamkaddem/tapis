@@ -41,8 +41,9 @@ export default async function AdminOrdersPage() {
 
   for (const r of data ?? []) {
     let order = map.get(r.order_number);
+
     if (!order) {
-      order = {
+      const newOrder: AdminOrder & { statuses: OrderStatus[] } = {
         orderNumber: r.order_number,
         status: r.status,
         statuses: [],
@@ -52,6 +53,9 @@ export default async function AdminOrdersPage() {
         trackingNumber: r.tracking_number,
         currency: r.currency,
         total: 0,
+        paymentMethod: r.payment_method ?? "unknown",
+        dueNow: r.due_now ?? 0,
+        balance: r.balance ?? 0,
         customer: {
           name: r.full_name,
           email: r.email,
@@ -64,24 +68,34 @@ export default async function AdminOrdersPage() {
         },
         items: [],
       };
-      map.set(r.order_number, order);
+    
+      map.set(r.order_number, newOrder);
+      order = newOrder;
     }
+    
+    // À partir d'ici TypeScript sait que order existe
     order.statuses.push(r.status);
     order.total += Number(r.total);
+    
     order.items.push({
       rugName: r.rug_name,
       sku: r.sku,
       size: r.size,
       price: Number(r.price),
-      // Photo enregistrée, sinon photo du catalogue (par id, puis par SKU). "||" gère aussi les champs vides.
+    
       image:
         r.image_url ||
-        (rugsData.find((x) => x.id === r.rug_id) ?? rugsData.find((x) => x.sku === r.sku))?.images[0] ||
+        (
+          rugsData.find((x) => x.id === r.rug_id) ??
+          rugsData.find((x) => x.sku === r.sku)
+        )?.images[0] ||
         null,
     });
-    if (r.tracking_number) order.trackingNumber = r.tracking_number;
+    
+    if (r.tracking_number) {
+      order.trackingNumber = r.tracking_number;
+    }
   }
-
   const orders: AdminOrder[] = Array.from(map.values()).map(({ statuses, ...o }) => {
     const status = PRIORITY.find((s) => statuses.includes(s)) ?? o.status;
     return { ...o, status, overdue: status === "pending" && isOverdue(o.createdAt) };
