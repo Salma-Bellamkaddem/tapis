@@ -5,60 +5,63 @@ import { collectionsData } from "@/data/products";
 
 // 🌟 Métadonnées SEO et titre accrocheur en anglais pour Google & OpenGraph
 export const metadata: Metadata = {
-  title: "Handmade Moroccan Berber Rug Collections | Ouaouzguite, Glaoui & Akhenif",
-  description: "Explore the authentic collections of handmade Moroccan Berber rugs from Taznakht. Discover unique Ouaouzguite, Glaoui, Akhenif, and Zanifi master-woven carpets.",
-  keywords: [
-    "Moroccan Berber rug collections",
-    "handmade Berber carpets",
-    "Ouaouzguite rugs",
-    "Glaoui carpets",
-    "Akhenif rugs",
-    "Taznakht traditional carpets",
-    "authentic Moroccan wool rugs"
-  ],
-  openGraph: {
-    title: "Handmade Moroccan Berber Rug Collections | Cooperative Berber Rugs",
-    description: "Discover our authentic collections of traditional Moroccan carpets hand-woven by rural women artisans in the Atlas mountains.",
-    url: "https://www.rugsberber.com/collections",
-  },
+  title:
+    "Handmade Moroccan Berber Rug Collections | Taznakht",
+
+  description:
+    "Explore handmade Moroccan Berber rug collections from Taznakht, including Ouaouzguit, Glaoui, Akhenif, Zanifi, Picasso, Mouzaïk and Tapis Tableau rugs.",
+
   alternates: {
     canonical: "https://www.rugsberber.com/collections",
+  },
+
+  openGraph: {
+    type: "website",
+    title:
+      "Handmade Moroccan Berber Rug Collections | Taznakht",
+    description:
+      "Discover authentic Berber rugs handwoven in Taznakht, Morocco, including Ouaouzguit, Glaoui, Akhenif, Zanifi and more.",
+    url: "https://www.rugsberber.com/collections",
+    siteName: "Cooperative Berber Rugs",
   },
 };
 
 const ROTATION_SPEED = 2500; // 2.5s
 
 // Composant carte individuelle avec le composant <Image> de Next.js
-function CollectionCard({ collection }: { collection: (typeof collectionsData)[number] }) {
-  // Note: Pour une gestion interactive du survol avec Next/Image multiples, 
-  // on conserve la structure fluide tout en optimisant le rendu.
+function CollectionCard({
+  collection,
+}: {
+  collection: (typeof collectionsData)[number];
+}) {
   return (
     <Link
-      href={`/rugs?category=${collection.id}`}
+      href={`/collections/${collection.slug}`}
       className="bg-[#FFF8EF] border border-[#A44E36]/20 rounded-3xl flex flex-col h-full shadow-md hover:shadow-lg transition-all duration-300 overflow-hidden group cursor-pointer flex-shrink-0 w-[90%] sm:w-[380px] md:w-full snap-center p-4 sm:p-6"
-      aria-label={`Discover the ${collection.name} Berber rug collection`}
+      aria-label={`Explore ${collection.seoName}`}
     >
-      {/* Zone image avec Next/Image */}
       <div className="relative aspect-[4/5] sm:aspect-[4/4] w-full rounded-2xl overflow-hidden bg-[#E8DED2] mb-6">
         <Image
           src={collection.images[0]}
-          alt={`Handmade Moroccan Berber rug collection ${collection.name}`}
+          alt={`${collection.seoName} from Taznakht, Morocco`}
           fill
           sizes="(max-width: 768px) 90vw, 33vw"
           className="object-cover group-hover:scale-105 transition-transform duration-700 ease-in-out"
-          priority
+          priority={false}
         />
+
         <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent pointer-events-none" />
       </div>
 
-      {/* Contenu de la carte */}
       <div className="flex flex-col flex-grow text-center px-2">
         <span className="text-[10px] font-bold tracking-[0.25em] text-[#A44E36] uppercase mb-1">
           {collection.subtitle}
         </span>
-        <h3 className="font-serif text-2xl md:text-3xl font-bold tracking-wide text-gray-900 mb-3 group-hover:text-[#A44E36] transition-colors">
+
+        <h2 className="font-serif text-2xl md:text-3xl font-bold tracking-wide text-gray-900 mb-3 group-hover:text-[#A44E36] transition-colors">
           {collection.name}
-        </h3>
+        </h2>
+
         <p className="text-gray-600 text-xs md:text-sm leading-relaxed mb-6 flex-grow max-w-sm mx-auto">
           {collection.description}
         </p>
@@ -67,7 +70,10 @@ function CollectionCard({ collection }: { collection: (typeof collectionsData)[n
           <span className="text-[#A44E36] font-bold text-xs tracking-widest uppercase">
             Explore Collection
           </span>
-          <span className="text-base text-[#A44E36] transition-transform duration-300 group-hover:translate-x-1">→</span>
+
+          <span className="text-base text-[#A44E36] transition-transform duration-300 group-hover:translate-x-1">
+            →
+          </span>
         </div>
       </div>
     </Link>

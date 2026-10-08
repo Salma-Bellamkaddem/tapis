@@ -162,7 +162,7 @@ export const rugsData: Rug[] = [
       "https://res.cloudinary.com/ln4u8wnx/image/upload/f_auto,q_auto/v1789606021/picasso-p1-4.jpg",
       "https://res.cloudinary.com/ln4u8wnx/image/upload/f_auto,q_auto/v1789606014/picasso-p1-5.jpg"
     ],
-    category: "picasso-berber",
+    category: "picasso",
     sizes: [
       { size: "200 × 107 cm", price: "$300" },
     ],
@@ -181,7 +181,7 @@ export const rugsData: Rug[] = [
       "https://res.cloudinary.com/ln4u8wnx/image/upload/f_auto,q_auto/v1789606208/picasso-p2-3.jpg",
       "https://res.cloudinary.com/ln4u8wnx/image/upload/f_auto,q_auto/v1789606305/picasso-p2-5.jpg"
     ],
-    category: "picasso-berber",
+    category: "picasso",
     sizes: [
       { size: "215 × 103 cm", price: "$300" },
     ],
@@ -191,7 +191,7 @@ export const rugsData: Rug[] = [
     id: "picasso-berber-004",
     name: "Picasso Berber",
     sku: "PIC-004",
-    price: "$250",
+    price: "$300",
     isAvailable: true,
     images: [
       "https://res.cloudinary.com/ln4u8wnx/image/upload/f_auto,q_auto/v1789648378/picasso-p4-1.png",
@@ -200,7 +200,7 @@ export const rugsData: Rug[] = [
       "https://res.cloudinary.com/ln4u8wnx/image/upload/f_auto,q_auto/v1789648532/picasso-p4-4.jpg",
       "https://res.cloudinary.com/ln4u8wnx/image/upload/f_auto,q_auto/v1789648531/picasso-p4-5.jpg"
     ],
-    category: "picasso-berber",
+    category: "picasso",
     sizes: [
       { size: "150 × 114 cm", price: "$250" },
     ],
@@ -275,7 +275,7 @@ export const rugsData: Rug[] = [
       "https://res.cloudinary.com/ln4u8wnx/image/upload/f_auto,q_auto/v1789606742/picasso-p3-3.jpg",
       "https://res.cloudinary.com/ln4u8wnx/image/upload/f_auto,q_auto/v1789606984/picasso-p3-5.jpg"
     ],
-    category: "picasso-berber",
+    category: "picasso",
     sizes: [
       { size: "250 × 155 cm", price: "$450" },
     ],
@@ -294,7 +294,7 @@ export const rugsData: Rug[] = [
       "https://res.cloudinary.com/ln4u8wnx/image/upload/f_auto,q_auto/v1789649808/photo_2026-09-17_13-57-53.jpg",
       "https://res.cloudinary.com/ln4u8wnx/image/upload/f_auto,q_auto/v1789649763/photo_2026-09-17_13-56-44.jpg"
     ],
-    category: "Tapis Tableau",
+    category: "tableau",
     sizes: [
       { size: "110 × 73 cm", price: "$60" },
     ],
@@ -313,7 +313,7 @@ export const rugsData: Rug[] = [
       "https://res.cloudinary.com/ln4u8wnx/image/upload/f_auto,q_auto/v1789649279/tableau2-p4.jpg",
       "https://res.cloudinary.com/ln4u8wnx/image/upload/f_auto,q_auto/v1789649277/tableau2-p5.jpg"
     ],
-    category: "Tapis Tableau",
+    category: "tableau",
     sizes: [
       { size: "160 × 103 cm", price: "$200" },
     ],
@@ -332,7 +332,7 @@ export const rugsData: Rug[] = [
       "https://res.cloudinary.com/ln4u8wnx/image/upload/f_auto,q_auto/v1789648979/tableau-p1-3.jpg",
       "https://res.cloudinary.com/ln4u8wnx/image/upload/f_auto,q_auto/v1789649056/tableau-p1-5.jpg"
     ],
-    category: "Tapis Tableau",
+    category: "tableau",
     sizes: [
       { size: "264 × 134 cm", price: "$400" },
     ],
@@ -351,7 +351,7 @@ export const rugsData: Rug[] = [
       "https://res.cloudinary.com/ln4u8wnx/image/upload/f_auto,q_auto/v1789604342/10-4.jpg",
       "https://res.cloudinary.com/ln4u8wnx/image/upload/f_auto,q_auto/v1789604347/10-5.jpg"
     ],
-    category: "Mouzaïk",
+    category: "Mouzaik",
     sizes: [
       { size: "250 × 146 cm", price: "$350" },
     ],
@@ -370,7 +370,7 @@ export const rugsData: Rug[] = [
       "https://res.cloudinary.com/ln4u8wnx/image/upload/f_auto,q_auto/v1789604963/12-3.jpg",
       "https://res.cloudinary.com/ln4u8wnx/image/upload/f_auto,q_auto/v1789605069/12-5.jpg"
     ],
-    category: "Mouzaïk",
+    category: "Mouzaik",
     sizes: [
       { size: "250 × 145 cm", price: "$500" },
     ],
@@ -389,7 +389,7 @@ export const rugsData: Rug[] = [
       "https://res.cloudinary.com/ln4u8wnx/image/upload/f_auto,q_auto/v1789605396/11-4.jpg",
       "https://res.cloudinary.com/ln4u8wnx/image/upload/f_auto,q_auto/v1789605408/11-5.jpg"
     ],
-    category: "Mouzaïk",
+    category: "Mouzaik",
     sizes: [
       { size: "167 × 128 cm", price: "$250" },
     ],
@@ -408,7 +408,7 @@ export const rugsData: Rug[] = [
       "https://res.cloudinary.com/ln4u8wnx/image/upload/f_auto,q_auto/v1789652064/photo_2026-09-17_14-14-42.jpg",
       "https://res.cloudinary.com/ln4u8wnx/image/upload/f_auto,q_auto/v1789652068/photo_2026-09-17_14-14-43.jpg"
     ],
-    category: "Ouaouzguite",
+    category: "Ouaouzguit",
     sizes: [
       { size: "207 × 162 cm", price: "$300" },
     ],
@@ -427,7 +427,7 @@ export const rugsData: Rug[] = [
       "https://res.cloudinary.com/ln4u8wnx/image/upload/f_auto,q_auto/v1789599002/produit2-8.jpg",
       "https://res.cloudinary.com/ln4u8wnx/image/upload/f_auto,q_auto/v1789951896/photo_2026-09-21_00-52-06.jpg"
     ],
-    category: "Ouaouzguite",
+    category: "Ouaouzguit",
     sizes: [
       { size: "246 × 152 cm", price: "$350" },
     ],
@@ -463,7 +463,7 @@ export const rugsData: Rug[] = [
       "https://res.cloudinary.com/ln4u8wnx/image/upload/f_auto,q_auto/v1789599663/2.png",
       "https://res.cloudinary.com/ln4u8wnx/image/upload/f_auto,q_auto/v1789599430/produit4.jpg"
     ],
-    category: "Ouaouzguite",
+    category: "Ouaouzguit",
     sizes: [
       { size: "104 × 66 cm", price: "$75" },
     ],
@@ -497,7 +497,7 @@ export const rugsData: Rug[] = [
       "https://res.cloudinary.com/ln4u8wnx/image/upload/f_auto,q_auto/v1789599869/5-2.jpg",
       "https://res.cloudinary.com/ln4u8wnx/image/upload/f_auto,q_auto/v1789599911/5-3.jpg"
     ],
-    category: "Ouaouzguite",
+    category: "Ouaouzguit",
     sizes: [
       { size: "104 × 66 cm", price: "$75" },
     ],
@@ -516,7 +516,7 @@ export const rugsData: Rug[] = [
       "https://res.cloudinary.com/ln4u8wnx/image/upload/f_auto,q_auto/v1789600221/ouaouzguite-3-4.jpg",
       "https://res.cloudinary.com/ln4u8wnx/image/upload/f_auto,q_auto/v1789600240/ouaouzguite-3-55.jpg"
     ],
-    category: "Ouaouzguite",
+    category: "Ouaouzguit",
     sizes: [
       { size: "238 × 138 cm", price: "$270" },
     ],
@@ -526,87 +526,116 @@ export const rugsData: Rug[] = [
 
 export const collectionsData = [
   {
-    id: "ouaouzguite",
-    name: "Ouaouzguite",
-    subtitle: "BERBER CARPET",
-    description: "Hand-woolen technique with thousands of small knots from living sheep's wool and natural dyes.",
+    id: "ouaouzguit",
+
+    slug: "ouaouzguit",
+  
+    category: "Ouaouzguite",
+  
+    name: "Ouaouzguit",
+    seoName: "Ouaouzguit Berber Rugs",
+    subtitle: "BERBER RUGS",
+    description:
+      "Traditional Ouaouzguit Berber rugs handwoven in Taznakht, Morocco, using natural wool and traditional Amazigh weaving techniques.",
     images: [
       "/placeholders/ouaouzguite-1.webp",
       "/placeholders/ouaouzguite-2.webp",
-      "/placeholders/ouaouzguite-3.webp"
+      "/placeholders/ouaouzguite-3.webp",
     ],
-    href: "/rugs?category=ouaouzguite"
   },
+
   {
     id: "glaoui",
+    slug: "glaoui",
     name: "Glaoui",
-    subtitle: "BERBER CARPET",
-    description: "Hand-made with three techniques (woolen, woven, embroidered) containing living sheep's wool.",
+    category: "Glaoui",
+    seoName: "Glaoui Berber Rugs",
+    subtitle: "BERBER RUGS",
+    description:
+      "Authentic Glaoui Berber rugs from Taznakht, handwoven with wool using traditional Moroccan weaving and embroidery techniques.",
     images: [
       "/placeholders/glaoui-2.jpeg",
       "/placeholders/glaoui-2.jpeg",
-      "/placeholders/glaoui-3.jpeg"
+      "/placeholders/glaoui-3.jpeg",
     ],
-    href: "/rugs?category=glaoui"
   },
+
   {
-    id: "mouzaïk",
+    id: "mouzaik",
+    slug: "mouzaik",
+    category:"mouzaik",
     name: "Mouzaïk",
-    subtitle: "BERBER CARPET",
-    description: "Features woolen and woven squares with traditional Berber symbols and natural colors.",
+    seoName: "Mouzaïk Berber Rugs",
+    subtitle: "BERBER RUGS",
+    description:
+      "Mouzaïk Berber rugs featuring geometric wool and woven patterns inspired by traditional Amazigh symbols and Moroccan craftsmanship.",
     images: [
       "/placeholders/mouzaik-2.jpeg",
       "/placeholders/mouzaik-1.jpeg",
-      "/placeholders/mouzaik-3.jpeg"
+      "/placeholders/mouzaik-3.jpeg",
     ],
-    href: "/rugs?category=mouzaïk"
   },
+
   {
     id: "akhenif",
+    slug: "akhenif",
+    category: "Akhenif",
     name: "Akhenif",
-    subtitle: "BERBER CARPET",
-    description: "Hand-woven technique with living sheep's wool, natural colors, and traditional Berber symbols.",
+    seoName: "Akhenif Berber Rugs",
+    subtitle: "BERBER RUGS",
+    description:
+      "Handwoven Akhenif Berber rugs from Taznakht, made with natural sheep's wool, traditional Amazigh symbols, and authentic Moroccan craftsmanship.",
     images: [
       "/placeholders/akhenif-1.jpeg",
       "/placeholders/akhenif-2.jpeg",
-      "/placeholders/akhenif-3.jpeg"
+      "/placeholders/akhenif-3.jpeg",
     ],
-    href: "/rugs?category=akhenif"
   },
+
   {
-    id: "Tapis Tableau",
-    name: "Akhenif Berber",
+    id: "tableau",
+    slug: "tableau",
+    category: "tableau",
+    name: "Tapis Tableau",
+    seoName: "Moroccan Tapis Tableau Rugs",
     subtitle: "TAPIS TABLEAU",
-    description: "Hand-woven art technique containing living sheep's wool and natural colors.",
+    description:
+      "Handwoven Moroccan Tapis Tableau rugs combining traditional Amazigh craftsmanship, natural wool, artistic patterns, and timeless Moroccan design.",
     images: [
       "/placeholders/tableau-1.jpeg",
       "/placeholders/tableau-2.png",
-      "/placeholders/tableau-3.jpeg"
+      "/placeholders/tableau-3.jpeg",
     ],
-    href: "/rugs?category=Tapis Tableau"
   },
+
   {
-    id: "picasso-berber",
+    id: "picasso",
+    slug: "picasso",
     name: "Picasso Berber",
-    subtitle: "BERBER CARPET",
-    description: "Artistic Picasso-inspired Berber creation crafted with living sheep's wool and traditional patterns.",
+    category:"picasso",
+    seoName: "Picasso Berber Rugs",
+    subtitle: "BERBER RUGS",
+    description:
+      "Artistic Picasso-inspired Berber rugs handwoven in Morocco using natural sheep's wool and traditional Amazigh patterns.",
     images: [
       "https://res.cloudinary.com/ln4u8wnx/image/upload/f_auto,q_auto/v1789648378/picasso-p4-1.png",
       "https://res.cloudinary.com/ln4u8wnx/image/upload/f_auto,q_auto/v1789606119/picasso-p2-1.png",
-      "https://res.cloudinary.com/ln4u8wnx/image/upload/f_auto,q_auto/v1789605910/picasso-p1-3.jpg"
+      "https://res.cloudinary.com/ln4u8wnx/image/upload/f_auto,q_auto/v1789605910/picasso-p1-3.jpg",
     ],
-    href: "/rugs?category=picasso-berber"
   },
+
   {
     id: "zanifi",
-    name: "zanifi Berber",
-    subtitle: "ZANIFI CARPET",
-    description: "Artistic Zanifi-inspired Berber creation crafted with living sheep's wool and traditional patterns.",
+    slug: "zanifi",
+    name: "Zanifi Berber",
+    seoName: "Zanifi Berber Rugs",
+    subtitle: "ZANIFI RUGS",
+    description:
+      "Authentic Zanifi Berber rugs handwoven in Morocco with natural sheep's wool, traditional geometric patterns, and Amazigh craftsmanship.",
     images: [
       "/placeholders/zanifi-1.jpeg",
       "/placeholders/zanifi-2.jpeg",
-      "/placeholders/zanifi-3.jpg"
+      "/placeholders/zanifi-3.jpg",
     ],
-    href: "/rugs?category=zanifi"
-  }
+  },
 ];

@@ -1,10 +1,14 @@
 import type { Metadata } from "next";
 import "./globals.css";
+
 import Header from "../components/Header";
 import Footer from "../components/Footer";
+
 import { CurrencyProvider } from "../components/CurrencyContext";
-import { CartProvider } from "../components/CartContext"; // 🛒 Import du CartProvider
+import { CartProvider } from "../components/CartContext";
+
 import MetaPixel from "@/components/MetaPixel";
+import OrganizationSchema from "@/components/OrganizationSchema";
 
 const siteUrl = "https://www.rugsberber.com";
 
@@ -14,54 +18,78 @@ const contact = {
   phoneDisplay: "+212 767149114",
   address: "Taznakht, Morocco",
   maps: "https://maps.app.goo.gl/wkpWghENN4U88JjR9?g_st=awb",
-  instagram: "https://www.instagram.com/traditional_berber_carpets/",
+  instagram:
+    "https://www.instagram.com/traditional_berber_carpets/",
 };
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
+
   other: {
     "p:domain_verify": "054750321a00bae938623a786cfe079c",
   },
+
   title: {
     default: "Handmade Moroccan Berber Rugs | Taznakht, Morocco",
     template: "%s | Berber Rugs Cooperative",
   },
+
   description:
-    "Handmade Moroccan Berber rugs from Taznakht, woven by rural Amazigh women in the Siroua Mountains. Discover Ouaouzguite, Glaoui, Akhenif, Zanifi and Picasso rugs.",
-  authors: [{ name: "Cooperative Berber Rugs" }],
+    "Authentic handmade Moroccan Berber rugs from Taznakht, Morocco. Handwoven by Moroccan women artisans using traditional Amazigh weaving techniques.",
+
+  authors: [
+    {
+      name: "Cooperative Berber Rugs",
+    },
+  ],
+
   creator: "Cooperative Berber Rugs",
+
   publisher: "Cooperative Berber Rugs",
+
   alternates: {
     canonical: siteUrl,
   },
+
   robots: {
     index: true,
     follow: true,
   },
+
   openGraph: {
     type: "website",
     locale: "en_US",
     url: siteUrl,
     siteName: "Cooperative Berber Rugs",
-    title: "Handmade Moroccan Berber Rugs | Taznakht, Morocco",
+
+    title:
+      "Handmade Moroccan Berber Rugs | Taznakht, Morocco",
+
     description:
-      "Discover handmade Moroccan Berber rugs woven by rural Amazigh women in Taznakht, Morocco.",
+      "Discover authentic handmade Moroccan Berber rugs woven by Moroccan women artisans in Taznakht, Morocco.",
+
     images: [
       {
         url: `${siteUrl}/favicon.jpg`,
         width: 1200,
         height: 630,
-        alt: "Handmade Moroccan Berber Rugs from Taznakht",
+        alt: "Handmade Moroccan Berber Rugs from Taznakht, Morocco",
       },
     ],
   },
+
   twitter: {
     card: "summary_large_image",
-    title: "Handmade Moroccan Berber Rugs | Taznakht, Morocco",
+
+    title:
+      "Handmade Moroccan Berber Rugs | Taznakht, Morocco",
+
     description:
-      "Handmade Moroccan Berber rugs woven by rural Amazigh women in Taznakht, Morocco.",
+      "Authentic handmade Moroccan Berber rugs woven by Moroccan women artisans in Taznakht, Morocco.",
+
     images: [`${siteUrl}/favicon.jpg`],
   },
+
   formatDetection: {
     email: true,
     address: true,
@@ -69,39 +97,19 @@ export const metadata: Metadata = {
   },
 };
 
-// 🏛️ Données structurées enrichies (Organization Schema)
-const structuredData = {
-  "@context": "https://schema.org",
-  "@type": "Organization",
-  name: "Cooperative Berber Rugs",
-  url: siteUrl,
-  logo: `${siteUrl}/placeholders/logo3.webp`,
-  image: `${siteUrl}/placeholders/logo3.webp`,
-  description:
-    "Authentic cooperative creating handmade Moroccan Berber rugs woven by rural Amazigh women in Taznakht, Morocco.",
-  email: contact.email,
-  telephone: contact.phone,
-  address: {
-    "@type": "PostalAddress",
-    addressLocality: "Taznakht",
-    addressCountry: "MA",
-  },
-  sameAs: [contact.instagram],
-};
-
-// 🟢 NOUVEAU COMPOSANT : Bouton WhatsApp Flottant Global
 function FloatingWhatsAppButton() {
   return (
     <a
-      href={`https://wa.me/${contact.phone.replace('+', '')}`}
+      href={`https://wa.me/${contact.phone.replace("+", "")}`}
       target="_blank"
       rel="noopener noreferrer"
       aria-label="Chat with us on WhatsApp"
-      className="fixed bottom-6 right-6 z-50 flex items-center justify-center w-14 h-14 bg-[#25D366] text-white rounded-full shadow-[0_4px_14px_rgba(37,211,102,0.4)] hover:scale-110 hover:shadow-[0_6px_20px_rgba(37,211,102,0.6)] transition-all duration-300 group"
+      className="fixed bottom-6 right-6 z-50 flex h-14 w-14 items-center justify-center rounded-full bg-[#25D366] text-white shadow-[0_4px_14px_rgba(37,211,102,0.4)] transition-all duration-300 hover:scale-110 hover:shadow-[0_6px_20px_rgba(37,211,102,0.6)] group"
     >
-      <span className="absolute inset-0 rounded-full bg-[#25D366] animate-ping opacity-20"></span>
+      <span className="absolute inset-0 rounded-full bg-[#25D366] animate-ping opacity-20" />
+
       <svg
-        className="w-8 h-8 relative z-10"
+        className="relative z-10 h-8 w-8"
         viewBox="0 0 24 24"
         fill="currentColor"
         aria-hidden="true"
@@ -124,31 +132,32 @@ export default function RootLayout({
           rel="preconnect"
           href="https://res.cloudinary.com"
         />
+
         <link
           rel="dns-prefetch"
           href="https://res.cloudinary.com"
         />
 
-        {/* 🔍 Schema.org Organization injecté pour Google Search */}
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify(structuredData),
-          }}
-        />
+        {/* SEO / GEO - Organization Schema */}
+        <OrganizationSchema locale="en" />
       </head>
 
       <body
         className="antialiased bg-[#FAF9F6] text-gray-900"
         suppressHydrationWarning
       >
-          <MetaPixel />
+        <MetaPixel />
+
         <CurrencyProvider>
-          <CartProvider> {/* 👈 Ajouté ici pour envelopper Header, children et Footer */}
+          <CartProvider>
             <Header />
-            <main className="min-h-screen">{children}</main>
+
+            <main className="min-h-screen">
+              {children}
+            </main>
+
             <Footer />
-            {/* 🟢 Le bouton WhatsApp est appelé ici pour être visible partout */}
+
             <FloatingWhatsAppButton />
           </CartProvider>
         </CurrencyProvider>
