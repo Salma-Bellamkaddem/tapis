@@ -125,7 +125,7 @@ function CollectionCard({
         <p className="text-[#3E4A5C] text-sm leading-6 min-h-[84px] mb-6">{collection.description}</p>
 
         <Link
-          href={collection.href}
+          href={collection.href|| "#"}
           prefetch={true}
           className="relative overflow-hidden bg-[#A44E36] hover:bg-[#8F3E29] text-white py-3.5 px-6 rounded-full font-bold text-[10px] tracking-[0.18em] uppercase transition-all duration-300 flex items-center justify-center gap-3 shadow-md hover:shadow-xl hover:scale-[1.02]"
         >
@@ -367,7 +367,7 @@ export default function Home() {
 
         return (
           <div key={rug.id} className="bg-white border border-[#A44E36]/15 rounded-xl p-4 group block hover:shadow-lg transition-all flex flex-col justify-between">
-            <Link href={`/rugs/${rug.id}`}>
+            <Link  href={`/rugs/${rug.id}`}>
               <div className="relative aspect-[4/4] w-full bg-[#E8DED2] rounded-lg overflow-hidden mb-3">
                 <Image 
                   src={mainImage} 
