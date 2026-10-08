@@ -55,7 +55,7 @@ function AllRugsContent() {
   const startIndex = (currentPage - 1) * ITEMS_PER_PAGE;
   const currentRugs = filteredRugs.slice(startIndex, startIndex + ITEMS_PER_PAGE);
 
-  const categoriesList = ['All', 'Ouaouzguite', 'Glaoui', 'Mouzaïk', 'Akhenif', 'picasso-berber', 'Tapis Tableau', 'Zanifi'];
+  const categoriesList = ['All', 'Ouaouzguit', 'Glaoui', 'Mouzaik', 'Akhenif', 'picasso', 'tableau', 'Zanifi'];
 
   // Reset to page 1 when category changes
   const handleCategoryChange = (cat: string) => {

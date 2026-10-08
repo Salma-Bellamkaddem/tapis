@@ -192,7 +192,7 @@ export const rugsData: Rug[] = [
     name: "Picasso Berber",
     sku: "PIC-004",
     price: "$300",
-    isAvailable: true,
+    isAvailable: false,
     images: [
       "https://res.cloudinary.com/ln4u8wnx/image/upload/f_auto,q_auto/v1789648378/picasso-p4-1.png",
       "https://res.cloudinary.com/ln4u8wnx/image/upload/f_auto,q_auto/v1789648407/picasso-p4-2.jpg",
@@ -202,7 +202,7 @@ export const rugsData: Rug[] = [
     ],
     category: "picasso",
     sizes: [
-      { size: "150 × 114 cm", price: "$250" },
+      { size: "150 × 114 cm", price: "$300" },
     ],
     description: "Artistic Picasso-inspired Berber creation crafted with living sheep's wool and traditional patterns. HAND MADE BY MOROCCAN RURAL WOMEN."
   },
