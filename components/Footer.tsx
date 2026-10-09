@@ -3,7 +3,7 @@
 import Link from "next/link";
 import Image from "next/image";
 
-const EMAIL = "youness.ait.uness@gmail.com";
+const EMAIL = "contact@rugsberber.com";
 const PHONE_DISPLAY = "+212 767149114";
 const PHONE_TEL = "+212767149114";
 const WHATSAPP_URL = "https://wa.me/212767149114";

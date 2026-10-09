@@ -191,7 +191,7 @@ export const rugsData: Rug[] = [
     id: "picasso-berber-004",
     name: "Picasso Berber",
     sku: "PIC-004",
-    price: "$300",
+    price: "$400",
     isAvailable: false,
     images: [
       "https://res.cloudinary.com/ln4u8wnx/image/upload/f_auto,q_auto/v1789648378/picasso-p4-1.png",

@@ -1,15 +1,30 @@
-import { MetadataRoute } from 'next';
+import type { MetadataRoute } from "next";
+
+// Même domaine que le sitemap, les canonicals et metadataBase (sans www).
+const SITE = "https://rugsberber.com";
 
 export default function robots(): MetadataRoute.Robots {
-  const siteUrl = 'https://www.rugsberber.com';
-
   return {
-    rules: {
-      userAgent: '*',
-      allow: '/',
-      // Exemple si vous avez un espace admin privé à cacher plus tard :
-      // disallow: ['/admin/'],
-    },
-    sitemap: `${siteUrl}/sitemap.xml`,
+    rules: [
+      {
+        // Moteurs de recherche classiques + crawlers IA (GEO) : tous autorisés.
+        // Lister les bots IA explicitement évite toute ambiguïté si vous ajoutez des règles plus tard.
+        userAgent: [
+          "*",
+          "GPTBot",
+          "OAI-SearchBot",
+          "ChatGPT-User",
+          "ClaudeBot",
+          "Claude-SearchBot",
+          "PerplexityBot",
+          "Google-Extended",
+        ],
+        allow: "/",
+        // Pages sans valeur SEO (panier/commande, API). Ajoutez /admin/ si vous en créez un.
+        disallow: ["/checkout", "/api/"],
+      },
+    ],
+    sitemap: `${SITE}/sitemap.xml`,
+    host: SITE,
   };
 }
