@@ -11,10 +11,19 @@ import WoolToRug from "../components/WoolToRug";
 import EthicalImpact from "../components/EthicalImpact";
 import AboutCooperative from "../components/AboutCooperative";
 import CustomerReviews from "@/components/CustomerReviews";
-// 👈 1. Import du hook de devise
 
 import { collectionsData, rugsData } from "@/data/products";
 import { useCurrency } from "@/components/CurrencyContext";
+import { trackEvent } from "@/app/lib/fbq";
+
+// Meta Pixel : clic sur un lien WhatsApp lié à un tapis
+function trackWhatsAppContact(rug: { sku: string; name: string }) {
+  trackEvent("Contact", {
+    content_ids: [rug.sku],
+    content_name: rug.name,
+    content_type: "product",
+  });
+}
 
 // Ruler icon in SVG
 function RulerIcon({ className = "w-4 h-4" }: { className?: string }) {
@@ -125,7 +134,7 @@ function CollectionCard({
         <p className="text-[#3E4A5C] text-sm leading-6 min-h-[84px] mb-6">{collection.description}</p>
 
         <Link
-          href={collection.href|| "#"}
+          href={collection.href || "#"}
           prefetch={true}
           className="relative overflow-hidden bg-[#A44E36] hover:bg-[#8F3E29] text-white py-3.5 px-6 rounded-full font-bold text-[10px] tracking-[0.18em] uppercase transition-all duration-300 flex items-center justify-center gap-3 shadow-md hover:shadow-xl hover:scale-[1.02]"
         >
@@ -142,7 +151,7 @@ function CollectionCard({
 }
 
 function ProductCard({ rug }: { rug: any }) {
-  const { formatPrice } = useCurrency(); // 👈 2. Utilisation du hook de devise
+  const { formatPrice } = useCurrency();
 
   const [selectedSizeIndex, setSelectedSizeIndex] = useState(0);
   const [activeImgIndex, setActiveImgIndex] = useState(0);
@@ -151,8 +160,8 @@ function ProductCard({ rug }: { rug: any }) {
   const displayPrice = selectedSize?.price || rug.price;
   const hasMultipleSizes = rug.sizes && rug.sizes.length > 1;
 
-  const images: string[] = rug.images && rug.images.length > 0 
-    ? rug.images.slice(0, 5) 
+  const images: string[] = rug.images && rug.images.length > 0
+    ? rug.images.slice(0, 5)
     : [rug.image || "/placeholders/ouaouzguite-1.jpg"];
 
   const currentImage = images[activeImgIndex] || images[0];
@@ -173,13 +182,13 @@ function ProductCard({ rug }: { rug: any }) {
     <div className="bg-white border border-[#A44E36]/15 rounded-2xl flex flex-col h-full shadow-[0_10px_30px_rgba(70,40,20,0.06)] hover:shadow-xl transition-all duration-300 overflow-hidden group">
       <div className="relative w-full h-[280px] bg-[#F5EFE6] overflow-hidden">
         <Link href={`/rugs/${rug.id}`} prefetch={true}>
-          <Image 
-            src={currentImage} 
-            alt={rug.name} 
+          <Image
+            src={currentImage}
+            alt={rug.name}
             fill
             sizes="(max-width: 768px) 100vw, 33vw"
             priority={true}
-            className="object-cover w-full h-full group-hover:scale-105 transition-transform duration-500" 
+            className="object-cover w-full h-full group-hover:scale-105 transition-transform duration-500"
           />
         </Link>
         <div className="absolute top-3 left-3 bg-[#FFF8EF]/90 backdrop-blur-sm border border-[#A44E36]/20 px-2.5 py-1 rounded-full text-[10px] font-bold tracking-widest text-[#A44E36] uppercase shadow-sm z-10">
@@ -191,7 +200,6 @@ function ProductCard({ rug }: { rug: any }) {
         <div>
           <div className="flex justify-between items-start mb-1">
             <h3 className="text-base font-serif font-bold tracking-wide text-gray-900">{rug.name}</h3>
-            {/* 3. Application du formatPrice pour convertir le prix */}
             <span className="font-bold text-[#A44E36] text-base">{formatPrice(displayPrice)}</span>
           </div>
 
@@ -215,7 +223,6 @@ function ProductCard({ rug }: { rug: any }) {
             >
               {(rug.sizes || []).map((s: { size: string; price: string }, idx: number) => (
                 <option key={idx} value={idx}>
-                  {/* 4. Conversion automatique également dans le select */}
                   {s.size} — {formatPrice(s.price)}
                 </option>
               ))}
@@ -238,7 +245,6 @@ function ProductCard({ rug }: { rug: any }) {
                   </button>
                 ))}
               </div>
-            
             </div>
           )}
 
@@ -248,8 +254,8 @@ function ProductCard({ rug }: { rug: any }) {
         </div>
 
         <div className="pt-3 border-t border-gray-100 flex gap-2">
-          <Link 
-            href={`/rugs/${rug.id}`} 
+          <Link
+            href={`/rugs/${rug.id}`}
             prefetch={true}
             className="flex-1 text-center py-2.5 px-3 border border-[#A44E36]/30 text-[#A44E36] font-bold text-xs tracking-wider uppercase rounded-xl hover:bg-[#FAF0E4]/50 transition-colors"
           >
@@ -259,6 +265,7 @@ function ProductCard({ rug }: { rug: any }) {
             href={whatsappUrl}
             target="_blank"
             rel="noreferrer"
+            onClick={() => trackWhatsAppContact(rug)}
             className="flex-1 text-center bg-[#A44E36] text-white py-2.5 px-3 font-bold text-xs tracking-wider uppercase rounded-xl hover:bg-[#8a3f2b] transition-colors shadow-sm flex items-center justify-center gap-1.5"
           >
             Order
@@ -276,13 +283,13 @@ export default function Home() {
       {/* 1. HERO */}
       <section className="relative w-full h-[80vh] min-h-[600px] flex items-center">
         <div className="absolute inset-0 z-0 bg-gray-900">
-          <Image 
-            src="/placeholders/hero-bg.webp" 
-            alt="Handcrafted Moroccan Rugs" 
-            fill 
+          <Image
+            src="/placeholders/hero-bg.webp"
+            alt="Handcrafted Moroccan Rugs"
+            fill
             priority
             sizes="100vw"
-            className="w-full h-full object-cover opacity-60" 
+            className="w-full h-full object-cover opacity-60"
           />
         </div>
         <div className="relative z-10 w-full max-w-7xl mx-auto px-4 md:px-8 text-white">
@@ -306,157 +313,155 @@ export default function Home() {
       <AboutCooperative />
 
       {/* 3. OUR TOP RUGS */}
-    {/* 3. OUR TOP RUGS */}
-    {/* 3. OUR TOP RUGS */}
-<section className="bg-[#FAF0E4] py-20 px-4 md:px-8 border-b border-[#A44E36]/10">
-  <div className="max-w-7xl mx-auto">
-    <div className="flex flex-col items-center text-center mb-12">
-      <span className="text-[10px] font-bold tracking-[0.3em] text-[#A44E36] uppercase mb-2 block">
-        EXCEPTIONAL PIECES
-      </span>
-      
-      {/* Titre principal unifié (H2) */}
-      <h2 className="font-serif text-3xl md:text-4xl tracking-widest text-gray-950 uppercase font-normal mb-3">
-        Our Berber Rugs
-      </h2>
+      <section className="bg-[#FAF0E4] py-20 px-4 md:px-8 border-b border-[#A44E36]/10">
+        <div className="max-w-7xl mx-auto">
+          <div className="flex flex-col items-center text-center mb-12">
+            <span className="text-[10px] font-bold tracking-[0.3em] text-[#A44E36] uppercase mb-2 block">
+              EXCEPTIONAL PIECES
+            </span>
 
-      <p className="text-xs md:text-sm text-gray-600 max-w-2xl mb-6 leading-relaxed">
-        Woven by rural Amazigh women in the Siroua Mountains near Taznakht,
-        Morocco, each rug carries generations of ancestral craftsmanship.
-        Taznakht, a historic center of Moroccan carpet weaving, is celebrated
-        for its five distinctive rug traditions, each shaped by the landscapes,
-        symbols and stories of the region. Long appreciated for their artistry
-        and cultural value, these exceptional rugs have found their place in
-        refined interiors and distinguished private collections.
-      </p>
-      <Link 
-        href="/rugs" 
-        prefetch={true}
-        className="bg-[#A44E36] text-white px-6 py-3 text-xs font-bold tracking-widest uppercase hover:bg-[#8a3f2b] transition-colors text-center rounded-xl shadow-sm"
-      >
-        View All Rugs &rarr;
-      </Link>
-    </div>
+            <h2 className="font-serif text-3xl md:text-4xl tracking-widest text-gray-950 uppercase font-normal mb-3">
+              Our Berber Rugs
+            </h2>
 
-    <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-      {rugsData.slice(0, 3).map((rug) => {
-        const isAvailable = rug.isAvailable !== false;
-        const mainImage = rug.images?.[0] || "/placeholders/ouaouzguite-1.jpg";
-        const currentSizeObj = rug.sizes?.[0] || { size: rug.dimensions || "Standard", price: rug.price };
-
-        const whatsappUrl = isAvailable 
-          ? `https://wa.me/212767149114?text=${encodeURIComponent(
-              `🏛️ *NEW ORDER - BERBER RUG*\n` +
-              `━━━━━━━━━━━━━━━━━━━━━━\n\n` +
-              `✨ *Rug :* ${rug.name}\n` +
-              `📂 *Category :* ${rug.category}\n` +
-              `🔖 *SKU :* ${rug.sku}\n` +
-              `📏 *Size :* ${currentSizeObj.size}\n` +
-              `💰 *Price :* ${currentSizeObj.price}\n\n` +
-              `━━━━━━━━━━━━━━━━━━━━━━\n` +
-              `📸 *Model Photo :*\n${mainImage}`
-            )}`
-          : `https://wa.me/212767149114?text=${encodeURIComponent(
-              `🏛️ *CUSTOM ORDER REQUEST (SIMILAR TO SOLD RUG)*\n` +
-              `━━━━━━━━━━━━━━━━━━━━━━\n\n` +
-              `✨ *Reference Rug :* ${rug.name} (${rug.sku})\n` +
-              `📏 *Size :* ${currentSizeObj.size}\n` +
-              `Hello, this unique piece is sold out. Can your artisans weave a similar custom piece for me?\n\n` +
-              `📸 *Model Photo :*\n${mainImage}`
-            )}`;
-
-        return (
-          <div key={rug.id} className="bg-white border border-[#A44E36]/15 rounded-xl p-4 group block hover:shadow-lg transition-all flex flex-col justify-between">
-            <Link  href={`/rugs/${rug.id}`}>
-              <div className="relative aspect-[4/4] w-full bg-[#E8DED2] rounded-lg overflow-hidden mb-3">
-                <Image 
-                  src={mainImage} 
-                  alt={rug.name} 
-                  fill
-                  sizes="(max-width: 768px) 100vw, 33vw"
-                  className={`object-cover group-hover:scale-105 transition-transform duration-500 ${!isAvailable ? 'opacity-80' : ''}`} 
-                />
-                {!isAvailable && (
-                  <span className="absolute top-3 left-3 bg-red-600 text-white text-[10px] font-bold tracking-widest px-2.5 py-1 uppercase rounded shadow-md">
-                    Sold Out
-                  </span>
-                )}
-              </div>
+            <p className="text-xs md:text-sm text-gray-600 max-w-2xl mb-6 leading-relaxed">
+              Woven by rural Amazigh women in the Siroua Mountains near Taznakht,
+              Morocco, each rug carries generations of ancestral craftsmanship.
+              Taznakht, a historic center of Moroccan carpet weaving, is celebrated
+              for its five distinctive rug traditions, each shaped by the landscapes,
+              symbols and stories of the region. Long appreciated for their artistry
+              and cultural value, these exceptional rugs have found their place in
+              refined interiors and distinguished private collections.
+            </p>
+            <Link
+              href="/rugs"
+              prefetch={true}
+              className="bg-[#A44E36] text-white px-6 py-3 text-xs font-bold tracking-widest uppercase hover:bg-[#8a3f2b] transition-colors text-center rounded-xl shadow-sm"
+            >
+              View All Rugs &rarr;
             </Link>
-            
-            <div className="flex flex-col flex-grow">
-              <div className="flex justify-between items-start mb-1">
-                <span className="text-[10px] tracking-widest text-[#A44E36] uppercase font-bold">{rug.category}</span>
-                <span className="text-sm font-bold text-[#A44E36]">{currentSizeObj.price}</span>
-              </div>
-              
-              <Link href={`/rugs/${rug.id}`}>
-                <h3 className="text-base font-serif font-bold tracking-wide text-gray-900 mb-2">{rug.name}</h3>
-              </Link>
-
-              <div className="flex justify-between items-center text-xs text-gray-500 mb-3">
-                <span>SKU: {rug.sku}</span>
-                {isAvailable ? (
-                  <span className="text-[10px] text-green-700 font-bold tracking-wider uppercase flex items-center gap-1">
-                    <span className="w-1.5 h-1.5 rounded-full bg-green-600"></span>
-                    Available
-                  </span>
-                ) : (
-                  <span className="text-[10px] text-red-600 font-bold tracking-wider uppercase flex items-center gap-1">
-                    <span className="w-1.5 h-1.5 rounded-full bg-red-600"></span>
-                    Sold Out
-                  </span>
-                )}
-              </div>
-
-              <div className="mt-auto pt-3 border-t border-[#A44E36]/10 flex justify-between items-center">
-                <Link href={`/rugs/${rug.id}`} className="text-gray-500 font-semibold text-xs tracking-widest uppercase hover:text-gray-900 transition-colors">
-                  Details
-                </Link>
-                <a 
-                  href={whatsappUrl}
-                  target="_blank"
-                  rel="noreferrer"
-                  className={`px-3.5 py-1.5 rounded font-semibold text-xs tracking-widest uppercase transition-colors shadow-sm ${
-                    isAvailable 
-                      ? "bg-[#A44E36] text-white hover:bg-[#8a3f2b]" 
-                      : "bg-gray-900 text-white hover:bg-gray-800"
-                  }`}
-                >
-                  {isAvailable ? "Order" : "Similar"}
-                </a>
-              </div>
-            </div>
           </div>
-        );
-      })}
-    </div>
 
-    <div className="mt-14 bg-[#FFF8EF] border border-[#A44E36]/25 rounded-2xl p-8 md:p-10 flex flex-col md:flex-row items-center justify-between gap-6 text-center md:text-left shadow-sm">
-      <div>
-        <span className="text-[10px] font-bold tracking-[0.3em] text-[#A44E36] uppercase mb-2 block">
-          MADE TO ORDER
-        </span>
-        
-        {/* Titre encadré (H3) unifié avec la même police serif et responsive fluide */}
-        <h3 className="font-serif text-2xl md:text-3xl tracking-wide text-gray-950 font-normal mb-2">
-          Can't find the right size or design?
-        </h3>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+            {rugsData.slice(0, 3).map((rug) => {
+              const isAvailable = rug.isAvailable !== false;
+              const mainImage = rug.images?.[0] || "/placeholders/ouaouzguite-1.jpg";
+              const currentSizeObj = rug.sizes?.[0] || { size: rug.dimensions || "Standard", price: rug.price };
 
-        <p className="text-gray-600 text-xs md:text-sm max-w-xl">
-          We also weave custom Berber rugs — dimensions, color palettes, and symbols of your choice, crafted by hand by our women artisans.
-        </p>
-      </div>
-      <Link
-        href="/custom-order"
-        prefetch={true}
-        className="whitespace-nowrap bg-[#A44E36] text-white px-8 py-4 text-xs font-bold tracking-widest uppercase hover:bg-[#8a3f2b] transition-colors rounded-xl shadow-md"
-      >
-        Request Custom Rug
-      </Link>
-    </div>
-  </div>
-</section>
+              const whatsappUrl = isAvailable
+                ? `https://wa.me/212767149114?text=${encodeURIComponent(
+                    `🏛️ *NEW ORDER - BERBER RUG*\n` +
+                    `━━━━━━━━━━━━━━━━━━━━━━\n\n` +
+                    `✨ *Rug :* ${rug.name}\n` +
+                    `📂 *Category :* ${rug.category}\n` +
+                    `🔖 *SKU :* ${rug.sku}\n` +
+                    `📏 *Size :* ${currentSizeObj.size}\n` +
+                    `💰 *Price :* ${currentSizeObj.price}\n\n` +
+                    `━━━━━━━━━━━━━━━━━━━━━━\n` +
+                    `📸 *Model Photo :*\n${mainImage}`
+                  )}`
+                : `https://wa.me/212767149114?text=${encodeURIComponent(
+                    `🏛️ *CUSTOM ORDER REQUEST (SIMILAR TO SOLD RUG)*\n` +
+                    `━━━━━━━━━━━━━━━━━━━━━━\n\n` +
+                    `✨ *Reference Rug :* ${rug.name} (${rug.sku})\n` +
+                    `📏 *Size :* ${currentSizeObj.size}\n` +
+                    `Hello, this unique piece is sold out. Can your artisans weave a similar custom piece for me?\n\n` +
+                    `📸 *Model Photo :*\n${mainImage}`
+                  )}`;
+
+              return (
+                <div key={rug.id} className="bg-white border border-[#A44E36]/15 rounded-xl p-4 group block hover:shadow-lg transition-all flex flex-col justify-between">
+                  <Link href={`/rugs/${rug.id}`}>
+                    <div className="relative aspect-[4/4] w-full bg-[#E8DED2] rounded-lg overflow-hidden mb-3">
+                      <Image
+                        src={mainImage}
+                        alt={rug.name}
+                        fill
+                        sizes="(max-width: 768px) 100vw, 33vw"
+                        className={`object-cover group-hover:scale-105 transition-transform duration-500 ${!isAvailable ? "opacity-80" : ""}`}
+                      />
+                      {!isAvailable && (
+                        <span className="absolute top-3 left-3 bg-red-600 text-white text-[10px] font-bold tracking-widest px-2.5 py-1 uppercase rounded shadow-md">
+                          Sold Out
+                        </span>
+                      )}
+                    </div>
+                  </Link>
+
+                  <div className="flex flex-col flex-grow">
+                    <div className="flex justify-between items-start mb-1">
+                      <span className="text-[10px] tracking-widest text-[#A44E36] uppercase font-bold">{rug.category}</span>
+                      <span className="text-sm font-bold text-[#A44E36]">{currentSizeObj.price}</span>
+                    </div>
+
+                    <Link href={`/rugs/${rug.id}`}>
+                      <h3 className="text-base font-serif font-bold tracking-wide text-gray-900 mb-2">{rug.name}</h3>
+                    </Link>
+
+                    <div className="flex justify-between items-center text-xs text-gray-500 mb-3">
+                      <span>SKU: {rug.sku}</span>
+                      {isAvailable ? (
+                        <span className="text-[10px] text-green-700 font-bold tracking-wider uppercase flex items-center gap-1">
+                          <span className="w-1.5 h-1.5 rounded-full bg-green-600"></span>
+                          Available
+                        </span>
+                      ) : (
+                        <span className="text-[10px] text-red-600 font-bold tracking-wider uppercase flex items-center gap-1">
+                          <span className="w-1.5 h-1.5 rounded-full bg-red-600"></span>
+                          Sold Out
+                        </span>
+                      )}
+                    </div>
+
+                    <div className="mt-auto pt-3 border-t border-[#A44E36]/10 flex justify-between items-center">
+                      <Link href={`/rugs/${rug.id}`} className="text-gray-500 font-semibold text-xs tracking-widest uppercase hover:text-gray-900 transition-colors">
+                        Details
+                      </Link>
+                      <a
+                        href={whatsappUrl}
+                        target="_blank"
+                        rel="noreferrer"
+                        onClick={() => trackWhatsAppContact(rug)}
+                        className={`px-3.5 py-1.5 rounded font-semibold text-xs tracking-widest uppercase transition-colors shadow-sm ${
+                          isAvailable
+                            ? "bg-[#A44E36] text-white hover:bg-[#8a3f2b]"
+                            : "bg-gray-900 text-white hover:bg-gray-800"
+                        }`}
+                      >
+                        {isAvailable ? "Order" : "Similar"}
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+
+          <div className="mt-14 bg-[#FFF8EF] border border-[#A44E36]/25 rounded-2xl p-8 md:p-10 flex flex-col md:flex-row items-center justify-between gap-6 text-center md:text-left shadow-sm">
+            <div>
+              <span className="text-[10px] font-bold tracking-[0.3em] text-[#A44E36] uppercase mb-2 block">
+                MADE TO ORDER
+              </span>
+
+              <h3 className="font-serif text-2xl md:text-3xl tracking-wide text-gray-950 font-normal mb-2">
+                Can't find the right size or design?
+              </h3>
+
+              <p className="text-gray-600 text-xs md:text-sm max-w-xl">
+                We also weave custom Berber rugs — dimensions, color palettes, and symbols of your choice, crafted by hand by our women artisans.
+              </p>
+            </div>
+            <Link
+              href="/custom-order"
+              prefetch={true}
+              className="whitespace-nowrap bg-[#A44E36] text-white px-8 py-4 text-xs font-bold tracking-widest uppercase hover:bg-[#8a3f2b] transition-colors rounded-xl shadow-md"
+            >
+              Request Custom Rug
+            </Link>
+          </div>
+        </div>
+      </section>
+
       {/* 4. COLLECTIONS */}
       <section className="relative bg-[#F8EFE3] py-24 md:py-28 overflow-hidden border-b border-[#A44E36]/10">
         <div className="relative max-w-[1500px] mx-auto">
@@ -467,7 +472,6 @@ export default function Home() {
               <span className="w-16 h-px bg-[#A44E36]/30" />
             </div>
 
-            {/* Titre unifié et optimisé pour le mobile (taille fluide + retour à la ligne propre) */}
             <h2 className="font-serif text-3xl md:text-4xl tracking-widest text-gray-950 uppercase font-normal mb-3">
               Explore Our Collections
             </h2>

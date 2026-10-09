@@ -3,8 +3,11 @@
 import Link from "next/link";
 import Image from "next/image";
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 import { rugsData } from "@/data/products";
 import { useCurrency } from "@/components/CurrencyContext";
+import { useCart } from "@/components/CartContext";
+import { trackEvent } from "@/app/lib/fbq";
 
 type Rug = (typeof rugsData)[number];
 
@@ -18,6 +21,8 @@ function RulerIcon({ className = "w-4 h-4" }: { className?: string }) {
 }
 
 export default function RugCard({ rug, priority = false }: { rug: Rug; priority?: boolean }) {
+  const router = useRouter();
+  const { addToCart } = useCart();
   const { formatPrice } = useCurrency();
   const [activeIndex, setActiveIndex] = useState(0);
   const [sizeIndex, setSizeIndex] = useState(0);
@@ -39,6 +44,27 @@ export default function RugCard({ rug, priority = false }: { rug: Rug; priority?
       `Hello, this unique piece is sold out. Can your artisans weave a similar custom piece for me?\n\n` +
       `📸 *Model Photo :*\n${currentImage}`
   )}`;
+
+  // « Order » : ajoute au panier (AddToCart est envoyé par CartContext) puis va au checkout
+  const handleOrder = () => {
+    addToCart({
+      rugId: rug.id,
+      name: rug.name,
+      sku: rug.sku,
+      size: currentSize.size,
+      price: currentSize.price,
+      image: currentImage,
+    });
+    router.push("/checkout");
+  };
+
+  const handleSimilarClick = () => {
+    trackEvent("Contact", {
+      content_ids: [rug.sku],
+      content_name: rug.name,
+      content_type: "product",
+    });
+  };
 
   return (
     <article className="bg-[#FAF0E4]/40 border border-[#A44E36]/15 rounded-xl p-4 group hover:shadow-lg transition-all flex flex-col justify-between">
@@ -118,15 +144,21 @@ export default function RugCard({ rug, priority = false }: { rug: Rug; priority?
             Details
           </Link>
           {isAvailable ? (
-            <Link
-              href={`/checkout?rug=${rug.id}&size=${encodeURIComponent(currentSize.size)}`}
-              rel="nofollow"
+            <button
+              type="button"
+              onClick={handleOrder}
               className="px-3.5 py-1.5 rounded font-semibold text-xs tracking-widest uppercase shadow-sm bg-[#A44E36] text-white hover:bg-[#8a3f2b] transition-colors"
             >
               Order
-            </Link>
+            </button>
           ) : (
-            <a href={whatsappUrl} target="_blank" rel="noreferrer nofollow" className="px-3.5 py-1.5 rounded font-semibold text-xs tracking-widest uppercase shadow-sm bg-gray-900 text-white hover:bg-gray-800 transition-colors">
+            <a
+              href={whatsappUrl}
+              target="_blank"
+              rel="noreferrer nofollow"
+              onClick={handleSimilarClick}
+              className="px-3.5 py-1.5 rounded font-semibold text-xs tracking-widest uppercase shadow-sm bg-gray-900 text-white hover:bg-gray-800 transition-colors"
+            >
               Similar
             </a>
           )}

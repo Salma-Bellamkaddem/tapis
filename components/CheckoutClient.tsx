@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import {
@@ -57,6 +57,27 @@ export default function CheckoutClient() {
   const [error, setError] = useState("");
   const [success, setSuccess] = useState<Success | null>(null);
 
+  // Meta Pixel : InitiateCheckout une seule fois quand le panier est lu et non vide
+  const checkoutFired = useRef(false);
+  useEffect(() => {
+    if (!ready || cart.length === 0 || success || checkoutFired.current) return;
+    checkoutFired.current = true;
+    let value = 0;
+    let cur = "USD";
+    cart.forEach((i) => {
+      const p = parsePrice(i.price);
+      value += p.value;
+      cur = p.currency;
+    });
+    trackEvent("InitiateCheckout", {
+      content_ids: cart.map((i) => i.sku),
+      content_type: "product",
+      num_items: cart.length,
+      value,
+      currency: cur,
+    });
+  }, [ready, cart, success]);
+
   // Sous-total et devise (calculés à partir du panier)
   let subtotal = 0;
   let currency = "USD";
@@ -93,12 +114,21 @@ export default function CheckoutClient() {
         setError(json.error || "Something went wrong. Please try again.");
       } else {
         setSuccess(json);
-        trackEvent("Purchase", {
-          value: json.total,
-          currency: json.currency,
-          content_type: "product",
-          num_items: cart.length,
-        });
+
+        // Meta Pixel : Purchase (avant clearCart, car on lit le panier ici)
+        trackEvent(
+          "Purchase",
+          {
+            value: json.total,
+            currency: json.currency,
+            content_type: "product",
+            content_ids: cart.map((i) => i.sku),
+            contents: cart.map((i) => ({ id: i.sku, quantity: 1 })),
+            num_items: cart.length,
+          },
+          { eventID: json.orderNumber }
+        );
+
         clearCart();
         window.scrollTo({ top: 0, behavior: "smooth" });
       }
