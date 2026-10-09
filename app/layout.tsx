@@ -32,6 +32,7 @@ export const metadata: Metadata = {
 
   other: {
     "p:domain_verify": "054750321a00bae938623a786cfe079c",
+    "facebook-domain-verification": "1y1vo3uo7j997vk5iayx0fbbmvz4ls",
   },
 
   title: {
