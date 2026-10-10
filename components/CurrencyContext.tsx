@@ -1,6 +1,6 @@
 "use client";
 
-import React, { createContext, useContext, useState, useEffect } from "react";
+import React, { createContext, useContext, useEffect, useState, useSyncExternalStore } from "react";
 
 type Currency = "USD" | "EUR" | "MAD";
 
@@ -13,41 +13,82 @@ interface CurrencyContextType {
 
 const CurrencyContext = createContext<CurrencyContextType | undefined>(undefined);
 
+const EURO_COUNTRIES = ["FR", "DE", "ES", "IT", "BE", "NL", "PT", "AT", "IE", "FI", "GR", "LU"];
+const STORAGE_KEY = "preferred_currency";
+const VALID: Currency[] = ["USD", "EUR", "MAD"];
+
+// ---------------------------------------------------------------------------
+// Préférence de devise stockée dans localStorage, lue via useSyncExternalStore
+// (même principe que CartContext) : aucun setState synchrone dans un useEffect.
+// ---------------------------------------------------------------------------
+const listeners = new Set<() => void>();
+let memoryCurrency: Currency | null = null; // repli si localStorage est indisponible
+
+function getStoredCurrency(): Currency | null {
+  try {
+    const v = localStorage.getItem(STORAGE_KEY) as Currency | null;
+    if (v && VALID.includes(v)) return v;
+  } catch {
+    return memoryCurrency;
+  }
+  return memoryCurrency;
+}
+
+function storeCurrency(value: Currency) {
+  memoryCurrency = value;
+  try {
+    localStorage.setItem(STORAGE_KEY, value);
+  } catch {
+    // ignoré : on garde la valeur en mémoire
+  }
+  listeners.forEach((l) => l());
+}
+
+function subscribe(callback: () => void) {
+  listeners.add(callback);
+  const onStorage = (e: StorageEvent) => {
+    if (e.key === STORAGE_KEY || e.key === null) callback();
+  };
+  window.addEventListener("storage", onStorage);
+  return () => {
+    listeners.delete(callback);
+    window.removeEventListener("storage", onStorage);
+  };
+}
+
 export function CurrencyProvider({ children }: { children: React.ReactNode }) {
-  const [currency, setCurrency] = useState<Currency>("MAD");
+  // Choix explicite de l'utilisateur (null tant qu'il n'a rien choisi)
+  const stored = useSyncExternalStore(subscribe, getStoredCurrency, () => null);
+  // Devise détectée via le pays (renseignée dans le callback du fetch)
+  const [detected, setDetected] = useState<Currency | null>(null);
 
-  // Détection automatique du pays au premier chargement
+  const currency: Currency = stored ?? detected ?? "MAD";
+
+  // Détection automatique du pays, seulement si l'utilisateur n'a pas déjà choisi
   useEffect(() => {
-    const savedCurrency = localStorage.getItem("preferred_currency") as Currency;
-    if (savedCurrency && ["USD", "EUR", "MAD"].includes(savedCurrency)) {
-      setCurrency(savedCurrency);
-      return;
-    }
+    if (getStoredCurrency()) return;
 
-    fetch("https://ipapi.co/json/")
+    let cancelled = false;
+    fetch("/api/geo")
       .then((res) => res.json())
       .then((data) => {
-        if (data && data.country_code) {
-          const country = data.country_code;
-          const euroCountries = ["FR", "DE", "ES", "IT", "BE", "NL", "PT", "AT", "IE", "FI", "GR", "LU"];
-          
-          if (euroCountries.includes(country)) {
-            setCurrency("EUR");
-          } else if (country === "MA") {
-            setCurrency("MAD");
-          } else {
-            setCurrency("USD");
-          }
-        }
+        if (cancelled) return;
+        const country: string = data?.country_code || "";
+        if (EURO_COUNTRIES.includes(country)) setDetected("EUR");
+        else if (country === "MA") setDetected("MAD");
+        else setDetected("USD");
       })
       .catch(() => {
-        setCurrency("USD");
+        if (!cancelled) setDetected("USD");
       });
+
+    return () => {
+      cancelled = true;
+    };
   }, []);
 
   const handleSetCurrency = (newCurrency: Currency) => {
-    setCurrency(newCurrency);
-    localStorage.setItem("preferred_currency", newCurrency);
+    storeCurrency(newCurrency);
   };
 
   const formatPrice = (priceStr: string) => {
@@ -73,7 +114,9 @@ export function CurrencyProvider({ children }: { children: React.ReactNode }) {
   };
 
   return (
-    <CurrencyContext.Provider value={{ currency, setCurrency: handleSetCurrency, formatPrice, convertPriceValue: formatPrice }}>
+    <CurrencyContext.Provider
+      value={{ currency, setCurrency: handleSetCurrency, formatPrice, convertPriceValue: formatPrice }}
+    >
       {children}
     </CurrencyContext.Provider>
   );
