@@ -199,7 +199,8 @@ export async function POST(req: Request) {
   }));
   const rows = baseRows.map((r, i) => ({ ...r, image_url: lines[i].rug.images[0] ?? null }));
 
-  // Un seul insert = tout ou rien : si un tapis est déjà réservé, aucune ligne n'est créée.
+  // Un seul insert = tout ou rien : si un tapis est déjà complet ou vendu, aucune ligne n'est créée.
+  // La règle (3 commandes en attente maximum par tapis) est appliquée par un trigger SQL (multi_holds.sql).
   let { error } = await supabase.from("orders").insert(rows);
 
   // Si la colonne image_url n'existe pas encore (migration SQL non faite), on réessaie sans elle
@@ -210,10 +211,12 @@ export async function POST(req: Request) {
 
   if (error) {
     if (error.message.includes("orders_one_active_per_rug")) {
+      const sold = error.message.includes("sold");
       return NextResponse.json(
         {
-          error:
-            "Sorry, one of these unique rugs was just reserved by another customer. Please refresh and remove it from your cart.",
+          error: sold
+            ? "Sorry, one of these unique rugs has just been sold. Please refresh and remove it from your cart."
+            : "Sorry, one of these unique rugs already has the maximum number of pending reservations. Please try again later, or contact us for a similar piece.",
         },
         { status: 409 }
       );
@@ -260,33 +263,39 @@ export async function POST(req: Request) {
       <tr><td style="${cell}">Reference</td><td style="${cell}"><strong>${orderNumber}</strong></td></tr>
     </table>`;
 
+  // Chaque tapis est unique : plusieurs clients peuvent le retenir, il est confirmé au premier paiement reçu
+  const uniqueNote = `<p style="font-size:13px;color:#555">Each rug is a unique handmade piece. It is confirmed for the first customer whose payment we receive, and we will email you right away if it is no longer available.</p>`;
+
   // Email client selon le mode de paiement
   let customerBody: string;
   if (isPickup) {
     customerBody = `
-      <p>Your order <strong>${orderNumber}</strong> is reserved. We will contact you shortly to confirm availability and your pick-up date.</p>
+      <p>Your order <strong>${orderNumber}</strong> is held for you. We will contact you shortly to confirm availability and your pick-up date.</p>
       ${itemsHtml}
       <p>Pick-up: <strong>${esc(PICKUP_LOCATION)}</strong><br/>
       Total to pay at pick-up: <strong>${totalText}</strong><br/>
-      No delivery fees.</p>`;
+      No delivery fees.</p>
+      ${uniqueNote}`;
   } else if (method === "bank_deposit") {
     customerBody = `
-      <p>Your order <strong>${orderNumber}</strong> is reserved for <strong>${PAYMENT_DEADLINE_HOURS} hours</strong>.
+      <p>Your order <strong>${orderNumber}</strong> is held for <strong>${PAYMENT_DEADLINE_HOURS} hours</strong>.
       To confirm it, please send the ${DEPOSIT_PERCENT}% deposit by bank transfer.</p>
       ${itemsHtml}
       <p>Total: <strong>${totalText}</strong><br/>
       Deposit to transfer now: <strong>${dueNowText}</strong><br/>
       Balance to pay on delivery: <strong>${balanceText}</strong></p>
       ${bankTableHtml}
-      <p>Please write the order number as the payment reference. Once the deposit is received, we prepare and ship your rug.</p>`;
+      <p>Please write the order number as the payment reference. Once the deposit is received, we prepare and ship your rug.</p>
+      ${uniqueNote}`;
   } else {
     customerBody = `
-      <p>Your order <strong>${orderNumber}</strong> is reserved for <strong>${PAYMENT_DEADLINE_HOURS} hours</strong>.
+      <p>Your order <strong>${orderNumber}</strong> is held for <strong>${PAYMENT_DEADLINE_HOURS} hours</strong>.
       To confirm it, please send a bank transfer with the details below.</p>
       ${itemsHtml}
       <p>Total: <strong>${totalText}</strong></p>
       ${bankTableHtml}
-      <p>Please write the order number as the payment reference. Once we receive your payment, we ship your order and email you the tracking number.</p>`;
+      <p>Please write the order number as the payment reference. Once we receive your payment, we ship your order and email you the tracking number.</p>
+      ${uniqueNote}`;
   }
 
   const customerHtml = `
