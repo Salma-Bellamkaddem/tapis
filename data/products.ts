@@ -202,7 +202,7 @@ export const rugsData: Rug[] = [
     ],
     category: "picasso",
     sizes: [
-      { size: "150 × 114 cm", price: "$300" },
+      { size: "150 × 114 cm", price: "$400" },
     ],
     description: "Artistic Picasso-inspired Berber creation crafted with living sheep's wool and traditional patterns. HAND MADE BY MOROCCAN RURAL WOMEN."
   },
