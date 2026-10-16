@@ -470,10 +470,28 @@ export const rugsData: Rug[] = [
     description: "This Ouaouzguite Berber carpet is a beautiful example of traditional Moroccan craftsmanship, inspired by the colorful weaving traditions of the Siroua regions. Its patchwork-style composition combines different geometric motifs, including zigzags, diamonds, diagonal lines and checkerboard patterns. The traditional Berber symbols and geometric motifs carry cultural meanings passed down through generations, representing protection, femininity, fertility, nature, family and the heritage of Moroccan rural women artisans. Its vibrant combination of mustard yellow, red, deep blue, black and white gives the carpet a unique and joyful character, while its carefully crafted borders and hand-finished fringes add to its traditional charm. Ouaouzguite Berber carpet, hand-woven using traditional Berber techniques. Made with thousands of small hand-woven knots using wool from living sheep and natural colors such as saffron, henna, almond skins and pomegranate skins. Easy to wash, comfortable and highly durable, it can last for many years and becomes more beautiful with time. HAND MADE BY MOROCCAN RURAL WOMEN"
   },
   {
+    id: "ouaouzguite-custom-010",
+    name: "Ouaouzguite Berber Carpet",
+    sku: "OUA-010",
+    price: "$4000",
+    isAvailable: true,
+    images: [
+      "https://res.cloudinary.com/ln4u8wnx/image/upload/f_auto,q_auto/v1792171119/2.png",
+      "https://res.cloudinary.com/ln4u8wnx/image/upload/f_auto,q_auto/v1792171120/3.png",
+      "https://res.cloudinary.com/ln4u8wnx/image/upload/f_auto,q_auto/v1792171142/photo_2026-10-16_17-07-18.jpg",
+      "https://res.cloudinary.com/ln4u8wnx/image/upload/f_auto,q_auto/v1792171142/photo_2026-10-16_17-07-20.jpg",
+      "https://res.cloudinary.com/ln4u8wnx/image/upload/f_auto,q_auto/v1792171143/photo_2026-10-16_17-07-24.jpg"
+    ],
+    category: "Ouaouzguit",
+    sizes: [
+      { size: "485 × 150 cm", price: "$4000" },
+    ],
+"description": "This Ouaouzguite Berber rug is a beautiful example of traditional Moroccan craftsmanship, inspired by the rich weaving heritage of the Siroua region. Handwoven by skilled Amazigh women in Taznakht, Morocco, it features a warm terracotta-red base, ivory diamond motifs, and distinctive black geometric details. Its traditional patterns and rich textures reflect the cultural heritage of the region, bringing warmth and authentic Moroccan character to any interior. The geometric motifs, including diamonds, zigzags, and decorative lines, reflect traditional Amazigh artistic expression and the cultural knowledge passed down through generations. Its harmonious combination of terracotta red, ivory, and deep black gives the rug a timeless and distinctive character. Handwoven using traditional Berber techniques, it is crafted from wool sourced from living sheep and may incorporate natural dyes derived from ingredients such as saffron, henna, almond skins, and pomegranate skins. Carefully crafted by Moroccan rural women artisans, each rug is unique, celebrating their skill, creativity, and living cultural heritage. Durable, comfortable, and full of character, this handmade Ouaouzguite rug brings authentic Moroccan artistry into any space. HANDWOVEN BY AMAZIGH WOMEN IN TAZNAKHT, MOROCCO."  },
+  {
     id: "glaoui-royal-masterpiece-615",
     name: "Royal Glaoui Masterpiece Carpet",
     sku: "GLA-ROYAL-615",
-    price: "45000 MAD",
+    price: "$4500",
     isAvailable: true,
     images: [
       "https://res.cloudinary.com/ln4u8wnx/image/upload/v1790470338/Photo_Background_Removal_6.png",
@@ -482,9 +500,28 @@ export const rugsData: Rug[] = [
     ],
     category: "Glaoui",
     sizes: [
-      { size: "615 × 340 cm", price: "45000 MAD" }
+      { size: "615 × 340 cm", price: "$4500" }
     ],
     description: "An exceptional, museum-grade royal Glaoui masterpiece rug measuring 6.15m × 3.40m. Hand-crafted combining three traditional techniques (woolen, flatweave, and intricate embroidery) using pure living sheep's wool and rich natural dyes by master women artisans in the Siroua Mountains. A breathtaking statement piece designed for grand architectural interiors and luxury residences. HAND MADE BY MOROCCAN RURAL WOMEN."
+  },
+  {
+    id: "glaoui-royal-masterpiece-616",
+    name: " Glaoui Masterpiece Carpet",
+    sku: "GLA-ROYAL-616",
+    price: "$400",
+    isAvailable: true,
+    images: [
+      "https://res.cloudinary.com/ln4u8wnx/image/upload/v1792172183/1.png",
+      "https://res.cloudinary.com/ln4u8wnx/image/upload/v1792172193/photo_2026-10-16_17-06-53.jpg",
+      "https://res.cloudinary.com/ln4u8wnx/image/upload/v1792172171/photo_2026-10-16_17-06-56.jpg",
+      "https://res.cloudinary.com/ln4u8wnx/image/upload/v1792172171/photo_2026-10-16_17-06-59.jpg",
+      "https://res.cloudinary.com/ln4u8wnx/image/upload/v1792172171/photo_2026-10-16_17-07-01.jpg"
+    ],
+    category: "Glaoui",
+    sizes: [
+      { size: "205 × 106 cm", price: "$400" }
+    ],
+    description: "Handwoven by skilled Amazigh women in Taznakht, Morocco, this Glaoui rug showcases vibrant geometric patterns in red, blue, ivory, black, and warm earthy tones. Its distinctive diamond motifs, intricate borders, and rich textures reflect the region’s traditional weaving heritage. A unique handmade piece that brings authentic Moroccan artistry, cultural character, and timeless warmth to any interior."
   },
   {
     id: "ouaouzguite-custom-0033",
