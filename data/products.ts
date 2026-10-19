@@ -460,7 +460,7 @@ export const rugsData: Rug[] = [
     isAvailable: true,
     images: [
       "https://res.cloudinary.com/ln4u8wnx/image/upload/f_auto,q_auto/v1789599562/ouzguitep1-1.jpg",
-      "https://res.cloudinary.com/ln4u8wnx/image/upload/f_auto,q_auto/v1789599663/2.png",
+
       "https://res.cloudinary.com/ln4u8wnx/image/upload/f_auto,q_auto/v1789599430/produit4.jpg"
     ],
     category: "Ouaouzguit",
