@@ -15,6 +15,22 @@ import {
   getOtherCollections,
 } from "@/app/lib/collections";
 
+// Fonction utilitaire Black Friday :
+// Garde ton prix actuel fixe et génère automatiquement un prix d'origine barré (+30%)
+function applyBlackFridayDiscount(currentPriceString: string) {
+  const numericPrice = parseFloat(currentPriceString.replace(/[^0-9.]/g, ""));
+  if (isNaN(numericPrice)) {
+    return { original: currentPriceString, discounted: currentPriceString };
+  }
+
+  // On calcule +30% pour l'ancien prix barré (ex: $350 -> $455)
+  const inflatedValue = Math.round(numericPrice * 1.3);
+
+  return {
+    original: `$${inflatedValue}`,    // Le prix barré majoré
+    discounted: currentPriceString,   // Ton prix actuel reste fixe
+  };
+}
 
 export default function ProductDetailClient({ rug }: { rug: Rug }) {
   const { formatPrice } = useCurrency();
@@ -27,15 +43,26 @@ export default function ProductDetailClient({ rug }: { rug: Rug }) {
   const relatedRugs = getRelatedRugs(rug, 3);
   const otherCollections = getOtherCollections(collection?.slug, 3);
 
-  const availableSizes =
+  // --- AUTOMATISATION DES PRIX BLACK FRIDAY ---
+  const rawSizes =
     rug.sizes && rug.sizes.length > 0
       ? rug.sizes
       : [{ size: rug.dimensions || "150 × 200 cm", price: rug.price }];
 
+  const availableSizes = rawSizes.map((item) => {
+    const calc = applyBlackFridayDiscount(item.price);
+    return {
+      size: item.size,
+      originalPrice: calc.original,   // Prix barré (+30%)
+      price: calc.discounted,         // Prix fixe actuel
+    };
+  });
+
   const [mainImage, setMainImage] = useState(rug.images[0]);
   const [selectedSizeObj, setSelectedSizeObj] = useState(availableSizes[0]);
 
-  const displayPrice = selectedSizeObj?.price || rug.price;
+  const displayPrice = selectedSizeObj?.price || availableSizes[0].price;
+  const originalPrice = selectedSizeObj?.originalPrice || availableSizes[0].originalPrice;
   const isAvailable = rug.isAvailable !== false;
 
   const handleAddToCart = () => {
@@ -146,9 +173,18 @@ export default function ProductDetailClient({ rug }: { rug: Rug }) {
             {rug.name}
           </h1>
 
-          <p className="text-2xl font-bold text-[#A44E36] mb-6">
-            {formatPrice(displayPrice)}
-          </p>
+          {/* PRIX FIXE + PRIX BARRÉ BLACK FRIDAY */}
+          <div className="flex items-center gap-3 mb-6 flex-wrap">
+            <span className="text-2xl font-bold text-[#A44E36]">
+              {formatPrice(displayPrice)}
+            </span>
+            <span className="text-lg text-gray-400 line-through">
+              {formatPrice(originalPrice)}
+            </span>
+            <span className="bg-red-600 text-white text-[10px] font-bold px-2 py-1 uppercase tracking-wider rounded animate-pulse">
+              Black Friday -30%
+            </span>
+          </div>
 
           {/* SIZES */}
           <div className="mb-6">
@@ -171,13 +207,22 @@ export default function ProductDetailClient({ rug }: { rug: Rug }) {
                     }`}
                   >
                     <span>{item.size}</span>
-                    <span
-                      className={`text-[11px] font-bold mt-1 ${
-                        isSelected ? "text-white/90" : "text-[#A44E36]"
-                      }`}
-                    >
-                      {formatPrice(item.price)}
-                    </span>
+                    <div className="flex items-center gap-2 mt-1">
+                      <span
+                        className={`text-[11px] font-bold ${
+                          isSelected ? "text-white/90" : "text-[#A44E36]"
+                        }`}
+                      >
+                        {formatPrice(item.price)}
+                      </span>
+                      <span
+                        className={`text-[10px] line-through ${
+                          isSelected ? "text-white/70" : "text-gray-400"
+                        }`}
+                      >
+                        {formatPrice(item.originalPrice)}
+                      </span>
+                    </div>
                   </button>
                 );
               })}

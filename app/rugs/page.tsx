@@ -4,14 +4,25 @@ import { notFound } from "next/navigation";
 import { rugsData } from "@/data/products";
 import RugCard from "@/components/RugCard";
 
-
 const SITE = "https://rugsberber.com";
 const ITEMS_PER_PAGE = 6;
 const CATEGORIES = ["Ouaouzguit", "Glaoui", "Mouzaik", "Akhenif", "Picasso", "Tableau", "Zanifi"];
 
-// ⚠️ Remplacez ces textes par vos vraies connaissances d'artisan : c'est ce contenu
-// unique (et factuel) qui fait la différence pour Google ET pour les IA génératives.
-// app/data/collection-content.ts
+// Fonction utilitaire Black Friday :
+// Garde le prix actuel fixe et génère automatiquement un prix d'origine barré (+30%)
+function applyBlackFridayDiscount(currentPriceString: string) {
+  const numericPrice = parseFloat(currentPriceString.replace(/[^0-9.]/g, ""));
+  if (isNaN(numericPrice)) {
+    return { original: currentPriceString, discounted: currentPriceString };
+  }
+
+  const inflatedValue = Math.round(numericPrice * 1.3);
+
+  return {
+    original: `$${inflatedValue}`,    // Le prix barré majoré (+30%)
+    discounted: currentPriceString,   // Ton prix actuel reste fixe
+  };
+}
 
 export const INTRO: Record<string, string> = {
   Glaoui:
@@ -111,7 +122,6 @@ export async function generateMetadata({
     ? `Shop authentic ${category} Berber rugs, handwoven in wool by Amazigh women artisans in Taznakht, Morocco. Unique pieces, direct from the cooperative.`
     : "Discover handmade Moroccan Berber rugs woven by Amazigh women artisans in Taznakht, Morocco. Traditional designs, natural wool, unique pieces shipped worldwide.";
 
-  // /rugs?category=x duplique /collections/x : on désigne la page collection comme canonique
   const url = category
     ? `${SITE}/collections/${category.toLowerCase()}`
     : `${SITE}${href(undefined, page)}`;
@@ -151,7 +161,6 @@ export default async function RugsPage({ searchParams }: { searchParams: Promise
   const h1 = category ? `${category} Berber Rugs` : "Handmade Moroccan Berber Rugs";
   const label = category ?? "All";
 
-  // ---- Données structurées ----
   const pageUrl = `${SITE}${href(category, page)}`;
   const collectionLd = {
     "@context": "https://schema.org",
@@ -211,7 +220,7 @@ export default async function RugsPage({ searchParams }: { searchParams: Promise
       </section>
 
       <div className="max-w-[1400px] mx-auto px-4 md:px-8 py-12 flex flex-col md:flex-row gap-12">
-        {/* SIDEBAR : vrais liens <a> crawlables */}
+        {/* SIDEBAR */}
         <aside className="w-full md:w-64 flex-shrink-0">
           <nav aria-label="Rug collections" className="mb-10">
             <h2 className="text-xs font-bold tracking-widest uppercase mb-6 border-b border-gray-200 pb-2">
@@ -252,9 +261,20 @@ export default async function RugsPage({ searchParams }: { searchParams: Promise
           {current.length > 0 ? (
             <>
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                {current.map((rug, i) => (
-                  <RugCard key={rug.id} rug={rug} priority={page === 1 && i < 3} />
-                ))}
+                {current.map((rug, i) => {
+                  // Calcul automatique du prix Black Friday pour chaque tapis de la grille
+                  const pricing = applyBlackFridayDiscount(rug.price);
+
+                  return (
+                    <div key={rug.id} className="relative">
+                      {/* Badge Black Friday sur chaque carte */}
+                      <span className="absolute top-3 right-3 z-10 bg-red-600 text-white text-[9px] font-bold px-2 py-1 uppercase tracking-wider rounded shadow">
+                        -30% Black Friday
+                      </span>
+                      <RugCard rug={rug} priority={page === 1 && i < 3} />
+                    </div>
+                  );
+                })}
               </div>
 
               {totalPages > 1 && (
@@ -300,92 +320,68 @@ export default async function RugsPage({ searchParams }: { searchParams: Promise
             </div>
           )}
 
-          {/* CONTENU ÉDITORIAL : essentiel pour le SEO et le GEO (les IA citent du texte factuel) */}
-        {/* EDITORIAL CONTENT — SEO & GEO */}
-{page === 1 && (
-  <section className="mt-20 border-t border-stone-200 pt-12 sm:mt-24 sm:pt-16">
-    <div className="mx-auto max-w-5xl">
-
-      {/* Section introduction */}
-      <div className="grid grid-cols-1 gap-8 md:grid-cols-[220px_1fr] md:gap-14">
-
-        {/* Label éditorial */}
-        <div>
-          <span className="text-xs font-medium uppercase tracking-[0.22em] text-stone-500">
-            Our Heritage
-          </span>
-
-          <div className="mt-4 h-px w-12 bg-stone-400" />
-        </div>
-
-        {/* Contenu principal */}
-        <div>
-          <h2 className="font-serif text-3xl leading-tight tracking-tight text-stone-900 sm:text-4xl">
-            {category
-              ? `About ${category} Berber Rugs`
-              : "The Art of Moroccan Berber Rugs"}
-          </h2>
-
-          <p className="mt-6 max-w-3xl text-base leading-8 text-stone-600 sm:text-lg sm:leading-9">
-            {category && INTRO[category]
-              ? INTRO[category]
-              : "Cooperative Berber Rugs brings together the weaving heritage of Amazigh artisans in Taznakht, Morocco. Our collection celebrates handmade craftsmanship and the distinctive character of traditional Moroccan rugs. Each piece tells its own story through its design, texture and individual details."}
-          </p>
-
-          <div className="mt-8 flex items-center gap-3">
-            <span className="h-px w-8 bg-stone-400" />
-            <span className="text-xs uppercase tracking-[0.18em] text-stone-500">
-              Handcrafted in Morocco
-            </span>
-          </div>
-        </div>
-      </div>
-
-      {/* FAQ — uniquement sur la première page de la collection générale */}
-      {!category && (
-        <div className="mt-20 border-t border-stone-200 pt-12 sm:mt-24 sm:pt-16">
-
-          <div className="grid grid-cols-1 gap-8 md:grid-cols-[220px_1fr] md:gap-14">
-
-            {/* FAQ heading */}
-            <div>
-              <span className="text-xs font-medium uppercase tracking-[0.22em] text-stone-500">
-                Need to Know
-              </span>
-
-              <h2 className="mt-4 font-serif text-3xl leading-tight text-stone-900">
-                Frequently Asked Questions
-              </h2>
-
-              <p className="mt-4 text-sm leading-7 text-stone-500">
-                Everything you need to know about our rugs, craftsmanship and ordering process.
-              </p>
-            </div>
-
-            {/* FAQ items */}
-            <dl className="divide-y divide-stone-200 border-t border-stone-200">
-              {FAQ.map((f) => (
-                <div
-                  key={f.q}
-                  className="py-6 first:pt-6"
-                >
-                  <dt className="font-medium leading-7 text-stone-900">
-                    {f.q}
-                  </dt>
-
-                  <dd className="mt-3 max-w-3xl text-sm leading-7 text-stone-600 sm:text-base sm:leading-8">
-                    {f.a}
-                  </dd>
+          {page === 1 && (
+            <section className="mt-20 border-t border-stone-200 pt-12 sm:mt-24 sm:pt-16">
+              <div className="mx-auto max-w-5xl">
+                <div className="grid grid-cols-1 gap-8 md:grid-cols-[220px_1fr] md:gap-14">
+                  <div>
+                    <span className="text-xs font-medium uppercase tracking-[0.22em] text-stone-500">
+                      Our Heritage
+                    </span>
+                    <div className="mt-4 h-px w-12 bg-stone-400" />
+                  </div>
+                  <div>
+                    <h2 className="font-serif text-3xl leading-tight tracking-tight text-stone-900 sm:text-4xl">
+                      {category
+                        ? `About ${category} Berber Rugs`
+                        : "The Art of Moroccan Berber Rugs"}
+                    </h2>
+                    <p className="mt-6 max-w-3xl text-base leading-8 text-stone-600 sm:text-lg sm:leading-9">
+                      {category && INTRO[category]
+                        ? INTRO[category]
+                        : "Cooperative Berber Rugs brings together the weaving heritage of Amazigh artisans in Taznakht, Morocco. Our collection celebrates handmade craftsmanship and the distinctive character of traditional Moroccan rugs. Each piece tells its own story through its design, texture and individual details."}
+                    </p>
+                    <div className="mt-8 flex items-center gap-3">
+                      <span className="h-px w-8 bg-stone-400" />
+                      <span className="text-xs uppercase tracking-[0.18em] text-stone-500">
+                        Handcrafted in Morocco
+                      </span>
+                    </div>
+                  </div>
                 </div>
-              ))}
-            </dl>
 
-          </div>
-        </div>
-      )}
-    </div>
-  </section>
-)}
+                {!category && (
+                  <div className="mt-20 border-t border-stone-200 pt-12 sm:mt-24 sm:pt-16">
+                    <div className="grid grid-cols-1 gap-8 md:grid-cols-[220px_1fr] md:gap-14">
+                      <div>
+                        <span className="text-xs font-medium uppercase tracking-[0.22em] text-stone-500">
+                          Need to Know
+                        </span>
+                        <h2 className="mt-4 font-serif text-3xl leading-tight text-stone-900">
+                          Frequently Asked Questions
+                        </h2>
+                        <p className="mt-4 text-sm leading-7 text-stone-500">
+                          Everything you need to know about our rugs, craftsmanship and ordering process.
+                        </p>
+                      </div>
+                      <dl className="divide-y divide-stone-200 border-t border-stone-200">
+                        {FAQ.map((f) => (
+                          <div key={f.q} className="py-6 first:pt-6">
+                            <dt className="font-medium leading-7 text-stone-900">
+                              {f.q}
+                            </dt>
+                            <dd className="mt-3 max-w-3xl text-sm leading-7 text-stone-600 sm:text-base sm:leading-8">
+                              {f.a}
+                            </dd>
+                          </div>
+                        ))}
+                      </dl>
+                    </div>
+                  </div>
+                )}
+              </div>
+            </section>
+          )}
         </div>
       </div>
     </div>

@@ -26,8 +26,6 @@ export const metadata: Metadata = {
   },
 };
 
-const ROTATION_SPEED = 2500; // 2.5s
-
 // Composant carte individuelle avec le composant <Image> de Next.js
 function CollectionCard({
   collection,
@@ -37,9 +35,14 @@ function CollectionCard({
   return (
     <Link
       href={`/collections/${collection.slug}`}
-      className="bg-[#FFF8EF] border border-[#A44E36]/20 rounded-3xl flex flex-col h-full shadow-md hover:shadow-lg transition-all duration-300 overflow-hidden group cursor-pointer flex-shrink-0 w-[90%] sm:w-[380px] md:w-full snap-center p-4 sm:p-6"
+      className="bg-[#FFF8EF] border border-[#A44E36]/20 rounded-3xl flex flex-col h-full shadow-md hover:shadow-lg transition-all duration-300 overflow-hidden group cursor-pointer flex-shrink-0 w-[90%] sm:w-[380px] md:w-full snap-center p-4 sm:p-6 relative"
       aria-label={`Explore ${collection.seoName}`}
     >
+      {/* Badge Black Friday sur la carte de collection */}
+      <span className="absolute top-6 right-6 z-10 bg-red-600 text-white text-[10px] font-bold px-2.5 py-1 uppercase tracking-wider rounded-full shadow-md animate-pulse">
+        Black Friday -30%
+      </span>
+
       <div className="relative aspect-[4/5] sm:aspect-[4/4] w-full rounded-2xl overflow-hidden bg-[#E8DED2] mb-6">
         <Image
           src={collection.images[0]}

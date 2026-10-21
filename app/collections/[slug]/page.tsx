@@ -12,6 +12,22 @@ interface CollectionPageProps {
   }>;
 }
 
+// Fonction utilitaire Black Friday :
+// Garde le prix actuel fixe et génère automatiquement un prix d'origine barré (+30%)
+function applyBlackFridayDiscount(currentPriceString: string) {
+  const numericPrice = parseFloat(currentPriceString.replace(/[^0-9.]/g, ""));
+  if (isNaN(numericPrice)) {
+    return { original: currentPriceString, discounted: currentPriceString };
+  }
+
+  const inflatedValue = Math.round(numericPrice * 1.3);
+
+  return {
+    original: `$${inflatedValue}`,    // Le prix barré majoré (+30%)
+    discounted: currentPriceString,   // Ton prix actuel reste fixe
+  };
+}
+
 export function generateStaticParams() {
   return collectionsData.map((collection) => ({
     slug: collection.slug,
@@ -172,43 +188,59 @@ export default async function CollectionPage({
           </div>
         ) : (
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {rugs.map((rug) => (
-              <Link
-                key={rug.id}
-                href={`/rugs/${rug.id}`}
-                className="group bg-white rounded-3xl overflow-hidden border border-[#A44E36]/10 shadow-sm hover:shadow-lg transition-all duration-300"
-              >
-                <div className="relative aspect-square overflow-hidden bg-[#E8DED2]">
-                  <Image
-                    src={rug.images[0]}
-                    alt={`${rug.name} handmade Moroccan Berber rug`}
-                    fill
-                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                    className="object-cover group-hover:scale-105 transition-transform duration-700"
-                  />
-                </div>
+            {rugs.map((rug) => {
+              // Calcul automatique du prix Black Friday pour chaque produit de la grille
+              const pricing = applyBlackFridayDiscount(rug.price);
 
-                <div className="p-5">
-                  <h3 className="font-serif text-xl text-gray-900 group-hover:text-[#A44E36] transition-colors">
-                    {rug.name}
-                  </h3>
+              return (
+                <Link
+                  key={rug.id}
+                  href={`/rugs/${rug.id}`}
+                  className="group bg-white rounded-3xl overflow-hidden border border-[#A44E36]/10 shadow-sm hover:shadow-lg transition-all duration-300 relative"
+                >
+                  {/* Badge Black Friday discret sur l'image */}
+                  <span className="absolute top-3 right-3 z-10 bg-red-600 text-white text-[9px] font-bold px-2 py-1 uppercase tracking-wider rounded shadow">
+                    -30% Black Friday
+                  </span>
 
-                  <p className="text-xs text-gray-500 mt-1">
-                    {rug.sku}
-                  </p>
-
-                  <div className="flex items-center justify-between mt-4">
-                    <span className="font-semibold text-gray-900">
-                      {rug.price}
-                    </span>
-
-                    <span className="text-[#A44E36] text-xs font-bold uppercase tracking-wider">
-                      View Rug →
-                    </span>
+                  <div className="relative aspect-square overflow-hidden bg-[#E8DED2]">
+                    <Image
+                      src={rug.images[0]}
+                      alt={`${rug.name} handmade Moroccan Berber rug`}
+                      fill
+                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                      className="object-cover group-hover:scale-105 transition-transform duration-700"
+                    />
                   </div>
-                </div>
-              </Link>
-            ))}
+
+                  <div className="p-5">
+                    <h3 className="font-serif text-xl text-gray-900 group-hover:text-[#A44E36] transition-colors">
+                      {rug.name}
+                    </h3>
+
+                    <p className="text-xs text-gray-500 mt-1">
+                      {rug.sku}
+                    </p>
+
+                    <div className="flex items-center justify-between mt-4">
+                      {/* Affichage du prix actuel fixe + prix d'origine majoré barré */}
+                      <div className="flex items-center gap-2">
+                        <span className="font-bold text-gray-900">
+                          {pricing.discounted}
+                        </span>
+                        <span className="text-xs text-gray-400 line-through">
+                          {pricing.original}
+                        </span>
+                      </div>
+
+                      <span className="text-[#A44E36] text-xs font-bold uppercase tracking-wider">
+                        View Rug →
+                      </span>
+                    </div>
+                  </div>
+                </Link>
+              );
+            })}
           </div>
         )}
       </section>

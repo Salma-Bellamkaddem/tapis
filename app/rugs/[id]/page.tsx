@@ -1,154 +1,116 @@
-import { rugsData } from "@/data/products";
-import { notFound } from "next/navigation";
+import Link from "next/link";
+import Image from "next/image";
 import { Metadata } from "next";
-import ProductDetailClient from "@/components/ProductDetailClient";
-import BreadcrumbSchema from "@/components/BreadcrumbSchema";
-import { getCollectionByCategory, getRelatedRugs } from "@/app/lib/collections";
-import { absoluteUrl, BRAND_NAME, ORG_NAME, SITE_URL, toJsonLd } from "@/app/lib/seo";
+import { collectionsData } from "@/data/products";
 
-export function generateStaticParams() {
-  return rugsData.map((rug) => ({ id: rug.id }));
-}
+// 🌟 Métadonnées SEO et titre accrocheur en anglais pour Google & OpenGraph
+export const metadata: Metadata = {
+  title:
+    "Handmade Moroccan Berber Rug Collections | Taznakht",
 
-type Rug = (typeof rugsData)[number];
+  description:
+    "Explore handmade Moroccan Berber rug collections from Taznakht, including Ouaouzguit, Glaoui, Akhenif, Zanifi, Picasso, Mouzaïk and Tapis Tableau rugs.",
 
-// "$350" -> { value: "350.00", currency: "USD" } | "45000 MAD" -> { value: "45000.00", currency: "MAD" }
-function parsePrice(raw: string) {
-  const amount = raw.replace(/[^0-9.,]/g, "").replace(/,/g, "");
-  const currency = /MAD|DH/i.test(raw) ? "MAD" : /€|EUR/i.test(raw) ? "EUR" : "USD";
-  return { value: Number(amount).toFixed(2), currency };
-}
+  alternates: {
+    canonical: "https://www.rugsberber.com/collections",
+  },
 
-function truncate(text: string, max = 160) {
-  return text.length > max ? text.slice(0, max - 1).trimEnd() + "…" : text;
-}
-
-function buildProductJsonLd(rug: Rug, collectionName: string) {
-  const url = absoluteUrl(`/rugs/${rug.id}`);
-  const available = rug.isAvailable !== false;
-  const sizes =
-    rug.sizes && rug.sizes.length > 0
-      ? rug.sizes
-      : [{ size: rug.dimensions || "Standard", price: rug.price }];
-
-  const offers = sizes.map((s) => {
-    const { value, currency } = parsePrice(s.price || rug.price);
-    return {
-      "@type": "Offer",
-      url,
-      price: value,
-      priceCurrency: currency,
-      availability: available
-        ? "https://schema.org/InStock"
-        : "https://schema.org/OutOfStock",
-      itemCondition: "https://schema.org/NewCondition",
-      seller: { "@type": "Organization", name: ORG_NAME },
-      ...(sizes.length > 1 ? { name: s.size } : {}),
-    };
-  });
-
-  // TODO: ajouter shippingDetails et hasMerchantReturnPolicy quand vos politiques sont définies.
-
-  return {
-    "@context": "https://schema.org",
-    "@type": "Product",
-    name: rug.name,                       // sans le SKU
-    sku: rug.sku,
-    url,
-    image: rug.images,
+  openGraph: {
+    type: "website",
+    title:
+      "Handmade Moroccan Berber Rug Collections | Taznakht",
     description:
-      rug.description ||
-      "Handmade Moroccan Berber rug woven by rural Amazigh women in Taznakht, Morocco.",
-    category: `${collectionName} Berber Rugs`,
-    material: "Wool",
-    size: sizes[0].size,
-    brand: { "@type": "Brand", name: BRAND_NAME },
-    offers: offers.length === 1 ? offers[0] : offers,
-  };
-}
+      "Discover authentic Berber rugs handwoven in Taznakht, Morocco, including Ouaouzguit, Glaoui, Akhenif, Zanifi and more.",
+    url: "https://www.rugsberber.com/collections",
+    siteName: "Cooperative Berber Rugs",
+  },
+};
 
-export async function generateMetadata({
-  params,
+// Composant carte individuelle avec le composant <Image> de Next.js
+function CollectionCard({
+  collection,
 }: {
-  params: Promise<{ id: string }>;
-}): Promise<Metadata> {
-  const { id } = await params;
-  const rug = rugsData.find((r) => r.id === id);
-
-  if (!rug) {
-    return { title: "Rug Not Found | Rugs Berber" };
-  }
-
-  const collectionName = getCollectionByCategory(rug.category)?.name ?? rug.category;
-  const fallbackDescription = `Buy authentic ${rug.name} online. Hand-woven by rural Moroccan women artisans in the Siroua Mountains. Worldwide shipping.`;
-  const description = truncate(rug.description || fallbackDescription);
-  const url = absoluteUrl(`/rugs/${rug.id}`);
-
-  return {
-    title: `${rug.name} (${rug.sku}) | Authentic ${collectionName} Berber Rug`,
-    description,
-    keywords: [
-      rug.name,
-      `${collectionName} rug`,
-      `Moroccan ${collectionName} carpet`,
-      `SKU ${rug.sku}`,
-      "handmade Moroccan rug",
-      "authentic Berber carpet",
-      "buy Berber rug online",
-    ],
-    openGraph: {
-      title: `${rug.name} - Authentic ${collectionName} Berber Rug`,
-      description,
-      url,
-      siteName: BRAND_NAME,
-      images: [
-        {
-          url: rug.images[0],
-          width: 800,
-          height: 1000,
-          alt: `${rug.name} – handmade Moroccan Berber rug from Taznakht`,
-        },
-      ],
-    },
-    alternates: { canonical: url },
-  };
-}
-
-export default async function ProductDetailPage({
-  params,
-}: {
-  params: Promise<{ id: string }>;
+  collection: (typeof collectionsData)[number];
 }) {
-  const { id } = await params;
-  const rug = rugsData.find((r) => r.id === id);
-
-  if (!rug) return notFound();
-
-  const collection = getCollectionByCategory(rug.category);
-  const collectionName = collection?.name ?? rug.category;
-  const related = getRelatedRugs(rug, 3);
-
-  const breadcrumbItems = [
-    { name: "Home", url: SITE_URL },
-    ...(collection
-      ? [{ name: collection.seoName, url: absoluteUrl(`/collections/${collection.slug}`) }]
-      : [{ name: "Rugs", url: absoluteUrl("/rugs") }]),
-    { name: rug.name, url: absoluteUrl(`/rugs/${rug.id}`) },
-  ];
-
   return (
-    <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: toJsonLd(buildProductJsonLd(rug, collectionName)),
-        }}
-      />
-      <BreadcrumbSchema items={breadcrumbItems} />
-  
+    <Link
+      href={`/collections/${collection.slug}`}
+      className="bg-[#FFF8EF] border border-[#A44E36]/20 rounded-3xl flex flex-col h-full shadow-md hover:shadow-lg transition-all duration-300 overflow-hidden group cursor-pointer flex-shrink-0 w-[90%] sm:w-[380px] md:w-full snap-center p-4 sm:p-6 relative"
+      aria-label={`Explore ${collection.seoName}`}
+    >
+      {/* Badge Black Friday sur la carte de collection */}
+      <span className="absolute top-6 right-6 z-10 bg-red-600 text-white text-[10px] font-bold px-2.5 py-1 uppercase tracking-wider rounded-full shadow-md animate-pulse">
+        Black Friday -30%
+      </span>
 
-      <ProductDetailClient rug={rug} />
-      
-    </>
+      <div className="relative aspect-[4/5] sm:aspect-[4/4] w-full rounded-2xl overflow-hidden bg-[#E8DED2] mb-6">
+        <Image
+          src={collection.images[0]}
+          alt={`${collection.seoName} from Taznakht, Morocco`}
+          fill
+          sizes="(max-width: 768px) 90vw, 33vw"
+          className="object-cover group-hover:scale-105 transition-transform duration-700 ease-in-out"
+          priority={false}
+        />
+
+        <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent pointer-events-none" />
+      </div>
+
+      <div className="flex flex-col flex-grow text-center px-2">
+        <span className="text-[10px] font-bold tracking-[0.25em] text-[#A44E36] uppercase mb-1">
+          {collection.subtitle}
+        </span>
+
+        <h2 className="font-serif text-2xl md:text-3xl font-bold tracking-wide text-gray-900 mb-3 group-hover:text-[#A44E36] transition-colors">
+          {collection.name}
+        </h2>
+
+        <p className="text-gray-600 text-xs md:text-sm leading-relaxed mb-6 flex-grow max-w-sm mx-auto">
+          {collection.description}
+        </p>
+
+        <div className="pt-4 border-t border-[#A44E36]/10 flex items-center justify-center gap-2">
+          <span className="text-[#A44E36] font-bold text-xs tracking-widest uppercase">
+            Explore Collection
+          </span>
+
+          <span className="text-base text-[#A44E36] transition-transform duration-300 group-hover:translate-x-1">
+            →
+          </span>
+        </div>
+      </div>
+    </Link>
+  );
+}
+
+export default function CollectionsPage() {
+  return (
+    <section className="bg-[#FAF0E4] py-16 md:py-20 px-4 md:px-8 min-h-screen">
+      <div className="max-w-7xl mx-auto">
+
+        {/* En-tête de la page */}
+        <div className="text-center mb-12 md:mb-16">
+          <span className="text-[10px] font-bold tracking-[0.3em] text-[#A44E36] uppercase mb-3 block">
+            OUR HERITAGE & CRAFT
+          </span>
+          <h1 className="font-serif text-3xl md:text-5xl text-gray-900 tracking-wide mb-4 uppercase">
+            Explore Our Masterpiece Collections
+          </h1>
+          <p className="text-gray-700 max-w-2xl mx-auto text-sm md:text-base px-2 leading-relaxed">
+            Discover our authentic collections of traditional Moroccan Berber rugs, 
+            hand-woven by rural women artisans in the Atlas mountains. Each collection 
+            carries a unique tribal heritage, pure living wool, and timeless design.
+          </p>
+        </div>
+
+        {/* Grille des collections */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+          {collectionsData.map((collection) => (
+            <CollectionCard key={collection.id} collection={collection} />
+          ))}
+        </div>
+
+      </div>
+    </section>
   );
 }
