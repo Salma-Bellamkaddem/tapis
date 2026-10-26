@@ -3,28 +3,16 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { rugsData } from "@/data/products";
 import RugCard from "@/components/RugCard";
+import SaleBadge from "@/components/SaleBadge";
+
 
 const SITE = "https://rugsberber.com";
+const BRAND = "Cooperative Berber Rugs";
 const ITEMS_PER_PAGE = 6;
 const CATEGORIES = ["Ouaouzguit", "Glaoui", "Mouzaik", "Akhenif", "Picasso", "Tableau", "Zanifi"];
 
-// Fonction utilitaire Black Friday :
-// Garde le prix actuel fixe et génère automatiquement un prix d'origine barré (+30%)
-function applyBlackFridayDiscount(currentPriceString: string) {
-  const numericPrice = parseFloat(currentPriceString.replace(/[^0-9.]/g, ""));
-  if (isNaN(numericPrice)) {
-    return { original: currentPriceString, discounted: currentPriceString };
-  }
-
-  const inflatedValue = Math.round(numericPrice * 1.3);
-
-  return {
-    original: `$${inflatedValue}`,    // Le prix barré majoré (+30%)
-    discounted: currentPriceString,   // Ton prix actuel reste fixe
-  };
-}
-
-export const INTRO: Record<string, string> = {
+// NOT exported: a Next.js page file may only export default, metadata, generateMetadata, etc.
+const INTRO: Record<string, string> = {
   Glaoui:
     "Discover Glaoui Berber rugs, part of Morocco's rich Amazigh weaving heritage. Our collection brings together handcrafted pieces from Taznakht, Morocco, made by skilled artisans using traditional weaving knowledge. Each rug has its own character, with individual details that reflect the nature of handmade craftsmanship. Explore our Glaoui collection to find a distinctive Moroccan rug for your home.",
 
@@ -38,7 +26,7 @@ export const INTRO: Record<string, string> = {
     "Explore Ouaouzguit Berber rugs, associated with the historic weaving traditions of the Taznakht region in southern Morocco. These traditional Moroccan textiles reflect the rich Amazigh heritage of the region and the knowledge passed down through generations of artisans. Discover distinctive handcrafted pieces that bring Moroccan craftsmanship and cultural character into your home.",
 };
 
-export const FAQ = [
+const FAQ = [
   {
     q: "Where are your Berber rugs made?",
     a: "Our Berber rugs are handcrafted in Morocco by artisans connected to the traditional weaving heritage of Taznakht. We celebrate the craftsmanship and cultural traditions behind Moroccan rugs, with a focus on the work of local artisans.",
@@ -114,9 +102,10 @@ export async function generateMetadata({
   const { category, invalidCategory, page } = resolve(await searchParams);
   const suffix = page > 1 ? ` – Page ${page}` : "";
 
+  // The layout template already appends " | Cooperative Berber Rugs"
   const title = category
-    ? `${category} Berber Rugs – Handmade in Morocco${suffix} | Rugs Berber`
-    : `Handmade Moroccan Berber Rugs${suffix} | Rugs Berber`;
+    ? `${category} Berber Rugs – Handmade${suffix}`
+    : `Handmade Moroccan Berber Rugs${suffix}`;
 
   const description = category
     ? `Shop authentic ${category} Berber rugs, handwoven in wool by Amazigh women artisans in Taznakht, Morocco. Unique pieces, direct from the cooperative.`
@@ -131,8 +120,8 @@ export async function generateMetadata({
     description,
     alternates: { canonical: url },
     robots: invalidCategory ? { index: false, follow: true } : { index: true, follow: true },
-    openGraph: { title, description, url, type: "website", siteName: "Rugs Berber" },
-    twitter: { card: "summary_large_image", title, description },
+    openGraph: { title: `${title} | ${BRAND}`, description, url, type: "website", siteName: BRAND },
+    twitter: { card: "summary_large_image", title: `${title} | ${BRAND}`, description },
   };
 }
 
@@ -167,7 +156,7 @@ export default async function RugsPage({ searchParams }: { searchParams: Promise
     "@type": "CollectionPage",
     name: h1,
     url: pageUrl,
-    isPartOf: { "@type": "WebSite", name: "Rugs Berber", url: SITE },
+    isPartOf: { "@type": "WebSite", name: BRAND, url: SITE },
     mainEntity: {
       "@type": "ItemList",
       numberOfItems: filtered.length,
@@ -251,7 +240,7 @@ export default async function RugsPage({ searchParams }: { searchParams: Promise
           </nav>
         </aside>
 
-        {/* GRILLE */}
+        {/* GRID */}
         <div className="flex-1">
           <p className="mb-8 text-xs font-bold tracking-widest uppercase text-gray-700">
             Showing {filtered.length > 0 ? start + 1 : 0}–{Math.min(start + ITEMS_PER_PAGE, filtered.length)} of{" "}
@@ -261,20 +250,15 @@ export default async function RugsPage({ searchParams }: { searchParams: Promise
           {current.length > 0 ? (
             <>
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                {current.map((rug, i) => {
-                  // Calcul automatique du prix Black Friday pour chaque tapis de la grille
-                  const pricing = applyBlackFridayDiscount(rug.price);
-
-                  return (
-                    <div key={rug.id} className="relative">
-                      {/* Badge Black Friday sur chaque carte */}
-                      <span className="absolute top-3 right-3 z-10 bg-red-600 text-white text-[9px] font-bold px-2 py-1 uppercase tracking-wider rounded shadow">
-                        -30% Black Friday
-                      </span>
-                      <RugCard rug={rug} priority={page === 1 && i < 3} />
-                    </div>
-                  );
-                })}
+                {current.map((rug, i) => (
+                  <div key={rug.id} className="relative">
+                    {/* Visible only Nov 1 - Nov 30, and never on sold-out rugs */}
+                    {rug.isAvailable !== false && (
+                      <SaleBadge className="absolute top-3 right-3 z-10" />
+                    )}
+                    <RugCard rug={rug} priority={page === 1 && i < 3} />
+                  </div>
+                ))}
               </div>
 
               {totalPages > 1 && (
@@ -316,7 +300,9 @@ export default async function RugsPage({ searchParams }: { searchParams: Promise
             </>
           ) : (
             <div className="text-center py-20 text-gray-500">
-              <p className="text-base">{invalidCategory ? "This collection does not exist." : "No rugs found in this category."}</p>
+              <p className="text-base">
+                {invalidCategory ? "This collection does not exist." : "No rugs found in this category."}
+              </p>
             </div>
           )}
 
@@ -332,9 +318,7 @@ export default async function RugsPage({ searchParams }: { searchParams: Promise
                   </div>
                   <div>
                     <h2 className="font-serif text-3xl leading-tight tracking-tight text-stone-900 sm:text-4xl">
-                      {category
-                        ? `About ${category} Berber Rugs`
-                        : "The Art of Moroccan Berber Rugs"}
+                      {category ? `About ${category} Berber Rugs` : "The Art of Moroccan Berber Rugs"}
                     </h2>
                     <p className="mt-6 max-w-3xl text-base leading-8 text-stone-600 sm:text-lg sm:leading-9">
                       {category && INTRO[category]
@@ -367,9 +351,7 @@ export default async function RugsPage({ searchParams }: { searchParams: Promise
                       <dl className="divide-y divide-stone-200 border-t border-stone-200">
                         {FAQ.map((f) => (
                           <div key={f.q} className="py-6 first:pt-6">
-                            <dt className="font-medium leading-7 text-stone-900">
-                              {f.q}
-                            </dt>
+                            <dt className="font-medium leading-7 text-stone-900">{f.q}</dt>
                             <dd className="mt-3 max-w-3xl text-sm leading-7 text-stone-600 sm:text-base sm:leading-8">
                               {f.a}
                             </dd>

@@ -211,7 +211,7 @@ export const rugsData: Rug[] = [
     name: "Zanifi Berber",
     sku: "ZAN-003",
     price: "$850",
-    isAvailable: true,
+    isAvailable: false,
     images: [
       "https://res.cloudinary.com/ln4u8wnx/image/upload/f_auto,q_auto/v1789650048/zanafi-p3-1.png",
       "https://res.cloudinary.com/ln4u8wnx/image/upload/f_auto,q_auto/v1789650082/zanafi-p3-2.jpg",
@@ -438,7 +438,7 @@ export const rugsData: Rug[] = [
     name: "Ouaouzguite Royal Masterpiece",
     sku: "OUA-008",
     price: "$270",
-    isAvailable: true,
+    isAvailable:false,
     images: [
       "https://res.cloudinary.com/ln4u8wnx/image/upload/v1789954311/Photo_Background_Removal_5.png",
       "https://res.cloudinary.com/ln4u8wnx/image/upload/f_auto,q_auto/v1789654838/photo_2026-09-17_14-41-34.jpg",

@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import type { Rug } from "@/data/products";
@@ -14,64 +14,64 @@ import {
   getRelatedRugs,
   getOtherCollections,
 } from "@/app/lib/collections";
-
-// Fonction utilitaire Black Friday :
-// Garde ton prix actuel fixe et génère automatiquement un prix d'origine barré (+30%)
-function applyBlackFridayDiscount(currentPriceString: string) {
-  const numericPrice = parseFloat(currentPriceString.replace(/[^0-9.]/g, ""));
-  if (isNaN(numericPrice)) {
-    return { original: currentPriceString, discounted: currentPriceString };
-  }
-
-  // On calcule +30% pour l'ancien prix barré (ex: $350 -> $455)
-  const inflatedValue = Math.round(numericPrice * 1.3);
-
-  return {
-    original: `$${inflatedValue}`,    // Le prix barré majoré
-    discounted: currentPriceString,   // Ton prix actuel reste fixe
-  };
-}
+import {
+  DISCOUNT,
+  WHATSAPP_NUMBER,
+  getPromoState,
+  referencePrice,
+  toNumber,
+} from "@/app/lib/promo";
 
 export default function ProductDetailClient({ rug }: { rug: Rug }) {
   const { formatPrice } = useCurrency();
   const { addToCart } = useCart();
   const [added, setAdded] = useState(false);
 
-  // Tout est dérivé de rug.category via le mapping central
+  // Black Friday is only "live" Nov 1 -> Nov 30. Starts false so the server
+  // HTML and first client render match (no hydration mismatch).
+  const [promo, setPromo] = useState<{ live: boolean; end: Date } | null>(null);
+  useEffect(() => {
+    const p = getPromoState();
+    setPromo({ live: p.live, end: p.end });
+  }, []);
+
   const collection = getCollectionByCategory(rug.category) ?? null;
   const collectionName = collection?.name ?? rug.category;
   const relatedRugs = getRelatedRugs(rug, 3);
   const otherCollections = getOtherCollections(collection?.slug, 3);
 
-  // --- AUTOMATISATION DES PRIX BLACK FRIDAY ---
+  const isAvailable = rug.isAvailable !== false;
+  // Discount only applies to rugs that can actually be bought
+  const onSale = !!promo?.live && isAvailable;
+
+  // `price` is your listed price and what the customer pays (already a sale price).
+  // `regular` is the higher reference price, shown crossed out only during the promo.
   const rawSizes =
     rug.sizes && rug.sizes.length > 0
       ? rug.sizes
       : [{ size: rug.dimensions || "150 × 200 cm", price: rug.price }];
 
-  const availableSizes = rawSizes.map((item) => {
-    const calc = applyBlackFridayDiscount(item.price);
-    return {
-      size: item.size,
-      originalPrice: calc.original,   // Prix barré (+30%)
-      price: calc.discounted,         // Prix fixe actuel
-    };
-  });
+  const availableSizes = rawSizes.map((item) => ({
+    size: item.size,
+    price: item.price,
+    regular: referencePrice(item.price, (item as any).originalPrice),
+  }));
 
   const [mainImage, setMainImage] = useState(rug.images[0]);
-  const [selectedSizeObj, setSelectedSizeObj] = useState(availableSizes[0]);
+  const [selectedSizeIdx, setSelectedSizeIdx] = useState(0);
 
-  const displayPrice = selectedSizeObj?.price || availableSizes[0].price;
-  const originalPrice = selectedSizeObj?.originalPrice || availableSizes[0].originalPrice;
-  const isAvailable = rug.isAvailable !== false;
+  // Index-based selection so prices update when the promo state changes
+  const selected = availableSizes[selectedSizeIdx] ?? availableSizes[0];
+  const displayPrice = selected.price;
+  const regularPrice = selected.regular;
 
   const handleAddToCart = () => {
     addToCart({
       rugId: rug.id,
       name: rug.name,
       sku: rug.sku,
-      size: selectedSizeObj.size,
-      price: displayPrice,
+      size: selected.size,
+      price: displayPrice, // the real amount to pay
       image: mainImage,
     });
     setAdded(true);
@@ -83,14 +83,14 @@ export default function ProductDetailClient({ rug }: { rug: Rug }) {
     message += "━━━━━━━━━━━━━━━━━━━━━━\n\n";
     message += `✨ *Reference Rug :* ${rug.name} (${rug.sku})\n`;
     message += `📂 *Collection :* ${collectionName}\n`;
-    message += `📏 *Desired Size :* ${selectedSizeObj.size}\n`;
+    message += `📏 *Desired Size :* ${selected.size}\n`;
     message += `💰 *Indicative Price :* ${formatPrice(displayPrice)}\n\n`;
     message +=
       "Hello, this unique piece is sold out. Can your artisans weave a similar custom piece for me?\n\n";
     message += "━━━━━━━━━━━━━━━━━━━━━━\n";
     message += `📸 *Model Photo :*\n${mainImage}`;
 
-    return `https://wa.me/212767149114?text=${encodeURIComponent(message)}`;
+    return `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
   };
 
   const formatDescription = (text: string) => {
@@ -100,9 +100,38 @@ export default function ProductDetailClient({ rug }: { rug: Rug }) {
 
   const descriptionParts = formatDescription(rug.description || "");
 
+  // Product structured data (price = what is really charged)
+  const productJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    name: rug.name,
+    sku: rug.sku,
+    image: rug.images,
+    description:
+      rug.description ||
+      "Handmade Moroccan Berber rug woven by Amazigh women in Taznakht, Morocco.",
+    brand: { "@type": "Brand", name: "Cooperative Berber Rugs" },
+    offers: {
+      "@type": "Offer",
+      priceCurrency: "USD",
+      price: toNumber(displayPrice),
+      availability: isAvailable
+        ? "https://schema.org/InStock"
+        : "https://schema.org/SoldOut",
+      itemCondition: "https://schema.org/NewCondition",
+      ...(onSale && promo
+        ? { priceValidUntil: promo.end.toISOString().slice(0, 10) }
+        : {}),
+    },
+  };
+
   return (
     <div className="bg-[#FAF9F6] min-h-screen py-12 px-4 md:px-8">
-      {/* Breadcrumb visible (Home › Collection › Produit) */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(productJsonLd) }}
+      />
+
       <div className="max-w-6xl mx-auto mb-8">
         <ProductBreadcrumb collection={collection} productName={rug.name} />
       </div>
@@ -122,8 +151,8 @@ export default function ProductDetailClient({ rug }: { rug: Rug }) {
               }`}
             />
             {!isAvailable && (
-              <div className="absolute top-4 left-4 bg-red-600 text-white text-xs font-bold tracking-[0.2em] px-4 py-2 uppercase rounded shadow-lg flex items-center gap-2 animate-pulse">
-                <span className="w-2 h-2 rounded-full bg-white"></span>
+              <div className="absolute top-4 left-4 bg-red-600 text-white text-xs font-bold tracking-[0.2em] px-4 py-2 uppercase rounded shadow-lg flex items-center gap-2">
+                <span className="w-2 h-2 rounded-full bg-white" />
                 Sold Out (Archived Piece)
               </div>
             )}
@@ -155,7 +184,6 @@ export default function ProductDetailClient({ rug }: { rug: Rug }) {
 
         {/* PRODUCT INFO */}
         <div className="w-full md:w-2/5 flex flex-col pt-4">
-          {/* Lien interne : Produit → Collection */}
           {collection ? (
             <Link
               href={`/collections/${collection.slug}`}
@@ -173,33 +201,38 @@ export default function ProductDetailClient({ rug }: { rug: Rug }) {
             {rug.name}
           </h1>
 
-          {/* PRIX FIXE + PRIX BARRÉ BLACK FRIDAY */}
+          {/* PRICE: strikethrough only during the real sale */}
           <div className="flex items-center gap-3 mb-6 flex-wrap">
             <span className="text-2xl font-bold text-[#A44E36]">
               {formatPrice(displayPrice)}
             </span>
-            <span className="text-lg text-gray-400 line-through">
-              {formatPrice(originalPrice)}
-            </span>
-            <span className="bg-red-600 text-white text-[10px] font-bold px-2 py-1 uppercase tracking-wider rounded animate-pulse">
-              Black Friday -30%
-            </span>
+            {onSale && (
+              <>
+                <span className="text-lg text-gray-400 line-through">
+                  {formatPrice(regularPrice)}
+                </span>
+                <span className="bg-red-600 text-white text-[10px] font-bold px-2 py-1 uppercase tracking-wider rounded">
+                  Black Friday -{DISCOUNT}%
+                </span>
+              </>
+            )}
           </div>
 
           {/* SIZES */}
           <div className="mb-6">
-            <label className="block text-xs font-bold tracking-widest uppercase text-gray-700 mb-2">
-              Select Size & Price:
-            </label>
+            <p className="block text-xs font-bold tracking-widest uppercase text-gray-700 mb-2">
+              Select size &amp; price:
+            </p>
 
             <div className="grid grid-cols-2 gap-2">
               {availableSizes.map((item, idx) => {
-                const isSelected = selectedSizeObj.size === item.size;
+                const isSelected = idx === selectedSizeIdx;
 
                 return (
                   <button
                     key={idx}
-                    onClick={() => setSelectedSizeObj(item)}
+                    onClick={() => setSelectedSizeIdx(idx)}
+                    aria-pressed={isSelected}
                     className={`py-2.5 px-3 text-xs font-semibold rounded-lg border transition-all text-left flex flex-col justify-between ${
                       isSelected
                         ? "bg-[#A44E36] text-white border-[#A44E36] shadow-sm"
@@ -215,13 +248,15 @@ export default function ProductDetailClient({ rug }: { rug: Rug }) {
                       >
                         {formatPrice(item.price)}
                       </span>
-                      <span
-                        className={`text-[10px] line-through ${
-                          isSelected ? "text-white/70" : "text-gray-400"
-                        }`}
-                      >
-                        {formatPrice(item.originalPrice)}
-                      </span>
+                      {onSale && (
+                        <span
+                          className={`text-[10px] line-through ${
+                            isSelected ? "text-white/70" : "text-gray-400"
+                          }`}
+                        >
+                          {formatPrice(item.regular)}
+                        </span>
+                      )}
                     </div>
                   </button>
                 );
@@ -235,20 +270,14 @@ export default function ProductDetailClient({ rug }: { rug: Rug }) {
               <span className="font-bold tracking-widest uppercase">SKU</span>
               <span>{rug.sku}</span>
             </div>
-
             <div className="flex justify-between">
               <span className="font-bold tracking-widest uppercase">Collection</span>
               <span>{collectionName}</span>
             </div>
-
             <div className="flex justify-between">
               <span className="font-bold tracking-widest uppercase">Status</span>
-              <span
-                className={
-                  isAvailable ? "text-green-600 font-bold" : "text-red-600 font-bold"
-                }
-              >
-                {isAvailable ? "Available" : "Sold Out (Similar on Request)"}
+              <span className={isAvailable ? "text-green-600 font-bold" : "text-red-600 font-bold"}>
+                {isAvailable ? "In stock" : "Sold out (similar on request)"}
               </span>
             </div>
           </div>
@@ -280,7 +309,7 @@ export default function ProductDetailClient({ rug }: { rug: Rug }) {
             ) : (
               <p className="text-gray-700 text-xs md:text-sm leading-relaxed">
                 {rug.description ||
-                  "Handwoven by women artisans in the Siroua Mountains using pure living sheep's wool and natural dyes."}
+                  "Handwoven by women artisans in the Siroua Mountains using pure sheep's wool and natural dyes."}
               </p>
             )}
           </div>
@@ -292,7 +321,7 @@ export default function ProductDetailClient({ rug }: { rug: Rug }) {
                 onClick={handleAddToCart}
                 className="w-full bg-[#A44E36] text-white py-4 text-xs font-bold tracking-widest uppercase hover:bg-[#8a3f2b] transition-colors text-center shadow-lg rounded-full"
               >
-                {added ? "✓ Added to Cart!" : "Add to Cart"}
+                {added ? "✓ Added to cart" : "Add to cart"}
               </button>
 
               <Link
@@ -300,36 +329,40 @@ export default function ProductDetailClient({ rug }: { rug: Rug }) {
                 onClick={handleAddToCart}
                 className="w-full bg-gray-900 text-white py-3 text-xs font-bold tracking-widest uppercase hover:bg-gray-800 transition-colors text-center rounded-full shadow-sm"
               >
-                Proceed to Checkout
+                Proceed to checkout
               </Link>
 
+              {/* Only state what is true: verify against your Shipping / Returns pages */}
               <p className="text-[11px] text-gray-500 text-center mt-1">
-                Secure bank transfer · Free worldwide shipping · 14-day returns
+                Secure bank transfer · Worldwide shipping ·{" "}
+                <Link href="/shipping" className="underline">Shipping</Link>{" "}
+                &amp;{" "}
+                <Link href="/returns" className="underline">Returns</Link>
               </p>
             </div>
           ) : (
             <div className="flex flex-col gap-3">
               <div className="bg-red-50 border border-red-200 text-red-900 p-3 rounded-lg text-xs leading-relaxed">
-                <strong>Unique Masterpiece Sold:</strong> This rug has found a home, but our
-                women artisans can weave a custom piece inspired by this design for you.
+                <strong>Unique piece sold:</strong> This rug has found a home, but our women
+                artisans can weave a custom piece inspired by this design for you.
               </div>
               <a
                 href={generateCustomWhatsAppUrl()}
                 target="_blank"
-                rel="noreferrer"
+                rel="noopener noreferrer"
                 className="w-full bg-red-600 text-white py-4 text-xs font-bold tracking-widest uppercase hover:bg-red-700 transition-colors flex items-center justify-center gap-3 shadow-lg rounded-full"
               >
                 <svg className="w-5 h-5 fill-current" viewBox="0 0 24 24" aria-hidden="true">
                   <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-1.98-1.29-2.073-.018-.009-.039-.013-.06-.013-.391 0-.756.224-.925.592-.375.836-1.003 2.05-1.229 2.196-.226.147-.451.164-.841-.027-.39-.192-1.649-.607-3.146-1.942-1.16-1.034-1.943-2.311-2.171-2.702-.228-.391-.024-.603.171-.798.176-.175.391-.454.585-.681.194-.227.259-.39.389-.65.13-.26.065-.487-.033-.682-.098-.195-.921-2.222-1.263-3.041-.334-.803-.675-.694-.928-.707-.238-.012-.511-.012-.784-.012s-.716.102-1.091.511c-.375.409-1.436 1.403-1.436 3.421 0 2.018 1.472 3.966 1.677 4.242.205.275 2.894 4.418 7.005 6.192 3.978 1.716 4.793 1.373 5.655 1.284.862-.089 2.784-1.139 3.174-2.24 0.39-1.101.39-2.046.273-2.241z" />
                 </svg>
-                Request Similar Custom Rug via WhatsApp
+                Request a similar custom rug
               </a>
             </div>
           )}
         </div>
       </div>
 
-      {/* PRODUCT DETAILS + MAILLAGE INTERNE */}
+      {/* PRODUCT DETAILS + INTERNAL LINKS */}
       <section className="max-w-6xl mx-auto mt-16" aria-labelledby="product-details">
         <h2
           id="product-details"
@@ -356,7 +389,7 @@ export default function ProductDetailClient({ rug }: { rug: Rug }) {
           </div>
           <div>
             <dt className="text-xs uppercase tracking-widest text-gray-500">Size</dt>
-            <dd className="text-gray-900">{selectedSizeObj.size}</dd>
+            <dd className="text-gray-900">{selected.size}</dd>
           </div>
           <div>
             <dt className="text-xs uppercase tracking-widest text-gray-500">Artisan-made</dt>
@@ -367,7 +400,6 @@ export default function ProductDetailClient({ rug }: { rug: Rug }) {
         <ProductInternalLinks collection={collection} otherCollections={otherCollections} />
       </section>
 
-      {/* RELATED PRODUCTS */}
       <div className="max-w-6xl mx-auto">
         <RelatedProducts rugs={relatedRugs} collection={collection} />
       </div>

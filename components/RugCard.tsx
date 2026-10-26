@@ -36,6 +36,10 @@ export default function RugCard({ rug, priority = false }: { rug: Rug; priority?
   const currentSize = sizes[sizeIndex] || sizes[0];
   const isAvailable = rug.isAvailable !== false;
 
+  // URL sécurisée encodée pour le lien dynamique
+  const rugDetailHref = `/rugs/${encodeURIComponent(rug.id)}`;
+  console.log("Product ID:", rug.id);
+  console.log("Product detail URL:", rugDetailHref);
   const whatsappUrl = `https://wa.me/212767149114?text=${encodeURIComponent(
     `🏛️ *CUSTOM ORDER REQUEST (SIMILAR TO SOLD RUG)*\n` +
       `━━━━━━━━━━━━━━━━━━━━━━\n\n` +
@@ -45,7 +49,6 @@ export default function RugCard({ rug, priority = false }: { rug: Rug; priority?
       `📸 *Model Photo :*\n${currentImage}`
   )}`;
 
-  // « Order » : ajoute au panier (AddToCart est envoyé par CartContext) puis va au checkout
   const handleOrder = () => {
     addToCart({
       rugId: rug.id,
@@ -68,7 +71,8 @@ export default function RugCard({ rug, priority = false }: { rug: Rug; priority?
 
   return (
     <article className="bg-[#FAF0E4]/40 border border-[#A44E36]/15 rounded-xl p-4 group hover:shadow-lg transition-all flex flex-col justify-between">
-      <Link href={`/rugs/${rug.id}`}>
+      {/* Image cliquable vers le détail */}
+      <Link href={rugDetailHref} prefetch={true}>
         <div className="relative aspect-square w-full bg-[#E8DED2] rounded-lg overflow-hidden mb-3">
           <Image
             src={currentImage}
@@ -110,8 +114,11 @@ export default function RugCard({ rug, priority = false }: { rug: Rug; priority?
           <span className="text-sm font-bold text-[#A44E36]">{formatPrice(currentSize.price)}</span>
         </div>
 
-        <Link href={`/rugs/${rug.id}`}>
-          <h2 className="text-base font-serif font-bold tracking-wide text-gray-900 mb-2">{rug.name}</h2>
+        {/* Titre cliquable vers le détail */}
+        <Link href={rugDetailHref} prefetch={true}>
+          <h2 className="text-base font-serif font-bold tracking-wide text-gray-900 mb-2 hover:text-[#A44E36] transition-colors">
+            {rug.name}
+          </h2>
         </Link>
 
         <div className="flex justify-between items-center text-xs text-gray-500 mb-3">
@@ -140,8 +147,9 @@ export default function RugCard({ rug, priority = false }: { rug: Rug; priority?
         </div>
 
         <div className="mt-auto pt-3 border-t border-[#A44E36]/10 flex justify-between items-center">
-          <Link href={`/rugs/${rug.id}`} className="text-gray-500 font-semibold text-xs tracking-widest uppercase hover:text-gray-900 transition-colors">
-            Details
+          {/* Lien "Details" corrigé */}
+          <Link href={rugDetailHref} prefetch={true} className="text-gray-500 font-semibold text-xs tracking-widest uppercase hover:text-[#A44E36] transition-colors">
+            Details &rarr;
           </Link>
           {isAvailable ? (
             <button

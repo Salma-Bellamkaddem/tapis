@@ -9,6 +9,7 @@ import { CartProvider } from "../components/CartContext";
 
 import MetaPixel from "@/components/MetaPixel";
 import OrganizationSchema from "@/components/OrganizationSchema";
+import BlackFridayBanner from "@/components/BlackFridayBanner";
 
 // Une seule version du domaine partout (layout, sitemap, robots, schémas, app/lib/seo.ts) : SANS www.
 const siteUrl = "https://rugsberber.com";
@@ -121,11 +122,13 @@ export default function RootLayout({
         <link rel="preconnect" href="https://res.cloudinary.com" />
         <link rel="dns-prefetch" href="https://res.cloudinary.com" />
       </head>
-
+    
       <body
         className="antialiased bg-[#FAF9F6] text-gray-900"
         suppressHydrationWarning
-      >
+        
+      >  
+        <BlackFridayBanner />
         {/* SEO / GEO : schéma Organization (Store), une seule fois pour tout le site */}
         <OrganizationSchema />
 
