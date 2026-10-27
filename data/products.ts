@@ -446,7 +446,7 @@ export const rugsData: Rug[] = [
       "https://res.cloudinary.com/ln4u8wnx/image/upload/f_auto,q_auto/v1789654845/photo_2026-09-17_14-42-04.jpg",
       "https://res.cloudinary.com/ln4u8wnx/image/upload/f_auto,q_auto/v1789654848/photo_2026-09-17_14-42-08.jpg"
     ],
-    category: "Ouaouzguite",
+    category: "Ouaouzguit",
     sizes: [
       { size: "210 × 150 cm", price: "$270" },
     ],
