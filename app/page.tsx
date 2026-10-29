@@ -99,7 +99,7 @@ export default function Home() {
           contactType: "customer service",
           availableLanguage: ["English", "French", "Arabic"],
         },
-        // sameAs: ["https://www.instagram.com/…", "https://www.facebook.com/…"], // ⚠️ à ajouter
+       sameAs: ["https://www.instagram.com/traditional_berber_carpets", "https://www.facebook.com/CooperativeBerbercarpet"], // ⚠️ à ajouter
       },
       {
         "@type": "WebSite",

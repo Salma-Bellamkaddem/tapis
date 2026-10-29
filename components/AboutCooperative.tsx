@@ -42,7 +42,7 @@ export default function AboutCooperative() {
         <div className="w-full md:w-1/2 relative">
           <div className="relative mx-auto max-w-[500px] h-[380px] md:h-[440px] rounded-[32px] overflow-hidden shadow-[0_20px_50px_rgba(70,40,20,0.15)] border-4 border-[#FFF8EF]">
             <img 
-              src="/placeholders/artisans-group.jpg" 
+              src="/placeholders/artisans-group5.jpeg" 
               alt="Moroccan Women Cooperative" 
               className="w-full h-full object-cover hover:scale-105 transition-transform duration-700" 
             />
