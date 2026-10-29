@@ -1,11 +1,6 @@
 import { NextResponse } from "next/server";
 import { createClient } from "@supabase/supabase-js";
 
-// Initialisation du client Supabase sécurisé pour le serveur
-const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL || "";
-const supabaseKey = process.env.SUPABASE_SERVICE_ROLE_KEY || process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || "";
-const supabase = createClient(supabaseUrl, supabaseKey);
-
 export async function POST(request: Request) {
   try {
     const { email } = await request.json();
@@ -13,6 +8,17 @@ export async function POST(request: Request) {
     if (!email || !email.includes("@")) {
       return NextResponse.json({ error: "E-mail invalide" }, { status: 400 });
     }
+
+    // Initialisation dynamique à l'intérieur de la requête (évite l'erreur au build)
+    const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL || "";
+    const supabaseKey = process.env.SUPABASE_SERVICE_ROLE_KEY || process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || "";
+
+    if (!supabaseUrl || !supabaseKey) {
+      console.error("Supabase credentials are missing");
+      return NextResponse.json({ error: "Erreur de configuration serveur" }, { status: 500 });
+    }
+
+    const supabase = createClient(supabaseUrl, supabaseKey);
 
     // Insertion dans la table Supabase
     const { error } = await supabase
