@@ -10,6 +10,7 @@ import { CartProvider } from "../components/CartContext";
 import MetaPixel from "@/components/MetaPixel";
 import OrganizationSchema from "@/components/OrganizationSchema";
 import BlackFridayBanner from "@/components/BlackFridayBanner";
+import NewsletterPopup from "@/components/NewsletterPopup";
 
 // Une seule version du domaine partout (layout, sitemap, robots, schémas, app/lib/seo.ts) : SANS www.
 const siteUrl = "https://rugsberber.com";
@@ -141,7 +142,7 @@ export default function RootLayout({
             <main className="min-h-screen">{children}</main>
 
             <Footer />
-
+            <NewsletterPopup /> {/* 👈 S'affichera par-dessus le site de manière fluide */}
             <FloatingWhatsAppButton />
           </CartProvider>
         </CurrencyProvider>
