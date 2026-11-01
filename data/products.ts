@@ -135,7 +135,7 @@ export const rugsData: Rug[] = [
     name: "Akhenif Berber Carpet",
     sku: "AKH-003",
     price: "$60",
-    isAvailable: true,
+    isAvailable: false,
     images: [
       "https://res.cloudinary.com/ln4u8wnx/image/upload/f_auto,q_auto/v1789597435/akhenif-p3-1.png",
       "https://res.cloudinary.com/ln4u8wnx/image/upload/f_auto,q_auto/v1789597897/akhenif-p3-4.png",
@@ -286,7 +286,7 @@ export const rugsData: Rug[] = [
     name: "Akhenif Berber",
     sku: "TAB-003",
     price: "$60",
-    isAvailable: true,
+    isAvailable: false,
     images: [
       "https://res.cloudinary.com/ln4u8wnx/image/upload/f_auto,q_auto/v1789649431/tableau4-p1.png",
       "https://res.cloudinary.com/ln4u8wnx/image/upload/f_auto,q_auto/v1789649762/photo_2026-09-17_13-56-39.jpg",
@@ -457,7 +457,7 @@ export const rugsData: Rug[] = [
     name: "Ouaouzguite Berber Carpet",
     sku: "OUA-004",
     price: "$75",
-    isAvailable: true,
+    isAvailable: false,
     images: [
       "https://res.cloudinary.com/ln4u8wnx/image/upload/f_auto,q_auto/v1789599562/ouzguitep1-1.jpg",
 
