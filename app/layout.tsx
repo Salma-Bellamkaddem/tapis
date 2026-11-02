@@ -31,6 +31,9 @@ const contact = {
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
+  icons: {
+    icon: '/favicon.jpg',
+  },
 
   other: {
     "p:domain_verify": "054750321a00bae938623a786cfe079c",
