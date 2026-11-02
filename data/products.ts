@@ -156,12 +156,14 @@ export const rugsData: Rug[] = [
     price: "$850",
     isAvailable: true ,
     images: [
-      "https://res.cloudinary.com/ln4u8wnx/image/upload/v1793627388/Gemini_Generated_Image_6irpbq6irpbq6irp.jpg",
-      "https://res.cloudinary.com/ln4u8wnx/image/upload/v1793629010/Gemini_Generated_Image_96g8nz96g8nz96g8.jpg",
-      "https://res.cloudinary.com/ln4u8wnx/image/upload/v1793627387/Gemini_Generated_Image_5d7p0w5d7p0w5d7p.jpg",
+      "https://res.cloudinary.com/ln4u8wnx/image/upload/f_auto,q_auto/v1793627388/Gemini_Generated_Image_6irpbq6irpbq6irp.jpg",
+       "https://res.cloudinary.com/ln4u8wnx/image/upload/f_auto,q_auto/v1793630550/4.png",
+
+      "https://res.cloudinary.com/ln4u8wnx/image/upload/v1793630550/3.png",
     
-      "https://res.cloudinary.com/ln4u8wnx/image/upload/v1793627385/Gemini_Generated_Image_s3vqw5s3vqw5s3vq.jpg",
-      "https://res.cloudinary.com/ln4u8wnx/image/upload/v1793627377/Gemini_Generated_Image_yz95gmyz95gmyz95.jpg"
+      "https://res.cloudinary.com/ln4u8wnx/image/upload/f_auto,q_auto/v1793630547/2.png",
+      "https://res.cloudinary.com/ln4u8wnx/image/upload/f_auto,q_auto/v1793630538/1.png",
+      "https://res.cloudinary.com/ln4u8wnx/image/upload/f_auto,q_auto/v1793627385/Gemini_Generated_Image_s3vqw5s3vqw5s3vq.jpg"
     ],
     category: "Akhenif",
     sizes: [
