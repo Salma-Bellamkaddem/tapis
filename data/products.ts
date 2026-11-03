@@ -35,6 +35,7 @@ export interface Rug {
 }
 
 export const rugsData: Rug[] = [
+  
   {
     id: "akhenif-001",
     name: "Akhenif Berber Carpet",
@@ -182,7 +183,85 @@ export const rugsData: Rug[] = [
     
     Handwoven with care, every piece is unique and carries the story of Moroccan Berber craftsmanship.`
     
-    },{
+    }
+    ,
+    {
+      id: "akhenif-005",
+      name: "Akhenif Berber Carpet",
+      sku: "AKH-005",
+      price: "$65",
+      isAvailable: true,
+      images: [
+        "https://res.cloudinary.com/ln4u8wnx/image/upload/v1793656788/Gemini_Generated_Image_2pakmw2pakmw2pak.jpg",
+
+        "https://res.cloudinary.com/ln4u8wnx/image/upload/v1793656175/akh4.jpg",
+        "https://res.cloudinary.com/ln4u8wnx/image/upload/v1793656176/akh45.jpg",
+        "https://res.cloudinary.com/ln4u8wnx/image/upload/v1793656176/akh453.jpg"
+      ],
+      category: "Akhenif",
+      sizes: [
+        { size: "104 × 67 cm", price: "$65" },
+      ],
+      description: "Hand-woven technique with living sheep's wool, natural colors, and traditional Berber symbols. HAND MADE BY MOROCCAN RURAL WOMEN."
+    },
+    {
+      id: "akhenif-006",
+      name: "Akhenif Berber Carpet",
+      sku: "AKH-006",
+      price: "$65",
+      isAvailable: true,
+      images: [
+        "https://res.cloudinary.com/ln4u8wnx/image/upload/v1793657425/Gemini_Generated_Image_zc2sguzc2sguzc2s.jpg",
+
+        "https://res.cloudinary.com/ln4u8wnx/image/upload/v1793657406/photo_2026-11-02_22-01-56.jpg",
+        "https://res.cloudinary.com/ln4u8wnx/image/upload/v1793657337/photo_2026-11-02_22-01-58.jpg",
+        "https://res.cloudinary.com/ln4u8wnx/image/upload/v1793657336/photo_2026-11-02_22-02-00.jpg",
+        "https://res.cloudinary.com/ln4u8wnx/image/upload/v1793657336/photo_2026-11-02_22-02-02.jpg"
+      ],
+      category: "Akhenif",
+      sizes: [
+        { size: "104 × 67 cm", price: "$65" },
+      ],
+      description: "Hand-woven technique with living sheep's wool, natural colors, and traditional Berber symbols. HAND MADE BY MOROCCAN RURAL WOMEN."
+    },
+    {
+      id: "akhenif-007",
+      name: "Akhenif Twins Carpets",
+      sku: "AKH-007",
+      price: "$180",
+      isAvailable: true,
+      images: [
+        "https://res.cloudinary.com/ln4u8wnx/image/upload/v1793713586/Capture_d_e%CC%81cran_2026-11-03_a%CC%80_13.46.25.png",
+        "https://res.cloudinary.com/ln4u8wnx/image/upload/v1793713546/photo_2026-11-03_13-20-03.jpg",
+        "https://res.cloudinary.com/ln4u8wnx/image/upload/v1793712366/photo_2026-11-03_13-20-05.jpg",
+        "https://res.cloudinary.com/ln4u8wnx/image/upload/v1793712364/photo_2026-11-03_13-20-06.jpg",
+
+      ],
+      category: "Akhenif",
+      sizes: [
+        { size: "150 × 106 cm", price: "$180" },
+      ],
+      description: "Hand-woven technique with living sheep's wool, natural colors, and traditional Berber symbols. HAND MADE BY MOROCCAN RURAL WOMEN."
+    },
+    {
+      id: "akhenif-008",
+      name: "Akhenif Twins Carpets",
+      sku: "AKH-007",
+      price: "$180",
+      isAvailable: true,
+      images: ["https://res.cloudinary.com/ln4u8wnx/image/upload/v1793713574/Capture_d_e%CC%81cran_2026-11-03_a%CC%80_13.46.19.png",
+        "https://res.cloudinary.com/ln4u8wnx/image/upload/v1793712357/photo_2026-11-03_13-19-57.jpg",
+        "https://res.cloudinary.com/ln4u8wnx/image/upload/v1793712360/photo_2026-11-03_13-20-01.jpg",
+
+      ],
+      category: "Akhenif",
+      sizes: [
+        { size: "150 × 106 cm", price: "$180" },
+      ],
+      description: "Hand-woven technique with living sheep's wool, natural colors, and traditional Berber symbols. HAND MADE BY MOROCCAN RURAL WOMEN."
+    },
+    
+  {
     id: "picasso-berber-001",
     name: "Picasso Berber",
     sku: "PIC-001",
@@ -240,6 +319,45 @@ export const rugsData: Rug[] = [
     description: "Artistic Picasso-inspired Berber creation crafted with living sheep's wool and traditional patterns. HAND MADE BY MOROCCAN RURAL WOMEN."
   },
   {
+    id: "picasso-berber-005",
+    name: "Picasso Berber",
+    sku: "PIC-005",
+    price: "$210",
+    isAvailable: false,
+    images: [
+      "https://res.cloudinary.com/ln4u8wnx/image/upload/v1793660832/Gemini_Generated_Image_p2em0pp2em0pp2em.jpg",
+      "https://res.cloudinary.com/ln4u8wnx/image/upload/v1793660332/photo_2026-11-02_22-58-38.jpg",
+      "https://res.cloudinary.com/ln4u8wnx/image/upload/v1793660331/photo_2026-11-02_22-58-40.jpg",
+      "https://res.cloudinary.com/ln4u8wnx/image/upload/v1793660334/photo_2026-11-02_22-58-42.jpg",
+      "https://res.cloudinary.com/ln4u8wnx/image/upload/v1793660334/photo_2026-11-02_22-58-42.jpg"
+    ],
+    category: "picasso",
+    sizes: [
+      { size: "154 × 100 cm", price: "$210" },
+    ],
+    description: "Artistic Picasso-inspired Berber creation crafted with living sheep's wool and traditional patterns. HAND MADE BY MOROCCAN RURAL WOMEN."
+  },
+  {
+    id: "picasso-berber-006",
+    name: "Picasso Berber",
+    sku: "PIC-006",
+    price: "$200",
+    isAvailable: true,
+    images: [
+      "https://res.cloudinary.com/ln4u8wnx/image/upload/v1793661910/Design_sans_titre_39.png",
+      "https://res.cloudinary.com/ln4u8wnx/image/upload/v1793661584/photo_2026-11-02_23-14-01.jpg",
+      "https://res.cloudinary.com/ln4u8wnx/image/upload/v1793661584/photo_2026-11-02_23-14-04.jpg",
+      "https://res.cloudinary.com/ln4u8wnx/image/upload/v1793661584/photo_2026-11-02_23-14-06.jpg",
+      
+      "https://res.cloudinary.com/ln4u8wnx/image/upload/v1793661585/photo_2026-11-02_23-14-08.jpg"
+    ],
+    category: "picasso",
+    sizes: [
+      { size: "150 × 100 cm", price: "$200" },
+    ],
+    description: "Artistic Picasso-inspired Berber creation crafted with living sheep's wool and traditional patterns. HAND MADE BY MOROCCAN RURAL WOMEN."
+  },
+  {
     id: "zanifi-berber-003",
     name: "Zanifi Berber",
     sku: "ZAN-003",
@@ -255,6 +373,25 @@ export const rugsData: Rug[] = [
     category: "Zanifi",
     sizes: [
       { size: "315 × 220 cm", price: "$850" },
+    ],
+    description: "Hand-embroidered technique crafted with living sheep's wool and traditional Berber symbols. HAND MADE BY MOROCCAN RURAL WOMEN."
+  },
+  {
+    id: "zanifi-berber-004",
+    name: "Zanifi Berber",
+    sku: "ZAN-004",
+    price: "$220",
+    isAvailable: true,
+    images: [
+      "https://res.cloudinary.com/ln4u8wnx/image/upload/v1793750110/photo_2026-11-03_23-55-24.jpg",
+      "https://res.cloudinary.com/ln4u8wnx/image/upload/v1793750116/photo_2026-11-03_23-55-39.jpg",
+      "https://res.cloudinary.com/ln4u8wnx/image/upload/v1793750112/photo_2026-11-03_23-55-32.jpg",
+      "https://res.cloudinary.com/ln4u8wnx/image/upload/v1793750114/photo_2026-11-03_23-55-36.jpg",
+      "https://res.cloudinary.com/ln4u8wnx/image/upload/v1793750118/photo_2026-11-03_23-55-41.jpg"
+    ],
+    category: "Zanifi",
+    sizes: [
+      { size: "195 × 106 cm", price: "$220" },
     ],
     description: "Hand-embroidered technique crafted with living sheep's wool and traditional Berber symbols. HAND MADE BY MOROCCAN RURAL WOMEN."
   },
@@ -315,6 +452,25 @@ export const rugsData: Rug[] = [
     description: "Artistic Picasso-inspired Berber creation crafted with living sheep's wool and traditional patterns. HAND MADE BY MOROCCAN RURAL WOMEN."
   },
   {
+    id: "akhenif-tableau-004",
+    name: "Akhenif Berber",
+    sku: "TAB-004",
+    price: "$170",
+    isAvailable: true,
+    images: [
+      "https://res.cloudinary.com/ln4u8wnx/image/upload/v1793643254/photo_2026-11-02_18-12-08.jpg",
+      "https://res.cloudinary.com/ln4u8wnx/image/upload/v1793643254/photo_2026-11-02_18-12-08.jpg",
+      "https://res.cloudinary.com/ln4u8wnx/image/upload/v1793643254/photo_2026-11-02_18-12-10.jpg",
+      "https://res.cloudinary.com/ln4u8wnx/image/upload/v1793643253/photo_2026-11-02_18-12-12.jpg",
+      "https://res.cloudinary.com/ln4u8wnx/image/upload/v1793643254/photo_2026-11-02_18-12-18.jpg"
+    ],
+    category: "tableau",
+    sizes: [
+      { size: "158 × 107 cm", price: "$170" },
+    ],
+    description: "Hand-woven art technique containing living sheep's wool and natural colors. HAND MADE BY MOROCCAN RURAL WOMEN."
+  },
+  {
     id: "akhenif-tableau-003",
     name: "Akhenif Berber",
     sku: "TAB-003",
@@ -333,6 +489,47 @@ export const rugsData: Rug[] = [
     ],
     description: "Hand-woven art technique containing living sheep's wool and natural colors. HAND MADE BY MOROCCAN RURAL WOMEN."
   },
+  {
+    id: "akhenif-tableau-005",
+    name: "Akhenif Berber",
+    sku: "TAB-005",
+    price: "$135",
+    isAvailable:true,
+    images: [
+      "https://res.cloudinary.com/ln4u8wnx/image/upload/v1793655391/Design_sans_titre_38.png",
+      "https://res.cloudinary.com/ln4u8wnx/image/upload/v1793654353/photo_2026-11-02_21-17-12.jpg",
+      "https://res.cloudinary.com/ln4u8wnx/image/upload/v1793654353/photo_2026-11-02_21-17-14.jpg",
+      "https://res.cloudinary.com/ln4u8wnx/image/upload/v1793654353/photo_2026-11-02_21-17-16.jpg",
+      "https://res.cloudinary.com/ln4u8wnx/image/upload/v1793654353/photo_2026-11-02_21-17-18.jpg"
+    ],
+    category: "tableau",
+    sizes: [
+      { size: "165 × 90 cm", price: "$135" },
+    ],
+    description: "Hand-woven art technique containing living sheep's wool and natural colors. HAND MADE BY MOROCCAN RURAL WOMEN."
+  },
+  {
+    id: "akhenif-tableau-008",
+    name: "Akhenif Berber",
+    sku: "TAB-008",
+    price: "$190",
+    isAvailable:true,
+    images: [
+      "https://res.cloudinary.com/ln4u8wnx/image/upload/v1793702735/photo_2026-11-03_10-46-22.jpg",
+      "https://res.cloudinary.com/ln4u8wnx/image/upload/v1793703383/Moroccan_Rug_with_Colorful_Geometric_Motifs.png",
+      "https://res.cloudinary.com/ln4u8wnx/image/upload/v1793702536/photo_2026-11-03_10-41-00.jpg",
+      "https://res.cloudinary.com/ln4u8wnx/image/upload/v1793702541/photo_2026-11-03_10-41-02.jpg",
+    
+      "https://res.cloudinary.com/ln4u8wnx/image/upload/v1793702536/photo_2026-11-03_10-41-04.jpg"
+    ],
+    category: "tableau",
+    sizes: [
+      { size: "152 × 109 cm", price: "$190" },
+    ],
+    description: "Hand-woven art technique containing living sheep's wool and natural colors. HAND MADE BY MOROCCAN RURAL WOMEN."
+  },
+
+
   {
     id: "akhenif-tableau-002",
     name: "Akhenif Berber",
@@ -371,6 +568,47 @@ export const rugsData: Rug[] = [
     ],
     description: "Hand-woven art technique containing living sheep's wool and natural colors. HAND MADE BY MOROCCAN RURAL WOMEN."
   },
+
+  {
+    id: "akhenif-tableau-006",
+    name: "Akhenif Berber",
+    sku: "TAB-006",
+    price: "$190",
+    isAvailable: true,
+    images: [
+      "https://res.cloudinary.com/ln4u8wnx/image/upload/v1793663283/photo_2026-11-02_23-47-35.jpg",
+      "https://res.cloudinary.com/ln4u8wnx/image/upload/v1793664070/Gemini_Generated_Image_cuegt3cuegt3cueg.jpg",
+      "https://res.cloudinary.com/ln4u8wnx/image/upload/v1793663286/photo_2026-11-02_23-47-38.jpg",
+      "https://res.cloudinary.com/ln4u8wnx/image/upload/v1793663290/photo_2026-11-02_23-47-40.jpg",
+      "https://res.cloudinary.com/ln4u8wnx/image/upload/v1793663290/photo_2026-11-02_23-47-40.jpg"
+    ],
+    category: "tableau",
+    sizes: [
+      { size: "152 × 109 cm", price: "$190" },
+    ],
+    description: "Hand-woven art technique containing living sheep's wool and natural colors. HAND MADE BY MOROCCAN RURAL WOMEN."
+  },
+
+  {
+    id: "akhenif-tableau-007",
+    name: "Akhenif Berber",
+    sku: "TAB-007",
+    price: "$185",
+    isAvailable: true,
+    images: [
+      "https://res.cloudinary.com/ln4u8wnx/image/upload/v1793664483/Gemini_Generated_Image_jy0w3cjy0w3cjy0w.jpg",
+
+      "https://res.cloudinary.com/ln4u8wnx/image/upload/v1793664200/photo_2026-11-03_00-03-49.jpg",
+      "https://res.cloudinary.com/ln4u8wnx/image/upload/v1793664203/photo_2026-11-03_00-03-53.jpg",
+      "https://res.cloudinary.com/ln4u8wnx/image/upload/v1793664205/photo_2026-11-03_00-03-54.jpg",
+      "https://res.cloudinary.com/ln4u8wnx/image/upload/v1793664208/photo_2026-11-03_00-03-57.jpg"
+    ],
+    category: "tableau",
+    sizes: [
+      { size: "150 × 106 cm", price: "$185" },
+    ],
+    description: "Hand-woven art technique containing living sheep's wool and natural colors. HAND MADE BY MOROCCAN RURAL WOMEN."
+  },
   {
     id: "mouzaik-001",
     name: "Mouzaïk Berber",
@@ -401,7 +639,8 @@ export const rugsData: Rug[] = [
       "https://res.cloudinary.com/ln4u8wnx/image/upload/f_auto,q_auto/v1789605006/12-4.png",
       "https://res.cloudinary.com/ln4u8wnx/image/upload/f_auto,q_auto/v1789605119/12-2.jpg",
       "https://res.cloudinary.com/ln4u8wnx/image/upload/f_auto,q_auto/v1789604963/12-3.jpg",
-      "https://res.cloudinary.com/ln4u8wnx/image/upload/f_auto,q_auto/v1789605069/12-5.jpg"
+      "https://res.cloudinary.com/ln4u8wnx/image/upload/v1793642123/photo_2026-11-02_17-43-08.jpg",
+
     ],
     category: "Mouzaik",
     sizes: [
@@ -428,6 +667,48 @@ export const rugsData: Rug[] = [
     ],
     description: "An exquisite Mouzaïk carpet featuring intricate geometric square patterns and traditional Berber weaving techniques passed down through generations. HAND MADE BY MOROCCAN RURAL WOMEN."
   },
+
+  {
+    id: "mouzaik-004",
+    name: "Mouzaïk Berber",
+    sku: "MOU-004",
+    price: "$130",
+    isAvailable: true,
+    images: [
+      "https://res.cloudinary.com/ln4u8wnx/image/upload/v1793663085/Tapis_berbe%CC%80re_marocain_ge%CC%81ome%CC%81trique_colore%CC%81.png",
+      "https://res.cloudinary.com/ln4u8wnx/image/upload/v1793662521/photo_2026-11-02_23-31-36.jpg",
+      "https://res.cloudinary.com/ln4u8wnx/image/upload/v1793662519/photo_2026-11-02_23-31-35.jpg",
+      "https://res.cloudinary.com/ln4u8wnx/image/upload/v1793662517/photo_2026-11-02_23-31-31.jpg",
+      "https://res.cloudinary.com/ln4u8wnx/image/upload/v1793662521/photo_2026-11-02_23-31-36.jpg"
+    ],
+    category: "Mouzaik",
+    sizes: [
+      { size: "154 × 66 cm", price: "$130" },
+    ],
+    description: "Features woolen and woven squares with traditional Berber symbols and natural colors, hand-crafted by women artisans in the Siroua Mountains. HAND MADE BY MOROCCAN RURAL WOMEN."
+  },
+  {
+    id: "mouzaik-005",
+    name: "Mouzaïk Berber",
+    sku: "MOU-005",
+    price: "$950",
+    isAvailable: true,
+    images: [
+      "https://res.cloudinary.com/ln4u8wnx/image/upload/v1793714721/Tapis_berbe%CC%80re_colore%CC%81_et_paniers_de_paille.png",
+      "https://res.cloudinary.com/ln4u8wnx/image/upload/v1793714732/photo_2026-11-03_14-02-07.jpg",
+      "https://res.cloudinary.com/ln4u8wnx/image/upload/v1793714744/photo_2026-11-03_14-02-23.jpg",
+      "https://res.cloudinary.com/ln4u8wnx/image/upload/v1793714736/photo_2026-11-03_14-02-16.jpg",
+      "https://res.cloudinary.com/ln4u8wnx/image/upload/v1793714741/photo_2026-11-03_14-02-19.jpg",
+
+    ],
+    category: "Mouzaik",
+    sizes: [
+      { size: "312 × 200 cm", price: "$950" },
+    ],
+    description: "Features woolen and woven squares with traditional Berber symbols and natural colors, hand-crafted by women artisans in the Siroua Mountains. HAND MADE BY MOROCCAN RURAL WOMEN."
+  },
+
+
   {
     id: "ouaouzguite-saffron-005",
     name: "Ouaouzguite Saffron Heritage",
@@ -521,7 +802,410 @@ export const rugsData: Rug[] = [
       { size: "485 × 150 cm", price: "$4000" },
     ],
 "description": "This Ouaouzguite Berber rug is a beautiful example of traditional Moroccan craftsmanship, inspired by the rich weaving heritage of the Siroua region. Handwoven by skilled Amazigh women in Taznakht, Morocco, it features a warm terracotta-red base, ivory diamond motifs, and distinctive black geometric details. Its traditional patterns and rich textures reflect the cultural heritage of the region, bringing warmth and authentic Moroccan character to any interior. The geometric motifs, including diamonds, zigzags, and decorative lines, reflect traditional Amazigh artistic expression and the cultural knowledge passed down through generations. Its harmonious combination of terracotta red, ivory, and deep black gives the rug a timeless and distinctive character. Handwoven using traditional Berber techniques, it is crafted from wool sourced from living sheep and may incorporate natural dyes derived from ingredients such as saffron, henna, almond skins, and pomegranate skins. Carefully crafted by Moroccan rural women artisans, each rug is unique, celebrating their skill, creativity, and living cultural heritage. Durable, comfortable, and full of character, this handmade Ouaouzguite rug brings authentic Moroccan artistry into any space. HANDWOVEN BY AMAZIGH WOMEN IN TAZNAKHT, MOROCCO."  },
+{
+  id: "ouaouzguite-saffron-012",
+  name: "Ouaouzguite Saffron Heritage",
+  sku: "OUA-012",
+  price: "$75",
+  isAvailable: true,
+  images: [
+    "https://res.cloudinary.com/ln4u8wnx/image/upload/v1793658966/Moroccan_Berber_Rug_Showroom_Styling.png",
+    "https://res.cloudinary.com/ln4u8wnx/image/upload/v1793658831/photo_2026-11-02_22-34-08.jpg",
+    "https://res.cloudinary.com/ln4u8wnx/image/upload/v1793658828/photo_2026-11-02_16-28-51.jpg",
+    "https://res.cloudinary.com/ln4u8wnx/image/upload/v1793658829/photo_2026-11-02_22-34-32.jpg",
+    "https://res.cloudinary.com/ln4u8wnx/image/upload/v1793658832/photo_2026-11-02_22-34-33.jpg"
+  ],
+  category: "Ouaouzguit",
+  sizes: [
+    { size: "126 × 72 cm", price: "$75" },
+  ],
+  description: "Crafted with thousands of tight knots, this Ouaouzguite rug radiates warm saffron and ruby tones, representing traditional Siroua Mountains craftsmanship. HAND MADE BY MOROCCAN RURAL WOMEN."
+},
 
+
+//runner 
+
+
+{
+  id: "runner-berber-001",
+  name: "Moroccan Berber Runner Rug Ouaouzguite ",
+  sku: "RUN-001",
+  price: "$125",
+  isAvailable: true,
+  images: [
+    "https://res.cloudinary.com/ln4u8wnx/image/upload/v1793718935/Gemini_Generated_Image_slx81oslx81oslx8.jpg",
+    "https://res.cloudinary.com/ln4u8wnx/image/upload/v1793718344/photo_2026-11-03_14-56-22.jpg",
+    "https://res.cloudinary.com/ln4u8wnx/image/upload/v1793718348/photo_2026-11-03_14-56-24.jpg",
+    "https://res.cloudinary.com/ln4u8wnx/image/upload/v1793718353/photo_2026-11-03_14-56-26.jpg",
+    "https://res.cloudinary.com/ln4u8wnx/image/upload/v1793719168/Gemini_Generated_Image_ucmawzucmawzucma.jpg",
+    "https://res.cloudinary.com/ln4u8wnx/image/upload/v1793718363/photo_2026-11-03_14-56-28.jpg"
+  ],
+  category: "Runner",
+  sizes: [
+    { size: "180 cm × 76 cm", price: "$125" },
+  ],
+  description: "Authentic handmade Moroccan Berber runner rug, handwoven in wool by Amazigh women artisans in Taznakht, Morocco. Designed specifically for long hallways and corridors. HAND MADE BY MOROCCAN RURAL WOMEN."
+},
+{
+  id: "runner-berber-002",
+  name: "Moroccan Berber Runner Rug Ouaouzguite ",
+  sku: "RUN-002",
+  price: "$150",
+  isAvailable: true,
+  images: [
+    "https://res.cloudinary.com/ln4u8wnx/image/upload/v1793721493/Gemini_Generated_Image_sxat39sxat39sxat.jpg",
+    "https://res.cloudinary.com/ln4u8wnx/image/upload/v1793721563/Gemini_Generated_Image_d8uan5d8uan5d8ua.jpg",
+    "https://res.cloudinary.com/ln4u8wnx/image/upload/v1793721083/photo_2026-11-03_15-51-24.jpg",
+    "https://res.cloudinary.com/ln4u8wnx/image/upload/v1793721133/photo_2026-11-03_15-51-30.jpg",
+    "https://res.cloudinary.com/ln4u8wnx/image/upload/v1793721087/photo_2026-11-03_15-51-27.jpg",
+    "https://res.cloudinary.com/ln4u8wnx/image/upload/v1793721240/photo_2026-11-03_15-54-59.jpg",
+  ],
+  category: "Runner",
+  sizes: [
+    { size: "202 cm × 75 cm", price: "$150" },
+  ],
+  description: "Authentic handmade Moroccan Berber runner rug, handwoven in wool by Amazigh women artisans in Taznakht, Morocco. Designed specifically for long hallways and corridors. HAND MADE BY MOROCCAN RURAL WOMEN."
+},
+
+
+{
+  id: "runner-berber-003",
+  name: "Moroccan Berber Runner Rug Glaoui ",
+  sku: "RUN-003",
+  price: "$225",
+  isAvailable: true,
+  images: [
+    "https://res.cloudinary.com/ln4u8wnx/image/upload/v1793723389/Gemini_Generated_Image_6u3dkc6u3dkc6u3d_1.jpg",
+    "https://res.cloudinary.com/ln4u8wnx/image/upload/v1793723205/Gemini_Generated_Image_za5fwxza5fwxza5f.jpg",
+    "https://res.cloudinary.com/ln4u8wnx/image/upload/v1793722651/photo_2026-11-03_16-18-18.jpg",
+    "https://res.cloudinary.com/ln4u8wnx/image/upload/v1793722802/photo_2026-11-03_16-18-21.jpg",
+    "https://res.cloudinary.com/ln4u8wnx/image/upload/v1793723100/photo_2026-11-03_16-18-23.jpg",
+
+  ],
+  category: "Runner",
+  sizes: [
+    { size: "233 cm × 72 cm", price: "$225" },
+  ],
+  description: "Authentic handmade Moroccan Berber runner rug, handwoven in wool by Amazigh women artisans in Taznakht, Morocco. Designed specifically for long hallways and corridors. HAND MADE BY MOROCCAN RURAL WOMEN."
+},
+{
+  id: "runner-berber-004",
+  name: "Moroccan Berber Runner Rug Glaoui ",
+  sku: "RUN-004",
+  price: "$130",
+  isAvailable: true,
+  images: [
+    "https://res.cloudinary.com/ln4u8wnx/image/upload/v1793723988/Gemini_Generated_Image_kvhmedkvhmedkvhm.jpg",
+    "https://res.cloudinary.com/ln4u8wnx/image/upload/v1793723858/photo_2026-11-03_16-34-39.jpg",
+    "https://res.cloudinary.com/ln4u8wnx/image/upload/v1793723862/photo_2026-11-03_16-34-40.jpg",
+    "https://res.cloudinary.com/ln4u8wnx/image/upload/v1793723867/photo_2026-11-03_16-34-42.jpg",
+    "https://res.cloudinary.com/ln4u8wnx/image/upload/v1793724088/Gemini_Generated_Image_4wvstj4wvstj4wvs.jpg",
+
+  ],
+  category: "Runner",
+  sizes: [
+    { size: "180 cm × 77 cm", price: "$130" },
+  ],
+  description: "Authentic handmade Moroccan Berber runner rug, handwoven in wool by Amazigh women artisans in Taznakht, Morocco. Designed specifically for long hallways and corridors. HAND MADE BY MOROCCAN RURAL WOMEN."
+},
+{
+  id: "runner-berber-005",
+  name: "Moroccan Berber Runner Rug Glaoui ",
+  sku: "RUN-005",
+  price: "$110",
+  isAvailable: true,
+  images: [
+    "https://res.cloudinary.com/ln4u8wnx/image/upload/v1793724622/Gemini_Generated_Image_dnz3kudnz3kudnz3.jpg",
+    "https://res.cloudinary.com/ln4u8wnx/image/upload/v1793724884/Gemini_Generated_Image_bjt5rybjt5rybjt5.jpg",
+    "https://res.cloudinary.com/ln4u8wnx/image/upload/v1793724518/photo_2026-11-03_16-44-26.jpg",
+    "https://res.cloudinary.com/ln4u8wnx/image/upload/v1793724518/photo_2026-11-03_16-44-28.jpg"
+  ],
+  category: "Runner",
+  sizes: [
+    { size: "162 cm × 62 cm", price: "$110" },
+  ],
+  description: "Authentic handmade Moroccan Berber runner rug, handwoven in wool by Amazigh women artisans in Taznakht, Morocco. Designed specifically for long hallways and corridors. HAND MADE BY MOROCCAN RURAL WOMEN."
+},
+{
+  id: "runner-berber-006",
+  name: "Moroccan Berber Runner Rug Mouzaïk  ",
+  sku: "RUN-006",
+  price: "$160",
+  isAvailable: true,
+  images: [
+    "https://res.cloudinary.com/ln4u8wnx/image/upload/v1793727839/Gemini_Generated_Image_cbqf17cbqf17cbqf.jpg",
+    "https://res.cloudinary.com/ln4u8wnx/image/upload/v1793725110/photo_2026-11-03_16-58-32.jpg",
+    "https://res.cloudinary.com/ln4u8wnx/image/upload/v1793725110/photo_2026-11-03_16-58-33.jpg",
+    "https://res.cloudinary.com/ln4u8wnx/image/upload/v1793725095/photo_2026-11-03_16-58-29.jpg",
+    "https://res.cloudinary.com/ln4u8wnx/image/upload/v1793728332/Gemini_Generated_Image_cqgf5scqgf5scqgf.jpg"
+  ],
+  category: "Runner",
+  sizes: [
+    { size: "204 cm × 65 cm", price: "$160" },
+  ],
+  description: "Authentic handmade Moroccan Berber runner rug, handwoven in wool by Amazigh women artisans in Taznakht, Morocco. Designed specifically for long hallways and corridors. HAND MADE BY MOROCCAN RURAL WOMEN."
+},
+{
+  id: "runner-berber-007",
+  name: "Moroccan Berber Runner Rug Mouzaïk  ",
+  sku: "RUN-007",
+  price: "$110",
+  isAvailable: true,
+  images: [
+    "https://res.cloudinary.com/ln4u8wnx/image/upload/v1793729530/Gemini_Generated_Image_ywj0t5ywj0t5ywj0.jpg",
+    "https://res.cloudinary.com/ln4u8wnx/image/upload/v1793729484/photo_2026-11-03_18-02-20.jpg",
+    "https://res.cloudinary.com/ln4u8wnx/image/upload/v1793729504/photo_2026-11-03_18-02-34.jpg",
+    "https://res.cloudinary.com/ln4u8wnx/image/upload/v1793729491/photo_2026-11-03_18-02-22.jpg",
+  ],
+  category: "Runner",
+  sizes: [
+    { size: "160 cm × 68 cm", price: "$110" },
+  ],
+  description: "Authentic handmade Moroccan Berber runner rug, handwoven in wool by Amazigh women artisans in Taznakht, Morocco. Designed specifically for long hallways and corridors. HAND MADE BY MOROCCAN RURAL WOMEN."
+},
+{
+  id: "runner-berber-008",
+  name: "Moroccan Berber Runner Rug Akhenif  ",
+  sku: "RUN-008",
+  price: "$180",
+  isAvailable: true,
+  images: [
+    "https://res.cloudinary.com/ln4u8wnx/image/upload/v1793743879/Gemini_Generated_Image_ygyh04ygyh04ygyh.jpg",
+    "https://res.cloudinary.com/ln4u8wnx/image/upload/v1793730290/photo_2026-11-03_18-20-03.jpg",
+    "https://res.cloudinary.com/ln4u8wnx/image/upload/v1793730297/photo_2026-11-03_18-20-05.jpg",
+  ],
+  category: "Runner",
+  sizes: [
+    { size: "200 cm × 66 cm", price: "$180" },
+  ],
+  description: "Authentic handmade Moroccan Berber runner rug, handwoven in wool by Amazigh women artisans in Taznakht, Morocco. Designed specifically for long hallways and corridors. HAND MADE BY MOROCCAN RURAL WOMEN."
+},
+{
+  id: "runner-berber-009",
+  name: "Moroccan Berber Runner Rug Akhenif  ",
+  sku: "RUN-009",
+  price: "$165",
+  isAvailable: true,
+  images: [
+    "https://res.cloudinary.com/ln4u8wnx/image/upload/v1793744064/Gemini_Generated_Image_uh5wnjuh5wnjuh5w.jpg",
+    "https://res.cloudinary.com/ln4u8wnx/image/upload/v1793730543/photo_2026-11-03_18-28-59.jpg",
+    "https://res.cloudinary.com/ln4u8wnx/image/upload/v1793730550/photo_2026-11-03_18-29-02.jpg",
+    "https://res.cloudinary.com/ln4u8wnx/image/upload/v1793730545/photo_2026-11-03_18-28-57.jpg"
+  ],
+  category: "Runner",
+  sizes: [
+    { size: "200 cm × 72 cm", price: "$165" },
+  ],
+  description: "Authentic handmade Moroccan Berber runner rug, handwoven in wool by Amazigh women artisans in Taznakht, Morocco. Designed specifically for long hallways and corridors. HAND MADE BY MOROCCAN RURAL WOMEN."
+},
+{
+  id: "runner-berber-010",
+  name: "Moroccan Berber Runner Rug Akhenif  ",
+  sku: "RUN-010",
+  price: "$230",
+  isAvailable: true,
+  images: [
+    "https://res.cloudinary.com/ln4u8wnx/image/upload/v1793744266/Gemini_Generated_Image_i8esfji8esfji8es.jpg",
+    "https://res.cloudinary.com/ln4u8wnx/image/upload/v1793730850/photo_2026-11-03_18-33-09.jpg",
+    "https://res.cloudinary.com/ln4u8wnx/image/upload/v1793730804/photo_2026-11-03_18-33-02.jpg",
+    "https://res.cloudinary.com/ln4u8wnx/image/upload/v1793730824/photo_2026-11-03_18-33-08.jpg",
+    "https://res.cloudinary.com/ln4u8wnx/image/upload/v1793730867/photo_2026-11-03_18-33-07.jpg"
+  ],
+  category: "Runner",
+  sizes: [
+    { size: "246 cm × 62 cm", price: "$230" },
+  ],
+  description: "Authentic handmade Moroccan Berber runner rug, handwoven in wool by Amazigh women artisans in Taznakht, Morocco. Designed specifically for long hallways and corridors. HAND MADE BY MOROCCAN RURAL WOMEN."
+},
+{
+  id: "runner-berber-011",
+  name: "Moroccan Berber Runner Rug Akhenif  ",
+  sku: "RUN-011",
+  price: "$185",
+  isAvailable: true,
+  images: [
+    "https://res.cloudinary.com/ln4u8wnx/image/upload/v1793745131/Gemini_Generated_Image_ezkd6eezkd6eezkd.jpg",
+    "https://res.cloudinary.com/ln4u8wnx/image/upload/v1793731125/photo_2026-11-03_18-39-03.jpg",
+    "https://res.cloudinary.com/ln4u8wnx/image/upload/v1793731120/photo_2026-11-03_18-39-01.jpg",
+    "https://res.cloudinary.com/ln4u8wnx/image/upload/v1793731101/photo_2026-11-03_18-38-55.jpg",
+    "https://res.cloudinary.com/ln4u8wnx/image/upload/v1793731094/photo_2026-11-03_18-38-51.jpg"
+  ],
+  category: "Runner",
+  sizes: [
+    { size: "200 cm × 60 cm", price: "$185" },
+  ],
+  description: "Authentic handmade Moroccan Berber runner rug, handwoven in wool by Amazigh women artisans in Taznakht, Morocco. Designed specifically for long hallways and corridors. HAND MADE BY MOROCCAN RURAL WOMEN."
+},
+{
+  id: "runner-berber-012",
+  name: "Moroccan Berber Runner Rug Picasso ",
+  sku: "RUN-012",
+  price: "$150",
+  isAvailable: true,
+  images: [
+    "https://res.cloudinary.com/ln4u8wnx/image/upload/v1793745273/Gemini_Generated_Image_wvjdkdwvjdkdwvjd.jpg",
+    "https://res.cloudinary.com/ln4u8wnx/image/upload/v1793742861/photo_2026-11-03_18-44-44.jpg",
+    "https://res.cloudinary.com/ln4u8wnx/image/upload/v1793742868/photo_2026-11-03_18-44-45.jpg",
+    "https://res.cloudinary.com/ln4u8wnx/image/upload/v1793743650/photo_2026-11-03_18-44-47.jpg",
+    "https://res.cloudinary.com/ln4u8wnx/image/upload/v1793745390/Gemini_Generated_Image_y3qswby3qswby3qs.jpg"
+  ],
+  category: "Runner",
+  sizes: [
+    { size: "155 cm × 70 cm", price: "$150" },
+  ],
+  description: "Authentic handmade Moroccan Berber runner rug, handwoven in wool by Amazigh women artisans in Taznakht, Morocco. Designed specifically for long hallways and corridors. HAND MADE BY MOROCCAN RURAL WOMEN."
+},
+{
+  id: "runner-berber-013",
+  name: "Moroccan Berber Runner Rug Picasso ",
+  sku: "RUN-013",
+  price: "$220",
+  isAvailable: true,
+  images: [
+    "https://res.cloudinary.com/ln4u8wnx/image/upload/v1793746056/Gemini_Generated_Image_9a00gq9a00gq9a00.jpg",
+    "https://res.cloudinary.com/ln4u8wnx/image/upload/v1793745931/photo_2026-11-03_22-39-41.jpg",
+    "https://res.cloudinary.com/ln4u8wnx/image/upload/v1793745567/photo_2026-11-03_22-39-44.jpg",
+    "https://res.cloudinary.com/ln4u8wnx/image/upload/v1793746005/photo_2026-11-03_22-39-46.jpg"
+  ],
+  category: "Runner",
+  sizes: [
+    { size: "208 cm × 60 cm", price: "$220" },
+  ],
+  description: "Authentic handmade Moroccan Berber runner rug, handwoven in wool by Amazigh women artisans in Taznakht, Morocco. Designed specifically for long hallways and corridors. HAND MADE BY MOROCCAN RURAL WOMEN."
+},
+{
+  id: "runner-berber-014",
+  name: "Moroccan Berber Runner Rug Picasso ",
+  sku: "RUN-014",
+  price: "$120",
+  isAvailable: true,
+  images: [
+    "https://res.cloudinary.com/ln4u8wnx/image/upload/v1793747191/Gemini_Generated_Image_d9bwujd9bwujd9bw.jpg",
+    "https://res.cloudinary.com/ln4u8wnx/image/upload/v1793747177/photo_2026-11-03_22-51-19.jpg",
+    "https://res.cloudinary.com/ln4u8wnx/image/upload/v1793746632/photo_2026-11-03_22-51-17.jpg",
+    "https://res.cloudinary.com/ln4u8wnx/image/upload/v1793746633/photo_2026-11-03_22-51-18.jpg"
+  ],
+  category: "Runner",
+  sizes: [
+    { size: "156 cm × 70 cm", price: "$120" },
+  ],
+  description: "Authentic handmade Moroccan Berber runner rug, handwoven in wool by Amazigh women artisans in Taznakht, Morocco. Designed specifically for long hallways and corridors. HAND MADE BY MOROCCAN RURAL WOMEN."
+},
+{
+  id: "runner-berber-015",
+  name: "Moroccan Berber Runner Rug Tableau ",
+  sku: "RUN-015",
+  price: "$170",
+  isAvailable: true,
+  images: [
+    "https://res.cloudinary.com/ln4u8wnx/image/upload/v1793747643/Gemini_Generated_Image_vuidh8vuidh8vuid.jpg",
+    "https://res.cloudinary.com/ln4u8wnx/image/upload/v1793747621/photo_2026-11-03_23-11-04.jpg",
+    "https://res.cloudinary.com/ln4u8wnx/image/upload/v1793747620/photo_2026-11-03_23-11-06.jpg",
+  ],
+  category: "Runner",
+  sizes: [
+    { size: "206 cm × 66 cm", price: "$170" },
+  ],
+  description: "Authentic handmade Moroccan Berber runner rug, handwoven in wool by Amazigh women artisans in Taznakht, Morocco. Designed specifically for long hallways and corridors. HAND MADE BY MOROCCAN RURAL WOMEN."
+},
+{
+  id: "runner-berber-016",
+  name: "Moroccan Berber Runner Rug Tableau ",
+  sku: "RUN-016",
+  price: "$120",
+  isAvailable: true,
+  images: [
+    "https://res.cloudinary.com/ln4u8wnx/image/upload/v1793747920/Gemini_Generated_Image_c97w55c97w55c97w.jpg",
+    "https://res.cloudinary.com/ln4u8wnx/image/upload/v1793747851/photo_2026-11-03_23-17-12.jpg",
+    "https://res.cloudinary.com/ln4u8wnx/image/upload/v1793747852/photo_2026-11-03_23-17-14.jpg",
+    "https://res.cloudinary.com/ln4u8wnx/image/upload/v1793747859/photo_2026-11-03_23-17-20.jpg",
+    "https://res.cloudinary.com/ln4u8wnx/image/upload/v1793748038/photo_2026-11-03_23-21-43.jpg"
+
+  ],
+  category: "Runner",
+  sizes: [
+    { size: "155 cm × 66 cm", price: "$120" },
+  ],
+  description: "Authentic handmade Moroccan Berber runner rug, handwoven in wool by Amazigh women artisans in Taznakht, Morocco. Designed specifically for long hallways and corridors. HAND MADE BY MOROCCAN RURAL WOMEN."
+},
+
+{
+  id: "runner-berber-017",
+  name: "Moroccan Berber Runner Rug Ouaouzguite ",
+  sku: "RUN-017",
+  price: "$170",
+  isAvailable: true,
+  images: [
+    "https://res.cloudinary.com/ln4u8wnx/image/upload/v1793748328/photo_2026-11-03_23-23-10.jpg",
+    "https://res.cloudinary.com/ln4u8wnx/image/upload/v1793748240/photo_2026-11-03_23-23-16.jpg",
+    "https://res.cloudinary.com/ln4u8wnx/image/upload/v1793748267/photo_2026-11-03_23-23-19.jpg",
+    "https://res.cloudinary.com/ln4u8wnx/image/upload/v1793748269/photo_2026-11-03_23-23-23.jpg",
+
+  ],
+  category: "Runner",
+  sizes: [
+    { size: "196 cm × 70 cm", price: "$170" },
+  ],
+  description: "Authentic handmade Moroccan Berber runner rug, handwoven in wool by Amazigh women artisans in Taznakht, Morocco. Designed specifically for long hallways and corridors. HAND MADE BY MOROCCAN RURAL WOMEN."
+},
+{
+  id: "runner-berber-018",
+  name: "Moroccan Berber Runner Rug zanifi Double sides ( black & white) ",
+  sku: "RUN-018",
+  price: "$200",
+  isAvailable: true,
+  images: [
+    "https://res.cloudinary.com/ln4u8wnx/image/upload/v1793748607/photo_2026-11-03_23-29-50.jpg",
+    "https://res.cloudinary.com/ln4u8wnx/image/upload/v1793748609/photo_2026-11-03_23-29-52.jpg",
+    "https://res.cloudinary.com/ln4u8wnx/image/upload/v1793748611/photo_2026-11-03_23-29-55.jpg",
+    "https://res.cloudinary.com/ln4u8wnx/image/upload/v1793748613/photo_2026-11-03_23-29-57.jpg",
+
+  ],
+  category: "Runner",
+  sizes: [
+    { size: "214 cm × 86 cm", price: "$200" },
+  ],
+  description: "Authentic handmade Moroccan Berber runner rug, handwoven in wool by Amazigh women artisans in Taznakht, Morocco. Designed specifically for long hallways and corridors. HAND MADE BY MOROCCAN RURAL WOMEN."
+},
+{
+  id: "runner-berber-019",
+  name: "Moroccan Berber Runner Rug zanifi Double sides ( black & white) ",
+  sku: "RUN-019",
+  price: "$135",
+  isAvailable: true,
+  images: [
+    "https://res.cloudinary.com/ln4u8wnx/image/upload/v1793749566/photo_2026-11-03_23-45-37.jpg",
+    "https://res.cloudinary.com/ln4u8wnx/image/upload/v1793749572/photo_2026-11-03_23-45-50.jpg",
+    "https://res.cloudinary.com/ln4u8wnx/image/upload/v1793749568/photo_2026-11-03_23-45-41.jpg",
+    "https://res.cloudinary.com/ln4u8wnx/image/upload/v1793749570/photo_2026-11-03_23-45-47.jpg",
+
+  ],
+  category: "Runner",
+  sizes: [
+    { size: "204 cm × 74 cm", price: "$135" },
+  ],
+  description: "Authentic handmade Moroccan Berber runner rug, handwoven in wool by Amazigh women artisans in Taznakht, Morocco. Designed specifically for long hallways and corridors. HAND MADE BY MOROCCAN RURAL WOMEN."
+},
+
+{
+  id: "ouaouzguite-saffron-013",
+  name: "Ouaouzguite Saffron Heritage",
+  sku: "OUA-013",
+  price: "$240",
+  isAvailable: true,
+  images: [
+    "https://res.cloudinary.com/ln4u8wnx/image/upload/v1793713872/Tapis_berbe%CC%80re_rouge_a%CC%80_me%CC%81daillon_ge%CC%81ome%CC%81trique.png",
+    "https://res.cloudinary.com/ln4u8wnx/image/upload/v1793712928/photo_2026-11-03_13-34-58.jpg",
+    "https://res.cloudinary.com/ln4u8wnx/image/upload/v1793712932/photo_2026-11-03_13-35-00.jpg",
+    "https://res.cloudinary.com/ln4u8wnx/image/upload/v1793712936/photo_2026-11-03_13-35-02.jpg",
+
+  ],
+  category: "Ouaouzguit",
+  sizes: [
+    { size: "200 × 112 cm", price: "$240" },
+  ],
+  description: "Crafted with thousands of tight knots, this Ouaouzguite rug radiates warm saffron and ruby tones, representing traditional Siroua Mountains craftsmanship. HAND MADE BY MOROCCAN RURAL WOMEN."
+},
 
 {
   id: "ouaouzguite-saffron",
@@ -559,6 +1243,8 @@ export const rugsData: Rug[] = [
     ],
     description: "An exceptional, museum-grade royal Glaoui masterpiece rug measuring 6.15m × 3.40m. Hand-crafted combining three traditional techniques (woolen, flatweave, and intricate embroidery) using pure living sheep's wool and rich natural dyes by master women artisans in the Siroua Mountains. A breathtaking statement piece designed for grand architectural interiors and luxury residences. HAND MADE BY MOROCCAN RURAL WOMEN."
   },
+
+
   {
     id: "glaoui-royal-masterpiece-616",
     name: " Glaoui Masterpiece Carpet",
@@ -577,6 +1263,63 @@ export const rugsData: Rug[] = [
       { size: "205 × 106 cm", price: "$400" }
     ],
     description: "Handwoven by skilled Amazigh women in Taznakht, Morocco, this Glaoui rug showcases vibrant geometric patterns in red, blue, ivory, black, and warm earthy tones. Its distinctive diamond motifs, intricate borders, and rich textures reflect the region’s traditional weaving heritage. A unique handmade piece that brings authentic Moroccan artistry, cultural character, and timeless warmth to any interior."
+  },
+  {
+    id: "glaoui-royal-masterpiece-617",
+    name: "Royal Glaoui Masterpiece Carpet",
+    sku: "GLA-ROYAL-617",
+    price: "$1500",
+    isAvailable: true,
+    images: [
+      "https://res.cloudinary.com/ln4u8wnx/image/upload/v1793639266/b2.jpg",
+      "https://res.cloudinary.com/ln4u8wnx/image/upload/v1793639246/Design_sans_titre_36.png",
+      "https://res.cloudinary.com/ln4u8wnx/image/upload/v1793639249/b3.jpg",
+      "https://res.cloudinary.com/ln4u8wnx/image/upload/v1793639249/b4.jpg",
+      "https://res.cloudinary.com/ln4u8wnx/image/upload/v1793639263/b5.jpg"
+    ],
+    category: "Glaoui",
+    sizes: [
+      { size: "330 × 213 cm", price: "$1500" }
+    ],
+    description: "An exceptional, museum-grade royal Glaoui masterpiece rug measuring 3.30m × 2.13m. Hand-crafted combining three traditional techniques (woolen, flatweave, and intricate embroidery) using pure living sheep's wool and rich natural dyes by master women artisans in the Siroua Mountains. A breathtaking statement piece designed for grand architectural interiors and luxury residences. HAND MADE BY MOROCCAN RURAL WOMEN."
+  },
+  {
+    id: "glaoui-royal-masterpiece-618",
+    name: "Royal Glaoui Masterpiece Carpet",
+    sku: "GLA-ROYAL-618",
+    price: "$275",
+    isAvailable: true,
+    images: [
+      "https://res.cloudinary.com/ln4u8wnx/image/upload/v1793641212/Gemini_Generated_Image_3rbfxh3rbfxh3rbf.jpg",
+      "https://res.cloudinary.com/ln4u8wnx/image/upload/v1793640779/photo_2026-11-02_17-16-17.jpg",
+      "https://res.cloudinary.com/ln4u8wnx/image/upload/v1793640886/photo_2026-11-02_17-16-20.jpg",
+      "https://res.cloudinary.com/ln4u8wnx/image/upload/v1793640759/photo_2026-11-02_17-16-22.jpg",
+      "https://res.cloudinary.com/ln4u8wnx/image/upload/v1793640775/photo_2026-11-02_17-16-24.jpg"
+    ],
+    category: "Glaoui",
+    sizes: [
+      { size: "200 × 117 cm", price: "$275" }
+    ],
+    description: "An exceptional, museum-grade royal Glaoui masterpiece rug measuring 3.30m × 2.13m. Hand-crafted combining three traditional techniques (woolen, flatweave, and intricate embroidery) using pure living sheep's wool and rich natural dyes by master women artisans in the Siroua Mountains. A breathtaking statement piece designed for grand architectural interiors and luxury residences. HAND MADE BY MOROCCAN RURAL WOMEN."
+  },
+  {
+    id: "glaoui-royal-masterpiece-619",
+    name: "Royal Glaoui Masterpiece Carpet",
+    sku: "GLA-ROYAL-619",
+    price: "$180",
+    isAvailable: true,
+    images: [
+      "https://res.cloudinary.com/ln4u8wnx/image/upload/v1793642856/Gemini_Generated_Image_q35mdoq35mdoq35m.jpg",
+      "https://res.cloudinary.com/ln4u8wnx/image/upload/v1793642124/photo_2026-11-02_17-43-04.jpg",
+      "https://res.cloudinary.com/ln4u8wnx/image/upload/v1793642123/photo_2026-11-02_17-43-08.jpg",
+      "https://res.cloudinary.com/ln4u8wnx/image/upload/v1793640759/photo_2026-11-02_17-16-22.jpg",
+      "https://res.cloudinary.com/ln4u8wnx/image/upload/v1793640775/photo_2026-11-02_17-16-24.jpg"
+    ],
+    category: "Glaoui",
+    sizes: [
+      { size: "146 × 104 cm", price: "$180" }
+    ],
+    description: "An exceptional, museum-grade royal Glaoui masterpiece rug measuring 3.30m × 2.13m. Hand-crafted combining three traditional techniques (woolen, flatweave, and intricate embroidery) using pure living sheep's wool and rich natural dyes by master women artisans in the Siroua Mountains. A breathtaking statement piece designed for grand architectural interiors and luxury residences. HAND MADE BY MOROCCAN RURAL WOMEN."
   },
   {
     id: "ouaouzguite-custom-0033",
@@ -617,6 +1360,22 @@ export const rugsData: Rug[] = [
 ];
 
 export const collectionsData = [
+  // Dans @/data/products.ts (tableau collectionsData)
+  {
+    id: "runner",
+    slug: "runner",
+    category: "Runner",
+    name: "Runner",
+    seoName: "Runner Berber Rugs",
+    subtitle: "RUNNER RUGS",
+    description:
+      "Authentic handmade Moroccan Berber runner rugs handwoven in Taznakht, Morocco. Perfect for narrow spaces, corridors, and long hallways.",
+    images: [
+      "https://res.cloudinary.com/ln4u8wnx/image/upload/f_auto,q_auto/v1789598160/produit2-4.png",
+      "https://res.cloudinary.com/ln4u8wnx/image/upload/f_auto,q_auto/v1789598460/produit2-2.jpg",
+      "https://res.cloudinary.com/ln4u8wnx/image/upload/f_auto,q_auto/v1789598444/produit2-3.jpg",
+    ],
+  },
   {
     id: "ouaouzguit",
 
