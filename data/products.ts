@@ -95,7 +95,7 @@ export const rugsData: Rug[] = [
     name: "Glaoui Berber Carpet",
     sku: "GLA-002",
     price: "$200",
-    isAvailable: true,
+    isAvailable: false,
     images: [
       "https://res.cloudinary.com/ln4u8wnx/image/upload/f_auto,q_auto/v1789601094/9-1.png",
       "https://res.cloudinary.com/ln4u8wnx/image/upload/f_auto,q_auto/v1789601560/9-4.jpg",
@@ -657,7 +657,7 @@ export const rugsData: Rug[] = [
 
   {
     id: "mouzaik-004",
-    name: "Mouzaïk Berber",
+    name: " Moroccan Berber Runner Rug  Mouzaïk",
     sku: "MOU-004",
     price: "$130",
     isAvailable: true,
@@ -668,12 +668,12 @@ export const rugsData: Rug[] = [
       "https://res.cloudinary.com/ln4u8wnx/image/upload/v1793662517/photo_2026-11-02_23-31-31.jpg",
       "https://res.cloudinary.com/ln4u8wnx/image/upload/v1793662521/photo_2026-11-02_23-31-36.jpg"
     ],
-    category: "Mouzaik",
+    category: "runner",
     sizes: [
       { size: "154 × 66 cm", price: "$130" },
     ],
-  description: "Featuring hand-knotted and woven squares, intricate woven and woolen symbols, and traditional Amazigh (Berber) patterns in natural colors. This authentic Moroccan Berber rug is handcrafted by skilled women artisans in the Siroua Mountains, Taznakht, Morocco, using traditional weaving techniques passed down through generations. HANDMADE BY MOROCCAN RURAL WOMEN."
-  },
+    description: "Handmade Mouzaïk Berber runner rug from Taznakht, Morocco, ideal for hallways, corridors and narrow spaces. Technique: hand-knotted and woven squares, with woven and woolen symbols. Made with 100% natural sheep's wool. HAND MADE BY MOROCCAN RURAL WOMEN."},
+
   {
     id: "mouzaik-005",
     name: "Mouzaïk Berber",
@@ -1102,7 +1102,8 @@ export const rugsData: Rug[] = [
   price: "$170",
   isAvailable: true,
   images: [
-    "https://res.cloudinary.com/ln4u8wnx/image/upload/v1793748328/photo_2026-11-03_23-23-10.jpg",
+    "https://res.cloudinary.com/ln4u8wnx/image/upload/v1793788787/Gemini_Generated_Image_hi6v9dhi6v9dhi6v.jpg",
+  
     "https://res.cloudinary.com/ln4u8wnx/image/upload/v1793748240/photo_2026-11-03_23-23-16.jpg",
     "https://res.cloudinary.com/ln4u8wnx/image/upload/v1793748267/photo_2026-11-03_23-23-19.jpg",
     "https://res.cloudinary.com/ln4u8wnx/image/upload/v1793748269/photo_2026-11-03_23-23-23.jpg",
@@ -1120,7 +1121,7 @@ export const rugsData: Rug[] = [
   price: "$200",
   isAvailable: true,
   images: [
-    "https://res.cloudinary.com/ln4u8wnx/image/upload/v1793748607/photo_2026-11-03_23-29-50.jpg",
+    "https://res.cloudinary.com/ln4u8wnx/image/upload/v1793788966/Gemini_Generated_Image_r0sudnr0sudnr0su.jpg",
     "https://res.cloudinary.com/ln4u8wnx/image/upload/v1793748609/photo_2026-11-03_23-29-52.jpg",
     "https://res.cloudinary.com/ln4u8wnx/image/upload/v1793748611/photo_2026-11-03_23-29-55.jpg",
     "https://res.cloudinary.com/ln4u8wnx/image/upload/v1793748613/photo_2026-11-03_23-29-57.jpg",
@@ -1138,7 +1139,7 @@ export const rugsData: Rug[] = [
   price: "$135",
   isAvailable: true,
   images: [
-    "https://res.cloudinary.com/ln4u8wnx/image/upload/v1793749566/photo_2026-11-03_23-45-37.jpg",
+    "https://res.cloudinary.com/ln4u8wnx/image/upload/v1793789294/Gemini_Generated_Image_4kvqfy4kvqfy4kvq.jpg",
     "https://res.cloudinary.com/ln4u8wnx/image/upload/v1793749572/photo_2026-11-03_23-45-50.jpg",
     "https://res.cloudinary.com/ln4u8wnx/image/upload/v1793749568/photo_2026-11-03_23-45-41.jpg",
     "https://res.cloudinary.com/ln4u8wnx/image/upload/v1793749570/photo_2026-11-03_23-45-47.jpg",
@@ -1328,9 +1329,8 @@ export const collectionsData = [
     description:
       "Authentic handmade Moroccan Berber runner rugs handwoven in Taznakht, Morocco. Perfect for narrow spaces, corridors, and long hallways.",
     images: [
-      "https://res.cloudinary.com/ln4u8wnx/image/upload/f_auto,q_auto/v1789598160/produit2-4.png",
-      "https://res.cloudinary.com/ln4u8wnx/image/upload/f_auto,q_auto/v1789598460/produit2-2.jpg",
-      "https://res.cloudinary.com/ln4u8wnx/image/upload/f_auto,q_auto/v1789598444/produit2-3.jpg",
+      "https://res.cloudinary.com/ln4u8wnx/image/upload/v1793789580/Gemini_Generated_Image_nm0tasnm0tasnm0t.jpg",
+
     ],
   },
   {

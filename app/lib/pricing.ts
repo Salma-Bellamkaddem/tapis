@@ -8,7 +8,7 @@ export const PAYMENT_DEADLINE_HOURS = 72; // délai pour envoyer le virement
 export type PaymentMethod = "bank_full" | "bank_deposit" | "pickup";
 export const PAYMENT_METHODS: PaymentMethod[] = ["bank_full", "bank_deposit", "pickup"];
 
-export const DEPOSIT_PERCENT = 3; // acompte à verser par virement (%)
+export const DEPOSIT_PERCENT = 2; // acompte à verser par virement (%)
 export const DEPOSIT_MOROCCO_ONLY = true; // acompte + solde à la livraison : réservé au Maroc
 export const PICKUP_LOCATION = "our shop in Taznakht, Morocco"; // ← À MODIFIER : adresse du retrait
 
