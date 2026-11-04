@@ -94,12 +94,26 @@ const collectionsData = [
   }
 ];
 
-function CollectionCard({ collection, index }) {
+interface Collection {
+  id: string;
+  slug: string;
+  name: string;
+  subtitle: string;
+  description: string;
+  images: string[];
+}
+
+interface CollectionCardProps {
+  collection: Collection;
+  index: number;
+}
+
+function CollectionCard({ collection, index }: CollectionCardProps) {
   const [current, setCurrent] = useState(0);
   const total = collection.images?.length || 1;
   const isFeatured = index === 2;
 
-  const go = (e, next) => {
+  const go = (e: React.MouseEvent<HTMLButtonElement | HTMLDivElement>, next: number) => {
     e.preventDefault();
     e.stopPropagation();
     setCurrent((next + total) % total);
@@ -149,7 +163,7 @@ function CollectionCard({ collection, index }) {
               </button>
 
               <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-black/25 backdrop-blur-sm z-20">
-                {collection.images.map((_, idx) => (
+                {collection.images.map((_: string, idx: number) => (
                   <button
                     key={idx}
                     onClick={(e) => go(e, idx)}
