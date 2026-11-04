@@ -53,8 +53,7 @@ export const rugsData: Rug[] = [
     sizes: [
       { size: "264 × 139 cm", price: "$350" },
     ],
-    description: "Hand-woven technique with living sheep's wool, natural colors, and traditional Berber symbols. HAND MADE BY MOROCCAN RURAL WOMEN."
-  },
+    description: "Handmade Akhenif Berber rug from Taznakht, Morocco. Technique: hand-woven (flatweave) with woven symbols. Made with 100% natural wool from living sheep and natural colors, with traditional Amazigh (Berber) symbols. Each piece is unique. HAND MADE BY MOROCCAN RURAL WOMEN."  },
   {
     id: "glaoui-001",
     name: "Glaoui Berber Carpet",
@@ -72,8 +71,7 @@ export const rugsData: Rug[] = [
     sizes: [
       { size: "227 × 132 cm", price: "$300" }
     ],
-    description: "Hand-made masterpiece combining three traditional techniques (woolen, woven, and embroidered) using pure living sheep's wool from the Siroua Mountains. HAND MADE BY MOROCCAN RURAL WOMEN."
-  },
+    description: "Handmade Glaoui Berber rug from Taznakht, Siroua Mountains, Morocco. Technique: three techniques in one piece (hand-woven, hand-knotted and embroidered), with woolen symbols. Made with 100% natural wool from living sheep and natural dyes. A unique statement piece. HAND MADE BY MOROCCAN RURAL WOMEN."  },
   {
     id: "akhenif-002",
     name: "Akhenif Berber Carpet",
@@ -91,8 +89,7 @@ export const rugsData: Rug[] = [
     sizes: [
       { size: "255 × 140 cm", price: "$450" },
     ],
-    description: "Hand-woven technique with living sheep's wool, natural colors, and traditional Berber symbols. HAND MADE BY MOROCCAN RURAL WOMEN."
-  },
+    description: "Handmade Akhenif Berber rug from Taznakht, Morocco. Technique: hand-woven (flatweave) with woven symbols. Made with 100% natural wool from living sheep and natural colors, with traditional Amazigh (Berber) symbols. Each piece is unique. HAND MADE BY MOROCCAN RURAL WOMEN."  },
   {
     id: "glaoui-002",
     name: "Glaoui Berber Carpet",
@@ -110,8 +107,7 @@ export const rugsData: Rug[] = [
     sizes: [
       { size: "150 × 106 cm", price: "$200" }
     ],
-    description: "An authentic Glaoui creation crafted with wool, flatweave, and intricate embroidery, featuring rich natural colors and traditional Berber motifs. HAND MADE BY MOROCCAN RURAL WOMEN."
-  },
+    description: "Handmade Glaoui Berber rug from Taznakht, Siroua Mountains, Morocco. Technique: three techniques in one piece (hand-woven, hand-knotted and embroidered), with woolen symbols. Made with 100% natural wool from living sheep and natural dyes. A unique statement piece. HAND MADE BY MOROCCAN RURAL WOMEN."  },
   {
     id: "glaoui-003",
     name: "Glaoui Berber Carpet",
@@ -129,8 +125,7 @@ export const rugsData: Rug[] = [
     sizes: [
       { size: "207 × 120 cm", price: "$270" }
     ],
-    description: "Unique Glaoui style carpet showcasing the exceptional triple-technique craftsmanship of rural women artisans, woven with living wool. HAND MADE BY MOROCCAN RURAL WOMEN."
-  },
+    description: "Handmade Glaoui Berber rug from Taznakht, Siroua Mountains, Morocco. Technique: three techniques in one piece (hand-woven, hand-knotted and embroidered), with woolen symbols. Made with 100% natural wool from living sheep and natural dyes. A unique statement piece. HAND MADE BY MOROCCAN RURAL WOMEN."  },
   {
     id: "akhenif-003",
     name: "Akhenif Berber Carpet",
@@ -278,8 +273,7 @@ export const rugsData: Rug[] = [
     sizes: [
       { size: "200 × 107 cm", price: "$300" },
     ],
-    description: "Artistic Picasso-inspired Berber creation crafted with living sheep's wool and traditional patterns. HAND MADE BY MOROCCAN RURAL WOMEN."
-  },
+    description: "Handmade Picasso Berber rug from Taznakht, Morocco. Technique: hand-woven with woven symbols. Double-sided rug, so both sides can be used. Made with 100% natural wool from living sheep, with artistic Picasso-inspired patterns. HAND MADE BY MOROCCAN RURAL WOMEN."  },
   {
     id: "picasso-berber-002",
     name: "Picasso Berber",
@@ -355,8 +349,7 @@ export const rugsData: Rug[] = [
     sizes: [
       { size: "150 × 100 cm", price: "$200" },
     ],
-    description: "Artistic Picasso-inspired Berber creation crafted with living sheep's wool and traditional patterns. HAND MADE BY MOROCCAN RURAL WOMEN."
-  },
+    description: "Handmade Picasso Berber rug from Taznakht, Morocco. Technique: hand-woven with woven symbols. Double-sided rug, so both sides can be used. Made with 100% natural wool from living sheep, with artistic Picasso-inspired patterns. HAND MADE BY MOROCCAN RURAL WOMEN."  },
   {
     id: "zanifi-berber-003",
     name: "Zanifi Berber",
@@ -374,7 +367,7 @@ export const rugsData: Rug[] = [
     sizes: [
       { size: "315 × 220 cm", price: "$850" },
     ],
-    description: "Hand-embroidered technique crafted with living sheep's wool and traditional Berber symbols. HAND MADE BY MOROCCAN RURAL WOMEN."
+    description: "Hand-embroidered using traditional Berber embroidery techniques, this authentic Moroccan rug is crafted from natural living sheep's wool. It combines traditional woven and embroidered symbols inspired by Amazigh (Berber) heritage, showcasing intricate patterns and authentic handmade craftsmanship. Each rug is handmade by Moroccan rural women artisans in Taznakht, Morocco, preserving generations of traditional Berber weaving and embroidery techniques."
   },
   {
     id: "zanifi-berber-004",
@@ -393,9 +386,8 @@ export const rugsData: Rug[] = [
     sizes: [
       { size: "195 × 106 cm", price: "$220" },
     ],
-    description: "Hand-embroidered technique crafted with living sheep's wool and traditional Berber symbols. HAND MADE BY MOROCCAN RURAL WOMEN."
-  },
-  {
+    description: "Handmade Zanifi Berber rug from Taznakht, Morocco. Technique: hand-embroidered, with woven and embroidered symbols inspired by Amazigh (Berber) heritage. Made with 100% natural wool from living sheep. HAND MADE BY MOROCCAN RURAL WOMEN." 
+    },{
     id: "zanifi-berber-002",
     name: "Zanifi Berber",
     sku: "ZAN-002",
@@ -411,9 +403,8 @@ export const rugsData: Rug[] = [
     sizes: [
       { size: "212 × 128 cm", price: "$200" },
     ],
-    description: "Hand-embroidered technique crafted with living sheep's wool and traditional Berber symbols. HAND MADE BY MOROCCAN RURAL WOMEN."
-  },
-  {
+  description: "Hand-embroidered using traditional Berber embroidery techniques, this authentic Moroccan rug is crafted from natural living sheep's wool. It combines traditional woven and embroidered symbols inspired by Amazigh (Berber) heritage, showcasing intricate patterns and authentic handmade craftsmanship. Each rug is handmade by Moroccan rural women artisans in Taznakht, Morocco, preserving generations of traditional Berber weaving and embroidery techniques."
+},{
     id: "zanifi-berber-001",
     name: "Zanifi Berber",
     sku: "ZAN-001",
@@ -430,8 +421,7 @@ export const rugsData: Rug[] = [
     sizes: [
       { size: "256 × 166 cm", price: "$420" },
     ],
-    description: "Hand-embroidered technique crafted with living sheep's wool and traditional Berber symbols. HAND MADE BY MOROCCAN RURAL WOMEN."
-  },
+    description: "Handmade Zanifi Berber rug from Taznakht, Morocco. Technique: hand-embroidered, with woven and embroidered symbols inspired by Amazigh (Berber) heritage. Made with 100% natural wool from living sheep. HAND MADE BY MOROCCAN RURAL WOMEN."  },
   {
     id: "picasso-berber-003",
     name: "Picasso Berber",
@@ -526,8 +516,7 @@ export const rugsData: Rug[] = [
     sizes: [
       { size: "152 × 109 cm", price: "$190" },
     ],
-    description: "Hand-woven art technique containing living sheep's wool and natural colors. HAND MADE BY MOROCCAN RURAL WOMEN."
-  },
+    description: "Handmade Tapis Tableau (Lemzerbi) Berber rug from Taznakht, Morocco. Technique: hand-woven with woven and woolen symbols, like a piece of art for your wall or floor. Made with 100% natural wool from living sheep and natural colors. HAND MADE BY MOROCCAN RURAL WOMEN."  },
 
 
   {
@@ -566,8 +555,7 @@ export const rugsData: Rug[] = [
     sizes: [
       { size: "264 × 134 cm", price: "$400" },
     ],
-    description: "Hand-woven art technique containing living sheep's wool and natural colors. HAND MADE BY MOROCCAN RURAL WOMEN."
-  },
+    description: "Handmade Tapis Tableau (Lemzerbi) Berber rug from Taznakht, Morocco. Technique: hand-woven with woven and woolen symbols, like a piece of art for your wall or floor. Made with 100% natural wool from living sheep and natural colors. HAND MADE BY MOROCCAN RURAL WOMEN."  },
 
   {
     id: "akhenif-tableau-006",
@@ -626,9 +614,8 @@ export const rugsData: Rug[] = [
     sizes: [
       { size: "250 × 146 cm", price: "$350" },
     ],
-    description: "Features woolen and woven squares with traditional Berber symbols and natural colors, hand-crafted by women artisans in the Siroua Mountains. HAND MADE BY MOROCCAN RURAL WOMEN."
-  },
-  {
+    description: "Handmade Mouzaïk Berber rug from the Siroua Mountains, Taznakht, Morocco. Technique: hand-knotted and woven squares, with woven and woolen symbols. Made with 100% natural wool from living sheep and natural colors, in the traditional Amazigh (Berber) style. HAND MADE BY MOROCCAN RURAL WOMEN."
+    },{
     id: "mouzaik-003",
     name: "Mouzaïk Classic",
     sku: "MOU-003",
@@ -685,7 +672,7 @@ export const rugsData: Rug[] = [
     sizes: [
       { size: "154 × 66 cm", price: "$130" },
     ],
-    description: "Features woolen and woven squares with traditional Berber symbols and natural colors, hand-crafted by women artisans in the Siroua Mountains. HAND MADE BY MOROCCAN RURAL WOMEN."
+  description: "Featuring hand-knotted and woven squares, intricate woven and woolen symbols, and traditional Amazigh (Berber) patterns in natural colors. This authentic Moroccan Berber rug is handcrafted by skilled women artisans in the Siroua Mountains, Taznakht, Morocco, using traditional weaving techniques passed down through generations. HANDMADE BY MOROCCAN RURAL WOMEN."
   },
   {
     id: "mouzaik-005",
@@ -705,8 +692,8 @@ export const rugsData: Rug[] = [
     sizes: [
       { size: "312 × 200 cm", price: "$950" },
     ],
-    description: "Features woolen and woven squares with traditional Berber symbols and natural colors, hand-crafted by women artisans in the Siroua Mountains. HAND MADE BY MOROCCAN RURAL WOMEN."
-  },
+    description: "Handmade Mouzaïk Berber rug from the Siroua Mountains, Taznakht, Morocco. Technique: hand-knotted and woven squares, with woven and woolen symbols. Made with 100% natural wool from living sheep and natural colors, in the traditional Amazigh (Berber) style. HAND MADE BY MOROCCAN RURAL WOMEN."
+    },
 
 
   {
@@ -726,8 +713,7 @@ export const rugsData: Rug[] = [
     sizes: [
       { size: "207 × 162 cm", price: "$300" },
     ],
-    description: "Crafted with thousands of tight knots, this Ouaouzguite rug radiates warm saffron and ruby tones, representing traditional Siroua Mountains craftsmanship. HAND MADE BY MOROCCAN RURAL WOMEN."
-  },
+    description: "Handmade Ouaouzguit Berber rug from Taznakht, Siroua Mountains, Morocco. Technique: hand-knotted, all-wool, with thousands of small knots forming woolen symbols. Made with 100% natural wool from living sheep and natural colors. Durable, comfortable and unique, each rug is handmade by Amazigh (Berber) rural women artisans. HAND MADE BY MOROCCAN RURAL WOMEN."  },
   
   {
     id: "ouaouzguite-atlas-006",
@@ -746,8 +732,7 @@ export const rugsData: Rug[] = [
     sizes: [
       { size: "246 × 152 cm", price: "$350" },
     ],
-    description: "This Ouaouzguite Berber carpet is a beautiful example of traditional Moroccan craftsmanship, inspired by the colorful weaving traditions of the Siroua regions. This vibrant red wool carpet features intricate and colorful geometric patterns, including central diamond motifs and detailed borders. It incorporates traditional Berber symbols and vibrant colors such as blue, yellow and white, creating an authentic and graphic contrast against the red background. Its hand-knotted texture and carefully crafted finishes make it a distinctive piece, perfect for creating a warm and authentic interior. Ouaouzguite Berber carpet, hand-woven using traditional Berber techniques. Made with thousands of small hand-woven knots using wool from living sheep and natural colors such as saffron, henna, almond skins and pomegranate skins. Easy to wash, comfortable and highly durable, it can last for many years and becomes more beautiful with time. The traditional Berber symbols and geometric motifs woven into the carpet carry cultural meanings passed down through generations, representing protection, femininity, fertility, nature, family and the heritage of Moroccan rural women artisans. HAND MADE BY MOROCCAN RURAL WOMEN"
-  },
+    description: "Handmade Ouaouzguit Berber rug from Taznakht, Siroua Mountains, Morocco. Technique: hand-knotted, all-wool, with thousands of small knots forming woolen symbols. Made with 100% natural wool from living sheep and natural colors. Durable, comfortable and unique, each rug is handmade by Amazigh (Berber) rural women artisans. HAND MADE BY MOROCCAN RURAL WOMEN."  },
   {
     id: "ouaouzguite-royal-008",
     name: "Ouaouzguite Royal Masterpiece",
@@ -765,8 +750,7 @@ export const rugsData: Rug[] = [
     sizes: [
       { size: "210 × 150 cm", price: "$270" },
     ],
-    description: "Ouaouzguite Berber carpet crafted with living sheep's wool from the Siroua Mountains and natural colors. Main features: a large central diamond (an emblematic motif associated with protection and fertility), nested motifs at temporal heart of the central medallion in ochre and brick tones, a bold palette of terracotta red, midnight blue and sand, a detailed geometric border, and hand-knotted fringes. HAND MADE BY MOROCCAN RURAL WOMEN."
-  },
+    description: "Handmade Ouaouzguit Berber rug from Taznakht, Siroua Mountains, Morocco. Technique: hand-knotted, all-wool, with thousands of small knots forming woolen symbols. Made with 100% natural wool from living sheep and natural colors. Durable, comfortable and unique, each rug is handmade by Amazigh (Berber) rural women artisans. HAND MADE BY MOROCCAN RURAL WOMEN."  },
   {
     id: "ouaouzguite-custom-009",
     name: "Ouaouzguite Berber Carpet",
@@ -782,8 +766,7 @@ export const rugsData: Rug[] = [
     sizes: [
       { size: "104 × 66 cm", price: "$75" },
     ],
-    description: "This Ouaouzguite Berber carpet is a beautiful example of traditional Moroccan craftsmanship, inspired by the colorful weaving traditions of the Siroua regions. Its patchwork-style composition combines different geometric motifs, including zigzags, diamonds, diagonal lines and checkerboard patterns. The traditional Berber symbols and geometric motifs carry cultural meanings passed down through generations, representing protection, femininity, fertility, nature, family and the heritage of Moroccan rural women artisans. Its vibrant combination of mustard yellow, red, deep blue, black and white gives the carpet a unique and joyful character, while its carefully crafted borders and hand-finished fringes add to its traditional charm. Ouaouzguite Berber carpet, hand-woven using traditional Berber techniques. Made with thousands of small hand-woven knots using wool from living sheep and natural colors such as saffron, henna, almond skins and pomegranate skins. Easy to wash, comfortable and highly durable, it can last for many years and becomes more beautiful with time. HAND MADE BY MOROCCAN RURAL WOMEN"
-  },
+    description: "Handmade Ouaouzguit Berber rug from Taznakht, Siroua Mountains, Morocco. Technique: hand-knotted, all-wool, with thousands of small knots forming woolen symbols. Made with 100% natural wool from living sheep and natural colors. Durable, comfortable and unique, each rug is handmade by Amazigh (Berber) rural women artisans. HAND MADE BY MOROCCAN RURAL WOMEN."  },
   {
     id: "ouaouzguite-custom-010",
     name: "Ouaouzguite Berber Carpet",
@@ -819,8 +802,7 @@ export const rugsData: Rug[] = [
   sizes: [
     { size: "126 × 72 cm", price: "$75" },
   ],
-  description: "Crafted with thousands of tight knots, this Ouaouzguite rug radiates warm saffron and ruby tones, representing traditional Siroua Mountains craftsmanship. HAND MADE BY MOROCCAN RURAL WOMEN."
-},
+  description: "Handmade Ouaouzguit Berber rug from Taznakht, Siroua Mountains, Morocco. Technique: hand-knotted, all-wool, with thousands of small knots forming woolen symbols. Made with 100% natural wool from living sheep and natural colors. Durable, comfortable and unique, each rug is handmade by Amazigh (Berber) rural women artisans. HAND MADE BY MOROCCAN RURAL WOMEN."},
 
 
 //runner 
@@ -844,8 +826,7 @@ export const rugsData: Rug[] = [
   sizes: [
     { size: "180 cm × 76 cm", price: "$125" },
   ],
-  description: "Authentic handmade Moroccan Berber runner rug, handwoven in wool by Amazigh women artisans in Taznakht, Morocco. Designed specifically for long hallways and corridors. HAND MADE BY MOROCCAN RURAL WOMEN."
-},
+  description: "Handmade Ouaouzguit Berber runner rug from Taznakht, Morocco, ideal for hallways, corridors and narrow spaces. Technique: hand-knotted, all-wool, with woolen symbols. Made with 100% natural sheep's wool. HAND MADE BY MOROCCAN RURAL WOMEN."},
 {
   id: "runner-berber-002",
   name: "Moroccan Berber Runner Rug Ouaouzguite ",
@@ -864,8 +845,7 @@ export const rugsData: Rug[] = [
   sizes: [
     { size: "202 cm × 75 cm", price: "$150" },
   ],
-  description: "Authentic handmade Moroccan Berber runner rug, handwoven in wool by Amazigh women artisans in Taznakht, Morocco. Designed specifically for long hallways and corridors. HAND MADE BY MOROCCAN RURAL WOMEN."
-},
+  description: "Handmade Ouaouzguit Berber runner rug from Taznakht, Morocco, ideal for hallways, corridors and narrow spaces. Technique: hand-knotted, all-wool, with woolen symbols. Made with 100% natural sheep's wool. HAND MADE BY MOROCCAN RURAL WOMEN."},
 
 
 {
@@ -886,8 +866,7 @@ export const rugsData: Rug[] = [
   sizes: [
     { size: "233 cm × 72 cm", price: "$225" },
   ],
-  description: "Authentic handmade Moroccan Berber runner rug, handwoven in wool by Amazigh women artisans in Taznakht, Morocco. Designed specifically for long hallways and corridors. HAND MADE BY MOROCCAN RURAL WOMEN."
-},
+  description: "Handmade Glaoui Berber runner rug from Taznakht, Morocco, ideal for hallways, corridors and narrow spaces. Technique: three techniques in one piece (hand-woven, hand-knotted and embroidered), with woolen symbols. Made with 100% natural sheep's wool. HAND MADE BY MOROCCAN RURAL WOMEN."},
 {
   id: "runner-berber-004",
   name: "Moroccan Berber Runner Rug Glaoui ",
@@ -906,8 +885,7 @@ export const rugsData: Rug[] = [
   sizes: [
     { size: "180 cm × 77 cm", price: "$130" },
   ],
-  description: "Authentic handmade Moroccan Berber runner rug, handwoven in wool by Amazigh women artisans in Taznakht, Morocco. Designed specifically for long hallways and corridors. HAND MADE BY MOROCCAN RURAL WOMEN."
-},
+  description: "Handmade Glaoui Berber runner rug from Taznakht, Morocco, ideal for hallways, corridors and narrow spaces. Technique: three techniques in one piece (hand-woven, hand-knotted and embroidered), with woolen symbols. Made with 100% natural sheep's wool. HAND MADE BY MOROCCAN RURAL WOMEN."},
 {
   id: "runner-berber-005",
   name: "Moroccan Berber Runner Rug Glaoui ",
@@ -924,8 +902,7 @@ export const rugsData: Rug[] = [
   sizes: [
     { size: "162 cm × 62 cm", price: "$110" },
   ],
-  description: "Authentic handmade Moroccan Berber runner rug, handwoven in wool by Amazigh women artisans in Taznakht, Morocco. Designed specifically for long hallways and corridors. HAND MADE BY MOROCCAN RURAL WOMEN."
-},
+  description: "Handmade Glaoui Berber runner rug from Taznakht, Morocco, ideal for hallways, corridors and narrow spaces. Technique: three techniques in one piece (hand-woven, hand-knotted and embroidered), with woolen symbols. Made with 100% natural sheep's wool. HAND MADE BY MOROCCAN RURAL WOMEN."},
 {
   id: "runner-berber-006",
   name: "Moroccan Berber Runner Rug Mouzaïk  ",
@@ -943,8 +920,7 @@ export const rugsData: Rug[] = [
   sizes: [
     { size: "204 cm × 65 cm", price: "$160" },
   ],
-  description: "Authentic handmade Moroccan Berber runner rug, handwoven in wool by Amazigh women artisans in Taznakht, Morocco. Designed specifically for long hallways and corridors. HAND MADE BY MOROCCAN RURAL WOMEN."
-},
+  description: "Handmade Mouzaïk Berber runner rug from Taznakht, Morocco, ideal for hallways, corridors and narrow spaces. Technique: hand-knotted and woven squares, with woven and woolen symbols. Made with 100% natural sheep's wool. HAND MADE BY MOROCCAN RURAL WOMEN."},
 {
   id: "runner-berber-007",
   name: "Moroccan Berber Runner Rug Mouzaïk  ",
@@ -961,8 +937,7 @@ export const rugsData: Rug[] = [
   sizes: [
     { size: "160 cm × 68 cm", price: "$110" },
   ],
-  description: "Authentic handmade Moroccan Berber runner rug, handwoven in wool by Amazigh women artisans in Taznakht, Morocco. Designed specifically for long hallways and corridors. HAND MADE BY MOROCCAN RURAL WOMEN."
-},
+  description: "Handmade Mouzaïk Berber runner rug from Taznakht, Morocco, ideal for hallways, corridors and narrow spaces. Technique: hand-knotted and woven squares, with woven and woolen symbols. Made with 100% natural sheep's wool. HAND MADE BY MOROCCAN RURAL WOMEN."},
 {
   id: "runner-berber-008",
   name: "Moroccan Berber Runner Rug Akhenif  ",
@@ -978,8 +953,7 @@ export const rugsData: Rug[] = [
   sizes: [
     { size: "200 cm × 66 cm", price: "$180" },
   ],
-  description: "Authentic handmade Moroccan Berber runner rug, handwoven in wool by Amazigh women artisans in Taznakht, Morocco. Designed specifically for long hallways and corridors. HAND MADE BY MOROCCAN RURAL WOMEN."
-},
+  description: "Handmade Akhenif Berber runner rug from Taznakht, Morocco, ideal for hallways, corridors and narrow spaces. Technique: hand-woven with woven symbols. Made with 100% natural sheep's wool. HAND MADE BY MOROCCAN RURAL WOMEN."},
 {
   id: "runner-berber-009",
   name: "Moroccan Berber Runner Rug Akhenif  ",
@@ -996,8 +970,7 @@ export const rugsData: Rug[] = [
   sizes: [
     { size: "200 cm × 72 cm", price: "$165" },
   ],
-  description: "Authentic handmade Moroccan Berber runner rug, handwoven in wool by Amazigh women artisans in Taznakht, Morocco. Designed specifically for long hallways and corridors. HAND MADE BY MOROCCAN RURAL WOMEN."
-},
+  description: "Handmade Akhenif Berber runner rug from Taznakht, Morocco, ideal for hallways, corridors and narrow spaces. Technique: hand-woven with woven symbols. Made with 100% natural sheep's wool. HAND MADE BY MOROCCAN RURAL WOMEN."},
 {
   id: "runner-berber-010",
   name: "Moroccan Berber Runner Rug Akhenif  ",
@@ -1015,8 +988,7 @@ export const rugsData: Rug[] = [
   sizes: [
     { size: "246 cm × 62 cm", price: "$230" },
   ],
-  description: "Authentic handmade Moroccan Berber runner rug, handwoven in wool by Amazigh women artisans in Taznakht, Morocco. Designed specifically for long hallways and corridors. HAND MADE BY MOROCCAN RURAL WOMEN."
-},
+  description: "Handmade Akhenif Berber runner rug from Taznakht, Morocco, ideal for hallways, corridors and narrow spaces. Technique: hand-woven with woven symbols. Made with 100% natural sheep's wool. HAND MADE BY MOROCCAN RURAL WOMEN."},
 {
   id: "runner-berber-011",
   name: "Moroccan Berber Runner Rug Akhenif  ",
@@ -1034,8 +1006,7 @@ export const rugsData: Rug[] = [
   sizes: [
     { size: "200 cm × 60 cm", price: "$185" },
   ],
-  description: "Authentic handmade Moroccan Berber runner rug, handwoven in wool by Amazigh women artisans in Taznakht, Morocco. Designed specifically for long hallways and corridors. HAND MADE BY MOROCCAN RURAL WOMEN."
-},
+  description: "Handmade Akhenif Berber runner rug from Taznakht, Morocco, ideal for hallways, corridors and narrow spaces. Technique: hand-woven with woven symbols. Made with 100% natural sheep's wool. HAND MADE BY MOROCCAN RURAL WOMEN."},
 {
   id: "runner-berber-012",
   name: "Moroccan Berber Runner Rug Picasso ",
@@ -1053,8 +1024,7 @@ export const rugsData: Rug[] = [
   sizes: [
     { size: "155 cm × 70 cm", price: "$150" },
   ],
-  description: "Authentic handmade Moroccan Berber runner rug, handwoven in wool by Amazigh women artisans in Taznakht, Morocco. Designed specifically for long hallways and corridors. HAND MADE BY MOROCCAN RURAL WOMEN."
-},
+  description: "Handmade Picasso Berber runner rug from Taznakht, Morocco, ideal for hallways, corridors and narrow spaces. Technique: hand-woven with woven symbols. Double-sided rug, so both sides can be used. Made with 100% natural sheep's wool. HAND MADE BY MOROCCAN RURAL WOMEN."},
 {
   id: "runner-berber-013",
   name: "Moroccan Berber Runner Rug Picasso ",
@@ -1071,8 +1041,7 @@ export const rugsData: Rug[] = [
   sizes: [
     { size: "208 cm × 60 cm", price: "$220" },
   ],
-  description: "Authentic handmade Moroccan Berber runner rug, handwoven in wool by Amazigh women artisans in Taznakht, Morocco. Designed specifically for long hallways and corridors. HAND MADE BY MOROCCAN RURAL WOMEN."
-},
+  description: "Handmade Picasso Berber runner rug from Taznakht, Morocco, ideal for hallways, corridors and narrow spaces. Technique: hand-woven with woven symbols. Double-sided rug, so both sides can be used. Made with 100% natural sheep's wool. HAND MADE BY MOROCCAN RURAL WOMEN."},
 {
   id: "runner-berber-014",
   name: "Moroccan Berber Runner Rug Picasso ",
@@ -1089,8 +1058,7 @@ export const rugsData: Rug[] = [
   sizes: [
     { size: "156 cm × 70 cm", price: "$120" },
   ],
-  description: "Authentic handmade Moroccan Berber runner rug, handwoven in wool by Amazigh women artisans in Taznakht, Morocco. Designed specifically for long hallways and corridors. HAND MADE BY MOROCCAN RURAL WOMEN."
-},
+  description: "Handmade Picasso Berber runner rug from Taznakht, Morocco, ideal for hallways, corridors and narrow spaces. Technique: hand-woven with woven symbols. Double-sided rug, so both sides can be used. Made with 100% natural sheep's wool. HAND MADE BY MOROCCAN RURAL WOMEN."},
 {
   id: "runner-berber-015",
   name: "Moroccan Berber Runner Rug Tableau ",
@@ -1106,8 +1074,7 @@ export const rugsData: Rug[] = [
   sizes: [
     { size: "206 cm × 66 cm", price: "$170" },
   ],
-  description: "Authentic handmade Moroccan Berber runner rug, handwoven in wool by Amazigh women artisans in Taznakht, Morocco. Designed specifically for long hallways and corridors. HAND MADE BY MOROCCAN RURAL WOMEN."
-},
+  description: "Handmade Tapis Tableau (Lemzerbi) Berber runner rug from Taznakht, Morocco, ideal for hallways, corridors and narrow spaces. Technique: hand-woven with woven and woolen symbols. Made with 100% natural sheep's wool. HAND MADE BY MOROCCAN RURAL WOMEN."},
 {
   id: "runner-berber-016",
   name: "Moroccan Berber Runner Rug Tableau ",
@@ -1126,8 +1093,7 @@ export const rugsData: Rug[] = [
   sizes: [
     { size: "155 cm × 66 cm", price: "$120" },
   ],
-  description: "Authentic handmade Moroccan Berber runner rug, handwoven in wool by Amazigh women artisans in Taznakht, Morocco. Designed specifically for long hallways and corridors. HAND MADE BY MOROCCAN RURAL WOMEN."
-},
+  description: "Handmade Tapis Tableau (Lemzerbi) Berber runner rug from Taznakht, Morocco, ideal for hallways, corridors and narrow spaces. Technique: hand-woven with woven and woolen symbols. Made with 100% natural sheep's wool. HAND MADE BY MOROCCAN RURAL WOMEN."},
 
 {
   id: "runner-berber-017",
@@ -1146,8 +1112,7 @@ export const rugsData: Rug[] = [
   sizes: [
     { size: "196 cm × 70 cm", price: "$170" },
   ],
-  description: "Authentic handmade Moroccan Berber runner rug, handwoven in wool by Amazigh women artisans in Taznakht, Morocco. Designed specifically for long hallways and corridors. HAND MADE BY MOROCCAN RURAL WOMEN."
-},
+  description: "Handmade Ouaouzguit Berber runner rug from Taznakht, Morocco, ideal for hallways, corridors and narrow spaces. Technique: hand-knotted, all-wool, with woolen symbols. Made with 100% natural sheep's wool. HAND MADE BY MOROCCAN RURAL WOMEN."},
 {
   id: "runner-berber-018",
   name: "Moroccan Berber Runner Rug zanifi Double sides ( black & white) ",
@@ -1165,8 +1130,7 @@ export const rugsData: Rug[] = [
   sizes: [
     { size: "214 cm × 86 cm", price: "$200" },
   ],
-  description: "Authentic handmade Moroccan Berber runner rug, handwoven in wool by Amazigh women artisans in Taznakht, Morocco. Designed specifically for long hallways and corridors. HAND MADE BY MOROCCAN RURAL WOMEN."
-},
+  description: "Handmade Zanifi Berber runner rug, double-sided (black and white), from Taznakht, Morocco, ideal for hallways, corridors and narrow spaces. Technique: hand-embroidered, with woven and embroidered symbols. Made with 100% natural sheep's wool. HAND MADE BY MOROCCAN RURAL WOMEN."},
 {
   id: "runner-berber-019",
   name: "Moroccan Berber Runner Rug zanifi Double sides ( black & white) ",
@@ -1184,8 +1148,7 @@ export const rugsData: Rug[] = [
   sizes: [
     { size: "204 cm × 74 cm", price: "$135" },
   ],
-  description: "Authentic handmade Moroccan Berber runner rug, handwoven in wool by Amazigh women artisans in Taznakht, Morocco. Designed specifically for long hallways and corridors. HAND MADE BY MOROCCAN RURAL WOMEN."
-},
+  description: "Handmade Zanifi Berber runner rug, double-sided (black and white), from Taznakht, Morocco, ideal for hallways, corridors and narrow spaces. Technique: hand-embroidered, with woven and embroidered symbols. Made with 100% natural sheep's wool. HAND MADE BY MOROCCAN RURAL WOMEN."},
 
 {
   id: "ouaouzguite-saffron-013",
@@ -1204,8 +1167,7 @@ export const rugsData: Rug[] = [
   sizes: [
     { size: "200 × 112 cm", price: "$240" },
   ],
-  description: "Crafted with thousands of tight knots, this Ouaouzguite rug radiates warm saffron and ruby tones, representing traditional Siroua Mountains craftsmanship. HAND MADE BY MOROCCAN RURAL WOMEN."
-},
+  description: "Handmade Ouaouzguit Berber rug from Taznakht, Siroua Mountains, Morocco. Technique: hand-knotted, all-wool, with thousands of small knots forming woolen symbols. Made with 100% natural wool from living sheep and natural colors. Durable, comfortable and unique, each rug is handmade by Amazigh (Berber) rural women artisans. HAND MADE BY MOROCCAN RURAL WOMEN."},
 
 {
   id: "ouaouzguite-saffron",
@@ -1224,8 +1186,7 @@ export const rugsData: Rug[] = [
   sizes: [
     { size: "254 × 152 cm", price: "$600" },
   ],
-  description: "Crafted with thousands of tight knots, this Ouaouzguite rug radiates warm saffron and ruby tones, representing traditional Siroua Mountains craftsmanship. HAND MADE BY MOROCCAN RURAL WOMEN."
-},
+  description: "Handmade Ouaouzguit Berber rug from Taznakht, Siroua Mountains, Morocco. Technique: hand-knotted, all-wool, with thousands of small knots forming woolen symbols. Made with 100% natural wool from living sheep and natural colors. Durable, comfortable and unique, each rug is handmade by Amazigh (Berber) rural women artisans. HAND MADE BY MOROCCAN RURAL WOMEN."},
 {
     id: "glaoui-royal-masterpiece-615",
     name: "Royal Glaoui Masterpiece Carpet",
@@ -1241,8 +1202,7 @@ export const rugsData: Rug[] = [
     sizes: [
       { size: "615 × 340 cm", price: "$4500" }
     ],
-    description: "An exceptional, museum-grade royal Glaoui masterpiece rug measuring 6.15m × 3.40m. Hand-crafted combining three traditional techniques (woolen, flatweave, and intricate embroidery) using pure living sheep's wool and rich natural dyes by master women artisans in the Siroua Mountains. A breathtaking statement piece designed for grand architectural interiors and luxury residences. HAND MADE BY MOROCCAN RURAL WOMEN."
-  },
+    description: "Handmade Glaoui Berber rug from Taznakht, Siroua Mountains, Morocco. Technique: three techniques in one piece (hand-woven, hand-knotted and embroidered), with woolen symbols. Made with 100% natural wool from living sheep and natural dyes. A unique statement piece. HAND MADE BY MOROCCAN RURAL WOMEN."  },
 
 
   {
@@ -1319,8 +1279,7 @@ export const rugsData: Rug[] = [
     sizes: [
       { size: "146 × 104 cm", price: "$180" }
     ],
-    description: "An exceptional, museum-grade royal Glaoui masterpiece rug measuring 3.30m × 2.13m. Hand-crafted combining three traditional techniques (woolen, flatweave, and intricate embroidery) using pure living sheep's wool and rich natural dyes by master women artisans in the Siroua Mountains. A breathtaking statement piece designed for grand architectural interiors and luxury residences. HAND MADE BY MOROCCAN RURAL WOMEN."
-  },
+    description: "Handmade Glaoui Berber rug from Taznakht, Siroua Mountains, Morocco. Technique: three techniques in one piece (hand-woven, hand-knotted and embroidered), with woolen symbols. Made with 100% natural wool from living sheep and natural dyes. A unique statement piece. HAND MADE BY MOROCCAN RURAL WOMEN."  },
   {
     id: "ouaouzguite-custom-0033",
     name: "Ouaouzguite Berber Carpet",
@@ -1336,8 +1295,7 @@ export const rugsData: Rug[] = [
     sizes: [
       { size: "104 × 66 cm", price: "$75" },
     ],
-    description: "Ouaouzguite Berber carpet, hand-woven using traditional Berber techniques. Made with thousands of small hand-woven knots using wool from living sheep and natural colors such as saffron, henna, almond skins and pomegranate skins. Easy to wash, comfortable and highly durable, it can last for many years and becomes more beautiful with time. The traditional Berber symbols and geometric motifs woven into the carpet carry cultural meanings passed down through generations, representing protection, femininity, fertility, nature, family and the heritage of Moroccan rural women artisans. HAND MADE BY MOROCCAN RURAL WOMEN"
-  },
+    description: "Handmade Ouaouzguit Berber rug from Taznakht, Siroua Mountains, Morocco. Technique: hand-knotted, all-wool, with thousands of small knots forming woolen symbols. Made with 100% natural wool from living sheep and natural colors. Durable, comfortable and unique, each rug is handmade by Amazigh (Berber) rural women artisans. HAND MADE BY MOROCCAN RURAL WOMEN."  },
   {
     id: "ouaouzguite-berber-007",
     name: "Ouaouzguite Royal Berber",
@@ -1355,8 +1313,7 @@ export const rugsData: Rug[] = [
     sizes: [
       { size: "238 × 138 cm", price: "$270" },
     ],
-    description: "This Moroccan wool carpet features a deep red background with a large central eight-pointed star in blue and cream tones. Its geometric patterns and traditional Berber symbols, framed by an intricate border, make it an authentic and highly graphic piece of Moroccan craftsmanship. Ouaouzguite Berber carpet, hand-woven using traditional Berber techniques. Made with thousands of small hand-woven knots using wool from living sheep and natural colors such as saffron, henna, almond skins and pomegranate skins. Easy to wash, comfortable and highly durable, it can last for many years and becomes more beautiful with time. The traditional Berber symbols and geometric motifs woven into the carpet carry cultural meanings passed down through generations, representing protection, femininity, fertility, nature, family and the heritage of Moroccan rural women artisans. HAND MADE BY MOROCCAN RURAL WOMEN"
-  }
+    description: "Handmade Ouaouzguit Berber rug from Taznakht, Siroua Mountains, Morocco. Technique: hand-knotted, all-wool, with thousands of small knots forming woolen symbols. Made with 100% natural wool from living sheep and natural colors. Durable, comfortable and unique, each rug is handmade by Amazigh (Berber) rural women artisans. HAND MADE BY MOROCCAN RURAL WOMEN."  }
 ];
 
 export const collectionsData = [
