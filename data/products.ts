@@ -769,18 +769,18 @@ export const rugsData: Rug[] = [
     description: "Handmade Ouaouzguit Berber rug from Taznakht, Siroua Mountains, Morocco. Technique: hand-knotted, all-wool, with thousands of small knots forming woolen symbols. Made with 100% natural wool from living sheep and natural colors. Durable, comfortable and unique, each rug is handmade by Amazigh (Berber) rural women artisans. HAND MADE BY MOROCCAN RURAL WOMEN."  },
   {
     id: "ouaouzguite-custom-010",
-    name: "Ouaouzguite Berber Carpet",
+    name: "Moroccan Berber Runner Rug Ouaouzguite",
     sku: "OUA-010",
     price: "$4000",
     isAvailable: true,
     images: [
-      "https://res.cloudinary.com/ln4u8wnx/image/upload/f_auto,q_auto/v1792171119/2.png",
-      "https://res.cloudinary.com/ln4u8wnx/image/upload/f_auto,q_auto/v1792171120/3.png",
-      "https://res.cloudinary.com/ln4u8wnx/image/upload/f_auto,q_auto/v1792171142/photo_2026-10-16_17-07-18.jpg",
-      "https://res.cloudinary.com/ln4u8wnx/image/upload/f_auto,q_auto/v1792171142/photo_2026-10-16_17-07-20.jpg",
+      "https://res.cloudinary.com/ln4u8wnx/image/upload/v1793820104/Capture_d_e%CC%81cran_2026-10-18_a%CC%80_22.02.08.png",
+      "https://res.cloudinary.com/ln4u8wnx/image/upload/v1792171142/photo_2026-10-16_17-07-20.jpg",
+      "https://res.cloudinary.com/ln4u8wnx/image/upload/v1792171142/photo_2026-10-16_17-07-18.jpg",
+      "https://res.cloudinary.com/ln4u8wnx/image/upload/v1792171143/photo_2026-10-16_17-07-24.jpg",
       "https://res.cloudinary.com/ln4u8wnx/image/upload/f_auto,q_auto/v1792171143/photo_2026-10-16_17-07-24.jpg"
     ],
-    category: "Ouaouzguit",
+    category: "Runner",
     sizes: [
       { size: "485 × 150 cm", price: "$4000" },
     ],

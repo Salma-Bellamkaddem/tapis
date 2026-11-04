@@ -9,70 +9,84 @@ import SaleBadge from "@/components/SaleBadge";
 const SITE = "https://rugsberber.com";
 const BRAND = "Cooperative Berber Rugs";
 const ITEMS_PER_PAGE = 6;
-const CATEGORIES = ["Ouaouzguit", "Glaoui", "Mouzaik", "Akhenif", "Picasso", "Tableau", "Zanifi"];
+const CATEGORIES = ["Ouaouzguit", "Glaoui", "Mouzaik", "Akhenif", "Picasso", "Tableau", "Zanifi","Runner"];
 
 // NOT exported: a Next.js page file may only export default, metadata, generateMetadata, etc.
 const INTRO: Record<string, string> = {
   Glaoui:
-    "Discover Glaoui Berber rugs, part of Morocco's rich Amazigh weaving heritage. Our collection brings together handcrafted pieces from Taznakht, Morocco, made by skilled artisans using traditional weaving knowledge. Each rug has its own character, with individual details that reflect the nature of handmade craftsmanship. Explore our Glaoui collection to find a distinctive Moroccan rug for your home.",
+    "Discover authentic Glaoui Berber rugs, handcrafted in Taznakht, Morocco, by Amazigh women artisans. Each rug combines three traditional techniques: hand-weaving, hand-knotting, and embroidery, enriched with distinctive woolen Amazigh symbols. These Moroccan rugs showcase the exceptional craftsmanship and cultural heritage of the Siroua Mountains region.",
 
   Akhenif:
-    "Explore our Akhenif Berber rug collection, inspired by the weaving traditions of Morocco. These handcrafted pieces reflect the cultural heritage of Amazigh artisans and the distinctive character of traditional Moroccan textiles. Each rug is a unique piece of craftsmanship, bringing texture, character and a connection to Moroccan heritage into your home.",
+    "Discover authentic Akhenif Berber rugs, handwoven by Amazigh women artisans in Taznakht, Morocco. Featuring traditional woven Amazigh symbols and distinctive textile patterns, each rug reflects generations of Moroccan weaving heritage. These handcrafted wool rugs bring authentic Berber artistry and natural character to your home.",
 
   Zanifi:
-    "Discover our Zanifi Berber rugs, handcrafted in Morocco by artisans who preserve traditional weaving knowledge. Rooted in the country's Amazigh textile heritage, these rugs celebrate the individuality of handmade craftsmanship. Explore the collection to discover distinctive pieces that connect traditional Moroccan artistry with contemporary interiors.",
+    "Explore authentic Zanifi Berber rugs, handcrafted in Taznakht, Morocco, by skilled Amazigh women artisans. Made using traditional hand-embroidery techniques, these rugs feature distinctive woven and embroidered Amazigh symbols. Each piece celebrates Moroccan textile heritage, traditional craftsmanship, and the artistic identity of the Taznakht region.",
 
   Ouaouzguit:
-    "Explore Ouaouzguit Berber rugs, associated with the historic weaving traditions of the Taznakht region in southern Morocco. These traditional Moroccan textiles reflect the rich Amazigh heritage of the region and the knowledge passed down through generations of artisans. Discover distinctive handcrafted pieces that bring Moroccan craftsmanship and cultural character into your home.",
-};
+    "Discover authentic Ouaouzguit Berber rugs, traditionally hand-knotted using 100% wool by Amazigh women artisans in Taznakht, Morocco. Featuring distinctive woolen Amazigh symbols, these handmade Moroccan wool rugs reflect the rich weaving heritage of the Siroua Mountains and generations of traditional craftsmanship.",
 
+  Picasso:
+    "Explore Picasso Berber rugs, handcrafted in Taznakht, Morocco, using traditional hand-weaving techniques. Featuring woven Amazigh symbols and a distinctive double-sided design, each rug offers two decorative surfaces while celebrating the creativity and heritage of Moroccan women artisans.",
+
+  Lemzerbi:
+    "Discover traditional Lemzerbi Tableau rugs, handcrafted by Amazigh women artisans in Taznakht, Morocco. Made using traditional hand-weaving techniques and decorated with woven and woolen Amazigh symbols, these distinctive Moroccan rugs showcase geometric artistry, cultural storytelling, and generations of Berber textile craftsmanship.",
+
+  Mouzaik:
+    "Explore authentic Mouzaik Berber rugs, handcrafted in Taznakht, Morocco, using a combination of hand-knotting and hand-weaving techniques. Characterized by woven squares and distinctive woven and woolen Amazigh symbols, each Moroccan wool rug reflects the creativity, heritage, and traditional craftsmanship of local women artisans.",
+
+  Runner:
+    "Discover handmade Moroccan Berber rug runners, crafted by Amazigh women artisans in Taznakht, Morocco. Designed for hallways, entryways, and narrow spaces, these traditional wool runners showcase authentic Berber weaving techniques, distinctive Amazigh patterns, and generations of Moroccan textile craftsmanship. Each runner brings warmth, cultural character, and timeless artisanal beauty to your home.",
+};
 const FAQ = [
   {
-    q: "Where are your Berber rugs made?",
-    a: "Our Berber rugs are handcrafted in Morocco by artisans connected to the traditional weaving heritage of Taznakht. We celebrate the craftsmanship and cultural traditions behind Moroccan rugs, with a focus on the work of local artisans.",
+    q: "Where are Taznakht rugs made?",
+    a: "Taznakht rugs are handcrafted in Taznakht, in the Siroua Mountains region of southern Morocco, a historic center of Moroccan Berber rug weaving. At Cooperative Berber Rugs, our Amazigh women artisans create authentic Taznakht rugs using traditional craftsmanship passed down through generations.",
   },
   {
-    q: "Are your Moroccan Berber rugs handmade?",
-    a: "Our collection features handmade Moroccan rugs crafted using traditional artisanal skills. As each piece is made by hand, individual details may vary, giving every rug its own character.",
+    q: "Are Taznakht rugs handmade?",
+    a: "Yes. Authentic Taznakht rugs are handmade by skilled Amazigh women artisans using traditional techniques, including hand-knotting, hand-weaving, and hand-embroidery. Each Taznakht rug is individually crafted, making every piece unique.",
   },
   {
     q: "What makes Taznakht rugs special?",
-    a: "Taznakht is known for its rich weaving heritage in southern Morocco. Its traditional rugs reflect the region's Amazigh textile culture and the knowledge of generations of artisans. Materials, colours, patterns and weaving techniques can vary from one rug to another.",
+    a: "Taznakht rugs are renowned for their distinctive Amazigh patterns, geometric designs, symbolic motifs, and traditional craftsmanship. Made in southern Morocco, these Moroccan Berber rugs reflect the cultural identity and weaving heritage of the Taznakht region and the artistic knowledge of local women artisans.",
   },
   {
-    q: "What materials are your Berber rugs made from?",
-    a: "Our rugs are made using the materials specified in their individual product descriptions. Please check each product page for details about its composition. If you need additional information about a particular rug, contact us and mention its product reference.",
+    q: "What materials are Taznakht rugs made from?",
+    a: "Our Taznakht rugs are crafted using wool and traditional textile materials, depending on the collection and weaving technique. Many designs feature woolen Amazigh symbols, woven details, and embroidered patterns. Check each Taznakht rug's product description for precise material information.",
   },
   {
-    q: "Is every Berber rug unique?",
-    a: "Every individual handmade rug has its own characteristics. Small variations in patterns, colours, dimensions and texture can occur as part of the handmade process. Please refer to the product photos and specifications to understand the characteristics of the rug you are considering.",
+    q: "Are all Taznakht rugs unique?",
+    a: "Yes. Every handmade Taznakht rug is an individual piece of Moroccan craftsmanship. Variations in colours, dimensions, textures, geometric patterns, and Amazigh symbols are part of the traditional handmade process. Once an original Taznakht rug is sold, it is no longer available, although a similar design may sometimes be commissioned.",
   },
   {
-    q: "How do I care for my Moroccan wool rug?",
-    a: "Regularly vacuum your rug using a suitable setting for its construction. Avoid excessive moisture and address spills promptly by gently blotting the affected area with a clean cloth. For deep cleaning, consult a professional experienced in handmade wool rugs and follow the care instructions for your specific rug.",
+    q: "What traditional techniques are used to make Taznakht rugs?",
+    a: "Taznakht rugs are made using several traditional Amazigh techniques. Ouaouzguit rugs are hand-knotted using wool, Akhenif and Picasso rugs are hand-woven, Glaoui rugs combine hand-weaving, hand-knotting, and embroidery, Zanifi rugs feature hand-embroidery, Lemzerbi rugs combine woven and woolen symbols, and Mouzaïk rugs feature hand-knotted and hand-woven squares.",
   },
   {
-    q: "Can I order a similar rug if my favourite design is sold out?",
-    a: "If a rug is sold out, you can contact us through WhatsApp and share its product reference to ask whether a similar design can be made. Availability, dimensions, colours, production time and pricing must be confirmed before placing a custom order.",
+    q: "How do I care for my Taznakht wool rug?",
+    a: "To preserve your handmade Taznakht wool rug, vacuum regularly using a gentle setting without a rotating brush. Avoid excessive moisture and prolonged direct sunlight. For spills, gently blot with a clean, dry cloth without rubbing. For deep cleaning, consult a professional experienced in traditional Moroccan wool rugs.",
   },
   {
-    q: "Can I request a custom size or colour?",
-    a: "Please contact us with your preferred dimensions, colour palette and the product reference or design that inspires you. We will check with the artisans whether your request can be accommodated and confirm the price and estimated production time before you proceed.",
+    q: "Can I order a similar Taznakht rug if my favourite design is sold out?",
+    a: "Yes. Contact Cooperative Berber Rugs through WhatsApp and share the reference or a photo of your favourite Taznakht rug. Our team will check with the Amazigh artisans whether a similar Moroccan Berber rug can be handcrafted. Colours, dimensions, patterns, production time, and pricing will be confirmed before ordering.",
   },
   {
-    q: "Do you ship Berber rugs internationally?",
-    a: "Please contact us with your delivery country and the product reference you are interested in. We will confirm whether delivery is available to your location, along with the shipping cost and estimated delivery time, before you place your order.",
+    q: "Can I order custom Taznakht rugs in different sizes or colours?",
+    a: "Yes. We welcome custom Taznakht rug enquiries. Share your preferred dimensions, colours, patterns, and inspiration through WhatsApp. Our team will discuss your request with the artisans in Taznakht, Morocco, and confirm the available options, estimated production time, and price.",
   },
   {
-    q: "How can I order a rug from your cooperative?",
-    a: "Browse our collection and select the rug you like. Contact us through WhatsApp and share the product reference to enquire about availability, pricing, shipping and payment options. We will confirm the order details with you before proceeding.",
+    q: "Do you ship Taznakht rugs internationally?",
+    a: "We welcome international enquiries from customers looking to buy authentic Taznakht rugs directly from our Moroccan cooperative. Contact us with your delivery country and preferred rug reference. We will confirm shipping availability, delivery costs, and estimated transit times before finalizing your order.",
   },
   {
-    q: "Can I return or exchange a rug?",
-    a: "Please contact us before placing your order to confirm the return and exchange conditions applicable to your purchase. Our team can explain the relevant terms before you proceed.",
+    q: "How can I buy authentic Taznakht rugs directly from the cooperative?",
+    a: "Browse our online collection of handmade Taznakht rugs and choose your favourite Moroccan Berber design. Contact Cooperative Berber Rugs through WhatsApp with the product reference to confirm availability, pricing, shipping, and payment options. Our team will guide you through the purchasing process.",
+  },
+  {
+    q: "What is your return and exchange policy for Taznakht rugs?",
+    a: "Our return and exchange conditions depend on the type of purchase and applicable sales terms. Please contact Cooperative Berber Rugs before confirming your Taznakht rug order to receive information about the conditions applicable to your purchase.",
   },
 ];
-
 type SP = { category?: string | string[]; page?: string | string[] };
 
 const first = (v?: string | string[]) => (Array.isArray(v) ? v[0] : v);

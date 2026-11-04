@@ -285,9 +285,9 @@ export default function Home() {
               Our Best-Loved Berber Rugs
             </h2>
             <p className="text-sm md:text-base text-gray-600 max-w-2xl mb-6 leading-relaxed">
-              Woven by rural Amazigh women near Taznakht, a historic center of Moroccan carpet weaving. Every piece is
-              unique, so once it is sold, it is gone.
-            </p>
+  Handcrafted by rural Amazigh women artisans in Taznakht, Morocco, a historic center of traditional Berber rug weaving. Each collection showcases unique craftsmanship, from hand-knotting and hand-weaving to intricate embroidery, featuring woven, woolen, and embroidered Amazigh symbols. Discover Ouaouzguite, Akhenif, Picasso (double-sided rugs), Glaoui, Zanifi, Tableau (Lemzerbi), and Mouzaïk rugs, each preserving the authentic heritage of Moroccan Berber craftsmanship. Every rug is unique, and once sold, it is gone.
+</p>
+
             <Link
               href="/rugs"
               prefetch
