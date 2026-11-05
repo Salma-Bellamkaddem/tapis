@@ -273,7 +273,7 @@ export default function Home() {
           ))}
         </ul>
       </section>
-
+      <AboutCooperative />
       {/* 4. PRODUITS : les meilleurs tapis + bloc sur-mesure */}
       <section className="bg-[#FAF0E4] py-16 md:py-20 px-4 md:px-8 border-b border-[#A44E36]/10">
         <div className="max-w-7xl mx-auto">
@@ -393,7 +393,7 @@ export default function Home() {
       </section>
 
       {/* 8. HISTOIRE & VALEURS */}
-      <AboutCooperative />
+    
       <MeetArtisans />
       <WoolToRug />
       <EthicalImpact />

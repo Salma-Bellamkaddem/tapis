@@ -213,7 +213,7 @@ export const rugsData: Rug[] = [
         "https://res.cloudinary.com/ln4u8wnx/image/upload/v1793657336/photo_2026-11-02_22-02-00.jpg",
         "https://res.cloudinary.com/ln4u8wnx/image/upload/v1793657336/photo_2026-11-02_22-02-02.jpg"
       ],
-      category: "Akhenif",
+      category: "Zanifi",
       sizes: [
         { size: "104 × 67 cm", price: "$65" },
       ],
@@ -698,7 +698,7 @@ export const rugsData: Rug[] = [
 
   {
     id: "ouaouzguite-saffron-005",
-    name: "Ouaouzguite Saffron Heritage",
+    name: "Ouaouzguit White and Black Wool Rug",
     sku: "OUA-001",
     price: "$300",
     isAvailable: true,
@@ -717,7 +717,7 @@ export const rugsData: Rug[] = [
   
   {
     id: "ouaouzguite-atlas-006",
-    name: "Ouaouzguite Atlas Motif",
+    name: "Ouaouzguite Taznakhte Motif",
     sku: "OUA-002",
     price: "$350",
     isAvailable: true,
@@ -1172,7 +1172,7 @@ export const rugsData: Rug[] = [
 
 {
   id: "ouaouzguite-saffron",
-  name: "Ouaouzguite Saffron Heritage",
+  name: "Ouaouzguit White and Black Wool Rug",
   sku: "OUA-011",
   price: "$600",
   isAvailable: true,

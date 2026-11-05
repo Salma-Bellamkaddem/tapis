@@ -1,15 +1,26 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { rugsData } from "@/data/products";
-import RugCard from "@/components/RugCard";
-import SaleBadge from "@/components/SaleBadge";
-
 
 const SITE = "https://rugsberber.com";
 const BRAND = "Cooperative Berber Rugs";
 const ITEMS_PER_PAGE = 6;
 const CATEGORIES = ["Ouaouzguit", "Glaoui", "Mouzaik", "Akhenif", "Picasso", "Tableau", "Zanifi","Runner"];
+
+// Same logic as the collection page:
+// the current price stays fixed, the struck-through original price is +30%
+function applyBlackFridayDiscount(currentPriceString: string) {
+  const numericPrice = parseFloat(String(currentPriceString).replace(/[^0-9.]/g, ""));
+  if (isNaN(numericPrice)) {
+    return { original: currentPriceString, discounted: currentPriceString };
+  }
+  return {
+    original: `$${Math.round(numericPrice * 1.3)}`,
+    discounted: currentPriceString,
+  };
+}
 
 // NOT exported: a Next.js page file may only export default, metadata, generateMetadata, etc.
 const INTRO: Record<string, string> = {
@@ -264,15 +275,58 @@ export default async function RugsPage({ searchParams }: { searchParams: Promise
           {current.length > 0 ? (
             <>
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                {current.map((rug, i) => (
-                  <div key={rug.id} className="relative">
-                    {/* Visible only Nov 1 - Nov 30, and never on sold-out rugs */}
-                    {rug.isAvailable !== false && (
-                      <SaleBadge className="absolute top-3 right-3 z-10" />
-                    )}
-                    <RugCard rug={rug} priority={page === 1 && i < 3} />
-                  </div>
-                ))}
+                {current.map((rug, i) => {
+                  const soldOut = rug.isAvailable === false;
+                  const pricing = applyBlackFridayDiscount(rug.price);
+
+                  return (
+                    <Link
+                      key={rug.id}
+                      href={`/rugs/${rug.id}`}
+                      className="group bg-white rounded-3xl overflow-hidden border border-[#A44E36]/10 shadow-sm hover:shadow-lg transition-all duration-300 relative"
+                    >
+                      {soldOut ? (
+                        <span className="absolute top-3 right-3 z-10 bg-gray-800 text-white text-[9px] font-bold px-2 py-1 uppercase tracking-wider rounded shadow">
+                          Sold out
+                        </span>
+                      ) : (
+                        <span className="absolute top-3 right-3 z-10 bg-red-600 text-white text-[9px] font-bold px-2 py-1 uppercase tracking-wider rounded shadow">
+                          -30% Black Friday
+                        </span>
+                      )}
+
+                      <div className="relative aspect-square overflow-hidden bg-[#E8DED2]">
+                        <Image
+                          src={rug.images[0]}
+                          alt={`${rug.name} handmade Moroccan Berber rug`}
+                          fill
+                          priority={page === 1 && i < 3}
+                          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                          className="object-cover group-hover:scale-105 transition-transform duration-700"
+                        />
+                      </div>
+
+                      <div className="p-5">
+                        <h3 className="font-serif text-xl text-gray-900 group-hover:text-[#A44E36] transition-colors">
+                          {rug.name}
+                        </h3>
+                        <p className="text-xs text-gray-500 mt-1">{rug.sku}</p>
+
+                        <div className="flex items-center justify-between mt-4">
+                          <div className="flex items-center gap-2">
+                            <span className="font-bold text-gray-900">{pricing.discounted}</span>
+                            {!soldOut && (
+                              <span className="text-xs text-gray-400 line-through">{pricing.original}</span>
+                            )}
+                          </div>
+                          <span className="text-[#A44E36] text-xs font-bold uppercase tracking-wider">
+                            View Rug →
+                          </span>
+                        </div>
+                      </div>
+                    </Link>
+                  );
+                })}
               </div>
 
               {totalPages > 1 && (

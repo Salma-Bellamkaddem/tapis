@@ -20,8 +20,7 @@ const collectionsData = [
     slug: "ouaouzguit",
     name: "Ouaouzguit",
     subtitle: "BERBER RUGS",
-    description: "Traditional Ouaouzguit Berber rugs handwoven in Taznakht, Morocco, using natural wool and traditional Amazigh weaving techniques.",
-    images: [
+    description: "Traditional Ouaouzguit Berber rugs, hand-knotted and handwoven in Taznakht, Morocco, using 100% natural wool and traditional Amazigh weaving techniques. Crafted entirely from wool, featuring distinctive handwoven woolen symbols that reflect authentic Berber heritage and Moroccan craftsmanship."   , images: [
       "https://res.cloudinary.com/ln4u8wnx/image/upload/v1793622604/Design_sans_titre_24.png",
       "https://res.cloudinary.com/ln4u8wnx/image/upload/f_auto,q_auto/v1789598160/produit2-4.png"
     ]
@@ -31,8 +30,8 @@ const collectionsData = [
     slug: "glaoui",
     name: "Glaoui",
     subtitle: "BERBER RUGS",
-    description: "Authentic Glaoui Berber rugs from Taznakht, handwoven with wool using traditional Moroccan weaving and embroidery techniques.",
-    images: [
+    description: "Authentic Glaoui Berber rugs, handwoven, hand-knotted, and embroidered by skilled women artisans in Taznakht, Morocco. Crafted entirely from natural wool, featuring traditional Amazigh woolen symbols and intricate embroidery techniques that reflect the rich heritage of Moroccan Berber craftsmanship."
+    ,    images: [
       "https://res.cloudinary.com/ln4u8wnx/image/upload/f_auto,q_auto/v1789600724/7.png",
       "https://res.cloudinary.com/ln4u8wnx/image/upload/v1793639266/b2.jpg"
     ]
@@ -42,8 +41,7 @@ const collectionsData = [
     slug: "mouzaik",
     name: "Mouzaïk",
     subtitle: "BERBER RUGS",
-    description: "Mouzaïk Berber rugs featuring geometric wool and woven patterns inspired by traditional Amazigh symbols and Moroccan craftsmanship.",
-    images: [
+    description: "Authentic Mouzaïk Berber rugs featuring hand-knotted techniques, handwoven geometric squares, and distinctive woven and woolen Amazigh symbols. Crafted from natural wool by skilled women artisans in Taznakht, Morocco, reflecting traditional Moroccan Berber craftsmanship and heritage.",    images: [
       "https://res.cloudinary.com/ln4u8wnx/image/upload/f_auto,q_auto/v1789604336/10-1.jpg",
       "https://res.cloudinary.com/ln4u8wnx/image/upload/f_auto,q_auto/v1789604763/12.png"
     ]
@@ -53,8 +51,7 @@ const collectionsData = [
     slug: "akhenif",
     name: "Akhenif",
     subtitle: "BERBER RUGS",
-    description: "Handwoven Akhenif Berber rugs from Taznakht, made with natural sheep's wool, traditional Amazigh symbols, and authentic Moroccan craftsmanship.",
-    images: [
+    description: "Authentic Akhenif Berber rugs, handwoven and hand-embroidered by skilled women artisans in Taznakht, Morocco. Crafted from natural sheep's wool, featuring traditional woven and embroidered Amazigh symbols that reflect authentic Moroccan Berber craftsmanship and heritage.",    images: [
       "https://res.cloudinary.com/ln4u8wnx/image/upload/f_auto,q_auto/v1789595596/akhenif-p1.png",
       "https://res.cloudinary.com/ln4u8wnx/image/upload/f_auto,q_auto/v1789596807/akhenif-p2-1.png"
     ]
@@ -64,8 +61,7 @@ const collectionsData = [
     slug: "tableau",
     name: "Tapis Tableau",
     subtitle: "TAPIS TABLEAU",
-    description: "Handwoven Moroccan Tapis Tableau rugs combining traditional Amazigh craftsmanship, natural wool, artistic patterns, and timeless Moroccan design.",
-    images: [
+    description: "Authentic Moroccan Tapis Tableau (Lemzerbi) Berber rugs, handwoven in Taznakht using traditional weaving techniques and natural wool. Featuring distinctive woven patterns and woolen Amazigh symbols, each rug reflects the artistic heritage, authentic craftsmanship, and timeless design of Moroccan Berber weaving.",    images: [
       "https://res.cloudinary.com/ln4u8wnx/image/upload/f_auto,q_auto/v1789648947/tableau-p1-1.png",
       "https://res.cloudinary.com/ln4u8wnx/image/upload/v1793643254/photo_2026-11-02_18-12-08.jpg"
     ]
@@ -75,8 +71,7 @@ const collectionsData = [
     slug: "picasso",
     name: "Picasso Berber",
     subtitle: "BERBER RUGS",
-    description: "Artistic Picasso-inspired Berber rugs handwoven in Morocco using natural sheep's wool and traditional Amazigh patterns.",
-    images: [
+    description: "Artistic Picasso-inspired Berber rugs, handwoven in Taznakht, Morocco, using natural sheep's wool and traditional Amazigh weaving techniques. Featuring distinctive woven Amazigh symbols and a reversible double-sided design, these unique Moroccan rugs combine authentic craftsmanship with contemporary artistic expression.",    images: [
       "https://res.cloudinary.com/ln4u8wnx/image/upload/f_auto,q_auto/v1789605799/picasso-p1.png",
       "https://res.cloudinary.com/ln4u8wnx/image/upload/f_auto,q_auto/v1789606119/picasso-p2-1.png"
     ]
@@ -86,8 +81,7 @@ const collectionsData = [
     slug: "zanifi",
     name: "Zanifi Berber",
     subtitle: "ZANIFI RUGS",
-    description: "Authentic Zanifi Berber rugs handwoven in Morocco with natural sheep's wool, traditional geometric patterns, and Amazigh craftsmanship.",
-    images: [
+    description: "Authentic Zanifi Berber rugs, handwoven and hand-embroidered by skilled women artisans in Taznakht, Morocco, using natural sheep's wool and traditional Amazigh techniques. Featuring distinctive geometric patterns, woven and embroidered Amazigh symbols, each rug reflects the rich heritage and authentic craftsmanship of Moroccan Berber weaving.",    images: [
       "https://res.cloudinary.com/ln4u8wnx/image/upload/f_auto,q_auto/v1789650258/zanifi-p1-1.jpg",
       "https://res.cloudinary.com/ln4u8wnx/image/upload/f_auto,q_auto/v1789650567/zanafi-p2-1.png"
     ]
