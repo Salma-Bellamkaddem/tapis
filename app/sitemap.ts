@@ -21,6 +21,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${SITE}/rugs`, lastModified: now, changeFrequency: "weekly", priority: 0.8 },
     { url: `${SITE}/custom-order`, lastModified: now, changeFrequency: "monthly", priority: 0.7 },
     { url: `${SITE}/story`, lastModified: now, changeFrequency: "yearly", priority: 0.6 },
+    { url: `${SITE}/visit`, lastModified: now, changeFrequency: "yearly", priority: 0.6 }, // 👈 nouvelle page
     { url: `${SITE}/contact`, lastModified: now, changeFrequency: "yearly", priority: 0.5 },
     { url: `${SITE}/shipping`, lastModified: now, changeFrequency: "yearly", priority: 0.4 },
     { url: `${SITE}/returns`, lastModified: now, changeFrequency: "yearly", priority: 0.4 },
