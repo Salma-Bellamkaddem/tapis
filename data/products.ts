@@ -185,7 +185,7 @@ export const rugsData: Rug[] = [
       name: "Akhenif Berber Carpet",
       sku: "AKH-005",
       price: "$65",
-      isAvailable: true,
+      isAvailable: false,
       images: [
         "https://res.cloudinary.com/ln4u8wnx/image/upload/v1793656788/Gemini_Generated_Image_2pakmw2pakmw2pak.jpg",
 
@@ -1188,6 +1188,26 @@ export const rugsData: Rug[] = [
     { size: "254 × 152 cm", price: "$600" },
   ],
   description: "Handmade Ouaouzguit Berber rug from Taznakht, Siroua Mountains, Morocco. Technique: hand-knotted, all-wool, with thousands of small knots forming woolen symbols. Made with 100% natural wool from living sheep and natural colors. Durable, comfortable and unique, each rug is handmade by Amazigh (Berber) rural women artisans. HAND MADE BY MOROCCAN RURAL WOMEN."},
+
+  {
+    id: "ouaouzguite-berber",
+    name: "Ouaouzguit berber rug from Taznakht, Siroua Mountains, Morocco",
+    sku: "OUA-013",
+    price: "$230",
+    isAvailable: true,
+    images: [
+      "https://res.cloudinary.com/ln4u8wnx/image/upload/v1793983312/Gemini_Generated_Image_mzkbdomzkbdomzkb.jpg",
+      "https://res.cloudinary.com/ln4u8wnx/image/upload/v1793983302/Gemini_Generated_Image_l0oajvl0oajvl0oa.jpg",
+      "https://res.cloudinary.com/ln4u8wnx/image/upload/v1793983332/photo_2026-11-05_18-55-05.jpg",
+      "https://res.cloudinary.com/ln4u8wnx/image/upload/v1793983333/photo_2026-11-05_18-55-07.jpg",
+      "https://res.cloudinary.com/ln4u8wnx/image/upload/v1793983334/photo_2026-11-05_18-55-10.jpg"
+    ],
+    category: "Ouaouzguit",
+    sizes: [
+      { size: "202 × 113 cm", price: "$230" },
+    ],
+    description: "Handmade Ouaouzguit Berber rug from Taznakht, Siroua Mountains, Morocco. Technique: hand-knotted, all-wool, with thousands of small knots forming woolen symbols. Made with 100% natural wool from living sheep and natural colors. Durable, comfortable and unique, each rug is handmade by Amazigh (Berber) rural women artisans. HAND MADE BY MOROCCAN RURAL WOMEN."},
+  
 {
     id: "glaoui-royal-masterpiece-615",
     name: "Royal Glaoui Masterpiece Carpet",
