@@ -44,13 +44,13 @@ export const metadata: Metadata = {
     siteName: "Cooperative Berber Rugs",
     title: TITLE,
     description: DESCRIPTION,
-    images: [{ url: "/placeholders/hero-bg.webp", width: 1600, height: 900, alt: "Handcrafted Moroccan Berber rugs" }],
+    images: [{ url: "/placeholders/e.jpeg", width: 1600, height: 900, alt: "Handcrafted Moroccan Berber rugs" }],
   },
   twitter: {
     card: "summary_large_image",
     title: TITLE,
     description: DESCRIPTION,
-    images: ["/placeholders/hero-bg.webp"],
+    images: ["/placeholders/e.jpeg"],
   },
   robots: { index: true, follow: true, "max-image-preview": "large" },
 };
@@ -120,7 +120,7 @@ export default function Home() {
         name: "Cooperative Berber Rugs",
         url: SITE_URL,
         logo: `${SITE_URL}/logo.png`, // ⚠️ chemin réel du logo
-        image: `${SITE_URL}/placeholders/hero-bg.webp`,
+        image: `${SITE_URL}/placeholders/e.jpeg`,
         description: DESCRIPTION,
         telephone: "+212767149114",
         address: { "@type": "PostalAddress", addressLocality: "Taznakht", addressCountry: "MA" },
@@ -201,7 +201,7 @@ export default function Home() {
       <section className="relative w-full h-[85vh] min-h-[620px] flex items-center">
         <div className="absolute inset-0 z-0 bg-gray-900">
           <Image
-            src="/placeholders/hero-bg.webp"
+            src="/placeholders/e.jpeg"
             alt="Handwoven Moroccan Berber rugs by Amazigh women artisans in Taznakht"
             fill
             priority

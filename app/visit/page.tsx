@@ -77,7 +77,7 @@ export default function VisitPage() {
       <section className="relative w-full h-[420px] flex items-center justify-center text-center">
         <div className="absolute inset-0 z-0 bg-gray-900">
           <Image
-            src="/placeholders/hero-bg.webp"
+            src="/placeholders/e.jpeg"
             alt="Berber rug cooperative in Taznakht, Morocco"
             fill
             priority
@@ -253,7 +253,7 @@ export default function VisitPage() {
               Berber rug weaving. Message us on WhatsApp and we will send you the
               exact directions and agree on a day and time.
             </p>
-            <ul className="text-sm text-gray-600 space-y-2 mb-8">
+              <ul className="text-sm text-gray-600 space-y-2 mb-8">
               <li>• Visits are by appointment</li>
               <li>• Tell us your dates and the number of people</li>
               <li>• Worldwide shipping if you prefer to buy on site</li>
