@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
+import Script from "next/script";
 import {
   parsePrice,
   formatMoney,
@@ -88,7 +89,7 @@ function CopyButton({ value, label }: { value: string; label: string }) {
       setCopied(true);
       setTimeout(() => setCopied(false), 1800);
     } catch {
-      /* le navigateur refuse l'accès au presse-papiers : l'utilisateur peut copier à la main */
+      /* le navigateur refuse l'accès au presse-papiers */
     }
   }
 
@@ -112,7 +113,6 @@ export default function CheckoutClient() {
   const [error, setError] = useState("");
   const [success, setSuccess] = useState<Success | null>(null);
 
-  // Meta Pixel : InitiateCheckout une seule fois quand le panier est lu et non vide
   const checkoutFired = useRef(false);
   useEffect(() => {
     if (!ready || cart.length === 0 || success || checkoutFired.current) return;
@@ -133,7 +133,6 @@ export default function CheckoutClient() {
     });
   }, [ready, cart, success]);
 
-  // Sous-total et devise (calculés à partir du panier)
   let subtotal = 0;
   let currency = "USD";
   cart.forEach((item) => {
@@ -175,7 +174,6 @@ export default function CheckoutClient() {
       } else {
         setSuccess(json);
 
-        // Meta Pixel : Purchase (avant clearCart, car on lit le panier ici)
         trackEvent(
           "Purchase",
           {
@@ -199,7 +197,6 @@ export default function CheckoutClient() {
     }
   }
 
-  // Le panier du navigateur n'est pas encore lu (rendu serveur / hydratation)
   if (!ready) {
     return (
       <div className="bg-[#FAF9F6] min-h-[70vh] py-20 px-4 text-center">
@@ -208,7 +205,6 @@ export default function CheckoutClient() {
     );
   }
 
-  // Panier vide
   if (cart.length === 0 && !success) {
     return (
       <div className="bg-[#FAF9F6] min-h-[70vh] py-20 px-4 text-center">
@@ -270,6 +266,30 @@ export default function CheckoutClient() {
 
     return (
       <div className="bg-[#FAF9F6] min-h-screen py-10 md:py-12 px-4">
+        {/* Intégration Google Avis Clients */}
+        <Script
+          src="https://apis.google.com/js/platform.js?onload=renderOptIn"
+          strategy="afterInteractive"
+        />
+        <script
+          id="google-customer-reviews-survey"
+          dangerouslySetInnerHTML={{
+            __html: `
+              window.renderOptIn = function() {
+                window.gapi.load('surveyoptin', function() {
+                  window.gapi.surveyoptin.render({
+                    "merchant_id": 5902648196,
+                    "order_id": "${success.orderNumber}",
+                    "email": "client@rugsberber.com",
+                    "delivery_country": "MA",
+                    "estimated_delivery_date": "2026-11-20"
+                  });
+                });
+              };
+            `,
+          }}
+        />
+
         <div className="max-w-xl mx-auto bg-white border border-[#A44E36]/20 rounded-2xl p-5 sm:p-6 md:p-8">
           <div className="flex h-12 w-12 items-center justify-center rounded-full bg-green-100 text-green-700 text-2xl mb-4" aria-hidden="true">
             ✓
@@ -328,7 +348,6 @@ export default function CheckoutClient() {
             </p>
           )}
 
-          {/* PROCHAINES ÉTAPES */}
           <div className="mb-6">
             <h2 className="font-serif text-lg text-gray-900 mb-3">What happens next</h2>
             <ol className="space-y-3">
@@ -373,7 +392,6 @@ export default function CheckoutClient() {
         <span className="text-gray-900">Checkout / Cart</span>
       </div>
 
-      {/* Les 3 étapes du parcours */}
       <ol className="max-w-5xl mx-auto mb-8 grid grid-cols-3 gap-2 text-center text-[11px] sm:text-xs" aria-label="Order steps">
         {["Your details", "Bank transfer", "Confirm on WhatsApp"].map((label, i) => (
           <li key={label} className="flex flex-col items-center gap-1.5">
@@ -390,13 +408,11 @@ export default function CheckoutClient() {
       </ol>
 
       <div className="max-w-5xl mx-auto flex flex-col-reverse md:flex-row gap-8 md:gap-10">
-        {/* FORMULAIRE */}
         <form onSubmit={handleSubmit} className="w-full md:w-3/5 space-y-6">
           <h1 className="font-serif text-2xl md:text-3xl text-gray-900">Order details</h1>
 
           <input type="text" name="website" tabIndex={-1} autoComplete="off" className="hidden" aria-hidden="true" />
 
-          {/* MODE DE PAIEMENT */}
           <fieldset>
             <legend className={labelClass}>Payment method</legend>
             <div className="space-y-3">
@@ -432,14 +448,8 @@ export default function CheckoutClient() {
                 );
               })}
             </div>
-            <p className="text-xs text-gray-500 mt-3">
-              {isPickup
-                ? "No payment is needed online. You pay when you collect your rug."
-                : "Bank details are shown on screen and emailed to you right after you place the order. You then send us the transfer receipt on WhatsApp."}
-            </p>
           </fieldset>
 
-          {/* COORDONNÉES */}
           <div>
             <label htmlFor="fullName" className={labelClass}>Full name</label>
             <input id="fullName" name="fullName" required minLength={2} autoComplete="name" className={inputClass} />
@@ -466,7 +476,6 @@ export default function CheckoutClient() {
             </div>
           </div>
 
-          {/* ADRESSE */}
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
             <div>
               <label htmlFor="country" className={labelClass}>Country</label>
@@ -480,7 +489,7 @@ export default function CheckoutClient() {
                 placeholder={method === "bank_deposit" ? "Morocco" : "e.g. Morocco, France, USA"}
                 className={inputClass}
               />
-              {depositCountryMismatch ? (
+              {depositCountryMismatch && (
                 <p role="alert" className="text-xs text-red-700 mt-1">
                   The deposit option is for Morocco only.{" "}
                   <button
@@ -491,10 +500,6 @@ export default function CheckoutClient() {
                     Switch to full payment
                   </button>
                 </p>
-              ) : (
-                method === "bank_deposit" && (
-                  <p className="text-xs text-gray-500 mt-1">The deposit option is available for deliveries in Morocco only.</p>
-                )
               )}
             </div>
             <div>
@@ -555,10 +560,6 @@ export default function CheckoutClient() {
             {loading ? "Placing order…" : `Place order · ${formatMoney(total, currency)}`}
           </button>
 
-          <p className="text-xs text-gray-500 text-center leading-relaxed">
-            Your rugs are reserved as soon as you place the order. You will not be charged online.
-          </p>
-
           <ul className="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-2">
             {TRUST_POINTS.map((p) => (
               <li
@@ -572,7 +573,6 @@ export default function CheckoutClient() {
           </ul>
         </form>
 
-        {/* RÉCAPITULATIF */}
         <aside className="w-full md:w-2/5">
           <div className="bg-white border border-[#A44E36]/20 rounded-2xl p-5 md:sticky md:top-8">
             <h2 className="font-serif text-xl text-gray-900 mb-4">Your Cart ({cart.length})</h2>
@@ -616,33 +616,8 @@ export default function CheckoutClient() {
                 <dt>Total</dt>
                 <dd className="text-[#A44E36]">{formatMoney(total, currency)}</dd>
               </div>
-
-              {method === "bank_deposit" && (
-                <>
-                  <div className="flex justify-between py-2 text-gray-700">
-                    <dt>Deposit to pay now ({DEPOSIT_PERCENT}% of total)</dt>
-                    <dd className="font-semibold">{formatMoney(dueNow, currency)}</dd>
-                  </div>
-                  <div className="flex justify-between py-2 text-gray-700">
-                    <dt>Remaining balance (paid on delivery)</dt>
-                    <dd className="font-semibold">{formatMoney(balance, currency)}</dd>
-                  </div>
-                </>
-              )}
-              {isPickup && (
-                <div className="flex justify-between py-2 text-gray-700">
-                  <dt>To pay at pick-up</dt>
-                  <dd className="font-semibold">{formatMoney(total, currency)}</dd>
-                </div>
-              )}
             </dl>
-            {method === "bank_deposit" && (
-              <p className="text-[11px] text-gray-500 mt-3 leading-relaxed">
-                The deposit and the balance add up to your total. It is a payment schedule, not a discount.
-              </p>
-            )}
 
-            {/* AIDE */}
             <div className="mt-5 rounded-xl bg-[#FAF0E4] border border-[#A44E36]/15 p-4">
               <p className="text-sm font-bold text-gray-900 mb-1">Need help with your order?</p>
               <p className="text-xs text-gray-600 mb-3 leading-relaxed">

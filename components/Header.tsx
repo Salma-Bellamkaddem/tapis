@@ -15,6 +15,7 @@ const NAV_LINKS = [
   { href: "/", label: "Home" },
   { href: "/rugs", label: "Our Rugs" },
   { href: "/collections", label: "Collections" },
+
   { href: "/collections/runner", label: "Runner Rugs" },
   { href: "/story", label: "Our Story" },
   { href: "/visit", label: "Visit Us" }, // 👈 nouvelle page

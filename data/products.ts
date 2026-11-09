@@ -926,7 +926,7 @@ export const rugsData: Rug[] = [
   name: "Moroccan Berber Runner Rug Mouzaïk  ",
   sku: "RUN-007",
   price: "$110",
-  isAvailable: true,
+  isAvailable: false,
   images: [
     "https://res.cloudinary.com/ln4u8wnx/image/upload/v1793729530/Gemini_Generated_Image_ywj0t5ywj0t5ywj0.jpg",
     "https://res.cloudinary.com/ln4u8wnx/image/upload/v1793729484/photo_2026-11-03_18-02-20.jpg",
