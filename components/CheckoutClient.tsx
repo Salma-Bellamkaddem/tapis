@@ -125,7 +125,7 @@ export default function CheckoutClient() {
       cur = p.currency;
     });
     trackEvent("InitiateCheckout", {
-      content_ids: cart.map((i) => i.sku),
+      content_ids: cart.map((i) => i.rugId),
       content_type: "product",
       num_items: cart.length,
       value,
@@ -180,8 +180,8 @@ export default function CheckoutClient() {
             value: json.total,
             currency: json.currency,
             content_type: "product",
-            content_ids: cart.map((i) => i.sku),
-            contents: cart.map((i) => ({ id: i.sku, quantity: 1 })),
+            content_ids: cart.map((i) => i.rugId),
+            contents: cart.map((i) => ({ id: i.rugId, quantity: 1 })),
             num_items: cart.length,
           },
           { eventID: json.orderNumber }

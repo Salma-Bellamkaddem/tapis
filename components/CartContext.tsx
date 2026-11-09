@@ -104,7 +104,7 @@ export function CartProvider({ children }: { children: ReactNode }) {
     // Événement Meta Pixel
     const { value, currency } = parsePrice(newItem.price);
     trackEvent("AddToCart", {
-      content_ids: [newItem.sku],
+      content_ids: [newItem.rugId],
       content_name: newItem.name,
       content_type: "product",
       value,
