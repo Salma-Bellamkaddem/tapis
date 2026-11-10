@@ -26,11 +26,11 @@ function applyBlackFridayDiscount(currentPriceString: string) {
 }
 
 function trackWhatsAppContact(rug: {
-  sku: string;
+id: string;
   name: string;
 }) {
   trackEvent("Contact", {
-    content_ids: [rug.sku],
+    content_ids: [rug.id],
     content_name: rug.name,
     content_type: "product",
   });

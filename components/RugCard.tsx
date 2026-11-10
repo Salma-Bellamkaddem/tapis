@@ -63,7 +63,7 @@ export default function RugCard({ rug, priority = false }: { rug: Rug; priority?
 
   const handleSimilarClick = () => {
     trackEvent("Contact", {
-      content_ids: [rug.sku],
+      content_ids: [rug.id],
       content_name: rug.name,
       content_type: "product",
     });
