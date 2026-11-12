@@ -23,9 +23,13 @@ export async function GET() {
   // 2. Parcourir chaque tapis pour remplir les lignes
   for (const rug of rugsData) {
     const id = rug.id;
-    // Nettoyer les guillemets et retours à la ligne dans le titre et la description
-    const title = `"${(rug.name || "").replace(/"/g, '""')}"`;
-    const description = `"${(rug.description || "").replace(/"/g, '""').replace(/\n/g, " ")}"`;
+    
+    // Nettoyer proprement : échapper les guillemets et remplacer TOUS les sauts de ligne par un espace
+    const cleanTitle = (rug.name || "").replace(/"/g, '""').replace(/[\r\n]+/g, " ").trim();
+    const cleanDesc = (rug.description || "").replace(/"/g, '""').replace(/[\r\n]+/g, " ").trim();
+    
+    const title = `"${cleanTitle}"`;
+    const description = `"${cleanDesc}"`;
     
     // Disponibilité Meta : "in stock" ou "out of stock"
     const availability = rug.isAvailable !== false ? "in stock" : "out of stock";
