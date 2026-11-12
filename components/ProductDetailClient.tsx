@@ -6,6 +6,7 @@ import Image from "next/image";
 import type { Rug } from "@/data/products";
 import { useCurrency } from "./CurrencyContext";
 import { useCart } from "@/components/CartContext";
+import { trackEvent } from "@/app/lib/fbq";  
 import ProductBreadcrumb from "@/components/ProductBreadcrumb";
 import RelatedProducts from "@/components/RelatedProducts";
 import ProductInternalLinks from "@/components/ProductInternalLinks";
@@ -34,6 +35,17 @@ export default function ProductDetailClient({ rug }: { rug: Rug }) {
     const p = getPromoState();
     setPromo({ live: p.live, end: p.end });
   }, []);
+  useEffect(() => {
+    const raw = rug.sizes?.[0]?.price || rug.price;
+    trackEvent("ViewContent", {
+      content_ids: [rug.id],
+      content_type: "product",
+      content_name: rug.name,
+      value: toNumber(raw),
+      currency: "USD",
+    });
+  }, [rug.id]); // eslint-disable-line react-hooks/exhaustive-deps
+  // ↑↑↑ fin de l'ajout ↑↑↑
 
   const collection = getCollectionByCategory(rug.category) ?? null;
   const collectionName = collection?.name ?? rug.category;
